@@ -9,12 +9,15 @@ main,
 Wangky Universe,
 5,10,
 2,
-4,
+10
+10
 
 uWucoaster,
 7,7,
 4,
-2.
+2
+10
+10.
 
 format:
 nama,
@@ -28,10 +31,12 @@ nomor map,
 nama wahana 1,
 koordinat x, koordinat y,
 nomor map,
-level,
+harga tiket
+kapasitas,
 
 nama wahana 2,
 koordinat x, koordinat y,
 nomor map,
-level.
+harga tiket
+kapasitas.
 *dynamic*

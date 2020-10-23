@@ -1,6 +1,9 @@
-Wood,5,
-Fire,5,
-Primogem,10.
+Wood
+5
+Fire
+5
+Primogem
+10.
 
 format:
 nama,harga

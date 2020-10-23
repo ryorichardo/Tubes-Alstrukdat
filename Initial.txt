@@ -1,4 +1,6 @@
-1000,20,20.
+1000
+20
+20.
 
 format:
 duit awal, waktu prep, waktu main

@@ -75,6 +75,10 @@ Saat berpindah ke main phase, bakal nerima perintah:
 7. Prepare (Masuk ke preparation phase)
 
 Pertanyaan?
-1. Gimana definisiin antrian pengunjung di awal/tengah game? (terutama ttg kesabaran)
+1. Gimana definisiin antrian pengunjung di awal/tengah game? (terutama ttg kesabaran) Gimana cara nambah antrian?
 2. Fungsi upgrade apa pengaruhnya ke wahana?
 3. Bisa ga upgrade wahana yg baru di build? (soale spek upgrade hrs berdiri di sblh wahana, tp klo br di build blom ada)
+4. Boleh modifikasi ADT yg udah ada ga? cthnya mesinkar mesinkata
+5. File peta.txt itu isinya gimana? apakah setiap nambah wahana akan di save atau ngga?
+6. ADT Jam buat apa? itu satuan waktu di program gimana konsepnya? Time remainingnya ini ditentuin dri mana?
+7. Implementasi klasifikasi wahana (umur, harga, dll) kyk gimana ya? implementasi ke fungsinya gimana?

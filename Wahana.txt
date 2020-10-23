@@ -1,6 +1,9 @@
-Wangky Universe,
-5,10,
-10,10,0,
+Wangky Universe
+5
+10
+10
+10
+0
 
 uWucoaster,
 10,20,
@@ -14,4 +17,5 @@ format:
 nama wahana,
 harga tiket, kapasitas,
 wood utk build, fire utk build, primogem utk build
+waktu untuk build
 *static*
