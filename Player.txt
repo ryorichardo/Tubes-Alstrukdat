@@ -1,6 +1,10 @@
-PLayer,
+Player,
 560,
 70,100,40,
+5,
+main,
+5,4,
+2
 
 Wangky Universe,
 5,10,
@@ -16,6 +20,10 @@ format:
 nama,
 duit,
 jml wood, jml fire, jml primogem,
+jml day,
+state terakhir(main/prep),
+koordinat x, koordinat y,
+nomor map,
 
 nama wahana 1,
 koordinat x, koordinat y,

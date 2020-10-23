@@ -1,3 +1,4 @@
+Alstrukdat Kelas 1 Kelompok 9
 Sebelum menjalankan program, definisikan terlebih dahulu wahana2 (nama, deskripsi, etc), bahan2 untuk membuat wahana (nama, harga),
 Initial state (duit modal, waktu preparation & main, ukuran petak), antrian pengunjung, serta 4 matriks sebagai peta awal dalam file txt.
 Sebagai gambaran, 4 matriks awal(5x5) dalam urutan:
