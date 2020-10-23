@@ -6,5 +6,6 @@ Primogem
 10.
 
 format:
-nama,harga
+nama
+harga
 *static*

@@ -82,3 +82,5 @@ Pertanyaan?
 5. File peta.txt itu isinya gimana? apakah setiap nambah wahana akan di save atau ngga?
 6. ADT Jam buat apa? itu satuan waktu di program gimana konsepnya? Time remainingnya ini ditentuin dri mana?
 7. Implementasi klasifikasi wahana (umur, harga, dll) kyk gimana ya? implementasi ke fungsinya gimana?
+8. Driver buat setiap modul mksdnya gimana?
+9. Ukuran map harus persegi?
