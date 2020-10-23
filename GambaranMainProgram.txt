@@ -1,0 +1,67 @@
+Sebelum menjalankan program, definisikan terlebih dahulu wahana2 (nama, deskripsi, etc), bahan2 untuk membuat wahana (nama, harga),
+Initial state (duit modal, waktu preparation & main, ukuran petak), antrian pengunjung, serta 4 matriks sebagai peta awal dalam file txt.
+Sebagai gambaran, 4 matriks awal(5x5) dalam urutan:
+* * * * *       * * * * *
+* A - - >       < A - - *
+* - - W *       * - - - *
+* - - O *       * - - - *
+* * V * *       * * V * *
+
+* * ^ * *       * * ^ * *
+* A - - *       * A - - *  
+* - - - >       < - - - *
+* - - - *       * - - - *
+* * * * *       * * * * *
+dapat ditulis dalam file txt sebagai:
+* * * * *
+* A - - >
+* - - W *
+* - - O *
+* * V * *
+
+* * * * *
+< A - - *
+* - - - *
+* - - - *
+* * V * *
+
+* * ^ * *
+* A - - *
+* - - - >
+* - - - *
+* * * * *
+
+* * ^ * *
+* A - - *
+< - - - *
+* - - - *
+* * * * *
+Saat program pertama kali dijalankan, akan keluar 3 menu utama:
+1. New Game
+    Meminta nama player baru, kemudian masuk ke preparation phase day 1 dengan kondisi initial state.
+2. Load Game
+    Meminta nama file txt untuk di load. Pastikan format txt nya sama seperti initial state (buat duitnya) dan peta awal (buat kondisi peta).
+3. Exit
+    Keluar program. Gabakal ditulis ke file txt kecuali ngejalanin save file.
+
+Setelah memilih new/load, bakal muncul preparation phase (liat spek). Perintah yg mungkin diinput:
+1. W A S D
+2. Main menu (New, Load, Save, Continue, Exit)
+3. Build (wahana baru di tempat dia berdiri, bakal ngurangin resources, duit, waktu)
+4. Upgrade (wahana di sekitar tempat dia berdiri, bakal ngurangin duit & waktu)
+5. Buy (beli resources, ngurangin duit)
+6. Undo
+7. Execute (Ngejalain semua perintah kalo waktunya cukup, kalo dah kelar ke main phase)
+8. Main (Langsung ke main phase tanpa ngejalain, stack dikosongkan)
+
+Saat berpindah ke main phase, bakal nerima perintah:
+1. W A S D
+2. Main menu (New, Load, Save, Continue, Exit)
+3. Serve (duit nambah, liat spek)
+4. Repair (Syarat mesti berdiri di sebelah wahana yg rusak)
+5. Detail (Syarat sama kea repair)
+6. Office (Syarat harus ada dalem office)
+7. Prepare (Masuk ke preparation phase)
+
+Pertanyaan?
+1. Gimana definisiin antrian pengunjung di awal/tengah game?
