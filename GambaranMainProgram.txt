@@ -36,6 +36,16 @@ dapat ditulis dalam file txt sebagai:
 < - - - *
 * - - - *
 * * * * *
+
+edit: setelah gw pikir, gajadi bikin file eksternal pake matriks di atas, untuk save file keadaan wahana2 cukup pake adt wahana yg isinya:
+- nama wahana
+- ADT point (koordinat wahana di matriks)
+- tempat wahana di map (1/2/3/4)
+- harga tiket (setelah *optional upgrade)
+- kapasitas (setelah *optional upgrade)
+
+template base dari map mending dibikin fix aja ya, dengan A di 1,1 dan O di map 1.
+
 Saat program pertama kali dijalankan, akan keluar 3 menu utama:
 1. New Game
     Meminta nama player baru, kemudian masuk ke preparation phase day 1 dengan kondisi initial state.
@@ -48,7 +58,7 @@ Setelah memilih new/load, bakal muncul preparation phase (liat spek). Perintah y
 1. W A S D
 2. Main menu (New, Load, Save, Continue, Exit)
 3. Build (wahana baru di tempat dia berdiri, bakal ngurangin resources, duit, waktu)
-4. Upgrade (wahana di sekitar tempat dia berdiri, bakal ngurangin duit & waktu)
+4. Upgrade (wahana di sekitar tempat dia berdiri, bakal ngurangin duit & waktu. kalo di sekitar ada >1 wahana, dikasi pesen pilihan)
 5. Buy (beli resources, ngurangin duit)
 6. Undo
 7. Execute (Ngejalain semua perintah kalo waktunya cukup, kalo dah kelar ke main phase)
@@ -58,10 +68,12 @@ Saat berpindah ke main phase, bakal nerima perintah:
 1. W A S D
 2. Main menu (New, Load, Save, Continue, Exit)
 3. Serve (duit nambah, liat spek)
-4. Repair (Syarat mesti berdiri di sebelah wahana yg rusak)
+4. Repair (Syarat mesti berdiri di sebelah wahana yg rusak. kalo di sekitar ada >1 wahana, dikasi pesen pilihan.)
 5. Detail (Syarat sama kea repair)
 6. Office (Syarat harus ada dalem office)
 7. Prepare (Masuk ke preparation phase)
 
 Pertanyaan?
-1. Gimana definisiin antrian pengunjung di awal/tengah game?
+1. Gimana definisiin antrian pengunjung di awal/tengah game? (terutama ttg kesabaran)
+2. Fungsi upgrade apa pengaruhnya ke wahana?
+3. Bisa ga upgrade wahana yg baru di build? (soale spek upgrade hrs berdiri di sblh wahana, tp klo br di build blom ada)

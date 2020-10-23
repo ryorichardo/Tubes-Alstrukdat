@@ -1,0 +1,13 @@
+Engi's Descent,
+5,5,5,
+5,10,
+
+Chocolate Rush,
+10, 5, 15,
+10, 30.
+
+format:
+nama upgrade,
+wood utk upgrade, fire utk upgrade, primogem utk upgrade, 
+penambahan harga tiket abis upgrade, penambahan kapasitas abis upgrade
+*static*

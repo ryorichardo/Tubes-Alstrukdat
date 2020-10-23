@@ -1,0 +1,5 @@
+1000,20,20.
+
+format:
+duit awal, waktu prep, waktu main
+*static*
