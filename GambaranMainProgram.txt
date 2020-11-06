@@ -76,11 +76,33 @@ Saat berpindah ke main phase, bakal nerima perintah:
 
 Pertanyaan?
 1. Gimana definisiin antrian pengunjung di awal/tengah game? (terutama ttg kesabaran) Gimana cara nambah antrian?
+mau wahana apa aja, tiap harinya queue pengunujung bisa beda2 pake random aja
 2. Fungsi upgrade apa pengaruhnya ke wahana?
+bebas, tapi yg penting tiap kali upgrade harganya naik. durasi jg baru, jd tiap pengunjung ada waktunya dlm naik wahana sblm balik ke queue.
 3. Bisa ga upgrade wahana yg baru di build? (soale spek upgrade hrs berdiri di sblh wahana, tp klo br di build blom ada)
+gabisa, krn secara teknis dia blm ke build kalo ga di exec, mknya hrs ke prep phase
 4. Boleh modifikasi ADT yg udah ada ga? cthnya mesinkar mesinkata
+boleh bebas, agar lbh sesuai sm program
 5. File peta.txt itu isinya gimana? apakah setiap nambah wahana akan di save atau ngga?
+gambar map awal, kalo mo ngerjain bonus (save) berarti perlu ditambah build wahana
 6. ADT Jam buat apa? itu satuan waktu di program gimana konsepnya? Time remainingnya ini ditentuin dri mana?
 7. Implementasi klasifikasi wahana (umur, harga, dll) kyk gimana ya? implementasi ke fungsinya gimana?
+cuma buat deskripsi wahana aja, di office doang. kalo mau namabhin pengunjung ada umur dkk ya  bole aja si.
 8. Driver buat setiap modul mksdnya gimana?
+seperti yg dibikin pas praktikum, buat ngejalanin fungsi2 nya. driver buat ngejalanin adt aja btw. sama adtnya bikin yg perlu2 aja, gausa semua yg pas praktikum.
 9. Ukuran map harus persegi?
+bebas.
+
+tampilan ga fix, perlu ditambah waktu kek step-step jam sampai jatahnya abis atau pindah ke prep
+file eksternal boleh lebih dari yg ditentukan
+
+10. pas ngebuild wahana boleh sebelahan ga, kalo boleh gmn cara bedain 2 wahana tsb krn dri print cuma w doang
+yg bedain wahana kan dari player, jd gamasalah kalo lambangnya sama. pake detail aja sih. 
+11. abis wahana di build itu masi invisble (belum di exec), jadi masi bisa ditembus buat lewat. baru bakal muncul kalo di exec. pas nembus P bisa nimpa W kea kasus office. abis build dia berdiri di wahananya aja.
+12. wasd ga makan waktu, jd ga masalah 
+13. kalo berdiri deket 2 wahana, bikin urutan priritas (cth: atas, kanan, bawah, kiri) buat ngeliat detail/repair dll.
+14. pengunung stlh naik wahana prio nya naik satu. jd bakal di serve duluan stlh itu.
+15. format file external bebas, boleh text csv dll. 
+16. map.txt nanti jadi 4 file berbeda, bkn satu file.
+18. jam geraknya seetelah serve, ga real time. 
+19. waktu pegunjung masuk wahana tergantung durasi serve, waktu di ADT jam jg loncatnya bergantung pada durasi serve bkn durasi wahana. durasi wahana buat nentuin kondisi real-time queue, wahana yg lg dipake, dll.
