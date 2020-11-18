@@ -1,0 +1,122 @@
+/* Nama : Dzaki Muhammad */
+/* NIM : 13519049 */
+/* Tanggal : 1 September 2020 */
+/* File : jam.c */
+/* Body ADT Jam */
+#include <stdio.h>
+#include "jam.h"
+/* -----------konstruktor Jam--------- */
+JAM MakeJAM(int H, int M)
+/* Membentuk Jam dari H, M yg valid */
+{ /* Kamus Lokal */
+	JAM J1;
+	/* Algoritma */
+	Hour(J1) = H;
+	Minute(J1) = M;
+	return J1;
+}
+
+/*------------validator Jam------------*/
+boolean IsJAMValid(int H, int M)
+/* Mengirim true jika H,M dapat membentuk Jam yang valid */
+{ /* Kamus Lokal */
+	/* Algoritma */
+	return ((H >= 0 && H <= 23) && (M >= 0 && M <= 59) && (S >= 0 && S <= 59));
+}
+
+/*------------Baca & Tulis jam-----------*/
+void BacaJAM(JAM *J)
+/* I.S. : J tak terdefinisi */
+/* F.S. : J terdefinisi dan merupakan jam valid */
+/* Proses : mengulang baca komponen H, M sehingga membentuk J yang valid */
+{ /* Kamus Lokal */
+	int H, M;
+    scanf("%d %d", &H, &M);
+    while(!IsJAMValid(H, M)){
+        printf("Jam tidak valid\n");
+        scanf("%d %d", &H, &M);
+    }
+    *J = MakeJAM(H, M);
+}
+void TulisJAM(JAM J)
+/* I.S. : J sembarang*/
+/* F.S. : J ditulis ke layar dengan format HH:MM */
+/* Proses : Menulis ke layar */
+{ /* Kamus lokal */
+	/* Algoritma */
+	printf("%d:%d",Hour(J),Minute(J));
+}
+
+long JAMToMenit(JAM J)
+/* Konversi Jam menjadi menit */
+{ /* Kamus Lokal */
+	/* Algoritma */
+	return(60 * Hour(J) + Minute(J));
+}
+
+JAM MenitToJAM(long N)
+/* Konversi menit ke Jam */
+{ /* Kamus Lokal */
+	int sisa;
+	JAM JOut;
+	/* Algoritma */
+	N = N % 1440; // harus ditambah ini agar valid
+	Hour(JOut) = N / 60;
+	sisa = N % 60;
+	Minute(JOut) = sisa
+	return JOut;
+}
+
+/* KELOMPOK OPERASI TERHADAP TYPE                                    */
+/* ***************************************************************** */
+/* *** Kelompok Operator Relational *** */
+boolean JEQ (JAM J1, JAM J2)
+/* Mengirimkan true jika J1=J2, false jika tidak */
+{
+	return(JAMToMenit(J1)==JAMToMenit(J2));
+}
+
+boolean JNEQ (JAM J1, JAM J2)
+/* Mengirimkan true jika J1 tidak sama dengan J2 */
+{
+	return(JAMToMenit(J1)!=JAMToMenit(J2));
+}
+
+boolean JLT (JAM J1, JAM J2)
+/* Mengirimkan true jika J1<J2, false jika tidak */
+{
+	return(JAMToMenit(J1)<JAMToMenit(J2));
+}
+
+boolean JGT (JAM J1, JAM J2)
+/* Mengirimkan true jika J1>J2, false jika tidak */
+{
+	return(JAMToMenit(J1)>JAMToMenit(J2));
+}
+
+/* *** Operator aritmatika JAM *** */
+
+JAM NextNMenit (JAM J, int N)
+/* Mengirim N menit setelah J dalam bentuk JAM */
+{
+	return(MenitToJAM((JAMToMenit(J)+N)));
+}
+
+JAM UpdateJam(JAM CurrentJam, JAM Durasi)
+/* Update Jam setelah wahana berjalan */
+{
+	return(MenitToJAM((JAMToMenit(CurrentJam)+JAMToMenit(Durasi))));
+}
+
+/* *** Kelompok Operator Aritmetika *** */
+long Durasi (JAM JAw, JAM JAkh)
+/* Mengirim JAkh-JAw dlm menit, dengan kalkulasi */
+/* Jika JAw > JAkh, maka JAkh adalah 1 hari setelah JAw */
+{
+	if (JGT(JAw, JAkh)){
+		return(JAMToMenit(JAkh)+86400-JAMToMenit(JAw));
+	}
+	else{
+		return(JAMToMenit(JAkh)- JAMToMenit(JAw));
+	}
+}
