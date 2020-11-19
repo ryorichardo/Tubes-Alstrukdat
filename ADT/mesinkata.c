@@ -17,16 +17,16 @@ Deskripsi   : Body mesinkata.h
 boolean EndKata;
 Kata CKata;
 
-void IgnoreBlank()
+//void IgnoreBlank()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : CC sembarang 
    F.S. : CC ≠ BLANK atau CC = MARK */
-{   /* Kamus Lokal */
+//{   /* Kamus Lokal */
     /* Algoritma */
-    while ((CC == BLANK) && (CC != MARK)) {
-        ADV();
-    }
-}
+ //   while ((CC == BLANK) && (CC != MARK)) {
+ //       ADV();
+ //   }
+//}
 
 void STARTKATA()
 /* I.S. : CC sembarang 
@@ -36,7 +36,7 @@ void STARTKATA()
 {   /* Kamus Lokal */
     /* Algoritma */
     START();
-    IgnoreBlank();
+    //IgnoreBlank();
     if (CC == MARK){
         EndKata = true;
     }
@@ -55,7 +55,7 @@ void ADVKATA()
    Proses : Akuisisi kata menggunakan procedure SalinKata */
 {   /* Kamus Lokal */
     /* Algoritma */
-    IgnoreBlank();
+    //IgnoreBlank();
     if (CC == MARK){
         EndKata = true;
     }
@@ -75,7 +75,7 @@ void SalinKata()
     int i;
     /* Algoritma */
     i = 0;
-    while ((CC != MARK) && (CC != BLANK)){
+    while ((CC != MARK)){
         if (i == NMax){
             ADV();
         }
@@ -86,4 +86,17 @@ void SalinKata()
         }
     }
     CKata.Length = i;
+}
+
+boolean IsKataSama(Kata Kata1, Kata Kata2){
+    if (Kata1.Length == Kata2.Length){
+        int i;
+        for (i = 0; i < Kata1.Length; i++){
+            if (Kata1.TabKata[i] != Kata2.TabKata[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
 }

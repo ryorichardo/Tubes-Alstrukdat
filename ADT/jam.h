@@ -22,9 +22,6 @@ typedef struct {
 /* ***************************************************************** */
 /* KELOMPOK VALIDASI TERHADAP TYPE                                   */
 /* ***************************************************************** */
-boolean IsJAMValid (int H, int M);
-/* Mengirim true  jika H,M dapat membentuk J yang valid */
-/* dipakai untuk mentest SEBELUM membentuk sebuah Jam */
 
 /* *** Konstruktor: Membentuk sebuah JAM dari komponen-komponennya *** */
 JAM MakeJAM (int HH, int MM);
@@ -34,20 +31,6 @@ JAM MakeJAM (int HH, int MM);
 /* ***************************************************************** */
 /* KELOMPOK BACA/TULIS                                               */
 /* ***************************************************************** */
-void BacaJAM (JAM * J);
-/* I.S. : J tidak terdefinisi */
-/* F.S. : J terdefinisi dan merupakan jam yang valid */
-/* Proses : mengulangi membaca komponen HH, MM sehingga membentuk J */
-/* yang valid. Tidak mungkin menghasilkan J yang tidak valid. */
-/* Pembacaan dilakukan dengan mengetikkan komponen HH, MM
-   dalam satu baris, masing-masing dipisahkan 1 spasi, diakhiri enter. */
-/* Jika JAM tidak valid maka diberikan pesan: "Jam tidak valid", dan pembacaan
-   diulangi hingga didapatkan jam yang valid. */
-/* Contoh:
-   60 3 4
-   Jam tidak valid
-   1 3 4
-   --> akan terbentuk JAM <1,3,4> */
 
 void TulisJAM (JAM J);
 /* I.S. : J sembarang */
@@ -73,11 +56,7 @@ JAM MenitToJAM (long N);
 /* KELOMPOK OPERASI TERHADAP TYPE                                    */
 /* ***************************************************************** */
 /* *** Kelompok Operator Relational *** */
-boolean JEQ (JAM J1, JAM J2);
-/* Mengirimkan true jika J1=J2, false jika tidak */
-boolean JNEQ (JAM J1, JAM J2);
-/* Mengirimkan true jika J1 tidak sama dengan J2 */
-boolean JLT (JAM J1, JAM J2);
+boolean JLE (JAM J1, JAM J2);
 /* Mengirimkan true jika J1<J2, false jika tidak */
 boolean JGT (JAM J1, JAM J2);
 /* Mengirimkan true jika J1>J2, false jika tidak */

@@ -6,7 +6,7 @@
 #define stackt_H
 
 #include "boolean.h"
-#include "../tipebentukan.h"
+#include "tipebentukan.h"
 
 #define Nil -1
 #define MaxEl 10

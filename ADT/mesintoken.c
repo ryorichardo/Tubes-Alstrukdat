@@ -1,49 +1,83 @@
 /* File: mesintoken.h */
 /* Definisi Mesin Token: Model Akuisisi Versi I */
+/*
+   Nama  = Kadek Dwi Bagus Ananta Udayana 
+   NIM   = 13519057
+   Kelas = K1
+   Tanggal = 1 Oktober 2020
+   Topik = Mesin token
+   Deskripsi = body mesin token
 
-#ifndef __MESINTOKEN_H__
-#define __MESINTOKEN_H__
+*/
 
 #include "boolean.h"
-#include "mesinkar.h"
-
-#define NMax 50
-#define BLANK ' '
-
-typedef struct
-{
-    char tkn; /* token yang dibaca */
-    int val;  /* nilai bilangan jika tkn = 'b' */
-} Token;
+#include "mesintoken.h"
 
 /* State Mesin Kata */
-extern boolean EndToken;
-extern Token CToken;
+boolean EndToken;
+int CToken;
 
-void IgnoreBlank();
+void IgnoreBlank()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : CC sembarang 
    F.S. : CC ≠ BLANK atau CC = MARK */
-
-void STARTTOKEN();
+{
+    while (CC == BLANK)
+    {
+        ADV();
+    }
+}
+void STARTTOKEN()
 /* I.S. : CC sembarang 
    F.S. : EndToken = true, dan CC = MARK; 
           atau EndToken = false, CToken adalah Token yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir Token */
-
-void ADVTOKEN();
+{
+    START();
+    IgnoreBlank();
+    if (CC == MARK)
+    {
+        EndToken = true;
+    }
+    else /* CC != MARK */
+    {
+        EndToken = false;
+        SalinToken();
+    }
+}
+void ADVTOKEN()
 /* I.S. : CC adalah karakter pertama kata yang akan diakuisisi 
    F.S. : CToken adalah Token terakhir yang sudah diakuisisi, 
           CC adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika CC = MARK, maka EndToken = true		  
    Proses : Akuisisi kata menggunakan procedure SalinKata */
-
-void SalinToken();
+{
+    IgnoreBlank();
+    if (CC == MARK)
+    {
+        EndToken = true;
+    }
+    else /* CC != MARK */
+    {
+        SalinToken();
+        IgnoreBlank();
+    }
+}
+void SalinToken()
 /* Mengakuisisi Token dan menyimpan hasilnya dalam CToken
    I.S. : CC adalah karakter pertama dari Token
    F.S. : CToken berisi Token yang sudah diakuisisi; 
           CC = BLANK atau CC = MARK; 
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-
-#endif
+{
+    int bil; /* definisi */
+    /* Algoritma*/
+    bil = 0; /* inisialisasi */
+    while ((CC != MARK) && (CC != BLANK))
+    {
+        CToken = (bil * 10) + (CC - '0');
+        bil = CToken;
+        ADV();
+    } /* CC = MARK or CC = BLANK */
+}

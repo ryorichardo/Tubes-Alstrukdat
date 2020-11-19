@@ -16,28 +16,8 @@ JAM MakeJAM(int H, int M)
 	return J1;
 }
 
-/*------------validator Jam------------*/
-boolean IsJAMValid(int H, int M)
-/* Mengirim true jika H,M dapat membentuk Jam yang valid */
-{ /* Kamus Lokal */
-	/* Algoritma */
-	return ((H >= 0 && H <= 23) && (M >= 0 && M <= 59) && (S >= 0 && S <= 59));
-}
 
 /*------------Baca & Tulis jam-----------*/
-void BacaJAM(JAM *J)
-/* I.S. : J tak terdefinisi */
-/* F.S. : J terdefinisi dan merupakan jam valid */
-/* Proses : mengulang baca komponen H, M sehingga membentuk J yang valid */
-{ /* Kamus Lokal */
-	int H, M;
-    scanf("%d %d", &H, &M);
-    while(!IsJAMValid(H, M)){
-        printf("Jam tidak valid\n");
-        scanf("%d %d", &H, &M);
-    }
-    *J = MakeJAM(H, M);
-}
 void TulisJAM(JAM J)
 /* I.S. : J sembarang*/
 /* F.S. : J ditulis ke layar dengan format HH:MM */
@@ -63,29 +43,18 @@ JAM MenitToJAM(long N)
 	N = N % 1440; // harus ditambah ini agar valid
 	Hour(JOut) = N / 60;
 	sisa = N % 60;
-	Minute(JOut) = sisa
+	Minute(JOut) = sisa;
 	return JOut;
 }
 
 /* KELOMPOK OPERASI TERHADAP TYPE                                    */
 /* ***************************************************************** */
 /* *** Kelompok Operator Relational *** */
-boolean JEQ (JAM J1, JAM J2)
-/* Mengirimkan true jika J1=J2, false jika tidak */
-{
-	return(JAMToMenit(J1)==JAMToMenit(J2));
-}
 
-boolean JNEQ (JAM J1, JAM J2)
-/* Mengirimkan true jika J1 tidak sama dengan J2 */
-{
-	return(JAMToMenit(J1)!=JAMToMenit(J2));
-}
-
-boolean JLT (JAM J1, JAM J2)
+boolean JLE (JAM J1, JAM J2)
 /* Mengirimkan true jika J1<J2, false jika tidak */
 {
-	return(JAMToMenit(J1)<JAMToMenit(J2));
+	return(JAMToMenit(J1)<=JAMToMenit(J2));
 }
 
 boolean JGT (JAM J1, JAM J2)
