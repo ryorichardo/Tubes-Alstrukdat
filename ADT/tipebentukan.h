@@ -7,6 +7,7 @@
 // Tipe
 typedef struct {
     Kata Nama; //nama wahana
+    int ID;
     int Harga; //harga main
     int Kapasitas; //kapasitas
     int Durasi; //durasi main dlm menit
@@ -14,15 +15,7 @@ typedef struct {
     int DurasiBuild; //durasi build dlm menit
     int Mat[3]; //material buat build
     Kata Deskripsi;
-} Wahana;  
-
-typedef struct {
-    Kata Nama;
-    int Harga; //nambah harga
-    int Kapasitas; //nambah kapasitas
-    int HargaUp;
-    int Mat[3]; //material buat upgrade
-} Upgrade;
+} Wahana;  //upgrade samain aja adtnya
 
 typedef struct {
     Kata Nama;
@@ -31,6 +24,7 @@ typedef struct {
 
 // Selektor
 #define Nama(P) P.Nama 
+#define ID(P) P.ID
 #define Harga(P) P.Harga 
 #define Kapasitas(P) P.Kapasitas 
 #define Durasi(P) P.Durasi
