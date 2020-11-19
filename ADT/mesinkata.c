@@ -53,6 +53,7 @@ void ADVKATA()
     }
     else if (CC == ','){
         SalinKata();
+        IgnoreBlank();
     }
     else {
         SalinKata();
