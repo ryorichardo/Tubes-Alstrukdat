@@ -19,7 +19,7 @@ void IgnoreBlank();
    I.S. : CC sembarang 
    F.S. : CC ≠ BLANK atau CC = MARK */
 
-void STARTTOKEN();
+void STARTTOKEN(FILE * input);
 /* I.S. : CC sembarang 
    F.S. : EndToken = true, dan CC = MARK; 
           atau EndToken = false, CToken adalah Token yang sudah diakuisisi,

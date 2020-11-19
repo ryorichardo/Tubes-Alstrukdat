@@ -1,14 +1,6 @@
 /* File: mesinkata.c */
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
-/*
-NIM         : 13519217
-Nama        : Hughie Alghaiyyu Emiliano
-Tanggal     : 30 September 2020
-Topik       : Pra-Praktikum 6
-Deskripsi   : Body mesinkata.h
-*/
-
 #include "boolean.h"
 #include "mesinkar.h"
 #include "mesinkata.h"
@@ -28,14 +20,14 @@ Kata CKata;
  //   }
 //}
 
-void STARTKATA()
+void STARTKATA(FILE * input)
 /* I.S. : CC sembarang 
    F.S. : EndKata = true, dan CC = MARK; 
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir kata */
 {   /* Kamus Lokal */
     /* Algoritma */
-    START();
+    START(input);
     //IgnoreBlank();
     if (CC == MARK){
         EndKata = true;
@@ -59,8 +51,12 @@ void ADVKATA()
     if (CC == MARK){
         EndKata = true;
     }
+    else if (CC == ','){
+        SalinKata();
+    }
     else {
         SalinKata();
+        IgnoreBlank();
     }
 }
 
