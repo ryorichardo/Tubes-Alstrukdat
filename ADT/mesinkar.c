@@ -10,7 +10,7 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(char string[100])
+void START(FILE *input)
 {
     /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
@@ -19,7 +19,7 @@ void START(char string[100])
           Jika CC = MARK maka EOP akan menyala (true) */
 
     /* Algoritma */
-    pita = string[100];
+    pita = input;
     ADV();
 }
 
