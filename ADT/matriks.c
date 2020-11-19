@@ -90,7 +90,7 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK, char namafile[]) {
   FILE *ptr;
 /* ALGORITMA */
   ptr = fopen(namafile, "r");
-  if ((ptr = fopen(namafile, "r"))==NULL) {
+  if (ptr ==NULL) {
     printf("Error! opening file\n");
     exit(1);
   }

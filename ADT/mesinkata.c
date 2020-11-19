@@ -12,6 +12,7 @@ Deskripsi   : Body mesinkata.h
 #include "boolean.h"
 #include "mesinkar.h"
 #include "mesinkata.h"
+#include "tipebentukan.h"
 #include <stdio.h>
 
 boolean EndKata;
@@ -99,4 +100,18 @@ boolean IsKataSama(Kata Kata1, Kata Kata2){
         return true;
     }
     return false;
+}
+
+void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
+    FILE *ptr;
+    ptr = fopen(namafile, "r");
+    if (ptr ==NULL) {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    char string[1000];
+    while (fgets(ptr,"%s",string) != EOF){
+        STARTKATA(string);  
+
+    }
 }
