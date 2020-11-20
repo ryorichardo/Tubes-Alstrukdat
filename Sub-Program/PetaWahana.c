@@ -17,6 +17,7 @@ void W(POINT *P, MATRIKS M) {
     return;
   }
 }
+
 void A(POINT P, MATRIKS M) {
   //Cek melewati batas map
   if (Absis(*P)-1<0) {
