@@ -56,30 +56,42 @@ boolean IsTreeEmpty(BinTree P)
 boolean IsTreeOneElmt(BinTree P)
 /* Mengirimkan true jika P adalah pohon biner tidak kosong dan hanya memiliki 1 elemen */
 {
-  if (IsTreeEmpty(P)) return false;
+  if (IsTreeEmpty(P)){
+    return false;
+  }
   return IsTreeEmpty(Left(P)) && IsTreeEmpty(Right(P));
 }
 
 boolean IsUnerLeft(BinTree P)
 /* Mengirimkan true jika pohon biner tidak kosong P adalah pohon unerleft: hanya mempunyai subpohon kiri */
 {
-  if (IsTreeEmpty(P)) return false;
-  if (!IsTreeEmpty(Right(P))) return false;
+  if (IsTreeEmpty(P)){
+    return false;
+  }
+  if (!IsTreeEmpty(Right(P))){
+    return false;
+  }
   return !IsTreeEmpty(Left(P));
 }
 
 boolean IsUnerRight(BinTree P)
 /* Mengirimkan true jika pohon biner tidak kosong P adalah pohon unerright: hanya mempunyai subpohon kanan*/
 {
-  if (IsTreeEmpty(P)) return false;
-  if (!IsTreeEmpty(Left(P))) return false;
+  if (IsTreeEmpty(P)){
+    return false;
+  }
+  if (!IsTreeEmpty(Left(P))){
+    return false;
+  }
   return !IsTreeEmpty(Right(P));
 }
 
 boolean IsBiner(BinTree P)
 /* Mengirimkan true jika pohon biner tidak kosong P adalah pohon biner: mempunyai subpohon kiri dan subpohon kanan*/
 {
-  if (IsTreeEmpty(P)) return false;
+  if (IsTreeEmpty(P)){
+    return false;
+  }
   return ((!IsTreeEmpty(Left(P))) && (!IsTreeEmpty(Right(P))));
 }
 

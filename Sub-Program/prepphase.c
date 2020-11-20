@@ -4,7 +4,9 @@
 void Build (Stack Perintah, Wahana ArrayWahana[100], POINT Posisi_Player, int Duit);
 // Program 
 
-void Upgrade (Stack Perintah, Wahana ArrayWahana[100], POINT Posisi_Player, int Duit);
+void Upgrade (Stack Perintah, Wahana ArrayWahana[100], POINT Posisi_Player, int Duit){
+
+}
 
 void Buy (Stack Perintah, Material ArrayMat[3], int Duit){
     printf("Ingin membeli apa?\n");
@@ -32,7 +34,47 @@ void Buy (Stack Perintah, Material ArrayMat[3], int Duit){
 
     if (Duit > jumlah*Harga(ArrayMat[found])){
         Duit -= jumlah*Harga(ArrayMat[found]);
-        Push(&S, )
+        Element X;
+        X.perintah = "Y";
+        X.Point = MakePOINT(0, 0);
+        X.Target = CKata;
+        X.Biaya = jumlah*Harga(ArrayMat[found]);
+        if (found == 0){
+            X.Wood = jumlah;
+        }
+        else if (found == 1){
+            X.Fire = jumlah;
+        }
+        else if (found == 3){
+            X.Primogem = jumlah;
+        }
+        Push(&Perintah, X);
     }
+    else{
+        printf("Uang kamu ga cukup.");
+    }
+}
 
+void Undo (Stack Perintah, int Duit){
+    Element X;
+    Pop(&Perintah, &X);
+    Duit += X.Biaya;
+}
+
+void Execute (Stack Perintah, Wahana Wahanaskrg[100], int Wood, int Fire, int Primogem){
+    Element X;
+    while (!IsEmpty(Perintah)){
+        Pop(&Perintah, &X);
+        if (X.perintah == 'B'){
+
+        }
+        else if (X.perintah == 'U'){
+
+        }
+        else if (X.perintah == 'Y'){
+            Wood += X.Wood;
+            Fire += X.Fire;
+            Primogem += X.Primogem;
+        }
+    }
 }
