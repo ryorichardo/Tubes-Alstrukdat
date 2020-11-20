@@ -106,5 +106,5 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
         printf("Error! opening file\n");
         exit(1);
     }
-    STARTKATA(&ptr);
+    STARTKATA(ptr);
 }
