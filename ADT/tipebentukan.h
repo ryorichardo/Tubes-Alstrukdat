@@ -7,7 +7,6 @@
 // Tipe
 typedef struct {
     Kata Nama; //nama wahana
-    int ID;
     int Harga; //harga main
     int Kapasitas; //kapasitas
     int Durasi; //durasi main dlm menit
