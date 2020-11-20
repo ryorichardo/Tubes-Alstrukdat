@@ -6,6 +6,8 @@
 #include "../ADT/point.h"
 #include "../ADT/mesinkata.h"
 
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang);
+
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana);
 
 void Detail(Wahana ArrayWahana[100]);

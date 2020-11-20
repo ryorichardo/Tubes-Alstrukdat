@@ -10,7 +10,8 @@
 typedef struct {
     Kata Nama; //nama wahana
     int Harga; //harga main
-    int Kapasitas; //kapasitas
+    int Kapasitas; //kapasitas maksimum
+    int Pemain; //jumlah pemain
     int Durasi; //durasi main dlm menit
     int HargaBuild; //harga build
     int DurasiBuild; //durasi build dlm menit
@@ -28,7 +29,8 @@ typedef struct {
 // Selektor
 #define Nama(P) (P.Nama).TabKata 
 #define Harga(P) P.Harga 
-#define Kapasitas(P) P.Kapasitas 
+#define Kapasitas(P) P.Kapasitas
+#define Pemain(P) P.Pemain
 #define Durasi(P) P.Durasi
 #define HargaBuild(P) P.HargaBuild
 #define DurasiBuild(P) P.DurasiBuild
