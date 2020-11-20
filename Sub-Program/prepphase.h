@@ -17,5 +17,5 @@ void Buy (Stack Perintah, Material ArrayMat[3], int Duit);
 
 void Undo (Stack Perintah, int Duit);
 
-void Execute (Stack Perintah, Wahana Wahanaskrg[100], int Wood, int Fire, int Primogem);
+void Execute (Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[100], Wahana DaftarUpgrade[100], int Wood, int Fire, int Primogem);
 # endif

@@ -110,7 +110,7 @@ void RefreshLaporan (TabLaporan *TL);
 void AddLaporan(TabLaporan *TL, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
-boolean SearchWahana(TabWahana TW, char Nama[50]);
+Wahana SearchWahana(TabWahana TW, Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 
 int SearchMaterial (TabMaterial T, Kata X);

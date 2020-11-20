@@ -139,16 +139,16 @@ void AddLaporan(TabLaporan *TL, Wahana W)
    // Make MARK
 }
 
-boolean SearchWahana(TabWahana TW, char Nama[50])
+Wahana SearchWahana(TabWahana TW, Kata Nama)
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 {
    int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
-      if(TW.TW[i].Nama = Nama){
-         return true
+      if((TW.TW[i]).Nama == Nama){
+         return TW.TW[i];
       }
    }
-   return false;
+   return NULL;
 }
 
 int SearchMaterial (TabMaterial T, Kata X){
