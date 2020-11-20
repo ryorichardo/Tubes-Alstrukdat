@@ -3,6 +3,7 @@
 
 #include "jam.h"
 #include "mesinkata.h"
+#include "point.h"
 
 // Tipe
 typedef struct {
@@ -14,6 +15,7 @@ typedef struct {
     int DurasiBuild; //durasi build dlm menit
     int Mat[3]; //material buat build
     Kata Deskripsi;
+    POINT Point; // buat lokasi wahana
 } Wahana;  //upgrade samain aja adtnya
 
 typedef struct {
@@ -23,16 +25,12 @@ typedef struct {
 
 // Selektor
 #define Nama(P) P.Nama 
-#define ID(P) P.ID
 #define Harga(P) P.Harga 
 #define Kapasitas(P) P.Kapasitas 
 #define Durasi(P) P.Durasi
 #define HargaBuild(P) P.HargaBuild
 #define DurasiBuild(P) P.DurasiBuild
 #define Deskripsi(P) P.Deskripsi 
-#define HargaUp(P) P.HargaUp
-#define Wood(P) P.Mat[0]
-#define Fire(P) P.Mat[1]
-#define Primogem(P) P.Mat[2]
+#define Point(P) P.Point
 
 #endif

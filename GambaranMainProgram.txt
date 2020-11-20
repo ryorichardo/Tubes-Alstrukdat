@@ -106,3 +106,14 @@ yg bedain wahana kan dari player, jd gamasalah kalo lambangnya sama. pake detail
 16. map.txt nanti jadi 4 file berbeda, bkn satu file.
 18. jam geraknya seetelah serve, ga real time. 
 19. waktu pegunjung masuk wahana tergantung durasi serve, waktu di ADT jam jg loncatnya bergantung pada durasi serve bkn durasi wahana. durasi wahana buat nentuin kondisi real-time queue, wahana yg lg dipake, dll.
+
+Asistensi 2
+laporan progress
+1. format input output ga hrs sama persis? ya, tapi harus bisa ngecover adt terutama mesinkata
+2. template laporan dah ada di olimpia
+3. adt graph
+4. bobot ? gadikasitau
+5. buat waktu durasi terkecil menit, buat implementasi dibebasin ga? ya, bebas.
+6. library gabole selain yg ud dideifinisiin (random, string bole)
+7. di main phase queue mungkin kosong? ya, bole jg quueue cm muncul di hari pertama aja soalnya ga didefinisiin
+
