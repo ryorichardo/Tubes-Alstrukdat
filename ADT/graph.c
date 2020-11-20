@@ -44,9 +44,6 @@ void DealokSuccNode(adrSuccNode P)
     free(P);
 }
 
-boolean isNodeEqual(adrNode P, infotypeGraph X){
-	return (Id(P).room == X.room && Absis(Id(P).p) == Absis(X.p) && Ordinat(Id(P).p) == Ordinat(X.p));
-}
 
 /* ----- OPERASI GRAF ----- */
 adrNode SearchNode(Graph G, infotypeGraph X)
@@ -114,7 +111,6 @@ void InsertEdge(Graph* G, infotypeGraph prec, infotypeGraph succ)
 infotypeGraph GetFirstSuccInfo(Graph G, infotypeGraph prec)
 {
 	infotypeGraph fal;
-	fal.room = -1;
 	Absis(fal.p) = -1;
 	Ordinat(fal.p) = -1;
 
@@ -127,24 +123,4 @@ infotypeGraph GetFirstSuccInfo(Graph G, infotypeGraph prec)
 		return fal;
 
 	return Id(Succ(Ps));
-}
-
-void InitGraph(Graph * g, char * source)
-{
-	FILE * gf = fopen(source,"r");
-	int x[6];
-	First(*g) = NilGraph;
-	while (fscanf(gf, "%d", &x[0]) == 1){
-		for (int i = 1; i < 6; i++)
-			fscanf(gf, "%d", &x[i]);
-		infotypeGraph inSucc, inPrec;
-		inPrec.room = x[0];
-		Absis(inPrec.p) = x[1];
-		Ordinat(inPrec.p) = x[2];
-		inSucc.room = x[3];
-		Absis(inSucc.p) = x[4];
-		Ordinat(inSucc.p) = x[5];
-		InsertEdge(g, inPrec, inSucc);
-	}
-	fclose(gf);
 }

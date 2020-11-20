@@ -8,7 +8,6 @@
 #define NilGraph NULL
 
 typedef struct {
-	int room;
 	POINT p;
 } infotypeGraph;
 
@@ -42,7 +41,6 @@ typedef struct
 
 /* ----- KONSTRUKTOR ----- */
 void CreateGraph(infotypeGraph X, Graph* G); // membuat graph baru
-void InitGraph(Graph* G, char* source); // load graph dari ext
 
 /* ----- MANAJEMEN MEMORI ----- */
 adrNode AlokNodeGraph(infotypeGraph X); // mengembalikan hasil alokasi simpul
@@ -51,7 +49,6 @@ adrSuccNode AlokSuccNode(adrNode Pn); // mengembalikan hasil alokasi succ simpul
 void DealokSuccNode(adrSuccNode P); // mengembalikan succ simpul ke sistem
 
 /* ----- OPERASI GRAF ----- */
-boolean isNodeEqual(adrNode P, infotypeGraph X); // mengembalikan apakah P memiliki Id X
 adrNode SearchNode(Graph G, infotypeGraph X); // mencari X pada G, return nil jika tiada
 adrSuccNode SearchEdge(Graph G, infotypeGraph prec, infotypeGraph succ); // mencari succ dari prec pada G, return nil jika tiada
 void InsertNode(Graph* G, infotypeGraph X, adrNode* Pn); // memasang X ke akhir G
