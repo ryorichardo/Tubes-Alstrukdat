@@ -1,5 +1,5 @@
-#include "../point/point.h"
-#include "../boolean/boolean.h"
+#include "point.h"
+#include "boolean.h"
 
 
 #ifndef GRAPH_H
