@@ -18,7 +18,7 @@ void W(POINT *P, MATRIKS M) {
   }
 }
 
-void A(POINT P, MATRIKS M) {
+void A(POINT *P, MATRIKS M) {
   //Cek melewati batas map
   if (Absis(*P)-1<0) {
     printf("Operasi tidak dapat dilakukan\n");
@@ -34,7 +34,7 @@ void A(POINT P, MATRIKS M) {
     return;
   }
 }
-void S(POINT P, MATRIKS M) {
+void S(POINT *P, MATRIKS M) {
   //Cek melewati batas map
   if (Ordinat(*P)+1<0) {
     printf("Operasi tidak dapat dilakukan\n");
@@ -50,7 +50,7 @@ void S(POINT P, MATRIKS M) {
     return;
   }
 }
-void D(POINT P, MATRIKS M){
+void D(POINT *P, MATRIKS M){
   //Cek melewati batas map
   if (Absis(*P)+1<0) {
     printf("Operasi tidak dapat dilakukan\n");
