@@ -21,4 +21,6 @@ typedef struct {
 POINT MakePOINT (float X, float Y);
 /* Membentuk sebuah POINT dari komponen-komponennya */
 
+float Panjang (POINT P1, POINT P2);
+
 #endif

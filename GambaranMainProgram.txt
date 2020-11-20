@@ -111,7 +111,7 @@ Asistensi 2
 laporan progress
 1. format input output ga hrs sama persis? ya, tapi harus bisa ngecover adt terutama mesinkata
 2. template laporan dah ada di olimpia
-3. adt graph
+3. adt graph gimana cara pakenya? liat slide taun lalu
 4. bobot ? gadikasitau
 5. buat waktu durasi terkecil menit, buat implementasi dibebasin ga? ya, bebas.
 6. library gabole selain yg ud dideifinisiin (random, string bole)
