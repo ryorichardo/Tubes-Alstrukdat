@@ -4,6 +4,7 @@
 #include "jam.h"
 #include "mesinkata.h"
 #include "point.h"
+#include "boolean.h"
 
 // Tipe
 typedef struct {
@@ -16,6 +17,7 @@ typedef struct {
     int Mat[3]; //material buat build
     Kata Deskripsi;
     POINT Point; // buat lokasi wahana
+    boolean Rusak;
 } Wahana;  //upgrade samain aja adtnya
 
 typedef struct {
@@ -32,5 +34,6 @@ typedef struct {
 #define DurasiBuild(P) P.DurasiBuild
 #define Deskripsi(P) P.Deskripsi 
 #define Point(P) P.Point
+#define Rusak(P) P.Rusak
 
 #endif
