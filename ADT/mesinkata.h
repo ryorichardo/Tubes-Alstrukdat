@@ -15,6 +15,8 @@ typedef struct {
     int Length;
 } Kata;
 
+#define String(K) K.TabKata
+
 /* State Mesin Kata */
 extern boolean EndKata;
 extern Kata CKata;

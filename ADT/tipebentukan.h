@@ -24,7 +24,7 @@ typedef struct {
 } Material;
 
 // Selektor
-#define Nama(P) P.Nama 
+#define Nama(P) (P.Nama).TabKata 
 #define Harga(P) P.Harga 
 #define Kapasitas(P) P.Kapasitas 
 #define Durasi(P) P.Durasi
