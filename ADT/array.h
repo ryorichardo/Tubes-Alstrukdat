@@ -22,13 +22,7 @@
 #define ValUndef -1
 /* Nilai elemen tak terdefinisi*/
 
-Kata Empty;
-Empty.TabKata[0]= 'e';
-Empty.TabKata[1]= 'm';
-Empty.TabKata[2]= 'p';
-Empty.TabKata[3]= 't';
-Empty.TabKata[4]= 'y';
-Empty.Length = 5;
+extern Kata Empty;
 
 POINT PointUndef = MakePOINT(999, 999);
 
@@ -122,7 +116,7 @@ void RefreshLaporan (TabLaporan *TL);
 void AddLaporan(TabLaporan *TL, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
-boolean SearchWahana(TabWahana TW, Kata Nama);
+Wahana SearchWahana(TabWahana TW, Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 
 int SearchMaterial (TabMaterial T, Kata X);

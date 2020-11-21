@@ -6,11 +6,40 @@
 #include "mesinkata.h"
 #include "point.h" 
 
+void MakeKataEmpty(Kata *Kata){
+   Kata->TabKata[0]= 'e';
+   Kata->TabKata[1]= 'm';
+   Kata->TabKata[2]= 'p';
+   Kata->TabKata[3]= 't';
+   Kata->TabKata[4]= 'y';
+   Kata->Length = 5;
+}
+
 /**** KONSTRUKTOR ****/
+void MakeTabWahanaEmpty (TabWahana *TW) {
+   int i;
+   for(i=IdxMin; i <= IdxMax; i++){
+      Kata Empty;
+      MakeKataEmpty(&Empty);
+      TW->TW[i].Nama = Empty; //Make MARK
+      TW->TW[i].Harga = 0;
+      TW->TW[i].Kapasitas = 0;
+      TW->TW[i].Durasi = 0;
+      TW->TW[i].HargaBuild = 0;
+      TW->TW[i].DurasiBuild = 0;
+      TW->TW[i].Mat[0] = 0;
+      TW->TW[i].Mat[1] = 0;
+      TW->TW[i].Mat[2] = 0;
+      TW->TW[i].Deskripsi = Empty;
+      TW->TW[i].Point = PointUndef;
+      TW->TW[i].Rusak = true;
+    }
+}
 
 TabAction GetAction (char namafile[])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 {
+   /* Ini salah mestinya lgsg diassign aja soalnya action tuh static dan bukan dari file*/
    TabAction TA;
    //BacaFileAction(namafile, &TA)
    return TA;    
@@ -22,7 +51,9 @@ TabWahana GetTabWahana (char namafile[])
    TabWahana TW;
    BacaFileWahana(namafile, &TW);
    int panjang = NbElmtTabWahana(TW);
-   TW.TW[panjang].Nama = Empty; //Make MARK
+   Kata Empty;
+   MakeKataEmpty(&Empty);
+   TW.TW[panjang].Nama = Empty; //Make MARK  //Kayaknya nanti implementasinta ini gausah bikin mark tp harus makeempty dulu
    TW.TW[panjang].Harga = 0;
    TW.TW[panjang].Kapasitas = 0;
    TW.TW[panjang].Durasi = 0;
@@ -57,6 +88,8 @@ TabLaporan MakeTabLaporan(TabWahana TW)
       TL.TL[i].PenghasilanHari = 0;
       i++;
    }
+   Kata Empty;
+   MakeKataEmpty(&Empty);
    TL.TL[i].Nama = Empty;
    TL.TL[i].Penggunaan = 0;
    TL.TL[i].PenghasilanTotal = 0;
@@ -86,14 +119,20 @@ Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBui
 
 /**** EOP ****/
 boolean isWahanaEmpty(Wahana W){
+   Kata Empty;
+   MakeKataEmpty(&Empty);
    return IsKataSama(W.Nama, Empty) && W.Harga==0 && W.Kapasitas==0 && W.Durasi==0 && IsKataSama(W.Deskripsi, Empty);
 }
 
 boolean isLaporanEmpty(Laporan L){
+   Kata Empty;
+   MakeKataEmpty(&Empty);
    return IsKataSama(L.Nama, Empty) && L.Penggunaan==0 && L.PenghasilanTotal==0 && L.PenggunaanHari==0 && L.PenghasilanHari==0;
 }
 
 boolean isMaterialEmpty(Material M){
+   Kata Empty;
+   MakeKataEmpty(&Empty);
    return IsKataSama(M.Nama, Empty) && M.Harga==0;
 }
 
@@ -132,14 +171,13 @@ void AddWahana(TabWahana *TW, Wahana W)
 {
    int panjang = NbElmtTabWahana(*TW);
    TW->TW[panjang] = W;
-   // Make MARK
 }
 
 void RefreshLaporan (TabLaporan *TL)
 /* I.S. TL tidak kosong */
 /* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 {
-   int length = sizeof TL / sizeof TL[0];
+   int length = NbElmtTabLaporan(*TL);
    for (int i=0; i<length; i++){
       TL->TL[i].PenggunaanHari = 0;
       TL->TL[i].PenghasilanHari = 0;
@@ -155,19 +193,32 @@ void AddLaporan(TabLaporan *TL, Wahana W)
    TL->TL[panjang].PenghasilanTotal = 0;
    TL->TL[panjang].PenggunaanHari = 0;
    TL->TL[panjang].PenghasilanHari = 0;
-   // Make MARK
 }
 
-boolean SearchWahana(TabWahana TW, Kata Nama)
+Wahana SearchWahana(TabWahana TW, Kata Nama)
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
+/* Mengembalikan Wahana kosong jika tidak ada */
 {
    int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
       if(IsKataSama(TW.TW[i].Nama, Nama)){
-         return true;
+         return TW.TW[i];
       }
    }
-   return false;
+   return TW.TW[i];
+}
+
+Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi)
+/* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
+/* Mengembalikan Wahana kosong jika tidak ada */
+{
+   int i=0;
+   while(!isWahanaEmpty(TW.TW[i])){
+      if(Panjang(TW.TW[i].Point, posisi) <= 1){
+         return TW.TW[i];
+      }
+   }
+   return TW.TW[i];
 }
 
 int SearchMaterial (TabMaterial T, Kata X){
