@@ -50,5 +50,8 @@ void SalinKata();
 boolean IsKataSama(Kata Kata1, Kata Kata2);
 // True jika kata1 = kata2
 
+void BacaFileWahana(char namafile[], Wahana * TabWahana[10]);
+
+void PrintKata(Kata X);
 
 #endif

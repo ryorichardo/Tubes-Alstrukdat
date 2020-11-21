@@ -108,3 +108,10 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
     }
     STARTKATA(ptr);
 }
+
+void PrintKata(Kata X){
+    int i;
+    for (i = 0; i < X.Length; i++){
+        printf("%c", X.TabKata[i]);
+    }
+}

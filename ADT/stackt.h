@@ -23,6 +23,7 @@ typedef struct
   int Wood;
   int Fire;
   int Primogem;
+  long Durasi;
 }Element;
  /* indeks tabel */
 
