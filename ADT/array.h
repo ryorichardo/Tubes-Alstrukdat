@@ -66,6 +66,9 @@ typedef struct{
 } TabLaporan;
 
 /**** KONSTRUKTOR ****/
+void MakeKataEmpty(Kata *Kata);
+
+void MakeTabWahanaEmpty (TabWahana *TW);
 
 TabAction GetAction (char namafile[]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
@@ -118,6 +121,8 @@ void AddLaporan(TabLaporan *TL, Wahana W);
 
 Wahana SearchWahana(TabWahana TW, Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
+
+Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi);
 
 int SearchMaterial (TabMaterial T, Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */

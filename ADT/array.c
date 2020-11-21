@@ -209,7 +209,7 @@ Wahana SearchWahana(TabWahana TW, Kata Nama)
 }
 
 Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi)
-/* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
+/* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 {
    int i=0;
