@@ -9,6 +9,8 @@
 #include "boolean.h"
 #include "jam.h"
 #include "tipebentukan.h"
+#include "point.h"
+#include "mesinkata.h"
 
 /*  Kamus Umum */
 #define IdxMax 99
@@ -20,8 +22,18 @@
 #define ValUndef -1
 /* Nilai elemen tak terdefinisi*/
 
+Kata Empty;
+Empty.TabKata[0]= 'e';
+Empty.TabKata[1]= 'm';
+Empty.TabKata[2]= 'p';
+Empty.TabKata[3]= 't';
+Empty.TabKata[4]= 'y';
+Empty.Length = 5;
+
+POINT PointUndef = MakePOINT(999, 999);
+
 typedef struct {
-    char NamaAction[50];
+    Kata NamaAction;
     JAM Durasi;
 } Action;
 
@@ -38,7 +50,7 @@ typedef struct{
 } TabAction;
 
 typedef struct{
-   char NamaUpgrade[50];
+   Kata NamaUpgrade;
    int Harga;
    int JmlBahan;
 } Upgrade;
@@ -48,7 +60,7 @@ typedef struct{
 } TabUpgrade;
 
 typedef struct{
-   char Nama[50];
+   Kata Nama;
    int Penggunaan;
    int PenghasilanTotal;
    int PenggunaanHari;
@@ -75,7 +87,7 @@ TabMaterial GetTabMaterial(char namafile[]);
 TabLaporan MakeTabLaporan(TabWahana TW);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
-Wahana MakeWahana (char Nama[50], int Harga, int Kapasitas, JAM Durasi, char Deskripsi[100] );
+Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
 /* Fungsi untuk membuat tipe bentukan Wahana */
 
 /**** EOP ****/
@@ -100,7 +112,7 @@ int NbElmtTabMaterial (TabMaterial TM);
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
 
-void AddWahana(TabWahana *TW, Wahana);
+void AddWahana(TabWahana *TW, Wahana W);
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
 void RefreshLaporan (TabLaporan *TL);
@@ -110,7 +122,7 @@ void RefreshLaporan (TabLaporan *TL);
 void AddLaporan(TabLaporan *TL, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
-Wahana SearchWahana(TabWahana TW, Kata Nama);
+boolean SearchWahana(TabWahana TW, Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 
 int SearchMaterial (TabMaterial T, Kata X);
@@ -124,11 +136,11 @@ int SearchMaterial (TabMaterial T, Kata X);
 void PrintListWahana(TabWahana TW);
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 
-void PrintDetailWahana(TabWahana TW, char Nama[50]);
+void PrintDetailWahana(TabWahana TW, Kata Nama);
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 
 
-void PrintLaporanWahana(TabLaporan TL, char Nama[50]);
+void PrintLaporanWahana(TabLaporan TL, Kata Nama);
 /* Prosedur untuk menampilkan laporan wahana */
 
 #endif

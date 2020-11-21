@@ -2,7 +2,9 @@
 
 #include <stdio.h>
 #include "array.h"
+#include "jam.h"
 #include "mesinkata.h"
+#include "point.h" 
 
 /**** KONSTRUKTOR ****/
 
@@ -20,7 +22,18 @@ TabWahana GetTabWahana (char namafile[])
    TabWahana TW;
    BacaFileWahana(namafile, &TW);
    int panjang = NbElmtTabWahana(TW);
-   TW.TW[panjang].Nama = "empty"; //Make MARK
+   TW.TW[panjang].Nama = Empty; //Make MARK
+   TW.TW[panjang].Harga = 0;
+   TW.TW[panjang].Kapasitas = 0;
+   TW.TW[panjang].Durasi = 0;
+   TW.TW[panjang].HargaBuild = 0;
+   TW.TW[panjang].DurasiBuild = 0;
+   TW.TW[panjang].Mat[0] = 0;
+   TW.TW[panjang].Mat[1] = 0;
+   TW.TW[panjang].Mat[2] = 0;
+   TW.TW[panjang].Deskripsi = Empty;
+   TW.TW[panjang].Point = PointUndef;
+   TW.TW[panjang].Rusak = true;
    return TW;
 }
 
@@ -35,7 +48,7 @@ TabLaporan MakeTabLaporan(TabWahana TW)
 /* Fungsi untuk inisialisasi array laporan wahana */
 {
    TabLaporan TL;
-   i=0;
+   int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
       TL.TL[i].Nama = TW.TW[i].Nama;
       TL.TL[i].Penggunaan = 0;
@@ -44,7 +57,7 @@ TabLaporan MakeTabLaporan(TabWahana TW)
       TL.TL[i].PenghasilanHari = 0;
       i++;
    }
-   TL.TL[i].Nama = "empty";
+   TL.TL[i].Nama = Empty;
    TL.TL[i].Penggunaan = 0;
    TL.TL[i].PenghasilanTotal = 0;
    TL.TL[i].PenggunaanHari = 0;
@@ -52,30 +65,36 @@ TabLaporan MakeTabLaporan(TabWahana TW)
    return TL;
 }
 
-Wahana MakeWahana (char Nama[50], int Harga, int Kapasitas, JAM Durasi, char Deskripsi[100] )
+
+Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
 {
    Wahana W;
    W.Nama = Nama;
    W.Harga = Harga;
    W.Kapasitas = Kapasitas;
    W.Durasi = Durasi;
-   W.Deskripsi = Deskripsi; //blm lengkap
+   W.HargaBuild = HargaBuild;
+   W.DurasiBuild = DurasiBuild;
+   W.Mat[0] = Mat[0];
+   W.Mat[1] = Mat[1];
+   W.Mat[2] = Mat[2];
+   W.Deskripsi = Deskripsi;
+   W.Point = Point;
+   W.Rusak = Rusak;
    return W;
 }
 
 /**** EOP ****/
 boolean isWahanaEmpty(Wahana W){
-   JAM J1;
-   J1 = MakeJAM(0,0);
-   return W.Nama == "empty" && W.Harga==0 && W.Kapasitas==0 && W.Durasi==J1 && W.Deskripsi=="empty";
+   return IsKataSama(W.Nama, Empty) && W.Harga==0 && W.Kapasitas==0 && W.Durasi==0 && IsKataSama(W.Deskripsi, Empty);
 }
 
 boolean isLaporanEmpty(Laporan L){
-   return L.Nama == "empty" && L.Penggunaan==0 && L.PenghasilanTotal==0 && L.PenggunaanHari==0 && L.PenghasilanHari==0;
+   return IsKataSama(L.Nama, Empty) && L.Penggunaan==0 && L.PenghasilanTotal==0 && L.PenggunaanHari==0 && L.PenghasilanHari==0;
 }
 
 boolean isMaterialEmpty(Material M){
-   return M.Nama = "empty" && M.Harga=0;
+   return IsKataSama(M.Nama, Empty) && M.Harga==0;
 }
 
 /**** OPERASI ****/
@@ -108,11 +127,11 @@ int NbElmtTabMaterial (TabMaterial TM){
     return (i);
 }
 
-void AddWahana(TabWahana *TW, Wahana)
+void AddWahana(TabWahana *TW, Wahana W)
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 {
-   int panjang = NbElmtTab(&TW);
-   *TW.TW[panjang] = Wahana;
+   int panjang = NbElmtTabWahana(*TW);
+   TW->TW[panjang] = W;
    // Make MARK
 }
 
@@ -130,25 +149,25 @@ void RefreshLaporan (TabLaporan *TL)
 void AddLaporan(TabLaporan *TL, Wahana W)
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 {
-   int panjang = NbElmtTabLaporan(&TL);
-   *TL.TL[panjang].Nama = W.Nama;
-   *TL.TL[panjang].Penggunaan = 0;
-   *TL.TL[panjang].PenghasilanTotal = 0;
-   *TL.TL[panjang].PenggunaanHari = 0;
-   *TL.TL[panjang].PenghasilanHari = 0;
+   int panjang = NbElmtTabLaporan(*TL);
+   TL->TL[panjang].Nama = W.Nama;
+   TL->TL[panjang].Penggunaan = 0;
+   TL->TL[panjang].PenghasilanTotal = 0;
+   TL->TL[panjang].PenggunaanHari = 0;
+   TL->TL[panjang].PenghasilanHari = 0;
    // Make MARK
 }
 
-Wahana SearchWahana(TabWahana TW, Kata Nama)
+boolean SearchWahana(TabWahana TW, Kata Nama)
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 {
    int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
-      if((TW.TW[i]).Nama == Nama){
-         return TW.TW[i];
+      if(IsKataSama(TW.TW[i].Nama, Nama)){
+         return true;
       }
    }
-   return NULL;
+   return false;
 }
 
 int SearchMaterial (TabMaterial T, Kata X){
@@ -164,7 +183,7 @@ int SearchMaterial (TabMaterial T, Kata X){
         int i = IdxMin;
         boolean found = false;
         while ((found == false) && (i < NbElmtTabMaterial(T))){
-            if (IsKataSama(Nama(Elmt(T, i)), X)){
+            if (IsKataSama(T.TM[i].Nama, X)){
                 found = true;
                 return (i);
             }
@@ -181,38 +200,38 @@ void PrintListWahana(TabWahana TW)
 {
    int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
-      printf("%d. %s\n", i+1, TW.TW[i].Nama);
+      printf("%d. %s\n", i+1, TW.TW[i].Nama); //ini nanti diganti sama print kata;
       i++;
    }
 }
 
-void PrintDetailWahana(TabWahana TW, char Nama[50])
+void PrintDetailWahana(TabWahana TW, Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
    int i=0;
    while(!isWahanaEmpty(TW.TW[i])){
-      if(TW.TW[i].Nama==Nama){
-         printf("Nama Wahana : %s\n", Nama);
+      if(IsKataSama(TW.TW[i].Nama, Nama)){
+         printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", TW.TW[i].Harga);
          printf("Kapasitas Wahana : %d\n", TW.TW[i].Kapasitas);
-         printf("Durasi Wahana : "); TulisJAM(TW.TW[i].Durasi); printf("/n");
-         printf("Deskripsi Wahana : %s/n", TW.TW[i].Deskripsi);
+         printf("Durasi Wahana : %d\n", TW.TW[i].Durasi);
+         printf("Deskripsi Wahana : ", TW.TW[i].Deskripsi); //Ini nanti diganti sama printkata
       }
       i++;
    }
 }
 
-void PrintLaporanWahana(TabLaporan TL, char Nama[50])
+void PrintLaporanWahana(TabLaporan TL, Kata Nama)
 /* Prosedur untuk menampilkan laporan wahana */
 {
    int i=0;
    while(!isLaporanEmpty(TL.TL[i])){
-      if(TL.TL[i].Nama==Nama){
+      if(IsKataSama(TL.TL[i].Nama, Nama)){
          printf("Nama Wahana : %s\n", Nama);
          printf("Penggunaan Total : %d\n", TL.TL[i].Penggunaan);
          printf("Penghasilan Total : %d\n", TL.TL[i].PenghasilanTotal);
          printf("Penggunaan Harian : %d\n", TL.TL[i].PenggunaanHari);
-         printf("Penghasilan Harian : %d\n", TL.TL[i].PenghasilanHari;
+         printf("Penghasilan Harian : %d\n", TL.TL[i].PenghasilanHari);
       }
       i++;
    }
