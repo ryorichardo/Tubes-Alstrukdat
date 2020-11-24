@@ -6,7 +6,7 @@
 #include "../ADT/point.h"
 #include "../ADT/mesinkata.h"
 
-void Detail(Wahana ArrayWahana[100]);
+void Detail(Wahana W);
 // Program
 
 #endif
