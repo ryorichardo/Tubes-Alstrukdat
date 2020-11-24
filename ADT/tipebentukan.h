@@ -21,6 +21,19 @@ typedef struct {
     boolean Rusak;
 } Wahana;  //upgrade samain aja adtnya
 
+/* 
+di file Wahana.txt ada:
+Wahana
+Tipe: Wahana
+Format: Nama, Harga, Kapasitas, Durasi, HargaBuild, DurasiBuild,
+        JmlWood, JmlFire, JmlPrimogem, Deskripsi.
+
+Upgrade
+Tipe: Wahana
+Format: Nama, Harga, Kapasitas, HargaBuild,
+        JmlWood, JmlFire, JmlPrimogem.
+*/
+
 typedef struct {
     Kata Nama;
     int Harga;
@@ -37,5 +50,8 @@ typedef struct {
 #define Deskripsi(P) P.Deskripsi 
 #define Point(P) P.Point
 #define Rusak(P) P.Rusak
+#define Wood(P) P.Mat[0]
+#define Fire(P) P.Mat[1]
+#define Primogem(P) P.Mat[2]
 
 #endif
