@@ -8,11 +8,11 @@ void Office(Wahana ArrayWahana[100])
     i = 0;
     while (i < 100)
     {
-        if (Nama(ArrayWahana[i]) == String(NamaWahana))
-        {
-            break;
-        }
-        i++;
+        // if (Nama(ArrayWahana[i].) == String(NamaWahana))
+        // {
+        //     break;
+        // }
+        // i++;
     }
 }
 

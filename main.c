@@ -11,7 +11,7 @@ int main(){
     f = fopen("Wahana.txt", "w");
     while (!EndKata){
         ADVKATA();
-        Nama(P) = CKata;
+        P.Nama = CKata;
     }
     while (!EndToken){
         ADVTOKEN();

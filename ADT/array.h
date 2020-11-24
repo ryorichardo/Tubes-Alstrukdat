@@ -1,12 +1,16 @@
-// ADT Array: untuk list wahana, list upgrade, list material
+/* MODUL TABEL INTEGER DENGAN ELEMEN POSITIF */
+/* Berisi definisi dan semua primitif pemrosesan tabel integer dengan elemen positif */
+/* Penempatan elemen selalu rapat kiri */
+/* Banyaknya elemen didefinisikan secara implisit, memori tabel statik */
 
-#ifndef ARRAYPOS_H
-#define ARRAYPOS_H
+#ifndef ARRAY_H
+#define ARRAY_H
 
 #include "boolean.h"
+#include "jam.h"
 #include "tipebentukan.h"
+#include "point.h"
 #include "mesinkata.h"
-#include <stdio.h>
 
 /*  Kamus Umum */
 #define IdxMax 99
@@ -15,78 +19,127 @@
 /* Indeks minimum array */
 #define IdxUndef -999 
 /* Indeks tak terdefinisi*/
-#define ValUndef NULL
+#define ValUndef -1
 /* Nilai elemen tak terdefinisi*/
 
-/* Definisi elemen dan koleksi objek */
-typedef int IdxType;  /* type indeks */
+extern Kata Empty;
 
-typedef struct { 
-  Material Tab[IdxMax+1]; 
+POINT PointUndef = MakePOINT(999, 999);
+
+typedef struct {
+    Kata NamaAction;
+    JAM Durasi;
+} Action;
+
+typedef struct{
+   Wahana TW[IdxMax+1];
+} TabWahana;
+
+typedef struct{
+   Material TM[IdxMax+1];
 } TabMaterial;
 
-/* Indeks yang digunakan [IdxMin..IdxMax] */
-/* Indeks ke-0 tidak digunakan */
-/* Jika T adalah TabInt, cara deklarasi dan akses: */
-/* Deklarasi : T : TabInt */
-/* Maka cara akses: 
-   T[i] untuk mengakses elemen ke-i */
-/* Definisi : 
-   Tabel kosong: semua elemen bernilai ValUndef
-   Definisi elemen pertama : T[i] dengan i=1 */
+typedef struct{
+   Action TA[IdxMax+1];
+} TabAction;
+
+typedef struct{
+   Kata NamaUpgrade;
+   int Harga;
+   int JmlBahan;
+} Upgrade;
   
-/* ********** SELEKTOR ********** */
-#define Elmt(T,i) (T).Tab[(i)]
+typedef struct{
+   Upgrade TU[IdxMax+1];
+} TabUpgrade;
 
-/* ********** KONSTRUKTOR ********** */ //keknya gabutuh make empty
-/* Konstruktor : create tabel kosong  */
-//void MakeEmptyW (TabWahana * T);
-//void MakeEmptyU (TabUpgrade * T);
-//void MakeEmptyM (TabMaterial * T);
-/* I.S. T sembarang */
-/* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
-/* Proses: Inisialisasi semua elemen tabel T dengan ValUndef */
+typedef struct{
+   Kata Nama;
+   int Penggunaan;
+   int PenghasilanTotal;
+   int PenggunaanHari;
+   int PenghasilanHari;
+} Laporan;
+  
+typedef struct{
+   Laporan TL[IdxMax+1];
+} TabLaporan;
 
-/* ********** SELEKTOR (TAMBAHAN) ********** */
-/* *** Banyaknya elemen *** */
+/**** KONSTRUKTOR ****/
+void MakeKataEmpty(Kata *Kata);
 
-int NbElmt (TabMaterial T);
+void MakeTabWahanaEmpty (TabWahana *TW);
+
+TabAction GetAction (char namafile[]);
+/* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
+
+
+TabWahana GetTabWahana (char namafile[]);
+/* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
+
+
+TabMaterial GetTabMaterial(char namafile[]);
+/* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
+
+TabLaporan MakeTabLaporan(TabWahana TW);
+/* Fungsi untuk inisialisasi array laporan wahana */
+
+Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
+/* Fungsi untuk membuat tipe bentukan Wahana */
+
+/**** EOP ****/
+boolean isWahanaEmpty(Wahana W);
+/* EOP Tab Wahana */
+
+boolean isLaporanEmpty(Laporan L);
+/* EOP Tab Laporan */
+
+boolean isMaterialEmpty(Material M);
+/* EOP Tab Material */
+
+/**** OPERASI ****/
+int NbElmtTabWahana(TabWahana TW);
+/* Mengirimkan banyaknya elemen efektif TabWahana */
+
+int NbElmtTabLaporan(TabLaporan TL);
+/* Mengirimkan banyaknya elemen efektif TabLaporan */
+
+int NbElmtTabMaterial (TabMaterial TM);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
 
-IdxType GetLastIdx (TabMaterial T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen T terakhir */
+void AddWahana(TabWahana *TW, Wahana W);
+/* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
+void RefreshLaporan (TabLaporan *TL);
+/* I.S. TL tidak kosong */
+/* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 
-/* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-/* *** Mendefinisikan isi tabel dari pembacaan *** */
+void AddLaporan(TabLaporan *TL, Wahana W);
+/* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
-void TulisIsiTab (TabMaterial T);
-/* Proses : Menuliskan isi tabel dengan traversal, tabel ditulis di antara kurung siku; 
-   antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan karakter di depan,
-   di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. T boleh kosong */
-/* F.S. Jika T tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika tabel kosong : menulis [] */
+Wahana SearchWahana(TabWahana TW, Kata Nama);
+/* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 
+Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi);
 
-/* ********** SEARCHING ********** */
-/* ***  Perhatian : Tabel boleh kosong!! *** */
-IdxType Search (TabMaterial T, Kata X);
+int SearchMaterial (TabMaterial T, Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */
 /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
 /* Jika tidak ada, mengirimkan IdxUndef */
 /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
 /* Skema Searching yang digunakan bebas */
 
-/* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
-/* *** Menambahkan elemen terakhir *** */
-void AddAsLastEl (TabMaterial * T, Material X);
-/* Proses: Menambahkan X sebagai elemen terakhir tabel */
-/* I.S. Tabel T boleh kosong, tetapi tidak penuh */
-/* F.S. X adalah elemen terakhir T yang baru */
+
+void PrintListWahana(TabWahana TW);
+/* Prosedur untuk menampilkan daftar wahana yang tersedia */
+
+void PrintDetailWahana(TabWahana TW, Kata Nama);
+/* Prosedur untuk menampilkan detail dari suatu wahana */
+
+
+void PrintLaporanWahana(TabLaporan TL, Kata Nama);
+/* Prosedur untuk menampilkan laporan wahana */
 
 #endif
