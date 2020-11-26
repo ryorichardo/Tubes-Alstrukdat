@@ -24,9 +24,6 @@
 
 extern Kata Empty;
 
-<<<<<<< HEAD
-POINT PointUndef = MakePOINT(999, 999);
-
 typedef struct
 {
    Kata NamaAction;
@@ -35,45 +32,11 @@ typedef struct
 
 typedef struct
 {
-   Wahana TW[IdxMax + 1];
-} TabWahana;
-
-typedef struct
-{
-   Material TM[IdxMax + 1];
-} TabMaterial;
-
-typedef struct
-{
    Action TA[IdxMax + 1];
 } TabAction;
 
 typedef struct
 {
-   Kata NamaUpgrade;
-   int Harga;
-   int JmlBahan;
-} Upgrade;
-
-typedef struct
-{
-   Wahana TU[IdxMax + 1];
-} TabUpgrade;
-
-typedef struct
-{
-=======
-typedef struct {
-    Kata NamaAction;
-    JAM Durasi;
-} Action;
-
-typedef struct{
-   Action TA[IdxMax+1];
-} TabAction;
-
-typedef struct{
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
    Kata Nama;
    int Penggunaan;
    int PenghasilanTotal;
@@ -89,28 +52,17 @@ typedef struct
 /**** KONSTRUKTOR ****/
 void MakeKataEmpty(Kata *Kata);
 
-<<<<<<< HEAD
-void MakeTabWahanaEmpty(TabWahana *TW);
-=======
 void MakeTabWahanaEmpty (Wahana *ListWahana[10]);
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
 
 TabAction GetAction(char namafile[]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 
-<<<<<<< HEAD
-TabWahana GetTabWahana(char namafile[]);
-/* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
-
-TabMaterial GetTabMaterial(char namafile[]);
-=======
 
 Wahana GetTabWahana (char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
 
 
 Material GetTabMaterial(char namafile[]);
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
 
 TabLaporan MakeTabLaporan(Wahana ListWahana[10]);
@@ -136,11 +88,7 @@ int NbElmtTabWahana(Wahana ListWahana[10]);
 int NbElmtTabLaporan(TabLaporan TL);
 /* Mengirimkan banyaknya elemen efektif TabLaporan */
 
-<<<<<<< HEAD
-int NbElmtTabMaterial(TabMaterial TM);
-=======
 int NbElmtTabMaterial (Material ListMaterial[3]);
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
@@ -160,23 +108,15 @@ Wahana SearchWahana(Wahana ListWahana[10], Kata Nama);
 
 Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi);
 
-<<<<<<< HEAD
-int SearchMaterial(TabMaterial T, Kata X);
-=======
 int SearchMaterial (Material ListMaterial[3], Kata X);
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
 /* Search apakah ada elemen tabel T yang bernilai X */
 /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
 /* Jika tidak ada, mengirimkan IdxUndef */
 /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
 /* Skema Searching yang digunakan bebas */
 
-<<<<<<< HEAD
-void PrintListWahana(TabWahana TW);
-=======
 
 void PrintListWahana(Wahana ListWahana[10]);
->>>>>>> 0c1e84c835382f81582aacd4eecc81cbec6b0024
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama);

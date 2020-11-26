@@ -49,7 +49,7 @@ int main()
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
-        Kata Player = CKata;
+        Kata Player = CopyKata(CKata);
     }
     CKata = IsNew;
     while (!IsKataSama(CKata, Exit))
