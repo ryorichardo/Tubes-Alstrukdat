@@ -50,7 +50,7 @@ typedef struct{
 } Upgrade;
   
 typedef struct{
-   Upgrade TU[IdxMax+1];
+   Wahana TU[IdxMax+1];
 } TabUpgrade;
 
 typedef struct{

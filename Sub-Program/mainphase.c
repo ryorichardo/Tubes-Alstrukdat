@@ -82,6 +82,6 @@ void Detail(Wahana W)
     printf("Ukuran Wahana:\n");
 }
 
-void Prepare(boolean NextDay){
-    NextDay = true;
+void Prepare(boolean isMain){
+    isMain = false;
 }

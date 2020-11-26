@@ -43,7 +43,10 @@ int main()
     //print halaman utama
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game");
-    START(stdin);
+    STARTKATA(stdin);
+    printf("Masukkan nama: ");
+    STARTKATA(stdin);
+    Kata Player = CKata;
     while (!IsKataSama(CKata, Exit))
     {
         if (isMain)
@@ -57,5 +60,11 @@ int main()
         printf("%d/n", day);
 
         TulisMATRIKS(CurrentMap);
+        printf("Legend:\n");
+        printf("A = Antrian\n");
+        printf("P = Player\n");
+        printf("W = Wahana\n");
+        printf("O = Office\n");
+        printf("<, ^, >, v = Gerbang\n");
     }
 }
