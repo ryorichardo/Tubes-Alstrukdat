@@ -108,7 +108,7 @@ boolean IsKataSama(Kata Kata1, Kata Kata2)
     return false;
 }
 
-void BacaFileWahana(char namafile[], Wahana *TabWahana[10], Wahana *TabUp[10])
+void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
 {
     FILE *ptr;
     ptr = fopen(namafile, "r");
@@ -128,53 +128,53 @@ void BacaFileWahana(char namafile[], Wahana *TabWahana[10], Wahana *TabUp[10])
         {
             SalinKata();
         }
-        TabWahana[i]->Nama = CKata;
+        TabWahana[i].Nama = CopyKata(CKata);
         SalinToken();
-        Harga(TabWahana[i]) = CToken;
+        TabWahana[i].Harga = CToken;
         SalinToken();
-        Kapasitas(TabWahana[i]) = CToken;
+        TabWahana[i].Kapasitas = CToken;
         SalinToken();
-        Pemain(TabWahana[i]) = CToken;
+        TabWahana[i].Pemain = CToken;
         SalinToken;
-        Durasi(TabWahana[i]) = CToken;
+        TabWahana[i].Durasi = CToken;
         SalinToken();
-        HargaBuild(TabWahana[i]) = CToken;
+        TabWahana[i].HargaBuild = CToken;
         SalinToken();
-        DurasiBuild(TabWahana[i]) = CToken;
+        TabWahana[i].DurasiBuild = CToken;
         SalinToken();
-        Wood(TabWahana[i]) = CToken;
+        TabWahana[i].Mat[0] = CToken;
         SalinToken();
-        Fire(TabWahana[i]) = CToken;
+        TabWahana[i].Mat[1] = CToken;
         SalinToken();
-        Primogem(TabWahana[i]) = CToken;
+        TabWahana[i].Mat[2] = CToken;
         SalinKata();
-        Deskripsi(TabWahana[i]) = CKata;
-        Rusak(TabWahana[i]) = false;
+        TabWahana[i].Deskripsi = CopyKata(CKata);
+        TabWahana[i].Rusak = false;
         i++;
     }
 
     while (CC != '.')
     {
         SalinKata();
-        TabUp[i]->Nama = CKata;
+        TabUp[i].Nama = CopyKata(CKata);
         SalinToken();
-        Harga(TabUp[i]) = CToken;
+        TabUp[i].Harga = CToken;
         SalinToken();
-        Kapasitas(TabUp[i]) = CToken;
+        TabUp[i].Kapasitas = CToken;
         SalinToken();
-        HargaBuild(TabUp[i]) = CToken;
+        TabUp[i].HargaBuild = CToken;
         SalinToken();
-        Wood(TabUp[i]) = CToken;
+        TabUp[i].Mat[0] = CToken;
         SalinToken;
-        Fire(TabUp[i]) = CToken;
+        TabUp[i].Mat[1] = CToken;
         SalinToken;
-        Primogem(TabUp[i]) = CToken;
+        TabUp[i].Mat[2] = CToken;
         SalinKata;
         i++;
     }
 }
 
-void BacaFileMaterial(char namafile[], Material *TabMat[3])
+void BacaFileMaterial(char namafile[], Material TabMat[3])
 {
     FILE *ptr;
     ptr = fopen(namafile, "r");
@@ -194,11 +194,23 @@ void BacaFileMaterial(char namafile[], Material *TabMat[3])
         {
             SalinKata();
         }
-        TabMat[i]->Nama = CKata;
+        TabMat[i].Nama = CopyKata(CKata);
         SalinToken();
-        Harga(TabMat[i]) = CToken;
+        TabMat[i].Harga = CToken;
         i++;
     }
+}
+
+Kata CopyKata(Kata K)
+{
+    int i;
+    Kata New;
+    for (i = 0; i < K.Length; i++)
+    {
+        New.TabKata[i] = K.TabKata[i];
+    }
+    New.Length = K.Length;
+    return New;
 }
 
 void PrintKata(Kata X)

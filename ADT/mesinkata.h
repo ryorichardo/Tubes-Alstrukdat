@@ -14,14 +14,6 @@
 #define NMax 50
 #define BLANK ' '
 
-typedef struct
-{
-   char TabKata[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
-} Kata;
-
-#define String(K) K.TabKata
-
 /* State Mesin Kata */
 extern boolean EndKata;
 extern Kata CKata;
@@ -55,9 +47,11 @@ void SalinKata();
 boolean IsKataSama(Kata Kata1, Kata Kata2);
 // True jika kata1 = kata2
 
-void BacaFileWahana(char namafile[], Wahana *TabWahana[10], Wahana *TabUp[10]);
+void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10]);
 
-void BacaFileMaterial(char namafile[], Material *TabMet[3]);
+void BacaFileMaterial(char namafile[], Material TabMet[3]);
+
+Kata CopyKata(Kata K);
 
 void PrintKata(Kata X);
 

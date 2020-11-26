@@ -1,18 +1,18 @@
-#include "matriks.h"
-#include "point.h"
-#include "graph.h"
+#include "../ADT/matriks.h"
+#include "../ADT/point.h"
+#include "../ADT/graph.h"
 #include <string.h>
 
 void MakeMap(Graph G[4], MATRIKS M[4])
 {
   char filename[] = "map1.txt";
   BacaMATRIKS(&G[0], &M[0], 12, 12, filename);
-  char filename[] = "map2.txt";
-  BacaMATRIKS(&G[1], &M[1], 12, 12, filename);
-  char filename[] = "map3.txt";
-  BacaMATRIKS(&G[2], &M[2], 12, 12, filename);
-  char filename[] = "map4.txt";
-  BacaMATRIKS(&G[3], &M[3], 12, 12, filename);
+  char filename2[] = "map2.txt";
+  BacaMATRIKS(&G[1], &M[1], 12, 12, filename2);
+  char filename3[] = "map3.txt";
+  BacaMATRIKS(&G[2], &M[2], 12, 12, filename3);
+  char filename4[] = "map4.txt";
+  BacaMATRIKS(&G[3], &M[3], 12, 12, filename4);
   // posisi Map:
   // 0 1
   // 2 3
