@@ -4,6 +4,8 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "boolean.h"
 #include "mesinkar.h"
 #include "mesintoken.h"
@@ -12,9 +14,10 @@
 #define NMax 50
 #define BLANK ' '
 
-typedef struct {
-	char TabKata[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-    int Length;
+typedef struct
+{
+   char TabKata[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   int Length;
 } Kata;
 
 #define String(K) K.TabKata
@@ -28,7 +31,7 @@ void IgnoreBlank();
    I.S. : CC sembarang 
    F.S. : CC ≠ BLANK atau CC = MARK */
 
-void STARTKATA(FILE * input);
+void STARTKATA(FILE *input);
 /* I.S. : CC sembarang 
    F.S. : EndKata = true, dan CC = MARK; 
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
@@ -52,9 +55,9 @@ void SalinKata();
 boolean IsKataSama(Kata Kata1, Kata Kata2);
 // True jika kata1 = kata2
 
-void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10]);
+void BacaFileWahana(char namafile[], Wahana *TabWahana[10], Wahana *TabUp[10]);
 
-void BacaFileMaterial(char namafile[], Material * TabMet[3]);
+void BacaFileMaterial(char namafile[], Material *TabMet[3]);
 
 void PrintKata(Kata X);
 

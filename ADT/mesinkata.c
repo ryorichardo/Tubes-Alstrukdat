@@ -2,6 +2,7 @@
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "mesinkata.h"
 
 boolean EndKata;
@@ -12,29 +13,30 @@ Kata CKata;
    I.S. : CC sembarang
    F.S. : CC ≠ BLANK atau CC = MARK */
 //{   /* Kamus Lokal */
-    /* Algoritma */
- //   while ((CC == BLANK) && (CC != MARK)) {
- //       ADV();
- //   }
+/* Algoritma */
+//   while ((CC == BLANK) && (CC != MARK)) {
+//       ADV();
+//   }
 //}
 
-void STARTKATA(FILE * input)
+void STARTKATA(FILE *input)
 /* I.S. : CC sembarang
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir kata */
-{   /* Kamus Lokal */
+{ /* Kamus Lokal */
     /* Algoritma */
     START(input);
     //IgnoreBlank();
-    if (CC == MARK){
+    if (CC == MARK)
+    {
         EndKata = true;
     }
-    else {
+    else
+    {
         EndKata = false;
         SalinKata();
     }
-
 }
 
 void ADVKATA()
@@ -43,17 +45,20 @@ void ADVKATA()
           CC adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika CC = MARK, EndKata = true.
    Proses : Akuisisi kata menggunakan procedure SalinKata */
-{   /* Kamus Lokal */
+{ /* Kamus Lokal */
     /* Algoritma */
     //IgnoreBlank();
-    if (CC == MARK){
+    if (CC == MARK)
+    {
         EndKata = true;
     }
-    else if (CC == ','){
+    else if (CC == ',')
+    {
         SalinKata();
         IgnoreBlank();
     }
-    else {
+    else
+    {
         SalinKata();
         IgnoreBlank();
     }
@@ -66,15 +71,18 @@ void SalinKata()
           CC = BLANK atau CC = MARK;
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-{   /* Kamus Lokal */
+{ /* Kamus Lokal */
     int i;
     /* Algoritma */
     i = 0;
-    while ((CC != MARK)){
-        if (i == NMax){
+    while ((CC != MARK))
+    {
+        if (i == NMax)
+        {
             ADV();
         }
-        else {
+        else
+        {
             CKata.TabKata[i] = CC;
             ADV();
             i++;
@@ -83,11 +91,15 @@ void SalinKata()
     CKata.Length = i;
 }
 
-boolean IsKataSama(Kata Kata1, Kata Kata2){
-    if (Kata1.Length == Kata2.Length){
+boolean IsKataSama(Kata Kata1, Kata Kata2)
+{
+    if (Kata1.Length == Kata2.Length)
+    {
         int i;
-        for (i = 0; i < Kata1.Length; i++){
-            if (Kata1.TabKata[i] != Kata2.TabKata[i]){
+        for (i = 0; i < Kata1.Length; i++)
+        {
+            if (Kata1.TabKata[i] != Kata2.TabKata[i])
+            {
                 return false;
             }
         }
@@ -96,19 +108,24 @@ boolean IsKataSama(Kata Kata1, Kata Kata2){
     return false;
 }
 
-void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10]){
+void BacaFileWahana(char namafile[], Wahana *TabWahana[10], Wahana *TabUp[10])
+{
     FILE *ptr;
     ptr = fopen(namafile, "r");
-    if (ptr ==NULL) {
+    if (ptr == NULL)
+    {
         printf("Error! opening file\n");
         exit(1);
     }
     int i = 0;
-    while (CC != ';'){
-        if (i == 0){
+    while (CC != ';')
+    {
+        if (i == 0)
+        {
             STARTKATA(ptr);
         }
-        else{
+        else
+        {
             SalinKata();
         }
         TabWahana[i]->Nama = CKata;
@@ -136,7 +153,8 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10])
         i++;
     }
 
-    while (CC != '.'){
+    while (CC != '.')
+    {
         SalinKata();
         TabUp[i]->Nama = CKata;
         SalinToken();
@@ -156,19 +174,24 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10])
     }
 }
 
-void BacaFileMaterial(char namafile[], Material * TabMat[3]){
+void BacaFileMaterial(char namafile[], Material *TabMat[3])
+{
     FILE *ptr;
     ptr = fopen(namafile, "r");
-    if (ptr ==NULL) {
+    if (ptr == NULL)
+    {
         printf("Error! opening file\n");
         exit(1);
     }
     int i = 0;
-    while (CC != '.'){
-        if (i == 0){
+    while (CC != '.')
+    {
+        if (i == 0)
+        {
             STARTKATA(ptr);
         }
-        else{
+        else
+        {
             SalinKata();
         }
         TabMat[i]->Nama = CKata;
@@ -178,9 +201,11 @@ void BacaFileMaterial(char namafile[], Material * TabMat[3]){
     }
 }
 
-void PrintKata(Kata X){
+void PrintKata(Kata X)
+{
     int i;
-    for (i = 0; i < X.Length; i++){
+    for (i = 0; i < X.Length; i++)
+    {
         printf("%c", X.TabKata[i]);
     }
 }
