@@ -7,9 +7,7 @@
 
 #define NilGraph NULL
 
-typedef struct {
-	POINT p;
-} infotypeGraph;
+typedef POINT infotypeGraph;
 
 typedef struct tNodeGraph* adrNode;
 typedef struct tSuccNode* adrSuccNode;

@@ -4,6 +4,7 @@
 #define MATRIKS_H
 
 #include "boolean.h"
+#include"graph.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define BrsMin 0
@@ -57,7 +58,7 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl);
 /* Melakukan assignment MHsl  MIn */
 
 /* ********** KELOMPOK BACA/TULIS ********** */
-void BacaMATRIKS (MATRIKS * M, int NB, int NK, char namafile[]);
+void BacaMATRIKS (Graph * G, MATRIKS * M, int NB, int NK, char namafile[]);
 /* I.S. IsIdxValid(NB,NK) */
 /* F.S. M terdefinisi nilai elemen efektifnya, berukuran NB x NK */
 /* Proses: Melakukan MakeMATRIKS(M,NB,NK) dan mengisi nilai efektifnya */

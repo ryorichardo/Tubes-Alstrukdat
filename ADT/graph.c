@@ -111,8 +111,8 @@ void InsertEdge(Graph* G, infotypeGraph prec, infotypeGraph succ)
 infotypeGraph GetFirstSuccInfo(Graph G, infotypeGraph prec)
 {
 	infotypeGraph fal;
-	Absis(fal.p) = -1;
-	Ordinat(fal.p) = -1;
+	Absis(fal) = -1;
+	Ordinat(fal) = -1;
 
 	adrNode Pn = SearchNode(G, prec);
 	if (Pn == NilGraph)

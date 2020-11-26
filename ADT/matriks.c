@@ -75,7 +75,7 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl) {
 }
 
 /* ********** KELOMPOK BACA/TULIS ********** */
-void BacaMATRIKS (MATRIKS * M, int NB, int NK, char namafile[]) {
+void BacaMATRIKS (Graph * G, MATRIKS * M, int NB, int NK, char namafile[]) {
 /* I.S. IsIdxValid(NB,NK) */
 /* F.S. M terdefinisi nilai elemen efektifnya, berukuran NB x NK */
 /* Proses: Melakukan MakeMATRIKS(M,NB,NK) dan mengisi nilai efektifnya */
@@ -94,11 +94,15 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK, char namafile[]) {
     printf("Error! opening file\n");
     exit(1);
   }
-
   MakeMATRIKS(NB,NK, M);
   for (i=0;i<NB;i++) {
     for (j=0;j<NK;j++) {
       fscanf(ptr, "%c ", &Elmt(*M, i, j));
+      if (Elmt(*M, i, j) == "^" || Elmt(*M, i, j) == "v" || Elmt(*M, i, j) == "<" || Elmt(*M, i, j) == ">"){
+        POINT P = MakePOINT(i, j);
+        adrNode T;
+        InsertNode(G, P, &T);
+      }
     }
   }
   fclose(ptr);
