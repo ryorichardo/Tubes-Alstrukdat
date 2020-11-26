@@ -25,8 +25,8 @@ void Build (Stack Perintah, TabWahana ArrayWahana, POINT Posisi_Player, int Duit
     }
 }
 
-void Upgrade (Stack Perintah, Wahana ArrayWahana[100], TabUpgrade DaftarUpgrade, POINT Player, int Duit){
-    Wahana New = SearchPoint(ArrayWahana, Player);
+void Upgrade (Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade, POINT Player, int Duit){
+    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
     printf("Ingin upgrade apa?\n");
     printf("List:\n");
     PrintListWahana(DaftarUpgrade);
@@ -45,20 +45,20 @@ void Upgrade (Stack Perintah, Wahana ArrayWahana[100], TabUpgrade DaftarUpgrade,
     }
 }
 
-void Buy (Stack Perintah, Material ArrayMat[3], int Duit){
+void Buy (Stack Perintah, Material * ArrayMat[3], int Duit){
     printf("Ingin membeli apa?\n");
     printf("List:\n");
     int i;
     for (i = 0; i < 3; i++){
         printf("  -  ");
-        PrintKata(ArrayMat[i].Nama);
+        PrintKata(ArrayMat[i]->Nama);
         printf("\n");
     }
     int found, jumlah = 0;
     while (jumlah == 0){
         STARTKATA(stdin);
         for (i = 0; i < 3; i++){
-            if (IsKataSama(CKata, ArrayMat[i].Nama)){
+            if (IsKataSama(CKata, ArrayMat[i]->Nama)){
                 found = i;
                 printf("Masukkan jumlahnya:\n");
                 scanf("%d", &jumlah);
@@ -111,7 +111,7 @@ void Execute (Stack Perintah, Wahana Wahanaskrg[100], TabWahana DaftarWahana, Ta
                 AddWahana(&Wahanaskrg, New);
             }
             else if (X.perintah == 'U'){
-                New = SearchPoint(DaftarWahana, X.Point);
+                New = SearchWahanaFromPoint(DaftarWahana, X.Point);
                 Up = SearchWahana(DaftarUpgrade, X.Target);
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
