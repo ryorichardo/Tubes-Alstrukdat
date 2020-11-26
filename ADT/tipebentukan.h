@@ -5,6 +5,7 @@
 #include "mesinkata.h"
 #include "point.h"
 #include "boolean.h"
+#include "prioqueuechar.h"
 
 // Tipe
 typedef struct {
@@ -20,6 +21,27 @@ typedef struct {
     POINT Point; // buat lokasi wahana
     boolean Rusak;
 } Wahana;  //upgrade samain aja adtnya
+
+typedef struct tElmtDaftar *address;
+typedef struct tElmtDaftar {
+	Kata info;
+	address next;
+} ElmtDaftar;
+typedef struct {
+	address First;
+} Daftar;
+
+typedef struct{
+    Daftar Main; //nama wahana yang ingin dikunjungi
+    int Kesabaran;
+} Pengunjung;
+
+typedef struct {
+    Pengunjung *Q;
+    address HEAD;
+    address TAIL;
+    int MaxAntrian;
+} Antrian;
 
 /* 
 di file Wahana.txt ada:
@@ -53,5 +75,6 @@ typedef struct {
 #define Wood(P) P->Mat[0]
 #define Fire(P) P->Mat[1]
 #define Primogem(P) P->Mat[2]
+#define Daftar(P) (P->*Q).Main
 
 #endif

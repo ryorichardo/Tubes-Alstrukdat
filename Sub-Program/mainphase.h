@@ -6,12 +6,13 @@
 #include "../ADT/point.h"
 #include "../ADT/mesinkata.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang);
+void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian Pengunjung[5]);
 
-void Repair(Wahana ArrayWahana[100], Kata NamaWahana);
+void Repair(Wahana * ArrayWahana[100], Kata NamaWahana);
 
-void Detail(Wahana ArrayWahana[100]);
+void Detail(Wahana * ArrayWahana[100]);
 // Program
+void Office(Wahana * ArrayWahana[100]);
 
 void Prepare();
 

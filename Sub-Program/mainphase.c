@@ -1,8 +1,9 @@
 #include "stdio.h"
 #include "mainphase.h"
+#include "listlinier.h"
 #include "../ADT/tipebentukan.h"
 
-void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang){
+void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian Customer){
     int i;
 
     /* Search Wahana */
@@ -17,7 +18,7 @@ void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang){
     if (Rusak(ArrayWahana[i])){
         printf("Maaf, wahana sedang maintenance, wahana tidak bisa digunakan.\n");
         /* Hapus antrian wahana dari customer */
-        
+        DelP
         /* Kasus ga ada antrian wahana dari customer */
 
             /* Customer dihapus dari antrian (keluar dari antrian) */
@@ -55,21 +56,21 @@ void Repair(Wahana * ArrayWahana[100], Kata NamaWahana){
     } 
 }
 
-void Office(Wahana ArrayWahana[100])
+void Office(Wahana * ArrayWahana[100])
 {
     int i;
     i = 0;
     while (i < 100)
     {
         // if (Nama(ArrayWahana[i].) == String(NamaWahana))
-        // {
+        // {x
         //     break;
         // }
         // i++;
     }
 }
 
-void Detail(Wahana W)
+void Detail(Wahana * ArrayWwahana[100])
 {
     printf("Nama Wahana:\n");
     printf("Tipe Wahana:\n");
@@ -84,4 +85,5 @@ void Detail(Wahana W)
 
 void Prepare(boolean NextDay){
     NextDay = true;
+
 }
