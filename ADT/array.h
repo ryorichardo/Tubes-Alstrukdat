@@ -50,7 +50,7 @@ typedef struct{
 } Upgrade;
   
 typedef struct{
-   Wahana TU[IdxMax+1];
+   Upgrade TU[IdxMax+1];
 } TabUpgrade;
 
 typedef struct{
@@ -68,20 +68,20 @@ typedef struct{
 /**** KONSTRUKTOR ****/
 void MakeKataEmpty(Kata *Kata);
 
-void MakeTabWahanaEmpty (TabWahana *TW);
+void MakeTabWahanaEmpty (Wahana *ListWahana[10]);
 
 TabAction GetAction (char namafile[]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 
 
-TabWahana GetTabWahana (char namafile[]);
+Wahana GetTabWahana (char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
 
 
 TabMaterial GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
 
-TabLaporan MakeTabLaporan(TabWahana TW);
+TabLaporan MakeTabLaporan(Wahana ListWahana[10]);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
 Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
@@ -98,18 +98,18 @@ boolean isMaterialEmpty(Material M);
 /* EOP Tab Material */
 
 /**** OPERASI ****/
-int NbElmtTabWahana(TabWahana TW);
+int NbElmtTabWahana(Wahana ListWahana[10]);
 /* Mengirimkan banyaknya elemen efektif TabWahana */
 
 int NbElmtTabLaporan(TabLaporan TL);
 /* Mengirimkan banyaknya elemen efektif TabLaporan */
 
-int NbElmtTabMaterial (TabMaterial TM);
+int NbElmtTabMaterial (Material ListMaterial[3]);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
 
-void AddWahana(TabWahana *TW, Wahana W);
+void AddWahana(Wahana *ListWahana[10], Wahana W);
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
 void RefreshLaporan (TabLaporan *TL);
@@ -119,12 +119,12 @@ void RefreshLaporan (TabLaporan *TL);
 void AddLaporan(TabLaporan *TL, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
-Wahana SearchWahana(TabWahana TW, Kata Nama);
+Wahana SearchWahana(Wahana ListWahana[10], Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 
-Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi);
+Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi);
 
-int SearchMaterial (TabMaterial T, Kata X);
+int SearchMaterial (Material ListMaterial[3], Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */
 /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
 /* Jika tidak ada, mengirimkan IdxUndef */
@@ -132,10 +132,10 @@ int SearchMaterial (TabMaterial T, Kata X);
 /* Skema Searching yang digunakan bebas */
 
 
-void PrintListWahana(TabWahana TW);
+void PrintListWahana(Wahana ListWahana[10]);
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 
-void PrintDetailWahana(TabWahana TW, Kata Nama);
+void PrintDetailWahana(Wahana ListWahana[10], Kata Nama);
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 
 
