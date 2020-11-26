@@ -27,10 +27,10 @@ int main()
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    char filename[] = "Wahana.txt";
-    BacaFileWahana(filename, &ListWahana[10], &ListUpgrade[10]);
-    char filename[] = "Material.txt";
-    BacaFileMaterial(filename, &ListMat[3]);
+    char filename5[] = "Wahana.txt";
+    BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    char filename6[] = "Material.txt";
+    BacaFileMaterial(filename6, &ListMat[3]);
 
     //bikin konstan exit
     Kata Exit;
