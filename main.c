@@ -9,14 +9,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(){
+int main()
+{
     //deklarasi variabel global
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
     int Wood = 0, Fire = 0, Primogem = 0, Money = 0, idxmap = 0, day = 1;
-    POINT Posisi = MakePOINT(1,1);
+    POINT Posisi = MakePOINT(1, 1);
     JAM Waktu = MakeJAM(21, 00);
     MATRIKS CurrentMap;
     MATRIKS ListMap[4];
@@ -43,11 +44,14 @@ int main(){
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game");
     START(stdin);
-    while(!IsKataSama(CKata, Exit)){
-        if (isMain){
+    while (!IsKataSama(CKata, Exit))
+    {
+        if (isMain)
+        {
             printf("Main phase day ");
         }
-        else{
+        else
+        {
             printf("Preparation phase day ");
         }
         printf("%d/n", day);
