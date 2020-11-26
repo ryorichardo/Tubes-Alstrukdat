@@ -3,7 +3,7 @@
 #include "listlinier.h"
 #include "../ADT/tipebentukan.h"
 
-void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian Customer){
+void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian * Customer){
     int i;
 
     /* Search Wahana */
@@ -18,7 +18,6 @@ void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian Custome
     if (Rusak(ArrayWahana[i])){
         printf("Maaf, wahana sedang maintenance, wahana tidak bisa digunakan.\n");
         /* Hapus antrian wahana dari customer */
-        DelP
         /* Kasus ga ada antrian wahana dari customer */
 
             /* Customer dihapus dari antrian (keluar dari antrian) */
@@ -83,7 +82,7 @@ void Detail(Wahana * ArrayWwahana[100])
     printf("Ukuran Wahana:\n");
 }
 
-void Prepare(boolean NextDay){
-    NextDay = true;
+void Prepare(boolean isMain){
+    isMain = false;
 
 }

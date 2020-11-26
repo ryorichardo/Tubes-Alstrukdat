@@ -9,14 +9,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(){
+int main()
+{
     //deklarasi variabel global
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
     int Wood = 0, Fire = 0, Primogem = 0, Money = 0, idxmap = 0, day = 1;
-    POINT Posisi = MakePOINT(1,1);
+    POINT Posisi = MakePOINT(1, 1);
     JAM Waktu = MakeJAM(21, 00);
     MATRIKS CurrentMap;
     MATRIKS ListMap[4];
@@ -26,10 +27,10 @@ int main(){
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    char filename[] = "Wahana.txt";
-    BacaFileWahana(filename, &ListWahana[10], &ListUpgrade[10]);
-    char filename[] = "Material.txt";
-    BacaFileMaterial(filename, &ListMat[3]);
+    char filename5[] = "Wahana.txt";
+    BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    char filename6[] = "Material.txt";
+    BacaFileMaterial(filename6, &ListMat[3]);
 
     //bikin konstan exit
     Kata Exit;
@@ -42,16 +43,40 @@ int main(){
     //print halaman utama
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game");
-    START(stdin);
-    while(!IsKataSama(CKata, Exit)){
-        if (isMain){
+    STARTKATA(stdin);
+    Kata IsNew = CKata;
+    if (!IsKataSama(CKata, Exit))
+    {
+        printf("Masukkan nama: ");
+        STARTKATA(stdin);
+        Kata Player = CKata;
+    }
+    CKata = IsNew;
+    while (!IsKataSama(CKata, Exit))
+    {
+        if (isMain)
+        {
             printf("Main phase day ");
         }
-        else{
+        else
+        {
             printf("Preparation phase day ");
         }
-        printf("%d/n", day);
+        // printf("%d/n", day);
 
         TulisMATRIKS(CurrentMap);
+        printf("Legend:\n");
+        printf("A = Antrian\n");
+        printf("P = Player\n");
+        printf("W = Wahana\n");
+        printf("O = Office\n");
+        printf("<, ^, >, v = Gerbang\n");
+
+        // Next Perintah
+        printf("Masukkan Perintah\n");
+        STARTKATA(stdin);
     }
+
+    // ketika telah menginput
+    printf("Thanks For Playing\n");
 }
