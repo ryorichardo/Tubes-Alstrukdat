@@ -4,21 +4,24 @@
 #include "array.h"
 #include "jam.h"
 #include "mesinkata.h"
-#include "point.h" 
+#include "point.h"
 
-void MakeKataEmpty(Kata *Kata){
-   Kata->TabKata[0]= 'e';
-   Kata->TabKata[1]= 'm';
-   Kata->TabKata[2]= 'p';
-   Kata->TabKata[3]= 't';
-   Kata->TabKata[4]= 'y';
+void MakeKataEmpty(Kata *Kata)
+{
+   Kata->TabKata[0] = 'e';
+   Kata->TabKata[1] = 'm';
+   Kata->TabKata[2] = 'p';
+   Kata->TabKata[3] = 't';
+   Kata->TabKata[4] = 'y';
    Kata->Length = 5;
 }
 
 /**** KONSTRUKTOR ****/
-void MakeTabWahanaEmpty (TabWahana *TW) {
+void MakeTabWahanaEmpty(TabWahana *TW)
+{
    int i;
-   for(i=IdxMin; i <= IdxMax; i++){
+   for (i = IdxMin; i <= IdxMax; i++)
+   {
       Kata Empty;
       MakeKataEmpty(&Empty);
       TW->TW[i].Nama = Empty; //Make MARK
@@ -33,19 +36,19 @@ void MakeTabWahanaEmpty (TabWahana *TW) {
       TW->TW[i].Deskripsi = Empty;
       TW->TW[i].Point = PointUndef;
       TW->TW[i].Rusak = true;
-    }
+   }
 }
 
-TabAction GetAction (char namafile[])
+TabAction GetAction(char namafile[])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 {
    /* Ini salah mestinya lgsg diassign aja soalnya action tuh static dan bukan dari file*/
    TabAction TA;
    //BacaFileAction(namafile, &TA)
-   return TA;    
+   return TA;
 }
 
-TabWahana GetTabWahana (char namafile[])
+TabWahana GetTabWahana(char namafile[])
 /* Prosedur menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
 {
    TabWahana TW;
@@ -79,8 +82,9 @@ TabLaporan MakeTabLaporan(TabWahana TW)
 /* Fungsi untuk inisialisasi array laporan wahana */
 {
    TabLaporan TL;
-   int i=0;
-   while(!isWahanaEmpty(TW.TW[i])){
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
       TL.TL[i].Nama = TW.TW[i].Nama;
       TL.TL[i].Penggunaan = 0;
       TL.TL[i].PenghasilanTotal = 0;
@@ -98,8 +102,7 @@ TabLaporan MakeTabLaporan(TabWahana TW)
    return TL;
 }
 
-
-Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
+Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
 {
    Wahana W;
    W.Nama = Nama;
@@ -118,29 +121,33 @@ Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBui
 }
 
 /**** EOP ****/
-boolean isWahanaEmpty(Wahana W){
+boolean isWahanaEmpty(Wahana W)
+{
    Kata Empty;
    MakeKataEmpty(&Empty);
-   return IsKataSama(W.Nama, Empty) && W.Harga==0 && W.Kapasitas==0 && W.Durasi==0 && IsKataSama(W.Deskripsi, Empty);
+   return IsKataSama(W.Nama, Empty) && W.Harga == 0 && W.Kapasitas == 0 && W.Durasi == 0 && IsKataSama(W.Deskripsi, Empty);
 }
 
-boolean isLaporanEmpty(Laporan L){
+boolean isLaporanEmpty(Laporan L)
+{
    Kata Empty;
    MakeKataEmpty(&Empty);
-   return IsKataSama(L.Nama, Empty) && L.Penggunaan==0 && L.PenghasilanTotal==0 && L.PenggunaanHari==0 && L.PenghasilanHari==0;
+   return IsKataSama(L.Nama, Empty) && L.Penggunaan == 0 && L.PenghasilanTotal == 0 && L.PenggunaanHari == 0 && L.PenghasilanHari == 0;
 }
 
-boolean isMaterialEmpty(Material M){
+boolean isMaterialEmpty(Material M)
+{
    Kata Empty;
    MakeKataEmpty(&Empty);
-   return IsKataSama(M.Nama, Empty) && M.Harga==0;
+   return IsKataSama(M.Nama, Empty) && M.Harga == 0;
 }
 
 /**** OPERASI ****/
 int NbElmtTabWahana(TabWahana TW)
 {
-   int i =0;
-   while(!isWahanaEmpty(TW.TW[i])){
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
       i++;
    }
    return i;
@@ -148,22 +155,25 @@ int NbElmtTabWahana(TabWahana TW)
 
 int NbElmtTabLaporan(TabLaporan TL)
 {
-   int i =0;
-   while(!isLaporanEmpty(TL.TL[i])){
+   int i = 0;
+   while (!isLaporanEmpty(TL.TL[i]))
+   {
       i++;
    }
    return i;
 }
 
-int NbElmtTabMaterial (TabMaterial TM){
-/* Mengirimkan banyaknya elemen efektif tabel */
-/* Mengirimkan nol jika tabel kosong */
-/* *** Daya tampung container *** */
-    int i = IdxMin;
-    while (!isMaterialEmpty(TM.TM[i])){
-        i++;
-    }
-    return (i);
+int NbElmtTabMaterial(TabMaterial TM)
+{
+   /* Mengirimkan banyaknya elemen efektif tabel */
+   /* Mengirimkan nol jika tabel kosong */
+   /* *** Daya tampung container *** */
+   int i = IdxMin;
+   while (!isMaterialEmpty(TM.TM[i]))
+   {
+      i++;
+   }
+   return (i);
 }
 
 void AddWahana(TabWahana *TW, Wahana W)
@@ -173,12 +183,13 @@ void AddWahana(TabWahana *TW, Wahana W)
    TW->TW[panjang] = W;
 }
 
-void RefreshLaporan (TabLaporan *TL)
+void RefreshLaporan(TabLaporan *TL)
 /* I.S. TL tidak kosong */
 /* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 {
    int length = NbElmtTabLaporan(*TL);
-   for (int i=0; i<length; i++){
+   for (int i = 0; i < length; i++)
+   {
       TL->TL[i].PenggunaanHari = 0;
       TL->TL[i].PenghasilanHari = 0;
    }
@@ -199,9 +210,11 @@ Wahana SearchWahana(TabWahana TW, Kata Nama)
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 /* Mengembalikan Wahana kosong jika tidak ada */
 {
-   int i=0;
-   while(!isWahanaEmpty(TW.TW[i])){
-      if(IsKataSama(TW.TW[i].Nama, Nama)){
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
+      if (IsKataSama(TW.TW[i].Nama, Nama))
+      {
          return TW.TW[i];
       }
    }
@@ -212,46 +225,55 @@ Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi)
 /* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 {
-   int i=0;
-   while(!isWahanaEmpty(TW.TW[i])){
-      if(Panjang(TW.TW[i].Point, posisi) <= 1){
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
+      if (Panjang(TW.TW[i].Point, posisi) <= 1)
+      {
          return TW.TW[i];
       }
    }
    return TW.TW[i];
 }
 
-int SearchMaterial (TabMaterial T, Kata X){
-/* Search apakah ada elemen tabel T yang bernilai X */
-/* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
-/* Jika tidak ada, mengirimkan IdxUndef */
-/* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
-/* Skema Searching yang digunakan bebas */
-    if (NbElmtTabMaterial(T) == 0){
-        return (IdxUndef);
-    }
-    else{
-        int i = IdxMin;
-        boolean found = false;
-        while ((found == false) && (i < NbElmtTabMaterial(T))){
-            if (IsKataSama(T.TM[i].Nama, X)){
-                found = true;
-                return (i);
-            }
-            i++;
-        }
-        if (found == false){
-            return (IdxUndef);
-        }
-    }
+int SearchMaterial(TabMaterial T, Kata X)
+{
+   /* Search apakah ada elemen tabel T yang bernilai X */
+   /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
+   /* Jika tidak ada, mengirimkan IdxUndef */
+   /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
+   /* Skema Searching yang digunakan bebas */
+   if (NbElmtTabMaterial(T) == 0)
+   {
+      return (IdxUndef);
+   }
+   else
+   {
+      int i = IdxMin;
+      boolean found = false;
+      while ((found == false) && (i < NbElmtTabMaterial(T)))
+      {
+         if (IsKataSama(T.TM[i].Nama, X))
+         {
+            found = true;
+            return (i);
+         }
+         i++;
+      }
+      if (found == false)
+      {
+         return (IdxUndef);
+      }
+   }
 }
 
 void PrintListWahana(TabWahana TW)
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-   int i=0;
-   while(!isWahanaEmpty(TW.TW[i])){
-      printf("%d. %s\n", i+1, TW.TW[i].Nama); //ini nanti diganti sama print kata;
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
+      printf("%d. %s\n", i + 1, TW.TW[i].Nama); //ini nanti diganti sama print kata;
       i++;
    }
 }
@@ -259,9 +281,11 @@ void PrintListWahana(TabWahana TW)
 void PrintDetailWahana(TabWahana TW, Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-   int i=0;
-   while(!isWahanaEmpty(TW.TW[i])){
-      if(IsKataSama(TW.TW[i].Nama, Nama)){
+   int i = 0;
+   while (!isWahanaEmpty(TW.TW[i]))
+   {
+      if (IsKataSama(TW.TW[i].Nama, Nama))
+      {
          printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", TW.TW[i].Harga);
          printf("Kapasitas Wahana : %d\n", TW.TW[i].Kapasitas);
@@ -275,9 +299,11 @@ void PrintDetailWahana(TabWahana TW, Kata Nama)
 void PrintLaporanWahana(TabLaporan TL, Kata Nama)
 /* Prosedur untuk menampilkan laporan wahana */
 {
-   int i=0;
-   while(!isLaporanEmpty(TL.TL[i])){
-      if(IsKataSama(TL.TL[i].Nama, Nama)){
+   int i = 0;
+   while (!isLaporanEmpty(TL.TL[i]))
+   {
+      if (IsKataSama(TL.TL[i].Nama, Nama))
+      {
          printf("Nama Wahana : %s\n", Nama);
          printf("Penggunaan Total : %d\n", TL.TL[i].Penggunaan);
          printf("Penghasilan Total : %d\n", TL.TL[i].PenghasilanTotal);

@@ -44,9 +44,14 @@ int main()
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game");
     STARTKATA(stdin);
-    printf("Masukkan nama: ");
-    STARTKATA(stdin);
-    Kata Player = CKata;
+    Kata IsNew = CKata;
+    if (!IsKataSama(CKata, Exit))
+    {
+        printf("Masukkan nama: ");
+        STARTKATA(stdin);
+        Kata Player = CKata;
+    }
+    CKata = IsNew;
     while (!IsKataSama(CKata, Exit))
     {
         if (isMain)
@@ -57,7 +62,7 @@ int main()
         {
             printf("Preparation phase day ");
         }
-        printf("%d/n", day);
+        // printf("%d/n", day);
 
         TulisMATRIKS(CurrentMap);
         printf("Legend:\n");
@@ -66,5 +71,12 @@ int main()
         printf("W = Wahana\n");
         printf("O = Office\n");
         printf("<, ^, >, v = Gerbang\n");
+
+        // Next Perintah
+        printf("Masukkan Perintah\n");
+        STARTKATA(stdin);
     }
+
+    // ketika telah menginput
+    printf("Thanks For Playing\n");
 }

@@ -17,7 +17,7 @@
 /* Indeks maksimum array */
 #define IdxMin 0
 /* Indeks minimum array */
-#define IdxUndef -999 
+#define IdxUndef -999
 /* Indeks tak terdefinisi*/
 #define ValUndef -1
 /* Nilai elemen tak terdefinisi*/
@@ -26,57 +26,63 @@ extern Kata Empty;
 
 POINT PointUndef = MakePOINT(999, 999);
 
-typedef struct {
-    Kata NamaAction;
-    JAM Durasi;
+typedef struct
+{
+   Kata NamaAction;
+   JAM Durasi;
 } Action;
 
-typedef struct{
-   Wahana TW[IdxMax+1];
+typedef struct
+{
+   Wahana TW[IdxMax + 1];
 } TabWahana;
 
-typedef struct{
-   Material TM[IdxMax+1];
+typedef struct
+{
+   Material TM[IdxMax + 1];
 } TabMaterial;
 
-typedef struct{
-   Action TA[IdxMax+1];
+typedef struct
+{
+   Action TA[IdxMax + 1];
 } TabAction;
 
-typedef struct{
+typedef struct
+{
    Kata NamaUpgrade;
    int Harga;
    int JmlBahan;
 } Upgrade;
-  
-typedef struct{
-   Wahana TU[IdxMax+1];
+
+typedef struct
+{
+   Wahana TU[IdxMax + 1];
 } TabUpgrade;
 
-typedef struct{
+typedef struct
+{
    Kata Nama;
    int Penggunaan;
    int PenghasilanTotal;
    int PenggunaanHari;
    int PenghasilanHari;
 } Laporan;
-  
-typedef struct{
-   Laporan TL[IdxMax+1];
+
+typedef struct
+{
+   Laporan TL[IdxMax + 1];
 } TabLaporan;
 
 /**** KONSTRUKTOR ****/
 void MakeKataEmpty(Kata *Kata);
 
-void MakeTabWahanaEmpty (TabWahana *TW);
+void MakeTabWahanaEmpty(TabWahana *TW);
 
-TabAction GetAction (char namafile[]);
+TabAction GetAction(char namafile[]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 
-
-TabWahana GetTabWahana (char namafile[]);
+TabWahana GetTabWahana(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
-
 
 TabMaterial GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
@@ -84,7 +90,7 @@ TabMaterial GetTabMaterial(char namafile[]);
 TabLaporan MakeTabLaporan(TabWahana TW);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
-Wahana MakeWahana (Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
+Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
 /* Fungsi untuk membuat tipe bentukan Wahana */
 
 /**** EOP ****/
@@ -104,7 +110,7 @@ int NbElmtTabWahana(TabWahana TW);
 int NbElmtTabLaporan(TabLaporan TL);
 /* Mengirimkan banyaknya elemen efektif TabLaporan */
 
-int NbElmtTabMaterial (TabMaterial TM);
+int NbElmtTabMaterial(TabMaterial TM);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
@@ -112,7 +118,7 @@ int NbElmtTabMaterial (TabMaterial TM);
 void AddWahana(TabWahana *TW, Wahana W);
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
-void RefreshLaporan (TabLaporan *TL);
+void RefreshLaporan(TabLaporan *TL);
 /* I.S. TL tidak kosong */
 /* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 
@@ -124,20 +130,18 @@ Wahana SearchWahana(TabWahana TW, Kata Nama);
 
 Wahana SearchWahanaFromPoint(TabWahana TW, POINT posisi);
 
-int SearchMaterial (TabMaterial T, Kata X);
+int SearchMaterial(TabMaterial T, Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */
 /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
 /* Jika tidak ada, mengirimkan IdxUndef */
 /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
 /* Skema Searching yang digunakan bebas */
 
-
 void PrintListWahana(TabWahana TW);
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 
 void PrintDetailWahana(TabWahana TW, Kata Nama);
 /* Prosedur untuk menampilkan detail dari suatu wahana */
-
 
 void PrintLaporanWahana(TabLaporan TL, Kata Nama);
 /* Prosedur untuk menampilkan laporan wahana */
