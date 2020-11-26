@@ -24,34 +24,14 @@
 
 extern Kata Empty;
 
-POINT PointUndef = MakePOINT(999, 999);
-
 typedef struct {
     Kata NamaAction;
     JAM Durasi;
 } Action;
 
 typedef struct{
-   Wahana TW[IdxMax+1];
-} TabWahana;
-
-typedef struct{
-   Material TM[IdxMax+1];
-} TabMaterial;
-
-typedef struct{
    Action TA[IdxMax+1];
 } TabAction;
-
-typedef struct{
-   Kata NamaUpgrade;
-   int Harga;
-   int JmlBahan;
-} Upgrade;
-  
-typedef struct{
-   Upgrade TU[IdxMax+1];
-} TabUpgrade;
 
 typedef struct{
    Kata Nama;
@@ -78,7 +58,7 @@ Wahana GetTabWahana (char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
 
 
-TabMaterial GetTabMaterial(char namafile[]);
+Material GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
 
 TabLaporan MakeTabLaporan(Wahana ListWahana[10]);

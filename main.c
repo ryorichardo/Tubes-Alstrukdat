@@ -46,7 +46,7 @@ int main()
     STARTKATA(stdin);
     printf("Masukkan nama: ");
     STARTKATA(stdin);
-    Kata Player = CKata;
+    Kata Player = CopyKata(CKata);
     while (!IsKataSama(CKata, Exit))
     {
         if (isMain)
