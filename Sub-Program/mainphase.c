@@ -2,7 +2,7 @@
 #include "mainphase.h"
 #include "../ADT/tipebentukan.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang){
+void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang){
     int i;
 
     /* Search Wahana */
@@ -41,7 +41,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang){
     }
 }
 
-void Repair(Wahana ArrayWahana[100], Kata NamaWahana){
+void Repair(Wahana * ArrayWahana[100], Kata NamaWahana){
     int i;
 
     /* Search Wahana */

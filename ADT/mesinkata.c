@@ -1,11 +1,8 @@
 /* File: mesinkata.c */
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
-#include "boolean.h"
-#include "mesinkar.h"
-#include "mesinkata.h"
-#include "tipebentukan.h"
 #include <stdio.h>
+#include "mesinkata.h"
 
 boolean EndKata;
 Kata CKata;
@@ -99,7 +96,7 @@ boolean IsKataSama(Kata Kata1, Kata Kata2){
     return false;
 }
 
-void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
+void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10]){
     FILE *ptr;
     ptr = fopen(namafile, "r");
     if (ptr ==NULL) {
@@ -108,7 +105,12 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
     }
     int i = 0;
     while (CC != ';'){
-        SalinKata();
+        if (i == 0){
+            STARTKATA(ptr);
+        }
+        else{
+            SalinKata();
+        }
         TabWahana[i]->Nama = CKata;
         SalinToken();
         Harga(TabWahana[i]) = CToken;
@@ -124,20 +126,56 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
         DurasiBuild(TabWahana[i]) = CToken;
         SalinToken();
         Wood(TabWahana[i]) = CToken;
-        SalinToken;
+        SalinToken();
         Fire(TabWahana[i]) = CToken;
-        SalinToken;
+        SalinToken();
         Primogem(TabWahana[i]) = CToken;
-        SalinKata;
+        SalinKata();
         Deskripsi(TabWahana[i]) = CKata;
         Rusak(TabWahana[i]) = false;
-        i++
+        i++;
     }
 
     while (CC != '.'){
-        
+        SalinKata();
+        TabUp[i]->Nama = CKata;
+        SalinToken();
+        Harga(TabUp[i]) = CToken;
+        SalinToken();
+        Kapasitas(TabUp[i]) = CToken;
+        SalinToken();
+        HargaBuild(TabUp[i]) = CToken;
+        SalinToken();
+        Wood(TabUp[i]) = CToken;
+        SalinToken;
+        Fire(TabUp[i]) = CToken;
+        SalinToken;
+        Primogem(TabUp[i]) = CToken;
+        SalinKata;
+        i++;
     }
+}
 
+void BacaFileMaterial(char namafile[], Material * TabMat[3]){
+    FILE *ptr;
+    ptr = fopen(namafile, "r");
+    if (ptr ==NULL) {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    int i = 0;
+    while (CC != '.'){
+        if (i == 0){
+            STARTKATA(ptr);
+        }
+        else{
+            SalinKata();
+        }
+        TabMat[i]->Nama = CKata;
+        SalinToken();
+        Harga(TabMat[i]) = CToken;
+        i++;
+    }
 }
 
 void PrintKata(Kata X){

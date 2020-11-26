@@ -6,6 +6,8 @@
 
 #include "boolean.h"
 #include "mesinkar.h"
+#include "mesintoken.h"
+#include "tipebentukan.h"
 
 #define NMax 50
 #define BLANK ' '
@@ -50,7 +52,9 @@ void SalinKata();
 boolean IsKataSama(Kata Kata1, Kata Kata2);
 // True jika kata1 = kata2
 
-void BacaFileWahana(char namafile[], Wahana * TabWahana[10]);
+void BacaFileWahana(char namafile[], Wahana * TabWahana[10], Wahana * TabUp[10]);
+
+void BacaFileMaterial(char namafile[], Material * TabMet[3]);
 
 void PrintKata(Kata X);
 
