@@ -106,7 +106,38 @@ void BacaFileWahana(char namafile[], Wahana * TabWahana[10]){
         printf("Error! opening file\n");
         exit(1);
     }
-    STARTKATA(ptr);
+    int i = 0;
+    while (CC != ';'){
+        SalinKata();
+        TabWahana[i]->Nama = CKata;
+        SalinToken();
+        Harga(TabWahana[i]) = CToken;
+        SalinToken();
+        Kapasitas(TabWahana[i]) = CToken;
+        SalinToken();
+        Pemain(TabWahana[i]) = CToken;
+        SalinToken;
+        Durasi(TabWahana[i]) = CToken;
+        SalinToken();
+        HargaBuild(TabWahana[i]) = CToken;
+        SalinToken();
+        DurasiBuild(TabWahana[i]) = CToken;
+        SalinToken();
+        Wood(TabWahana[i]) = CToken;
+        SalinToken;
+        Fire(TabWahana[i]) = CToken;
+        SalinToken;
+        Primogem(TabWahana[i]) = CToken;
+        SalinKata;
+        Deskripsi(TabWahana[i]) = CKata;
+        Rusak(TabWahana[i]) = false;
+        i++
+    }
+
+    while (CC != '.'){
+        
+    }
+
 }
 
 void PrintKata(Kata X){

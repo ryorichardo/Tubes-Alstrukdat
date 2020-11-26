@@ -47,8 +47,8 @@ adrSuccNode AlokSuccNode(adrNode Pn); // mengembalikan hasil alokasi succ simpul
 void DealokSuccNode(adrSuccNode P); // mengembalikan succ simpul ke sistem
 
 /* ----- OPERASI GRAF ----- */
-adrNode SearchNode(Graph G, infotypeGraph X); // mencari X pada G, return nil jika tiada
-adrSuccNode SearchEdge(Graph G, infotypeGraph prec, infotypeGraph succ); // mencari succ dari prec pada G, return nil jika tiada
+adrNode SearchAbsis(Graph G, int X);
+adrNode SearchOrdinat(Graph G, int Y);
 void InsertNode(Graph* G, infotypeGraph X, adrNode* Pn); // memasang X ke akhir G
 void InsertEdge(Graph* G, infotypeGraph prec, infotypeGraph succ); // memasang succ ke akhir prec
 infotypeGraph GetFirstSuccInfo(Graph G, infotypeGraph prec); // mencari info succ simpul pertama dari node

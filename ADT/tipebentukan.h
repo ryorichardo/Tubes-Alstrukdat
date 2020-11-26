@@ -40,18 +40,18 @@ typedef struct {
 } Material;
 
 // Selektor
-#define Nama(P) (P.Nama).TabKata 
-#define Harga(P) P.Harga 
-#define Kapasitas(P) P.Kapasitas
-#define Pemain(P) P.Pemain
-#define Durasi(P) P.Durasi
-#define HargaBuild(P) P.HargaBuild
-#define DurasiBuild(P) P.DurasiBuild
-#define Deskripsi(P) P.Deskripsi 
-#define Point(P) P.Point
-#define Rusak(P) P.Rusak
-#define Wood(P) P.Mat[0]
-#define Fire(P) P.Mat[1]
-#define Primogem(P) P.Mat[2]
+#define Nama(P) (P->Nama).TabKata 
+#define Harga(P) P->Harga 
+#define Kapasitas(P) P->Kapasitas
+#define Pemain(P) P->Pemain
+#define Durasi(P) P->Durasi
+#define HargaBuild(P) P->HargaBuild
+#define DurasiBuild(P) P->DurasiBuild
+#define Deskripsi(P) P->Deskripsi 
+#define Point(P) P->Point
+#define Rusak(P) P->Rusak
+#define Wood(P) P->Mat[0]
+#define Fire(P) P->Mat[1]
+#define Primogem(P) P->Mat[2]
 
 #endif

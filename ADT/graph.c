@@ -46,11 +46,11 @@ void DealokSuccNode(adrSuccNode P)
 
 
 /* ----- OPERASI GRAF ----- */
-adrNode SearchNode(Graph G, infotypeGraph X)
+adrNode SearchAbsis(Graph G, int X)
 {
     adrNode P = First(G);
     while(P != NilGraph){
-		if (isNodeEqual(P, X))
+		if (Absis(Id(P)) == X)
 			return P;
 		else
 			P = Next(P);
@@ -58,19 +58,16 @@ adrNode SearchNode(Graph G, infotypeGraph X)
     return P;
 }
 
-adrSuccNode SearchEdge(Graph G, infotypeGraph prec, infotypeGraph succ)
+adrNode SearchOrdinat(Graph G, int Y)
 {
-    adrNode Pn = SearchNode(G, prec);
-	if (Pn == NilGraph)
-		return NilGraph;
-	adrSuccNode P = Trail(Pn);
+    adrNode P = First(G);
     while(P != NilGraph){
-		if (isNodeEqual(Succ(P), succ))
+		if (Ordinat(Id(P)) == Y)
 			return P;
 		else
 			P = Next(P);
 	}
-	return P;
+    return P;
 }
 
 void InsertNode(Graph* G, infotypeGraph X, adrNode* Pn)
