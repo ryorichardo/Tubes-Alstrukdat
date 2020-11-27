@@ -20,33 +20,33 @@
 //} List;
 
 /* Definisi list : */
-/* List kosong : First(L) = Nil */
-/* Setiap elemen dengan addressList P dapat diacu Info(P), Next(P) */
-/* Elemen terakhir list : jika addressListnya Last, maka Next(Last)=Nil */
+/* List kosong : FirstList(L) = Nil */
+/* Setiap elemen dengan addressList P dapat diacu InfoList(P), NextList(P) */
+/* Elemen terakhir list : jika addressListnya Last, maka NextList(Last)=Nil */
 
-//#define Info(P) (P)->info
-//#define Next(P) (P)->next
-//#define First(L) ((L).First)
+//#define InfoList(P) (P)->info
+//#define NextList(P) (P)->next
+//#define FirstList(L) ((L).First)
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L){
+boolean IsEmptyList (List L){
 /* Mengirim true jika list kosong */
-    return (First(L) == Nil);
+    return (FirstList(L) == Nil);
 }
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List *L){
+void CreateEmptyList (List *L){
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
-    First(*L) = Nil;
+    FirstList(*L) = Nil;
 }
 
 /****************** Manajemen Memori ******************/
 addressList Alokasi (infotypeList X){
 /* Mengirimkan addressList hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addressList tidak nil, dan misalnya */
-/* menghasilkan P, maka Info(P)=X, Next(P)=Nil */
+/* menghasilkan P, maka InfoList(P)=X, NextList(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
     addressList P;
     P = (addressList) malloc(sizeof(infotypeList));
@@ -54,8 +54,8 @@ addressList Alokasi (infotypeList X){
         return Nil;
     }
     else{
-        Info(P) = X;
-        Next(P) = Nil;
+        InfoList(P) = X;
+        NextList(P) = Nil;
         return P;
     }
 }
@@ -64,18 +64,18 @@ void Dealokasi (addressList *P){
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian addressList P */
-    Next(*P) = Nil;
+    NextList(*P) = Nil;
     free(*P);
 }
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
 addressList Search (List L, infotypeList X){
-/* Mencari apakah ada elemen list dengan Info(P)= X */
+/* Mencari apakah ada elemen list dengan InfoList(P)= X */
 /* Jika ada, mengirimkan addressList elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
-    addressList P = First(L);
-    while (P != Nil && Info(P) != X){
-        P = Next(P);
+    addressList P = FirstList(L);
+    while (P != Nil && InfoList(P) != X){
+        P = NextList(P);
     }
     return P;
 }
@@ -88,7 +88,7 @@ void InsVFirst (List *L, infotypeList X){
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
     addressList P = Alokasi(X);
     if (P != Nil){
-        InsertFirst(L, P);
+        InsertFirstList(L, P);
     }
 }
 
@@ -109,8 +109,8 @@ void DelVFirst (List *L, infotypeList *X){
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
     addressList P;
-    DelFirst(L, &P);
-    *X = Info(P);
+    DelFirstList(L, &P);
+    *X = InfoList(P);
     Dealokasi(&P);
 }
 
@@ -120,7 +120,7 @@ void DelVLast (List *L, infotypeList *X){
 /*      dan alamat elemen terakhir di-dealokasi */
     addressList P;
     DelLast(L, &P);
-    *X = Info(P);
+    *X = InfoList(P);
     Dealokasi(&P);
 }
 
@@ -129,30 +129,30 @@ void DelVLast (List *L, infotypeList *X){
 void InsertFirst (List *L, addressList P){
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-addressList P sebagai elemen pertama */
-    Next(P) = First(*L);
-    First(*L) = P;
+    NextList(P) = FirstList(*L);
+    FirstList(*L) = P;
 }
 
 void InsertAfter (List *L, addressList P, addressList Prec){
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-    Next(P) = Next(Prec);
-    Next(Prec) = P;
+    NextList(P) = NextList(Prec);
+    NextList(Prec) = P;
 }
 
 void InsertLast (List *L, addressList P){
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
-    if (IsEmpty(*L)){
-        InsertFirst(L, P);
+    if (IsEmptyList(*L)){
+        InsertFirstList(L, P);
     }
     else{
-        addressList P1 = First(*L);
-        while (Next(P1) != Nil){
-            P1 = Next(P1);
+        addressList P1 = FirstList(*L);
+        while (NextList(P1) != Nil){
+            P1 = NextList(P1);
         }
-        Next(P1) = P;
+        NextList(P1) = P;
     }
 }
 
@@ -162,35 +162,35 @@ void DelFirst (List *L, addressList *P){
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-    *P = First(*L);
-    First(*L) = Next(*P);
-    Next(*P) = Nil;
+    *P = FirstList(*L);
+    FirstList(*L) = NextList(*P);
+    NextList(*P) = Nil;
 }
 
 void DelP (List *L, infotypeList X){
 /* I.S. Sembarang */
-/* F.S. Jika ada elemen list beraddressList P, dengan Info(P)=X  */
+/* F.S. Jika ada elemen list beraddressList P, dengan InfoList(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika ada lebih dari satu elemen list dengan Info bernilai X */
 /* maka yang dihapus hanya elemen pertama dengan Info = X */
-/* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
+/* Jika tidak ada elemen list dengan InfoList(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
-    if (!IsEmpty(*L)){
-        if (Info(First(*L)) == X){
-            addressList P = First(*L);
-            First(*L) = Next(P);
-            Next(P) = Nil;
+    if (!IsEmptyList(*L)){
+        if (InfoList(FirstList(*L)) == X){
+            addressList P = FirstList(*L);
+            FirstList(*L) = NextList(P);
+            NextList(P) = Nil;
             free(P);
         }
         else{
-            addressList P = First(*L);
-            while (Next(P) != Nil && Info(Next(P)) != X){
-                P = Next(P);
+            addressList P = FirstList(*L);
+            while (NextList(P) != Nil && InfoList(NextList(P)) != X){
+                P = NextList(P);
             }
-            if (Next(P) != Nil){
-                addressList P1 = Next(P);
-                Next(P) = Next(P1);
-                Next(P1) = Nil;
+            if (NextList(P) != Nil){
+                addressList P1 = NextList(P);
+                NextList(P) = NextList(P1);
+                NextList(P1) = Nil;
                 free(P1);
             }
         }
@@ -204,26 +204,26 @@ void DelLast (List *L, addressList *P){
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
     if (NbElmt(*L) == 1){
-        *P = First(*L);
-        First(*L) = Nil;
+        *P = FirstList(*L);
+        FirstList(*L) = Nil;
     }
     else{
-        addressList P1 = First(*L);
-        while (Next(Next(P1)) != Nil){
-            P1 = Next(P1);
+        addressList P1 = FirstList(*L);
+        while (NextList(NextList(P1)) != Nil){
+            P1 = NextList(P1);
         }
-        *P = Next(P1);
-        Next(P1) = Nil;
+        *P = NextList(P1);
+        NextList(P1) = Nil;
     }
 }
 
 void DelAfter (List *L, addressList *Pdel, addressList Prec){
 /* I.S. List tidak kosong. Prec adalah anggota list  */
-/* F.S. Menghapus Next(Prec): */
+/* F.S. Menghapus NextList(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
-    *Pdel = Next(Prec);
-    Next(Prec) = Next(*Pdel);
-    Next(*Pdel) = Nil;
+    *Pdel = NextList(Prec);
+    NextList(Prec) = NextList(*Pdel);
+    NextList(*Pdel) = Nil;
 }
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
@@ -234,14 +234,14 @@ void PrintInfo (List L){
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
     printf("[");
-    addressList P = First(L);
+    addressList P = FirstList(L);
     if (P != Nil){
-        printf("%d", Info(P));
-        P = Next(P);
+        printf("%d", InfoList(P));
+        P = NextList(P);
     }
     while (P != Nil){
-        printf(",%d", Info(P));
-        P = Next(P);
+        printf(",%d", InfoList(P));
+        P = NextList(P);
     }
     printf("]");
 }
@@ -249,38 +249,38 @@ void PrintInfo (List L){
 int NbElmt (List L){
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
     int sum = 0;
-    addressList P = First(L);
+    addressList P = FirstList(L);
     while (P != Nil){
         sum++;
-        P = Next(P);
+        P = NextList(P);
     }
     return sum;
 }
 
 /*** Prekondisi untuk Min: List tidak kosong ***/
 infotypeList Min (List L){
-/* Mengirimkan nilai Info(P) yang minimum */
-    addressList P = First(L);
-    infotypeList min = Info(P);
+/* Mengirimkan nilai InfoList(P) yang minimum */
+    addressList P = FirstList(L);
+    infotypeList min = InfoList(P);
     while (P != Nil){
-        if (Info(P) < min){
-            min = Info(P);
+        if (InfoList(P) < min){
+            min = InfoList(P);
         }
-        P = Next(P);
+        P = NextList(P);
     }
     return min;
 }
 
 /*** Prekondisi untuk Max: List tidak kosong ***/
 infotypeList Max (List L){
-/* Mengirimkan nilai Info(P) yang maksimum */
-    addressList P = First(L);
-    infotypeList max = Info(P);
+/* Mengirimkan nilai InfoList(P) yang maksimum */
+    addressList P = FirstList(L);
+    infotypeList max = InfoList(P);
     while (P != Nil){
-        if (Info(P) > max){
-            max = Info(P);
+        if (InfoList(P) > max){
+            max = InfoList(P);
         }
-        P = Next(P);
+        P = NextList(P);
     }
     return max;
 }
@@ -293,13 +293,13 @@ void Konkat1 (List *L1, List *L2, List *L3){
 /* menghasilkan L3 yang baru (dengan elemen list L1 dan L2) */
 /* dan L1 serta L2 menjadi list kosong.*/
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
-    if (IsEmpty(*L1)){
-        First(*L3) = First(*L2);
+    if (IsEmptyList(*L1)){
+        FirstList(*L3) = FirstList(*L2);
     }
     else{
-        First(*L3) = First(*L1);
-        InsertLast(L3, First(*L2));
+        FirstList(*L3) = FirstList(*L1);
+        InsertLast(L3, FirstList(*L2));
     }
-    First(*L1) = Nil;
-    First(*L2) = Nil;
+    FirstList(*L1) = Nil;
+    FirstList(*L2) = Nil;
 }

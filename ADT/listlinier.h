@@ -22,20 +22,20 @@ typedef struct {
 
 /* Definisi list : */
 /* List kosong : First(L) = Nil */
-/* Setiap elemen dengan addressList P dapat diacu Info(P), Next(P) */
-/* Elemen terakhir list : jika addressListnya Last, maka Next(Last)=Nil */
+/* Setiap elemen dengan addressList P dapat diacu InfoList(P), NextList(P) */
+/* Elemen terakhir list : jika addressListnya Last, maka NextList(Last)=Nil */
 
-#define Info(P) (P)->info
-#define Next(P) (P)->next
-#define First(L) ((L).First)
+#define InfoList(P) (P)->info
+#define NextList(P) (P)->next
+#define FirstList(L) ((L).First)
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L);
+boolean IsEmptyList (List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List *L);
+void CreateEmptyList (List *L);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
@@ -43,7 +43,7 @@ void CreateEmpty (List *L);
 addressList Alokasi (infotypeList X);
 /* Mengirimkan addressList hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addressList tidak nil, dan misalnya */
-/* menghasilkan P, maka Info(P)=X, Next(P)=Nil */
+/* menghasilkan P, maka InfoList(P)=X, NextList(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
 void Dealokasi (addressList *P);
 /* I.S. P terdefinisi */
@@ -52,7 +52,7 @@ void Dealokasi (addressList *P);
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
 addressList Search (List L, infotypeList X);
-/* Mencari apakah ada elemen list dengan Info(P)= X */
+/* Mencari apakah ada elemen list dengan InfoList(P)= X */
 /* Jika ada, mengirimkan addressList elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
 
@@ -99,11 +99,11 @@ void DelFirst (List *L, addressList *P);
 /* First element yg baru adalah suksesor elemen pertama yang lama */
 void DelP (List *L, infotypeList X);
 /* I.S. Sembarang */
-/* F.S. Jika ada elemen list beraddressList P, dengan Info(P)=X  */
+/* F.S. Jika ada elemen list beraddressList P, dengan InfoList(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika ada lebih dari satu elemen list dengan Info bernilai X */
 /* maka yang dihapus hanya elemen pertama dengan Info = X */
-/* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
+/* Jika tidak ada elemen list dengan InfoList(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
 void DelLast (List *L, addressList *P);
 /* I.S. List tidak kosong */
@@ -113,7 +113,7 @@ void DelLast (List *L, addressList *P);
 /* jika ada */
 void DelAfter (List *L, addressList *Pdel, addressList Prec);
 /* I.S. List tidak kosong. Prec adalah anggota list  */
-/* F.S. Menghapus Next(Prec): */
+/* F.S. Menghapus NextList(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
@@ -128,11 +128,11 @@ int NbElmt (List L);
 
 /*** Prekondisi untuk Min: List tidak kosong ***/
 infotypeList Min (List L);
-/* Mengirimkan nilai Info(P) yang minimum */
+/* Mengirimkan nilai InfoList(P) yang minimum */
 
 /*** Prekondisi untuk Max: List tidak kosong ***/
 infotypeList Max (List L);
-/* Mengirimkan nilai Info(P) yang maksimum */
+/* Mengirimkan nilai InfoList(P) yang maksimum */
 
 /****************** PROSES TERHADAP LIST ******************/
 void Konkat1 (List *L1, List *L2, List *L3);
