@@ -1,9 +1,9 @@
 /* File: mesintoken.h */
 /* Definisi Mesin Token: Model Akuisisi Versi I */
 
+#include <stdio.h>
 #include "boolean.h"
 #include "mesintoken.h"
-#include <stdio.h>
 
 /* State Mesin Kata */
 boolean EndToken;
@@ -19,7 +19,7 @@ void IgnoreBlank()
         ADV();
     }
 }
-void STARTTOKEN(FILE * input)
+void STARTTOKEN(FILE *input)
 /* I.S. : CC sembarang 
    F.S. : EndToken = true, dan CC = MARK; 
           atau EndToken = false, CToken adalah Token yang sudah diakuisisi,

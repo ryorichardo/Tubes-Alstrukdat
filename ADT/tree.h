@@ -15,7 +15,8 @@
 /* *** Definisi Type Pohon Biner *** */
 /* typedef int infotype; */ /* type infotype sesuai pada modul listrek */
 typedef struct tNode *addrNode;
-typedef struct tNode {
+typedef struct tNode
+{
   Wahana info;
   addrNode left;
   addrNode right;
@@ -65,7 +66,5 @@ boolean IsUnerRight(BinTree P);
 /* Mengirimkan true jika pohon biner tidak kosong P adalah pohon unerright: hanya mempunyai subpohon kanan*/
 boolean IsBiner(BinTree P);
 /* Mengirimkan true jika pohon biner tidak kosong P adalah pohon biner: mempunyai subpohon kiri dan subpohon kanan*/
-
-
 
 #endif
