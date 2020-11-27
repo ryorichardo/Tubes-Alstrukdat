@@ -9,10 +9,11 @@
 #include "../ADT/jam.h"
 #include "../ADT/matriks.h"
 
-long durasi = 0;
-long countaksi = 0;
-long totalbiaya = 0;
-long Sisa = 720;
+extern long durasi;
+extern long countaksi;
+extern long totalbiaya;
+extern long Sisa;
+
 void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit);
 // Program
 
