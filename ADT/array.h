@@ -74,6 +74,8 @@ void MakeKataOffice(Kata *Kata);
 
 void MakeKataPrepare(Kata *Kata);
 
+void MakeKataExit(Kata *Kata);
+
 void MakeTabWahanaEmpty (Wahana *ListWahana[10]);
 
 void InitTabAction(Kata *ListAksi[11]);

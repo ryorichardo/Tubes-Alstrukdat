@@ -131,13 +131,18 @@ void MakeKataPrepare(Kata *Kata)
    Kata->Length = 7;
 }
 
+void MakeKataExit(Kata *Kata)
+{
+   Kata->TabKata[0] = 'e';
+   Kata->TabKata[1] = 'x';
+   Kata->TabKata[2] = 'i';
+   Kata->TabKata[3] = 't';
+   Kata->Length = 4;
+}
+
 /**** KONSTRUKTOR ****/
-<<<<<<< HEAD
 void MakeTabWahanaEmpty(Wahana *ListWahana[10])
 {
-=======
-void MakeTabWahanaEmpty (Wahana *ListWahana[10]){
->>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
    int i;
    for (i = IdxMin; i <= IdxMax; i++)
    {
@@ -157,7 +162,7 @@ void MakeTabWahanaEmpty (Wahana *ListWahana[10]){
    }
 }
 
-void InitTabAction(Kata *ListAksi[11] )
+void InitTabAction(Kata *ListAksi[12] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[11];
                               panggil prosedur InitTabAction(&ListAksi); */
@@ -173,6 +178,7 @@ void InitTabAction(Kata *ListAksi[11] )
    Kata DETAIL;
    Kata OFFICE;
    Kata PREPARE;
+   Kata EXIT;
 
    MakeKataBuild(&BUILD);
    MakeKataUpgrade(&UPGRADE);
@@ -185,6 +191,7 @@ void InitTabAction(Kata *ListAksi[11] )
    MakeKataDetail(&DETAIL);
    MakeKataOffice(&OFFICE);
    MakeKataPrepare(&PREPARE);
+   MakeKataExit(&EXIT);
 
    *ListAksi[0] = BUILD;
    *ListAksi[1] = UPGRADE;
@@ -197,6 +204,7 @@ void InitTabAction(Kata *ListAksi[11] )
    *ListAksi[8] = DETAIL;
    *ListAksi[9] = OFFICE;
    *ListAksi[10] = PREPARE;
+   *ListAksi[11] = EXIT;
 }
 
 // Wahana GetTabWahana (char namafile[])

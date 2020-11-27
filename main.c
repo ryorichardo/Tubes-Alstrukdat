@@ -16,7 +16,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    int Wood = 0, Fire = 0, Primogem = 0, Money = 0, idxmap = 0, day = 1;
+    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000, idxmap = 0, day = 1;
     POINT Posisi = MakePOINT(1, 1);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -25,6 +25,7 @@ int main()
     MATRIKS ListMap[4];
     Graph RelationMap[4];
     boolean isMain = false;
+    Stack Perintah;
 
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
@@ -34,26 +35,22 @@ int main()
     char filename6[] = "Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
 
-    //bikin konstan exit
-    Kata Exit;
-    Exit.TabKata[0] = 'e';
-    Exit.TabKata[1] = 'x';
-    Exit.TabKata[2] = 'i';
-    Exit.TabKata[3] = 't';
-    Exit.Length = 4;
+    //bikin array action
+    Kata ListAksi[11];
+    InitTabAction(&ListAksi);
 
     //print halaman utama
     Kata Player;
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game");
     STARTKATA(stdin);
-    if (!IsKataSama(CKata, Exit))
+    if (!IsKataSama(CKata, ListAksi[11]))
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
         Player = CopyKata(CKata);
     }
-    while (!IsKataSama(CKata, Exit))
+    while (!IsKataSama(CKata, ListAksi[11]))
     {
         if (isMain)
         {
@@ -82,7 +79,7 @@ int main()
             TulisJAM(Close);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
-            printf("Antrian: ")
+            printf("Antrian: ");
         }
         else{
             printf("Opening time: ");
@@ -98,6 +95,55 @@ int main()
         // Next Perintah
         printf("Masukkan Perintah\n");
         STARTKATA(stdin);
+
+        if (isMain){
+            //serve
+            if (IsKataSama(CKata, ListAksi[6])){
+                
+            }
+            //repair
+            else if (IsKataSama(CKata, ListAksi[7])){
+
+            }
+            //detail
+            else if (IsKataSama(CKata, ListAksi[8])){
+                
+            }
+            //office
+            else if (IsKataSama(CKata, ListAksi[9])){
+                
+            }
+            //prepare
+            else if (IsKataSama(CKata, ListAksi[10])){
+                
+            }
+        }
+        else{
+            //build
+            if (IsKataSama(CKata, ListAksi[0])){
+                Build(Perintah, ListWahana, Posisi, Money);
+            }
+            //upgrade
+            else if (IsKataSama(CKata, ListAksi[1])){
+                Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, Money);
+            }
+            //buy
+            else if (IsKataSama(CKata, ListAksi[2])){
+                Buy(Perintah, ListMat, Money);
+            }
+            //undo
+            else if (IsKataSama(CKata, ListAksi[3])){
+                Undo(Perintah, Money);
+            }
+            //execute
+            else if (IsKataSama(CKata, ListAksi[4])){
+                Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain);
+            }
+            //main
+            else if (IsKataSama(CKata, ListAksi[5])){
+                Main(Perintah, isMain);
+            }
+        }
 
     }
 
