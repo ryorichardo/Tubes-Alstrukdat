@@ -2,9 +2,9 @@
 /* 13519193 */
 /* Realisasi Program Point */
 
-#include "point.h"
 #include <stdio.h>
 #include <math.h>
+#include "point.h"
 #include "boolean.h"
 
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */

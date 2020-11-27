@@ -1,6 +1,11 @@
 #include "prepphase.h"
 #include <stdio.h>
 
+long durasi=0;
+long countaksi=0;
+long totalbiaya=0;
+long Sisa=720;
+
 void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit)
 {
     printf("Mau bikin wahana apa?");
