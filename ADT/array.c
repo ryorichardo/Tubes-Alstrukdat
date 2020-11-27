@@ -162,7 +162,7 @@ void MakeTabWahanaEmpty(Wahana ListWahana[10])
    }
 }
 
-void InitTabAction(Kata ListAksi[16] )
+void InitTabAction(Kata ListAksi[16])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[16];
                               panggil prosedur InitTabAction(&ListAksi); */
@@ -193,14 +193,14 @@ void InitTabAction(Kata ListAksi[16] )
    MakeKataPrepare(&PREPARE);
    MakeKataExit(&EXIT);
 
-   Kata W, A, S , D;
-   W.TabKata[0] = "w";
+   Kata W, A, S, D;
+   W.TabKata[0] = 'w';
    W.Length = 1;
-   A.TabKata[0] = "a";
+   A.TabKata[0] = 'a';
    A.Length = 1;
-   S.TabKata[0] = "s";
+   S.TabKata[0] = 's';
    S.Length = 1;
-   D.TabKata[0] = "d";
+   D.TabKata[0] = 'd';
    D.Length = 1;
 
    ListAksi[0] = BUILD;
@@ -444,16 +444,19 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-   for(int i=0; i<10; i++){
-      printf("%d. %s\n", i+1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
+   for (int i = 0; i < 10; i++)
+   {
+      printf("%d. %s\n", i + 1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
    }
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-   for(int i=0; i<10; i++){
-      if(IsKataSama(ListWahana[i].Nama, Nama)){
+   for (int i = 0; i < 10; i++)
+   {
+      if (IsKataSama(ListWahana[i].Nama, Nama))
+      {
          printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
          printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);

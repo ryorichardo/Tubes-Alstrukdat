@@ -15,7 +15,7 @@
 boolean IsEmpty(PrioQueueChar Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-    return ((Head(Q) == Nil) && (Tail(Q) == Nil));
+    return ((Head(Q) == -1) && (Tail(Q) == -1));
 }
 boolean IsFull(PrioQueueChar Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
@@ -33,7 +33,7 @@ boolean IsFull(PrioQueueChar Q)
 int NBElmt(PrioQueueChar Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 {
-    if (Head(Q) == Nil && Tail(Q) == Nil)
+    if (Head(Q) == -1 && Tail(Q) == -1)
     {
         return 0;
     }
@@ -61,8 +61,8 @@ void MakeEmpty(PrioQueueChar *Q, int Max)
     if ((*Q).T != NULL)
     {
         MaxEl(*Q) = Max;
-        Head(*Q) = Nil;
-        Tail(*Q) = Nil;
+        Head(*Q) = -1;
+        Tail(*Q) = -1;
     }
     else /* alokasi gagal */
     {
@@ -163,8 +163,8 @@ void Dequeue(PrioQueueChar *Q, infotype *X)
     *X = InfoHead(*Q);
     if (Head(*Q) == Tail(*Q))
     { /* Set mjd queue kosong */
-        Head(*Q) = Nil;
-        Tail(*Q) = Nil;
+        Head(*Q) = -1;
+        Tail(*Q) = -1;
     }
     else if (Head(*Q) == (MaxEl(*Q) - 1))
     {

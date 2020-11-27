@@ -8,7 +8,7 @@
 
 #include "boolean.h"
 
-#define Nil -1
+// #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 /* Definisi elemen dan address */
@@ -22,10 +22,10 @@ typedef struct
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
-    infotype *T;  /* tabel penyimpan elemen */
-    int HEAD; /* alamat penghapusan */
-    int TAIL; /* alamat penambahan */
-    int MaxEl;    /* Max elemen queue */
+    infotype *T; /* tabel penyimpan elemen */
+    int HEAD;    /* alamat penghapusan */
+    int TAIL;    /* alamat penambahan */
+    int MaxEl;   /* Max elemen queue */
 } PrioQueueChar;
 /* Definisi PrioQueueChar kosong: HEAD=Nil; TAIL=Nil. */
 
