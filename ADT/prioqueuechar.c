@@ -57,7 +57,7 @@ void MakeEmpty(PrioQueueChar *Q, int Max)
 /* atau : jika alokasi gagal, Q kosong dg MaxEl=0 */
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
 {
-    (*Q).T = (infotype *)malloc((Max + 1) * sizeof(infotype));
+    (*Q).T = (infotypePQ *)malloc((Max + 1) * sizeof(infotypePQ));
     if ((*Q).T != NULL)
     {
         MaxEl(*Q) = Max;
@@ -79,7 +79,7 @@ void DeAlokasi(PrioQueueChar *Q)
     free((*Q).T);
 }
 /* *** Primitif Add/Delete *** */
-void Enqueue(PrioQueueChar *Q, infotype X)
+void Enqueue(PrioQueueChar *Q, infotypePQ X)
 /* Proses: Menambahkan X pada Q dengan aturan priority queue, terurut mengecil berdasarkan prio */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
@@ -154,7 +154,7 @@ void Enqueue(PrioQueueChar *Q, infotype X)
         }
     }
 }
-void Dequeue(PrioQueueChar *Q, infotype *X)
+void Dequeue(PrioQueueChar *Q, infotypePQ *X)
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = -1ai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
