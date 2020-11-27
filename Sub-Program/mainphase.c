@@ -3,86 +3,110 @@
 #include "listlinier.h"
 #include "../ADT/tipebentukan.h"
 
-void Serve(Wahana * ArrayWahana[100], Kata NamaWahana, int Uang, Antrian * Customer){
+void Serve(Wahana *ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
+{
     int i;
 
     /* Search Wahana */
-    while (i < 100){
-        if (Nama(ArrayWahana[i]) == String(NamaWahana)){
+    while (i < 100)
+    {
+        if (Nama(ArrayWahana[i]) == String(NamaWahana))
+        {
             break;
         }
         i++;
     }
 
     /* Kasus Wahana Rusak */
-    if (Rusak(ArrayWahana[i])){
+    if (Rusak(ArrayWahana[i]))
+    {
         printf("Maaf, wahana sedang maintenance, wahana tidak bisa digunakan.\n");
         /* Hapus antrian wahana dari customer */
         /* Kasus ga ada antrian wahana dari customer */
 
-            /* Customer dihapus dari antrian (keluar dari antrian) */
+        /* Customer dihapus dari antrian (keluar dari antrian) */
     }
     /* Wahana aman */
-    else if (Pemain(ArrayWahana[i]) == Kapasitas(ArrayWahana[i])){
+    else if (Pemain(ArrayWahana[i]) == Kapasitas(ArrayWahana[i]))
+    {
         printf("Maaf, wahana sudah penuh.\n");
         /* Hapus antrian wahana dari customer */
-        
+
         /* Kasus antrian wahana dari customer sudah habis */
 
-            /* Customer dihapus dari antrian (keluar dari antrian) */
+        /* Customer dihapus dari antrian (keluar dari antrian) */
     }
-    else {
+    else
+    {
         Uang += Harga(ArrayWahana[i]);
         /* Hapus antrian wahana dari customer */
-        
+
         /* Kasus antrian wahana dari customer sudah habis */
 
-            /* Customer dihapus dari antrian (keluar dari antrian) */
+        /* Customer dihapus dari antrian (keluar dari antrian) */
     }
 }
 
-void Repair(Wahana * ArrayWahana[100], Kata NamaWahana){
+void Repair(Wahana *ArrayWahana[100], Kata NamaWahana)
+{
     int i;
 
     /* Search Wahana */
-    while (i < 100){
-        if (Nama(ArrayWahana[i]) == String(NamaWahana)){
+    while (i < 100)
+    {
+        if (Nama(ArrayWahana[i]) == String(NamaWahana))
+        {
             /* Repair wahana */
             Rusak(ArrayWahana[i]) = false;
             break;
         }
         i++;
-    } 
-}
-
-void Office(Wahana * ArrayWahana[100])
-{
-    int i;
-    i = 0;
-    while (i < 100)
-    {
-        // if (Nama(ArrayWahana[i].) == String(NamaWahana))
-        // {x
-        //     break;
-        // }
-        // i++;
     }
 }
 
-void Detail(Wahana * ArrayWwahana[100])
+void Office(Wahana *ArrayWahana[100])
 {
-    printf("Nama Wahana:\n");
-    printf("Tipe Wahana:\n");
-    printf("Harga Wahana:\n");
-    printf("Lokasi Wahana:\n");
-    printf("Deskripsi Wahana:\n");
-    printf("Kapasitas Wahana:\n");
-    printf("History Wahana:\n");
-    printf("Durasi Wahana:\n");
-    printf("Ukuran Wahana:\n");
+    int i;
+    Kata NamaWahana;
+    char input;
+    i = 0;
+    while (!isWahanaEmpty(ArrayWahana[i]))
+    {
+        printf("Nama Nama Wahana : \n ");
+        printf("%s\n ", Nama(ArrayWahana[i]));
+    }
+    printf("Ingin melihat detail wahana(y/n) ? \n ");
+    printf(" `y` untuk yes dan `n` untuk no ? \n ");
+    while (input != 'n')
+    {
+        printf("pingin melihat detail wahana dengan nama apa ? \n ");
+        STARTKATA(stdin);
+        Detail(ArrayWahana[100], CKata);
+        printf("Ingin melihat detail wahana(y/n) ? \n ");
+        printf(" `y` untuk yes dan `n` untuk no ? \n ");
+    }
 }
 
-void Prepare(boolean isMain){
-    isMain = false;
+void Detail(Wahana *ArrayWahana[100], Kata NamaWahana)
+{
+    int i = 0;
+    while (!isWahanaEmpty(ArrayWahana[i]))
+    {
+        if (Nama(ArrayWahana[i]) == String(NamaWahana))
+        {
+            printf("Nama Wahana : ");
+            PrintKata(NamaWahana);
+            printf("\n");
+            printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
+            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+            printf("Deskripsi Wahana : %s\n ", String(Deskripsi(ArrayWahana[i])));
+        }
+        i++;
+    }
+}
 
+void Prepare(boolean isMain)
+{
+    isMain = false;
 }

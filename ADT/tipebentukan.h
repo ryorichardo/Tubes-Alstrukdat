@@ -40,20 +40,24 @@ typedef struct
 } Wahana; //upgrade samain aja adtnya
 
 typedef struct tElmtDaftar *address;
-typedef struct tElmtDaftar {
-	Kata info;
-	address next;
+typedef struct tElmtDaftar
+{
+    Kata info;
+    address next;
 } ElmtDaftar;
-typedef struct {
-	address First;
+typedef struct
+{
+    address First;
 } Daftar;
 
-typedef struct{
+typedef struct
+{
     Daftar Main; //nama wahana yang ingin dikunjungi
     int Kesabaran;
 } Pengunjung;
 
-typedef struct {
+typedef struct
+{
     Pengunjung *Q;
     address HEAD;
     address TAIL;
