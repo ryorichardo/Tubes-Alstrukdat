@@ -52,9 +52,31 @@ typedef struct
 /**** KONSTRUKTOR ****/
 void MakeKataEmpty(Kata *Kata);
 
+void MakeKataBuild(Kata *Kata);
+
+void MakeKataUpgrade(Kata *Kata);
+
+void MakeKataBuy(Kata *Kata);
+
+void MakeKataUndo(Kata *Kata);
+
+void MakeKataExecute(Kata *Kata);
+
+void MakeKataMain(Kata *Kata);
+
+void MakeKataServe(Kata *Kata);
+
+void MakeKataRepair(Kata *Kata);
+
+void MakeKataDetail(Kata *Kata);
+
+void MakeKataOffice(Kata *Kata);
+
+void MakeKataPrepare(Kata *Kata);
+
 void MakeTabWahanaEmpty (Wahana *ListWahana[10]);
 
-TabAction GetAction(char namafile[]);
+void InitTabAction(Action *ListAksi[11]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 
 

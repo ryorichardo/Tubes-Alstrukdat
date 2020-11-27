@@ -16,8 +16,123 @@ void MakeKataEmpty(Kata *Kata)
    Kata->Length = 5;
 }
 
+void MakeKataBuild(Kata *Kata)
+{
+   Kata->TabKata[0] = 'B';
+   Kata->TabKata[1] = 'U';
+   Kata->TabKata[2] = 'I';
+   Kata->TabKata[3] = 'L';
+   Kata->TabKata[4] = 'D';
+   Kata->Length = 5;
+}
+
+void MakeKataUpgrade(Kata *Kata)
+{
+   Kata->TabKata[0] = 'U';
+   Kata->TabKata[1] = 'P';
+   Kata->TabKata[2] = 'G';
+   Kata->TabKata[3] = 'R';
+   Kata->TabKata[4] = 'A';
+   Kata->TabKata[5] = 'D';
+   Kata->TabKata[6] = 'E';
+   Kata->Length = 7;
+}
+
+void MakeKataBuy(Kata *Kata)
+{
+   Kata->TabKata[0] = 'B';
+   Kata->TabKata[1] = 'U';
+   Kata->TabKata[2] = 'Y';
+   Kata->Length = 3;
+}
+
+void MakeKataUndo(Kata *Kata)
+{
+   Kata->TabKata[0] = 'U';
+   Kata->TabKata[1] = 'N';
+   Kata->TabKata[2] = 'D';
+   Kata->TabKata[3] = 'O';
+   Kata->Length = 4;
+}
+
+void MakeKataExecute(Kata *Kata)
+{
+   Kata->TabKata[0] = 'E';
+   Kata->TabKata[1] = 'X';
+   Kata->TabKata[2] = 'E';
+   Kata->TabKata[3] = 'C';
+   Kata->TabKata[4] = 'U';
+   Kata->TabKata[5] = 'T';
+   Kata->TabKata[6] = 'E';
+   Kata->Length = 7;
+}
+
+void MakeKataMain(Kata *Kata)
+{
+   Kata->TabKata[0] = 'M';
+   Kata->TabKata[1] = 'A';
+   Kata->TabKata[2] = 'I';
+   Kata->TabKata[3] = 'N';
+   Kata->Length = 4;
+}
+
+void MakeKataServe(Kata *Kata)
+{
+   Kata->TabKata[0] = 'S';
+   Kata->TabKata[1] = 'E';
+   Kata->TabKata[2] = 'R';
+   Kata->TabKata[3] = 'V';
+   Kata->TabKata[4] = 'E';
+   Kata->Length = 5;
+}
+
+void MakeKataRepair(Kata *Kata)
+{
+   Kata->TabKata[0] = 'R';
+   Kata->TabKata[1] = 'E';
+   Kata->TabKata[2] = 'P';
+   Kata->TabKata[3] = 'A';
+   Kata->TabKata[4] = 'I';
+   Kata->TabKata[5] = 'R';
+   Kata->Length = 6;
+}
+
+void MakeKataDetail(Kata *Kata)
+{
+   Kata->TabKata[0] = 'D';
+   Kata->TabKata[1] = 'E';
+   Kata->TabKata[2] = 'T';
+   Kata->TabKata[3] = 'A';
+   Kata->TabKata[4] = 'I';
+   Kata->TabKata[5] = 'L';
+   Kata->Length = 6;
+}
+
+void MakeKataOffice(Kata *Kata)
+{
+   Kata->TabKata[0] = 'O';
+   Kata->TabKata[1] = 'F';
+   Kata->TabKata[2] = 'F';
+   Kata->TabKata[3] = 'I';
+   Kata->TabKata[4] = 'C';
+   Kata->TabKata[5] = 'E';
+   Kata->Length = 6;
+}
+
+void MakeKataPrepare(Kata *Kata)
+{
+   Kata->TabKata[0] = 'P';
+   Kata->TabKata[1] = 'R';
+   Kata->TabKata[2] = 'E';
+   Kata->TabKata[3] = 'P';
+   Kata->TabKata[4] = 'A';
+   Kata->TabKata[5] = 'R';
+   Kata->TabKata[6] = 'E';
+   Kata->Length = 7;
+}
+
 /**** KONSTRUKTOR ****/
-void MakeTabWahanaEmpty (Wahana *ListWahana[10]) {
+void MakeTabWahanaEmpty (Wahana *ListWahana[10]){
    int i;
    for (i = IdxMin; i <= IdxMax; i++)
    {
@@ -37,13 +152,57 @@ void MakeTabWahanaEmpty (Wahana *ListWahana[10]) {
     }
 }
 
-TabAction GetAction(char namafile[])
+void InitTabAction(Action *ListAksi[11] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
+/* Cara inisialisasi di main : declare Action ListAksi[11];
+                              panggil prosedur InitTabAction(&ListAksi); */
 {
-   /* Ini salah mestinya lgsg diassign aja soalnya action tuh static dan bukan dari file*/
-   TabAction TA;
-   //BacaFileAction(namafile, &TA)
-   return TA;
+   Kata BUILD;
+   Kata UPGRADE;
+   Kata BUY;
+   Kata UNDO;
+   Kata EXECUTE;
+   Kata MAIN;
+   Kata SERVE;
+   Kata REPAIR;
+   Kata DETAIL;
+   Kata OFFICE;
+   Kata PREPARE;
+
+   MakeKataBuild(&BUILD);
+   MakeKataUpgrade(&UPGRADE);
+   MakeKataBuy(&BUY);
+   MakeKataUndo(&UNDO);
+   MakeKataExecute(&EXECUTE);
+   MakeKataMain(&MAIN);
+   MakeKataServe(&SERVE);
+   MakeKataRepair(&REPAIR);
+   MakeKataDetail(&DETAIL);
+   MakeKataOffice(&OFFICE);
+   MakeKataPrepare(&PREPARE);
+
+   ListAksi[0]->NamaAction = BUILD;
+   ListAksi[0]->Durasi = MakeJAM(1, 10);
+   ListAksi[1]->NamaAction = UPGRADE;
+   ListAksi[1]->Durasi = MakeJAM(0, 50);
+   ListAksi[2]->NamaAction = BUY;
+   ListAksi[2]->Durasi = MakeJAM(0, 20);
+   ListAksi[3]->NamaAction = UNDO;
+   ListAksi[3]->Durasi = MakeJAM(0, 0);
+   ListAksi[4]->NamaAction = EXECUTE;
+   ListAksi[4]->Durasi = MakeJAM(0, 0);
+   ListAksi[5]->NamaAction = MAIN;
+   ListAksi[5]->Durasi = MakeJAM(0, 0);
+   ListAksi[6]->NamaAction = SERVE;
+   ListAksi[6]->Durasi = MakeJAM(0, 30);
+   ListAksi[7]->NamaAction = REPAIR;
+   ListAksi[7]->Durasi = MakeJAM(0, 40);
+   ListAksi[8]->NamaAction = DETAIL;
+   ListAksi[8]->Durasi = MakeJAM(0, 0);
+   ListAksi[9]->NamaAction = OFFICE;
+   ListAksi[9]->Durasi = MakeJAM(0, 0);
+   ListAksi[10]->NamaAction = PREPARE;
+   ListAksi[10]->Durasi = MakeJAM(0, 0);
 }
 
 // Wahana GetTabWahana (char namafile[])
