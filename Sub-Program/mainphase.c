@@ -82,7 +82,7 @@ void Office(Wahana ArrayWahana[100])
     printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
     // STARTKATA(stdin);
     // Pilihan = CKata;
-    scanf("%s", &pilihan);
+    scanf("%s", pilihan);
 
     while (pilihan != "EXIT")
     {
@@ -104,7 +104,7 @@ void Office(Wahana ArrayWahana[100])
         printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
         // STARTKATA(stdin);
         // Pilihan = CKata;
-        scanf("%s", &pilihan);
+        scanf("%s", pilihan);
     }
 }
 
