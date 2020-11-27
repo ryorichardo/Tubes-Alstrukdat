@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "mainphase.h"
 #include "listlinier.h"
-#include "../ADT/tipebentukan.h"
+#include "../ADT/array.h"
 
 void Serve(Wahana *ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
 {
@@ -68,29 +68,50 @@ void Office(Wahana *ArrayWahana[100])
 {
     int i;
     Kata NamaWahana;
-    char input;
+    char pilihan[10];
     i = 0;
-    while (!isWahanaEmpty(ArrayWahana[i]))
+
+    // masukkan
+    while (!isWahanaEmpty(*ArrayWahana[i]))
     {
         printf("Nama Nama Wahana : \n ");
         printf("%s\n ", Nama(ArrayWahana[i]));
     }
-    printf("Ingin melihat detail wahana(y/n) ? \n ");
-    printf(" `y` untuk yes dan `n` untuk no ? \n ");
-    while (input != 'n')
+
+    // Masukkan perintah (DETAILS / REPORT / EXIT)
+    printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
+    // STARTKATA(stdin);
+    // Pilihan = CKata;
+    scanf("%s", &pilihan);
+
+    while (pilihan != "EXIT")
     {
-        printf("pingin melihat detail wahana dengan nama apa ? \n ");
-        STARTKATA(stdin);
-        Detail(ArrayWahana[100], CKata);
-        printf("Ingin melihat detail wahana(y/n) ? \n ");
-        printf(" `y` untuk yes dan `n` untuk no ? \n ");
+        // jika detail
+        if (pilihan == "DETAIL")
+        {
+            printf("pingin melihat detail wahana dengan nama apa ? \n ");
+            STARTKATA(stdin);
+            Detail(ArrayWahana[100], CKata);
+            printf("Ingin melihat detail wahana(y/n) ? \n ");
+            printf(" `y` untuk yes dan `n` untuk no ? \n ");
+        }
+
+        else
+        {
+        }
+
+        // Masukkan perintah (DETAILS / REPORT / EXIT)
+        printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
+        // STARTKATA(stdin);
+        // Pilihan = CKata;
+        scanf("%s", &pilihan);
     }
 }
 
 void Detail(Wahana *ArrayWahana[100], Kata NamaWahana)
 {
     int i = 0;
-    while (!isWahanaEmpty(ArrayWahana[i]))
+    while (!isWahanaEmpty(*ArrayWahana[i]))
     {
         if (Nama(ArrayWahana[i]) == String(NamaWahana))
         {

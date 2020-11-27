@@ -122,7 +122,7 @@ void Undo(Stack Perintah, int Duit)
     totalbiaya -= X.Biaya;
 }
 
-void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int Wood, int Fire, int Primogem, boolean isMain, MATRIKS * Peta)
+void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int Wood, int Fire, int Primogem, boolean isMain, MATRIKS *Peta)
 {
     Element X;
     Wahana New, Up;
