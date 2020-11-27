@@ -8,6 +8,10 @@
 #include "../ADT/mesinkata.h"
 #include "../ADT/jam.h"
 
+long durasi = 0;
+long countaksi = 0;
+long totalbiaya = 0;
+long Sisa = 720;
 
 void Build (Stack Perintah, Wahana ArrayWahana[100], POINT Posisi_Player, int Duit);
 // Program 

@@ -78,7 +78,7 @@ JAM UpdateJam(JAM CurrentJam, JAM Durasi)
 }
 
 /* *** Kelompok Operator Aritmetika *** */
-long Durasi (JAM JAw, JAM JAkh)
+long SelisihJam (JAM JAw, JAM JAkh)
 /* Mengirim JAkh-JAw dlm menit, dengan kalkulasi */
 /* Jika JAw > JAkh, maka JAkh adalah 1 hari setelah JAw */
 {
