@@ -2,8 +2,8 @@
 #include "ADT/mesinkata.c"
 #include "ADT/mesintoken.c"
 #include "ADT/mesinkar.c"
-#include "Sub-Program/mainphase.h"
-#include "Sub-Program/prepphase.h"
+#include "Sub-Program/mainphase.c"
+#include "Sub-Program/prepphase.c"
 #include "Sub-Program/PetaWahana.c"
 #include <stdio.h>
 #include <stdlib.h>
