@@ -10,7 +10,7 @@
 #include "point.h"
 
 #define Nil -1
-#define MaxEl 10
+#define MaxEls 10
 /* Nil adalah stack dengan elemen kosong . */
 
 // typedef char aksi;
@@ -31,7 +31,7 @@ typedef struct
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct
 {
-  Element T[MaxEl]; /* tabel penyimpan elemen */
+  Element T[MaxEls]; /* tabel penyimpan elemen */
   int TOP;     /* alamat TOP: elemen puncak */
 } Stack;
 /* Definisi stack S kosong : S.TOP = Nil */
@@ -53,9 +53,9 @@ void CreateEmpty(Stack *S);
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S);
+boolean IsEmptyStack(Stack S);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S);
+boolean IsFullStack(Stack S);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */

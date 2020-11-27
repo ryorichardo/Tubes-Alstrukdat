@@ -18,7 +18,7 @@ void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit
 
 void Upgrade(Stack Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int Duit);
 
-void Buy(Stack Perintah, Material *ArrayMat[3], int Duit);
+void Buy(Stack Perintah, Material ArrayMat[3], int Duit);
 
 void Undo(Stack Perintah, int Duit);
 

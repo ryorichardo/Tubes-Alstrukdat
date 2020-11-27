@@ -3,7 +3,7 @@
 #include "listlinier.h"
 #include "../ADT/array.h"
 
-void Serve(Wahana *ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
 {
     int i;
 
@@ -47,7 +47,7 @@ void Serve(Wahana *ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Custome
     }
 }
 
-void Repair(Wahana *ArrayWahana[100], Kata NamaWahana)
+void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 {
     int i;
 
@@ -64,7 +64,7 @@ void Repair(Wahana *ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Office(Wahana *ArrayWahana[100])
+void Office(Wahana ArrayWahana[100])
 {
     int i;
     Kata NamaWahana;

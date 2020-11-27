@@ -51,7 +51,7 @@ void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], 
     }
 }
 
-void Buy(Stack Perintah, Material *ArrayMat[3], int Duit)
+void Buy(Stack Perintah, Material ArrayMat[3], int Duit)
 {
     printf("Ingin membeli apa?\n");
     printf("List:\n");
@@ -59,7 +59,7 @@ void Buy(Stack Perintah, Material *ArrayMat[3], int Duit)
     for (i = 0; i < 3; i++)
     {
         printf("  -  ");
-        PrintKata(ArrayMat[i]->Nama);
+        PrintKata(ArrayMat[i].Nama);
         printf("\n");
     }
     int found, jumlah = 0;
@@ -68,7 +68,7 @@ void Buy(Stack Perintah, Material *ArrayMat[3], int Duit)
         STARTKATA(stdin);
         for (i = 0; i < 3; i++)
         {
-            if (IsKataSama(CKata, ArrayMat[i]->Nama))
+            if (IsKataSama(CKata, ArrayMat[i].Nama))
             {
                 found = i;
                 printf("Masukkan jumlahnya:\n");
@@ -128,7 +128,7 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
     Wahana New, Up;
     if (durasi <= Sisa)
     {
-        while (!IsEmpty(Perintah))
+        while (!IsEmptyStack(Perintah))
         {
             Pop(&Perintah, &X);
             if (X.perintah == 'B')
@@ -165,7 +165,7 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
 void Main(Stack Perintah, boolean isMain)
 {
     Element X;
-    while (!IsEmpty(Perintah))
+    while (!IsEmptyStack(Perintah))
     {
         Pop(&Perintah, &X);
     }

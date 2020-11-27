@@ -46,9 +46,8 @@ int main()
     Stack Perintah;
 
     //baca file wahana, material, map
-    MakeMap(&RelationMap, &ListMap);
+    MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    int idxmap = 0;
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
     char filename6[] = "File-Eksternal/Material.txt";
@@ -56,7 +55,7 @@ int main()
 
     //bikin array action
     Kata ListAksi[16];
-    InitTabAction(&ListAksi);
+    InitTabAction(ListAksi);
 
     //print halaman utama
     Kata Player;
@@ -96,26 +95,27 @@ int main()
             //repair
             else if (IsKataSama(CKata, ListAksi[7]))
             {
-                Repair(&ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
+                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //detail
             else if (IsKataSama(CKata, ListAksi[8]))
             {
-                Detail(&ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
+                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //office
             else if (IsKataSama(CKata, ListAksi[9]))
-            {
-            }
-            //prepare
-            else if (IsKataSama(CKata, ListAksi[10]))
-            {
-                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == "O"){
-                    Office(&ListOwnedWahana);
+            { 
+                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O'){
+                    Office(ListOwnedWahana);
                 }
                 else{
                     printf("Kamu sedang tidak berada di office.\n");
                 }
+            }
+            //prepare
+            else if (IsKataSama(CKata, ListAksi[10]))
+            {
+               Prepare(isMain);
             }
         }
         else
