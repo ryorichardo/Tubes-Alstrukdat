@@ -117,6 +117,8 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         printf("Error! opening file\n");
         exit(1);
     }
+    printf("1\n");
+
     int i = 0;
     while (CC != ';')
     {
@@ -128,50 +130,69 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         {
             SalinKata();
         }
+        ADV();
+
         TabWahana[i].Nama = CopyKata(CKata);
         SalinToken();
+        ADV();
         TabWahana[i].Harga = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].Kapasitas = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].Pemain = CToken;
         SalinToken;
         TabWahana[i].Durasi = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].HargaBuild = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].DurasiBuild = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].Mat[0] = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].Mat[1] = CToken;
         SalinToken();
+        ADV();
         TabWahana[i].Mat[2] = CToken;
         SalinKata();
+        ADV();
         TabWahana[i].Deskripsi = CopyKata(CKata);
         TabWahana[i].Rusak = false;
         i++;
     }
-
+    i=0;
+    ADV();
     while (CC != '.')
     {
         SalinKata();
+        ADV();
         TabUp[i].Nama = CopyKata(CKata);
         SalinToken();
+        ADV();
         TabUp[i].Harga = CToken;
         SalinToken();
+        ADV();
         TabUp[i].Kapasitas = CToken;
         SalinToken();
+        ADV();
         TabUp[i].HargaBuild = CToken;
         SalinToken();
+        ADV();
         TabUp[i].Mat[0] = CToken;
-        SalinToken;
+        SalinToken();
+        ADV();
         TabUp[i].Mat[1] = CToken;
-        SalinToken;
+        SalinToken();
+        ADV();
         TabUp[i].Mat[2] = CToken;
-        SalinKata;
         i++;
     }
+
 }
 
 void BacaFileMaterial(char namafile[], Material TabMat[3])

@@ -10,7 +10,7 @@
 
 void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
 {
-    printf("%d/n", day);
+    printf("%d\n", day);
 
     TulisMATRIKS(CurrentMap);
     printf("Legend:\n");
@@ -43,12 +43,12 @@ int main()
     Graph RelationMap[4];
     boolean isMain = false;
     Stack Perintah;
-
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    printf("Baca File Wahana lewat\n");
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
 
@@ -59,7 +59,7 @@ int main()
     //print halaman utama
     Kata Player;
     printf("Welcome to Willy Wangky's PLayground\n");
-    printf("Type 'new' to start a new game");
+    printf("Type 'new' to start a new game\n");
     STARTKATA(stdin);
     if (!IsKataSama(CKata, ListAksi[11]))
     {
