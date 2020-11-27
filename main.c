@@ -46,15 +46,16 @@ int main()
     Stack Perintah;
 
     //baca file wahana, material, map
-    MakeMap(RelationMap, ListMap);
+    MakeMap(&RelationMap, &ListMap);
     CurrentMap = ListMap[0];
-    char filename5[] = "Wahana.txt";
+    int idxmap = 0;
+    char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
-    char filename6[] = "Material.txt";
+    char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
 
     //bikin array action
-    Kata ListAksi[11];
+    Kata ListAksi[16];
     InitTabAction(&ListAksi);
 
     //print halaman utama
@@ -95,10 +96,12 @@ int main()
             //repair
             else if (IsKataSama(CKata, ListAksi[7]))
             {
+                Repair(&ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //detail
             else if (IsKataSama(CKata, ListAksi[8]))
             {
+                Detail(&ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //office
             else if (IsKataSama(CKata, ListAksi[9]))
@@ -107,6 +110,12 @@ int main()
             //prepare
             else if (IsKataSama(CKata, ListAksi[10]))
             {
+                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == "O"){
+                    Office(&ListOwnedWahana);
+                }
+                else{
+                    printf("Kamu sedang tidak berada di office.\n");
+                }
             }
         }
         else
@@ -153,7 +162,7 @@ int main()
             //execute
             else if (IsKataSama(CKata, ListAksi[4]))
             {
-                Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain);
+                Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain, &CurrentMap);
             }
             //main
             else if (IsKataSama(CKata, ListAksi[5]))
@@ -161,8 +170,23 @@ int main()
                 Main(Perintah, isMain);
             }
         }
+
+        //buat gerak
+        if (IsKataSama(CKata, ListAksi[12])){
+            W(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+        }
+        else if (IsKataSama(CKata, ListAksi[13])){
+            A(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+        }
+        else if (IsKataSama(CKata, ListAksi[14])){
+            S(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+        }
+        else if (IsKataSama(CKata, ListAksi[15])){
+            D(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+        }
     }
 
     // ketika telah menginput
     printf("Thanks For Playing\n");
+    return 0;
 }

@@ -7,6 +7,7 @@
 #include "../ADT/array.h"
 #include "../ADT/mesinkata.h"
 #include "../ADT/jam.h"
+#include "../ADT/matriks.h"
 
 long durasi = 0;
 long countaksi = 0;
@@ -21,7 +22,7 @@ void Buy(Stack Perintah, Material *ArrayMat[3], int Duit);
 
 void Undo(Stack Perintah, int Duit);
 
-void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[100], Wahana DaftarUpgrade[100], int Wood, int Fire, int Primogem, boolean isMain);
+void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[100], Wahana DaftarUpgrade[100], int Wood, int Fire, int Primogem, boolean isMain, MATRIKS * Peta);
 
 void Main(Stack Perintah, boolean isMain);
 #endif

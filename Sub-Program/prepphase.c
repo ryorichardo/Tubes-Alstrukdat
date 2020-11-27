@@ -122,7 +122,7 @@ void Undo(Stack Perintah, int Duit)
     totalbiaya -= X.Biaya;
 }
 
-void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int Wood, int Fire, int Primogem, boolean isMain)
+void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int Wood, int Fire, int Primogem, boolean isMain, MATRIKS * Peta)
 {
     Element X;
     Wahana New, Up;
@@ -135,6 +135,7 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
             {
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(&Wahanaskrg, New);
+                Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = "W";
             }
             else if (X.perintah == 'U')
             {
@@ -152,6 +153,7 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
         }
         countaksi = 0;
         totalbiaya = 0;
+        durasi = 0;
         isMain = true;
     }
     else
@@ -169,5 +171,6 @@ void Main(Stack Perintah, boolean isMain)
     }
     countaksi = 0;
     totalbiaya = 0;
+    durasi = 0;
     isMain = true;
 }

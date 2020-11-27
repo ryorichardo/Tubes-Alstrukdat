@@ -162,9 +162,9 @@ void MakeTabWahanaEmpty(Wahana *ListWahana[10])
    }
 }
 
-void InitTabAction(Kata *ListAksi[12] )
+void InitTabAction(Kata *ListAksi[16] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
-/* Cara inisialisasi di main : declare Kata ListAksi[11];
+/* Cara inisialisasi di main : declare Kata ListAksi[16];
                               panggil prosedur InitTabAction(&ListAksi); */
 {
    Kata BUILD;
@@ -193,6 +193,16 @@ void InitTabAction(Kata *ListAksi[12] )
    MakeKataPrepare(&PREPARE);
    MakeKataExit(&EXIT);
 
+   Kata W, A, S , D;
+   W.TabKata[0] = "w";
+   W.Length = 1;
+   A.TabKata[0] = "a";
+   A.Length = 1;
+   S.TabKata[0] = "s";
+   S.Length = 1;
+   D.TabKata[0] = "d";
+   D.Length = 1;
+
    *ListAksi[0] = BUILD;
    *ListAksi[1] = UPGRADE;
    *ListAksi[2] = BUY;
@@ -205,6 +215,10 @@ void InitTabAction(Kata *ListAksi[12] )
    *ListAksi[9] = OFFICE;
    *ListAksi[10] = PREPARE;
    *ListAksi[11] = EXIT;
+   *ListAksi[12] = W;
+   *ListAksi[13] = A;
+   *ListAksi[14] = S;
+   *ListAksi[15] = D;
 }
 
 // Wahana GetTabWahana (char namafile[])
@@ -430,32 +444,16 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-<<<<<<< HEAD
-   int i = 0;
-   while (!isWahanaEmpty(ListWahana[i]))
-   {
-      printf("%d. %s\n", i + 1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
-      i++;
-=======
    for(int i=0; i<10; i++){
       printf("%d. %s\n", i+1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
->>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
    }
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-<<<<<<< HEAD
-   int i = 0;
-   while (!isWahanaEmpty(ListWahana[i]))
-   {
-      if (IsKataSama(ListWahana[i].Nama, Nama))
-      {
-=======
    for(int i=0; i<10; i++){
       if(IsKataSama(ListWahana[i].Nama, Nama)){
->>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
          printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
          printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);
