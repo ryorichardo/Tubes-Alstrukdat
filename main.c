@@ -9,6 +9,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
+{
+    printf("%d/n", day);
+
+    TulisMATRIKS(CurrentMap);
+    printf("Legend:\n");
+    printf("A = Antrian\n");
+    printf("P = Player\n");
+    printf("W = Wahana\n");
+    printf("O = Office\n");
+    printf("<, ^, >, v = Gerbang\n");
+    printf("\nName: ");
+    PrintKata(Player);
+    printf("\nCurrent time: ");
+    TulisJAM(CurrentTime);
+    printf("\n");
+}
+
 int main()
 {
     //deklarasi variabel global
@@ -55,33 +73,50 @@ int main()
         if (isMain)
         {
             printf("Main phase day ");
-        }
-        else
-        {
-            printf("Preparation phase day ");
-        }
-        printf("%d/n", day);
 
-        TulisMATRIKS(CurrentMap);
-        printf("Legend:\n");
-        printf("A = Antrian\n");
-        printf("P = Player\n");
-        printf("W = Wahana\n");
-        printf("O = Office\n");
-        printf("<, ^, >, v = Gerbang\n");
-        printf("\nName: ");
-        PrintKata(Player);
-        printf("\nCurrent time: ");
-        TulisJAM(CurrentTime);
-        printf("\n");
-        if (isMain){
+            // print Map dan Perintah
+            printLegend(CurrentMap, day, Player, CurrentTime);
+
+            // close
             printf("Closing time: ");
             TulisJAM(Close);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
             printf("Antrian: ");
+
+            // Next Perintah
+            printf("Masukkan Perintah\n");
+            STARTKATA(stdin);
+
+            //serve
+            if (IsKataSama(CKata, ListAksi[6]))
+            {
+            }
+            //repair
+            else if (IsKataSama(CKata, ListAksi[7]))
+            {
+            }
+            //detail
+            else if (IsKataSama(CKata, ListAksi[8]))
+            {
+            }
+            //office
+            else if (IsKataSama(CKata, ListAksi[9]))
+            {
+            }
+            //prepare
+            else if (IsKataSama(CKata, ListAksi[10]))
+            {
+            }
         }
-        else{
+        else
+        {
+            printf("Preparation phase day ");
+
+            // print Map dan Perintah
+            printLegend(CurrentMap, day, Player, CurrentTime);
+
+            // open
             printf("Opening time: ");
             TulisJAM(Open);
             printf("\nTime remaining: ");
@@ -90,61 +125,42 @@ int main()
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
             printf("\nTotal uang yang dibutuhkan: %d\n", totalbiaya);
-        }
 
-        // Next Perintah
-        printf("Masukkan Perintah\n");
-        STARTKATA(stdin);
+            // Next Perintah
+            printf("Masukkan Perintah\n");
+            STARTKATA(stdin);
 
-        if (isMain){
-            //serve
-            if (IsKataSama(CKata, ListAksi[6])){
-                
-            }
-            //repair
-            else if (IsKataSama(CKata, ListAksi[7])){
-
-            }
-            //detail
-            else if (IsKataSama(CKata, ListAksi[8])){
-                
-            }
-            //office
-            else if (IsKataSama(CKata, ListAksi[9])){
-                
-            }
-            //prepare
-            else if (IsKataSama(CKata, ListAksi[10])){
-                
-            }
-        }
-        else{
             //build
-            if (IsKataSama(CKata, ListAksi[0])){
+            if (IsKataSama(CKata, ListAksi[0]))
+            {
                 Build(Perintah, ListWahana, Posisi, Money);
             }
             //upgrade
-            else if (IsKataSama(CKata, ListAksi[1])){
+            else if (IsKataSama(CKata, ListAksi[1]))
+            {
                 Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, Money);
             }
             //buy
-            else if (IsKataSama(CKata, ListAksi[2])){
+            else if (IsKataSama(CKata, ListAksi[2]))
+            {
                 Buy(Perintah, ListMat, Money);
             }
             //undo
-            else if (IsKataSama(CKata, ListAksi[3])){
+            else if (IsKataSama(CKata, ListAksi[3]))
+            {
                 Undo(Perintah, Money);
             }
             //execute
-            else if (IsKataSama(CKata, ListAksi[4])){
+            else if (IsKataSama(CKata, ListAksi[4]))
+            {
                 Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain);
             }
             //main
-            else if (IsKataSama(CKata, ListAksi[5])){
+            else if (IsKataSama(CKata, ListAksi[5]))
+            {
                 Main(Perintah, isMain);
             }
         }
-
     }
 
     // ketika telah menginput
