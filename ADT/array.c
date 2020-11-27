@@ -18,116 +18,116 @@ void MakeKataEmpty(Kata *Kata)
 
 void MakeKataBuild(Kata *Kata)
 {
-   Kata->TabKata[0] = 'B';
-   Kata->TabKata[1] = 'U';
-   Kata->TabKata[2] = 'I';
-   Kata->TabKata[3] = 'L';
-   Kata->TabKata[4] = 'D';
+   Kata->TabKata[0] = 'b';
+   Kata->TabKata[1] = 'u';
+   Kata->TabKata[2] = 'i';
+   Kata->TabKata[3] = 'l';
+   Kata->TabKata[4] = 'd';
    Kata->Length = 5;
 }
 
 void MakeKataUpgrade(Kata *Kata)
 {
-   Kata->TabKata[0] = 'U';
-   Kata->TabKata[1] = 'P';
-   Kata->TabKata[2] = 'G';
-   Kata->TabKata[3] = 'R';
-   Kata->TabKata[4] = 'A';
-   Kata->TabKata[5] = 'D';
-   Kata->TabKata[6] = 'E';
+   Kata->TabKata[0] = 'u';
+   Kata->TabKata[1] = 'p';
+   Kata->TabKata[2] = 'g';
+   Kata->TabKata[3] = 'r';
+   Kata->TabKata[4] = 'a';
+   Kata->TabKata[5] = 'd';
+   Kata->TabKata[6] = 'e';
    Kata->Length = 7;
 }
 
 void MakeKataBuy(Kata *Kata)
 {
-   Kata->TabKata[0] = 'B';
-   Kata->TabKata[1] = 'U';
-   Kata->TabKata[2] = 'Y';
+   Kata->TabKata[0] = 'b';
+   Kata->TabKata[1] = 'u';
+   Kata->TabKata[2] = 'y';
    Kata->Length = 3;
 }
 
 void MakeKataUndo(Kata *Kata)
 {
-   Kata->TabKata[0] = 'U';
-   Kata->TabKata[1] = 'N';
-   Kata->TabKata[2] = 'D';
-   Kata->TabKata[3] = 'O';
+   Kata->TabKata[0] = 'u';
+   Kata->TabKata[1] = 'n';
+   Kata->TabKata[2] = 'd';
+   Kata->TabKata[3] = 'o';
    Kata->Length = 4;
 }
 
 void MakeKataExecute(Kata *Kata)
 {
-   Kata->TabKata[0] = 'E';
-   Kata->TabKata[1] = 'X';
-   Kata->TabKata[2] = 'E';
-   Kata->TabKata[3] = 'C';
-   Kata->TabKata[4] = 'U';
-   Kata->TabKata[5] = 'T';
-   Kata->TabKata[6] = 'E';
+   Kata->TabKata[0] = 'e';
+   Kata->TabKata[1] = 'x';
+   Kata->TabKata[2] = 'e';
+   Kata->TabKata[3] = 'c';
+   Kata->TabKata[4] = 'u';
+   Kata->TabKata[5] = 't';
+   Kata->TabKata[6] = 'e';
    Kata->Length = 7;
 }
 
 void MakeKataMain(Kata *Kata)
 {
-   Kata->TabKata[0] = 'M';
-   Kata->TabKata[1] = 'A';
-   Kata->TabKata[2] = 'I';
-   Kata->TabKata[3] = 'N';
+   Kata->TabKata[0] = 'm';
+   Kata->TabKata[1] = 'a';
+   Kata->TabKata[2] = 'i';
+   Kata->TabKata[3] = 'n';
    Kata->Length = 4;
 }
 
 void MakeKataServe(Kata *Kata)
 {
-   Kata->TabKata[0] = 'S';
-   Kata->TabKata[1] = 'E';
-   Kata->TabKata[2] = 'R';
-   Kata->TabKata[3] = 'V';
-   Kata->TabKata[4] = 'E';
+   Kata->TabKata[0] = 's';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 'r';
+   Kata->TabKata[3] = 'v';
+   Kata->TabKata[4] = 'e';
    Kata->Length = 5;
 }
 
 void MakeKataRepair(Kata *Kata)
 {
-   Kata->TabKata[0] = 'R';
-   Kata->TabKata[1] = 'E';
-   Kata->TabKata[2] = 'P';
-   Kata->TabKata[3] = 'A';
-   Kata->TabKata[4] = 'I';
-   Kata->TabKata[5] = 'R';
+   Kata->TabKata[0] = 'r';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 'p';
+   Kata->TabKata[3] = 'a';
+   Kata->TabKata[4] = 'i';
+   Kata->TabKata[5] = 'r';
    Kata->Length = 6;
 }
 
 void MakeKataDetail(Kata *Kata)
 {
-   Kata->TabKata[0] = 'D';
-   Kata->TabKata[1] = 'E';
-   Kata->TabKata[2] = 'T';
-   Kata->TabKata[3] = 'A';
-   Kata->TabKata[4] = 'I';
-   Kata->TabKata[5] = 'L';
+   Kata->TabKata[0] = 'd';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 't';
+   Kata->TabKata[3] = 'a';
+   Kata->TabKata[4] = 'i';
+   Kata->TabKata[5] = 'l';
    Kata->Length = 6;
 }
 
 void MakeKataOffice(Kata *Kata)
 {
-   Kata->TabKata[0] = 'O';
-   Kata->TabKata[1] = 'F';
-   Kata->TabKata[2] = 'F';
-   Kata->TabKata[3] = 'I';
-   Kata->TabKata[4] = 'C';
-   Kata->TabKata[5] = 'E';
+   Kata->TabKata[0] = 'o';
+   Kata->TabKata[1] = 'f';
+   Kata->TabKata[2] = 'f';
+   Kata->TabKata[3] = 'i';
+   Kata->TabKata[4] = 'c';
+   Kata->TabKata[5] = 'e';
    Kata->Length = 6;
 }
 
 void MakeKataPrepare(Kata *Kata)
 {
-   Kata->TabKata[0] = 'P';
-   Kata->TabKata[1] = 'R';
-   Kata->TabKata[2] = 'E';
-   Kata->TabKata[3] = 'P';
-   Kata->TabKata[4] = 'A';
-   Kata->TabKata[5] = 'R';
-   Kata->TabKata[6] = 'E';
+   Kata->TabKata[0] = 'p';
+   Kata->TabKata[1] = 'r';
+   Kata->TabKata[2] = 'e';
+   Kata->TabKata[3] = 'p';
+   Kata->TabKata[4] = 'a';
+   Kata->TabKata[5] = 'r';
+   Kata->TabKata[6] = 'e';
    Kata->Length = 7;
 }
 
@@ -152,9 +152,9 @@ void MakeTabWahanaEmpty (Wahana *ListWahana[10]){
     }
 }
 
-void InitTabAction(Action *ListAksi[11] )
+void InitTabAction(Kata *ListAksi[11] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
-/* Cara inisialisasi di main : declare Action ListAksi[11];
+/* Cara inisialisasi di main : declare Kata ListAksi[11];
                               panggil prosedur InitTabAction(&ListAksi); */
 {
    Kata BUILD;
@@ -181,28 +181,17 @@ void InitTabAction(Action *ListAksi[11] )
    MakeKataOffice(&OFFICE);
    MakeKataPrepare(&PREPARE);
 
-   ListAksi[0]->NamaAction = BUILD;
-   ListAksi[0]->Durasi = MakeJAM(1, 10);
-   ListAksi[1]->NamaAction = UPGRADE;
-   ListAksi[1]->Durasi = MakeJAM(0, 50);
-   ListAksi[2]->NamaAction = BUY;
-   ListAksi[2]->Durasi = MakeJAM(0, 20);
-   ListAksi[3]->NamaAction = UNDO;
-   ListAksi[3]->Durasi = MakeJAM(0, 0);
-   ListAksi[4]->NamaAction = EXECUTE;
-   ListAksi[4]->Durasi = MakeJAM(0, 0);
-   ListAksi[5]->NamaAction = MAIN;
-   ListAksi[5]->Durasi = MakeJAM(0, 0);
-   ListAksi[6]->NamaAction = SERVE;
-   ListAksi[6]->Durasi = MakeJAM(0, 30);
-   ListAksi[7]->NamaAction = REPAIR;
-   ListAksi[7]->Durasi = MakeJAM(0, 40);
-   ListAksi[8]->NamaAction = DETAIL;
-   ListAksi[8]->Durasi = MakeJAM(0, 0);
-   ListAksi[9]->NamaAction = OFFICE;
-   ListAksi[9]->Durasi = MakeJAM(0, 0);
-   ListAksi[10]->NamaAction = PREPARE;
-   ListAksi[10]->Durasi = MakeJAM(0, 0);
+   *ListAksi[0] = BUILD;
+   *ListAksi[1] = UPGRADE;
+   *ListAksi[2] = BUY;
+   *ListAksi[3] = UNDO;
+   *ListAksi[4] = EXECUTE;
+   *ListAksi[5] = MAIN;
+   *ListAksi[6] = SERVE;
+   *ListAksi[7] = REPAIR;
+   *ListAksi[8] = DETAIL;
+   *ListAksi[9] = OFFICE;
+   *ListAksi[10] = PREPARE;
 }
 
 // Wahana GetTabWahana (char namafile[])
@@ -414,18 +403,15 @@ int SearchMaterial (Material ListMaterial[3], Kata X){
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-   int i=0;
-   while(!isWahanaEmpty(ListWahana[i])){
+   for(int i=0; i<10; i++){
       printf("%d. %s\n", i+1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
-      i++;
    }
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-   int i=0;
-   while(!isWahanaEmpty(ListWahana[i])){
+   for(int i=0; i<10; i++){
       if(IsKataSama(ListWahana[i].Nama, Nama)){
          printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
