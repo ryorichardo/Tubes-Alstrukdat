@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include "../ADT/matriks.h"
 #include "../ADT/point.h"
 #include "../ADT/graph.h"
