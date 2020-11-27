@@ -2,8 +2,8 @@
 #include "ADT/mesinkata.c"
 #include "ADT/mesintoken.c"
 #include "ADT/mesinkar.c"
-#include "Sub-Program/mainphase.h"
-#include "Sub-Program/prepphase.h"
+#include "Sub-Program/mainphase.c"
+#include "Sub-Program/prepphase.c"
 #include "Sub-Program/PetaWahana.c"
 #include <stdio.h>
 #include <stdlib.h>
@@ -104,7 +104,7 @@ int main()
             }
             //office
             else if (IsKataSama(CKata, ListAksi[9]))
-            { 
+            {
                 if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O'){
                     Office(ListOwnedWahana);
                 }
@@ -130,10 +130,10 @@ int main()
             TulisJAM(Open);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Open)));
-            printf("\nTotal aksi yang akan dilakukan: %d", countaksi);
+            printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
-            printf("\nTotal uang yang dibutuhkan: %d\n", totalbiaya);
+            printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
             printf("Masukkan Perintah\n");

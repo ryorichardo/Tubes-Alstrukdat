@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "mainphase.h"
-#include "listlinier.h"
-#include "../ADT/array.h"
+#include "../ADT/listlinier.h"
+#include "../ADT/tipebentukan.h"
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
 {
@@ -91,7 +91,7 @@ void Office(Wahana ArrayWahana[100])
         {
             printf("pingin melihat detail wahana dengan nama apa ? \n ");
             STARTKATA(stdin);
-            Detail(ArrayWahana[100], CKata);
+            Detail(&ArrayWahana[100], CKata);
             printf("Ingin melihat detail wahana(y/n) ? \n ");
             printf(" `y` untuk yes dan `n` untuk no ? \n ");
         }
