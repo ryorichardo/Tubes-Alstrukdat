@@ -1,6 +1,6 @@
 /*
-    Nama : Kadek Dwi Bagus Ananta Udayana 
-    Nim : 13519057 
+    Nama : Kadek Dwi Bagus Ananta Udayana
+    Nim : 13519057
     Tanggal : 08 Oktober 2020
     Topik : Queue
     Deskripsi : Body prioqueue
@@ -15,7 +15,7 @@
 boolean IsEmpty(PrioQueueChar Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-    return ((Head(Q) == Nil) && (Tail(Q) == Nil));
+    return ((Head(Q) == -1) && (Tail(Q) == -1));
 }
 boolean IsFull(PrioQueueChar Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
@@ -33,7 +33,7 @@ boolean IsFull(PrioQueueChar Q)
 int NBElmt(PrioQueueChar Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 {
-    if (Head(Q) == Nil && Tail(Q) == Nil)
+    if (Head(Q) == -1 && Tail(Q) == -1)
     {
         return 0;
     }
@@ -61,8 +61,8 @@ void MakeEmpty(PrioQueueChar *Q, int Max)
     if ((*Q).T != NULL)
     {
         MaxEl(*Q) = Max;
-        Head(*Q) = Nil;
-        Tail(*Q) = Nil;
+        Head(*Q) = -1;
+        Tail(*Q) = -1;
     }
     else /* alokasi gagal */
     {
@@ -157,14 +157,14 @@ void Enqueue(PrioQueueChar *Q, infotype X)
 void Dequeue(PrioQueueChar *Q, infotype *X)
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
-/* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
+/* F.S. X = -1ai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
         Q mungkin kosong */
 {
     *X = InfoHead(*Q);
     if (Head(*Q) == Tail(*Q))
     { /* Set mjd queue kosong */
-        Head(*Q) = Nil;
-        Tail(*Q) = Nil;
+        Head(*Q) = -1;
+        Tail(*Q) = -1;
     }
     else if (Head(*Q) == (MaxEl(*Q) - 1))
     {

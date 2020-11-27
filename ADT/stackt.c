@@ -1,10 +1,10 @@
 /* File : stackt.c */
 /* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
 /*
-    Nama = Kadek Dwi Bagus Ananta Udayana 
+    Nama = Kadek Dwi Bagus Ananta Udayana
     Nim = 13519057
     Kelas = K1
-    Tanggal = 20 Oktober 2020 
+    Tanggal = 20 Oktober 2020
     Deskripsi = body dari stackt
 */
 
@@ -14,18 +14,18 @@ void CreateEmpty(Stack *S)
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
-/* Ciri stack kosong : TOP bernilai Nil */
+/* Ciri stack kosong : TOP ber-1ai -1 */
 {
-    Top(*S) = Nil;
+    Top(*S) = -1;
 }
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmptyStack(Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
-    return Top(S) == Nil;
+    return Top(S) == -1;
 }
 boolean IsFullStack(Stack S)
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
+/* Mengirim true jika tabel penampung -1ai elemen stack penuh */
 {
     return (Top(S) == MaxEls - 1);
 }
@@ -42,7 +42,7 @@ void Push(Stack *S, Element X)
 void Pop(Stack *S, Element *X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+/* F.S. X adalah -1ai elemen TOP yang lama, TOP berkurang 1 */
 {
     *X = InfoTop(*S);
     Top(*S)--;

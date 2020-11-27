@@ -9,9 +9,8 @@
 #include "mesinkata.h"
 #include "point.h"
 
-#define Nil -1
 #define MaxEls 10
-/* Nil adalah stack dengan elemen kosong . */
+/* -1 adalah stack dengan elemen kosong . */
 
 // typedef char aksi;
 typedef struct
@@ -34,8 +33,8 @@ typedef struct
   Element T[MaxEls]; /* tabel penyimpan elemen */
   int TOP;     /* alamat TOP: elemen puncak */
 } Stack;
-/* Definisi stack S kosong : S.TOP = Nil */
-/* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
+/* Definisi stack S kosong : S.TOP = -1 */
+/* Elemen yang dipakai menyimpan -1ai Stack T[0]..T[MaxEl-1] */
 /* Jika S adalah Stack maka akses elemen : */
 /* S.T[(S.TOP)] untuk mengakses elemen TOP */
 /* S.TOP adalah alamat elemen TOP */
@@ -50,13 +49,13 @@ void CreateEmpty(Stack *S);
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
-/* Ciri stack kosong : TOP bernilai Nil */
+/* Ciri stack kosong : TOP ber-1ai -1 */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsEmptyStack(Stack S);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsFullStack(Stack S);
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
+/* Mengirim true jika tabel penampung -1ai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void Push(Stack *S, Element X);
@@ -68,6 +67,6 @@ void Push(Stack *S, Element X);
 void Pop(Stack *S, Element *X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+/* F.S. X adalah -1ai elemen TOP yang lama, TOP berkurang 1 */
 
 #endif
