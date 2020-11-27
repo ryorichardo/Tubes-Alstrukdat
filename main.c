@@ -104,7 +104,7 @@ int main()
             }
             //office
             else if (IsKataSama(CKata, ListAksi[9]))
-            { 
+            {
                 if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O'){
                     Office(ListOwnedWahana);
                 }
@@ -130,10 +130,10 @@ int main()
             TulisJAM(Open);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Open)));
-            printf("\nTotal aksi yang akan dilakukan: %d", countaksi);
+            printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
-            printf("\nTotal uang yang dibutuhkan: %d\n", totalbiaya);
+            printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
             printf("Masukkan Perintah\n");
