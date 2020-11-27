@@ -106,11 +106,11 @@ void Enqueue(PrioQueueChar *Q, infotype X)
         }
         i = Head(*Q);
         // Cek elmen pertama
-        if (Prio(X) < Prio(Elmt(*Q, i)))
+        if (Prio(X) < Prio(Elmtd(*Q, i)))
         {
             while (i != Tail(*Q))
             {
-                Elmt(*Q, i + 1) = Elmt(*Q, i);
+                Elmtd(*Q, i + 1) = Elmtd(*Q, i);
                 i += 1;
                 if (i == MaxEl(*Q))
                 {
@@ -124,7 +124,7 @@ void Enqueue(PrioQueueChar *Q, infotype X)
             found = true;
             while (found && i != Tail(*Q))
             {
-                if (Prio(X) < Prio(Elmt(*Q, i)))
+                if (Prio(X) < Prio(Elmtd(*Q, i)))
                 {
                     found = false;
                 }
@@ -138,14 +138,14 @@ void Enqueue(PrioQueueChar *Q, infotype X)
                 a = i;
                 while (i != Tail(*Q))
                 {
-                    Elmt(*Q, i + 1) = Elmt(*Q, i);
+                    Elmtd(*Q, i + 1) = Elmtd(*Q, i);
                     i += 1;
                     if (i == MaxEl(*Q))
                     {
                         i = 0;
                     }
                 }
-                Elmt(*Q, a) = X;
+                Elmtd(*Q, a) = X;
             }
             else
             {
@@ -196,14 +196,14 @@ void PrintPrioQueueChar(PrioQueueChar Q)
 
         while (i != Tail(Q))
         {
-            printf("%d %c\n", Prio(Elmt(Q, i)), Info(Elmt(Q, i)));
+            printf("%d %c\n", Prio(Elmtd(Q, i)), Info(Elmtd(Q, i)));
             i += 1;
             if (i == MaxEl(Q))
             {
                 i = 0;
             }
         }
-        printf("%d %c\n", Prio(Elmt(Q, i)), Info(Elmt(Q, i)));
+        printf("%d %c\n", Prio(Elmtd(Q, i)), Info(Elmtd(Q, i)));
         printf("#\n");
     }
 }

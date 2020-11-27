@@ -19,15 +19,15 @@ void CreateEmpty(Stack *S)
     Top(*S) = Nil;
 }
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S)
+boolean IsEmptyStack(Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
     return Top(S) == Nil;
 }
-boolean IsFull(Stack S)
+boolean IsFullStack(Stack S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
-    return (Top(S) == MaxEl - 1);
+    return (Top(S) == MaxEls - 1);
 }
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void Push(Stack *S, Element X)

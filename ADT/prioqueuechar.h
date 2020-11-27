@@ -17,14 +17,14 @@ typedef struct
     int prio;  /* [1..100], prioritas dengan nilai 1..100 (1 adalah prioritas tertinggi) */
     char info; /* elemen karakter */
 } infotype;
-typedef int address; /* indeks tabel */
+
 /* Contoh deklarasi variabel bertype PrioQueueChar : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
     infotype *T;  /* tabel penyimpan elemen */
-    address HEAD; /* alamat penghapusan */
-    address TAIL; /* alamat penambahan */
+    int HEAD; /* alamat penghapusan */
+    int TAIL; /* alamat penambahan */
     int MaxEl;    /* Max elemen queue */
 } PrioQueueChar;
 /* Definisi PrioQueueChar kosong: HEAD=Nil; TAIL=Nil. */
@@ -38,7 +38,7 @@ typedef struct
 #define InfoHead(Q) (Q).T[(Q).HEAD]
 #define InfoTail(Q) (Q).T[(Q).TAIL]
 #define MaxEl(Q) (Q).MaxEl
-#define Elmt(Q, i) (Q).T[(i)]
+#define Elmtd(Q, i) (Q).T[(i)]
 
 /* ********* Prototype ********* */
 boolean IsEmpty(PrioQueueChar Q);

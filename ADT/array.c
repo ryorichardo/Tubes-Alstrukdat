@@ -141,28 +141,28 @@ void MakeKataExit(Kata *Kata)
 }
 
 /**** KONSTRUKTOR ****/
-void MakeTabWahanaEmpty(Wahana *ListWahana[10])
+void MakeTabWahanaEmpty(Wahana ListWahana[10])
 {
    int i;
    for (i = IdxMin; i <= IdxMax; i++)
    {
       Kata Empty;
       MakeKataEmpty(&Empty);
-      ListWahana[i]->Nama = Empty; //Make MARK
-      ListWahana[i]->Harga = 0;
-      ListWahana[i]->Kapasitas = 0;
-      ListWahana[i]->Durasi = 0;
-      ListWahana[i]->HargaBuild = 0;
-      ListWahana[i]->DurasiBuild = 0;
-      ListWahana[i]->Mat[0] = 0;
-      ListWahana[i]->Mat[1] = 0;
-      ListWahana[i]->Mat[2] = 0;
-      ListWahana[i]->Deskripsi = Empty;
-      ListWahana[i]->Rusak = true;
+      ListWahana[i].Nama = Empty; //Make MARK
+      ListWahana[i].Harga = 0;
+      ListWahana[i].Kapasitas = 0;
+      ListWahana[i].Durasi = 0;
+      ListWahana[i].HargaBuild = 0;
+      ListWahana[i].DurasiBuild = 0;
+      ListWahana[i].Mat[0] = 0;
+      ListWahana[i].Mat[1] = 0;
+      ListWahana[i].Mat[2] = 0;
+      ListWahana[i].Deskripsi = Empty;
+      ListWahana[i].Rusak = true;
    }
 }
 
-void InitTabAction(Kata *ListAksi[16] )
+void InitTabAction(Kata ListAksi[16] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[16];
                               panggil prosedur InitTabAction(&ListAksi); */
@@ -203,22 +203,22 @@ void InitTabAction(Kata *ListAksi[16] )
    D.TabKata[0] = "d";
    D.Length = 1;
 
-   *ListAksi[0] = BUILD;
-   *ListAksi[1] = UPGRADE;
-   *ListAksi[2] = BUY;
-   *ListAksi[3] = UNDO;
-   *ListAksi[4] = EXECUTE;
-   *ListAksi[5] = MAIN;
-   *ListAksi[6] = SERVE;
-   *ListAksi[7] = REPAIR;
-   *ListAksi[8] = DETAIL;
-   *ListAksi[9] = OFFICE;
-   *ListAksi[10] = PREPARE;
-   *ListAksi[11] = EXIT;
-   *ListAksi[12] = W;
-   *ListAksi[13] = A;
-   *ListAksi[14] = S;
-   *ListAksi[15] = D;
+   ListAksi[0] = BUILD;
+   ListAksi[1] = UPGRADE;
+   ListAksi[2] = BUY;
+   ListAksi[3] = UNDO;
+   ListAksi[4] = EXECUTE;
+   ListAksi[5] = MAIN;
+   ListAksi[6] = SERVE;
+   ListAksi[7] = REPAIR;
+   ListAksi[8] = DETAIL;
+   ListAksi[9] = OFFICE;
+   ListAksi[10] = PREPARE;
+   ListAksi[11] = EXIT;
+   ListAksi[12] = W;
+   ListAksi[13] = A;
+   ListAksi[14] = S;
+   ListAksi[15] = D;
 }
 
 // Wahana GetTabWahana (char namafile[])
