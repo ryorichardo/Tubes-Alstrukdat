@@ -104,17 +104,19 @@ int main()
             //office
             else if (IsKataSama(CKata, ListAksi[9]))
             {
-                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O'){
+                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
+                {
                     Office(ListOwnedWahana);
                 }
-                else{
+                else
+                {
                     printf("Kamu sedang tidak berada di office.\n");
                 }
             }
             //prepare
             else if (IsKataSama(CKata, ListAksi[10]))
             {
-               Prepare(isMain);
+                Prepare(isMain);
             }
         }
         else
@@ -171,16 +173,20 @@ int main()
         }
 
         //buat gerak
-        if (IsKataSama(CKata, ListAksi[12])){
+        if (IsKataSama(CKata, ListAksi[12]))
+        {
             W(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[13])){
+        else if (IsKataSama(CKata, ListAksi[13]))
+        {
             A(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[14])){
+        else if (IsKataSama(CKata, ListAksi[14]))
+        {
             S(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[15])){
+        else if (IsKataSama(CKata, ListAksi[15]))
+        {
             D(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
         }
     }
