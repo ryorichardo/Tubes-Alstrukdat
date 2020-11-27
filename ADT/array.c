@@ -242,7 +242,7 @@ void InitTabAction(Kata ListAksi[16])
    ListWahana[panjang].Deskripsi = Empty;
    ListWahana[panjang].Point = PointUndef;
    ListWahana[panjang].Rusak = true;
-   return ListWahana; 
+   return ListWahana;
 } */
 
 //TabMaterial GetTabMaterial(char namafile[])
@@ -446,7 +446,8 @@ void PrintListWahana(Wahana ListWahana[10])
 {
    for (int i = 0; i < 10; i++)
    {
-      printf("%d. %s\n", i + 1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
+      printf("%d. ", i + 1); //ini nanti diganti sama print kata;
+      PrintKata(ListWahana[i].Nama),printf("\n");
    }
 }
 
@@ -457,11 +458,11 @@ void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
    {
       if (IsKataSama(ListWahana[i].Nama, Nama))
       {
-         printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
+         printf("Nama Wahana : "); PrintKata(Nama),printf("\n");//Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
          printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);
          printf("Durasi Wahana : %d\n", ListWahana[i].Durasi);
-         printf("Deskripsi Wahana : ", ListWahana[i].Deskripsi); //Ini nanti diganti sama printkata
+         printf("Deskripsi Wahana : ");PrintKata(ListWahana[i].Deskripsi); //Ini nanti diganti sama printkata
       }
       i++;
    }
@@ -475,7 +476,7 @@ void PrintLaporanWahana(TabLaporan TL, Kata Nama)
    {
       if (IsKataSama(TL.TL[i].Nama, Nama))
       {
-         printf("Nama Wahana : %s\n", Nama);
+         printf("Nama Wahana : ");PrintKata(Nama);printf("\n");
          printf("Penggunaan Total : %d\n", TL.TL[i].Penggunaan);
          printf("Penghasilan Total : %d\n", TL.TL[i].PenghasilanTotal);
          printf("Penggunaan Harian : %d\n", TL.TL[i].PenggunaanHari);

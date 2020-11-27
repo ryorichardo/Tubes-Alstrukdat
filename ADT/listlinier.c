@@ -88,7 +88,7 @@ void InsVFirst (List *L, infotypeList X){
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
     addressList P = Alokasi(X);
     if (P != Nil){
-        InsertFirstList(L, P);
+        InsertFirst(L, P);
     }
 }
 
@@ -109,7 +109,7 @@ void DelVFirst (List *L, infotypeList *X){
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
     addressList P;
-    DelFirstList(L, &P);
+    DelFirst(L, &P);
     *X = InfoList(P);
     Dealokasi(&P);
 }
@@ -145,7 +145,7 @@ void InsertLast (List *L, addressList P){
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
     if (IsEmptyList(*L)){
-        InsertFirstList(L, P);
+        InsertFirst(L, P);
     }
     else{
         addressList P1 = FirstList(*L);
