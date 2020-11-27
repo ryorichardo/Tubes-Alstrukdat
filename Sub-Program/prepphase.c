@@ -1,10 +1,7 @@
 #include "prepphase.h"
 #include <stdio.h>
 
-long durasi = 0;
-long Sisa = 720;
-
-void Build (Stack Perintah, TabWahana ArrayWahana, POINT Posisi_Player, int Duit){
+void Build (Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit){
     printf("Mau bikin wahana apa?");
     PrintListWahana(ArrayWahana);
     STARTKATA(stdin);
@@ -17,15 +14,17 @@ void Build (Stack Perintah, TabWahana ArrayWahana, POINT Posisi_Player, int Duit
         X.Target = CKata;
         X.Biaya = New.HargaBuild;
         X.Durasi = New.DurasiBuild;
-        Push(&Perintah, X);
         durasi += New.DurasiBuild;
+        countaksi ++;
+        totalbiaya += X.Biaya;
+        Push(&Perintah, X);
     }
     else{
         printf("uang kamu ga cukup.");
     }
 }
 
-void Upgrade (Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade, POINT Player, int Duit){
+void Upgrade (Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int Duit){
     Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
     printf("Ingin upgrade apa?\n");
     printf("List:\n");
@@ -41,6 +40,8 @@ void Upgrade (Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade, POI
         X.Biaya = Up.HargaBuild;
         X.Durasi = Up.DurasiBuild;
         durasi += Up.DurasiBuild;
+        countaksi ++;
+        totalbiaya += X.Biaya;
         Push(&Perintah, X);
     }
 }
@@ -86,6 +87,8 @@ void Buy (Stack Perintah, Material * ArrayMat[3], int Duit){
         else if (found == 3){
             X.Primogem = jumlah;
         }
+        countaksi ++;
+        totalbiaya += X.Biaya;
         Push(&Perintah, X);
     }
     else{
@@ -98,9 +101,11 @@ void Undo (Stack Perintah, int Duit){
     Pop(&Perintah, &X);
     Duit += X.Biaya;
     durasi += X.Durasi;
+    countaksi --;
+    totalbiaya -= X.Biaya;
 }
 
-void Execute (Stack Perintah, Wahana Wahanaskrg[100], TabWahana DaftarWahana, TabUpgrade DaftarUpgrade, int Wood, int Fire, int Primogem, boolean isMain){
+void Execute (Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int Wood, int Fire, int Primogem, boolean isMain){
     Element X;
     Wahana New, Up;
     if (durasi <= Sisa){
@@ -122,6 +127,8 @@ void Execute (Stack Perintah, Wahana Wahanaskrg[100], TabWahana DaftarWahana, Ta
                 Primogem += X.Primogem;
             }
         }
+        countaksi = 0;
+        totalbiaya = 0;
         isMain = true;
     }
     else{
@@ -134,5 +141,7 @@ void Main(Stack Perintah, boolean isMain){
     while (!IsEmpty(Perintah)){
         Pop(&Perintah, &X);
     }
+    countaksi = 0;
+    totalbiaya = 0;
     isMain = true;
 }

@@ -66,7 +66,7 @@ JAM NextNMenit (JAM J, int N);
 JAM UpdateJam(JAM CurrentJam, JAM Durasi);
 /* Update Jam setelah wahana berjalan */
 /* *** Kelompok Operator Aritmetika *** */
-long Durasi (JAM JAw, JAM JAkh);
+long SelisihJam (JAM JAw, JAM JAkh);
 /* Mengirim JAkh-JAw dlm Detik, dengan kalkulasi */
 /* Jika JAw > JAkh, maka JAkh adalah 1 hari setelah JAw */
 

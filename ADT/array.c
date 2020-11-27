@@ -16,9 +16,128 @@ void MakeKataEmpty(Kata *Kata)
    Kata->Length = 5;
 }
 
+void MakeKataBuild(Kata *Kata)
+{
+   Kata->TabKata[0] = 'b';
+   Kata->TabKata[1] = 'u';
+   Kata->TabKata[2] = 'i';
+   Kata->TabKata[3] = 'l';
+   Kata->TabKata[4] = 'd';
+   Kata->Length = 5;
+}
+
+void MakeKataUpgrade(Kata *Kata)
+{
+   Kata->TabKata[0] = 'u';
+   Kata->TabKata[1] = 'p';
+   Kata->TabKata[2] = 'g';
+   Kata->TabKata[3] = 'r';
+   Kata->TabKata[4] = 'a';
+   Kata->TabKata[5] = 'd';
+   Kata->TabKata[6] = 'e';
+   Kata->Length = 7;
+}
+
+void MakeKataBuy(Kata *Kata)
+{
+   Kata->TabKata[0] = 'b';
+   Kata->TabKata[1] = 'u';
+   Kata->TabKata[2] = 'y';
+   Kata->Length = 3;
+}
+
+void MakeKataUndo(Kata *Kata)
+{
+   Kata->TabKata[0] = 'u';
+   Kata->TabKata[1] = 'n';
+   Kata->TabKata[2] = 'd';
+   Kata->TabKata[3] = 'o';
+   Kata->Length = 4;
+}
+
+void MakeKataExecute(Kata *Kata)
+{
+   Kata->TabKata[0] = 'e';
+   Kata->TabKata[1] = 'x';
+   Kata->TabKata[2] = 'e';
+   Kata->TabKata[3] = 'c';
+   Kata->TabKata[4] = 'u';
+   Kata->TabKata[5] = 't';
+   Kata->TabKata[6] = 'e';
+   Kata->Length = 7;
+}
+
+void MakeKataMain(Kata *Kata)
+{
+   Kata->TabKata[0] = 'm';
+   Kata->TabKata[1] = 'a';
+   Kata->TabKata[2] = 'i';
+   Kata->TabKata[3] = 'n';
+   Kata->Length = 4;
+}
+
+void MakeKataServe(Kata *Kata)
+{
+   Kata->TabKata[0] = 's';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 'r';
+   Kata->TabKata[3] = 'v';
+   Kata->TabKata[4] = 'e';
+   Kata->Length = 5;
+}
+
+void MakeKataRepair(Kata *Kata)
+{
+   Kata->TabKata[0] = 'r';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 'p';
+   Kata->TabKata[3] = 'a';
+   Kata->TabKata[4] = 'i';
+   Kata->TabKata[5] = 'r';
+   Kata->Length = 6;
+}
+
+void MakeKataDetail(Kata *Kata)
+{
+   Kata->TabKata[0] = 'd';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 't';
+   Kata->TabKata[3] = 'a';
+   Kata->TabKata[4] = 'i';
+   Kata->TabKata[5] = 'l';
+   Kata->Length = 6;
+}
+
+void MakeKataOffice(Kata *Kata)
+{
+   Kata->TabKata[0] = 'o';
+   Kata->TabKata[1] = 'f';
+   Kata->TabKata[2] = 'f';
+   Kata->TabKata[3] = 'i';
+   Kata->TabKata[4] = 'c';
+   Kata->TabKata[5] = 'e';
+   Kata->Length = 6;
+}
+
+void MakeKataPrepare(Kata *Kata)
+{
+   Kata->TabKata[0] = 'p';
+   Kata->TabKata[1] = 'r';
+   Kata->TabKata[2] = 'e';
+   Kata->TabKata[3] = 'p';
+   Kata->TabKata[4] = 'a';
+   Kata->TabKata[5] = 'r';
+   Kata->TabKata[6] = 'e';
+   Kata->Length = 7;
+}
+
 /**** KONSTRUKTOR ****/
+<<<<<<< HEAD
 void MakeTabWahanaEmpty(Wahana *ListWahana[10])
 {
+=======
+void MakeTabWahanaEmpty (Wahana *ListWahana[10]){
+>>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
    int i;
    for (i = IdxMin; i <= IdxMax; i++)
    {
@@ -38,13 +157,46 @@ void MakeTabWahanaEmpty(Wahana *ListWahana[10])
    }
 }
 
-TabAction GetAction(char namafile[])
+void InitTabAction(Kata *ListAksi[11] )
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
+/* Cara inisialisasi di main : declare Kata ListAksi[11];
+                              panggil prosedur InitTabAction(&ListAksi); */
 {
-   /* Ini salah mestinya lgsg diassign aja soalnya action tuh static dan bukan dari file*/
-   TabAction TA;
-   //BacaFileAction(namafile, &TA)
-   return TA;
+   Kata BUILD;
+   Kata UPGRADE;
+   Kata BUY;
+   Kata UNDO;
+   Kata EXECUTE;
+   Kata MAIN;
+   Kata SERVE;
+   Kata REPAIR;
+   Kata DETAIL;
+   Kata OFFICE;
+   Kata PREPARE;
+
+   MakeKataBuild(&BUILD);
+   MakeKataUpgrade(&UPGRADE);
+   MakeKataBuy(&BUY);
+   MakeKataUndo(&UNDO);
+   MakeKataExecute(&EXECUTE);
+   MakeKataMain(&MAIN);
+   MakeKataServe(&SERVE);
+   MakeKataRepair(&REPAIR);
+   MakeKataDetail(&DETAIL);
+   MakeKataOffice(&OFFICE);
+   MakeKataPrepare(&PREPARE);
+
+   *ListAksi[0] = BUILD;
+   *ListAksi[1] = UPGRADE;
+   *ListAksi[2] = BUY;
+   *ListAksi[3] = UNDO;
+   *ListAksi[4] = EXECUTE;
+   *ListAksi[5] = MAIN;
+   *ListAksi[6] = SERVE;
+   *ListAksi[7] = REPAIR;
+   *ListAksi[8] = DETAIL;
+   *ListAksi[9] = OFFICE;
+   *ListAksi[10] = PREPARE;
 }
 
 // Wahana GetTabWahana (char namafile[])
@@ -270,22 +422,32 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
+<<<<<<< HEAD
    int i = 0;
    while (!isWahanaEmpty(ListWahana[i]))
    {
       printf("%d. %s\n", i + 1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
       i++;
+=======
+   for(int i=0; i<10; i++){
+      printf("%d. %s\n", i+1, ListWahana[i].Nama); //ini nanti diganti sama print kata;
+>>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
    }
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
+<<<<<<< HEAD
    int i = 0;
    while (!isWahanaEmpty(ListWahana[i]))
    {
       if (IsKataSama(ListWahana[i].Nama, Nama))
       {
+=======
+   for(int i=0; i<10; i++){
+      if(IsKataSama(ListWahana[i].Nama, Nama)){
+>>>>>>> e49e88144924c6d024848cc4ce8e073547c6b2c3
          printf("Nama Wahana : %s\n", Nama); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
          printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);
