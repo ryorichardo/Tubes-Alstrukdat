@@ -72,7 +72,7 @@ void Office(Wahana ArrayWahana[100])
     i = 0;
 
     // masukkan
-    while (!isWahanaEmpty(*ArrayWahana[i]))
+    while (!isWahanaEmpty(ArrayWahana[i]))
     {
         printf("Nama Nama Wahana : \n ");
         printf("%s\n ", Nama(ArrayWahana[i]));
@@ -108,10 +108,10 @@ void Office(Wahana ArrayWahana[100])
     }
 }
 
-void Detail(Wahana *ArrayWahana[100], Kata NamaWahana)
+void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
 {
     int i = 0;
-    while (!isWahanaEmpty(*ArrayWahana[i]))
+    while (!isWahanaEmpty(ArrayWahana[i]))
     {
         if (Nama(ArrayWahana[i]) == String(NamaWahana))
         {
