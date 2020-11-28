@@ -1,15 +1,90 @@
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "mainphase.h"
-#include "../ADT/prioqueuechar.h"
-#include "../ADT/listlinier.h"
-#include "../ADT/tipebentukan.h"
-#include "../ADT/array.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer)
+Antrian CustomerA, CustomerB, CustomerC, CustomerD, CustomerE;
+
+Kata Wahana1, Wahana2, Wahana3;
+
+void Assign(Kata * Wahana1, Kata * Wahana2, Kata * Wahana3){
+    Wahana1->TabKata[0] = 'W';
+    Wahana1->TabKata[1] = 'a';
+    Wahana1->TabKata[2] = 'n';
+    Wahana1->TabKata[3] = 'g';
+    Wahana1->TabKata[4] = 'k';
+    Wahana1->TabKata[5] = 'y';
+    Wahana1->TabKata[6] = ' ';
+    Wahana1->TabKata[7] = 'U';
+    Wahana1->TabKata[8] = 'n';
+    Wahana1->TabKata[9] = 'i';
+    Wahana1->TabKata[10] = 'v';
+    Wahana1->TabKata[11] = 'e';
+    Wahana1->TabKata[12] = 'r';
+    Wahana1->TabKata[13] = 's';
+    Wahana1->TabKata[14] = 'e';
+
+    Wahana2->TabKata[0] = 'u';
+    Wahana2->TabKata[1] = 'W';
+    Wahana2->TabKata[2] = 'u';
+    Wahana2->TabKata[3] = 'c';
+    Wahana2->TabKata[4] = 'o';
+    Wahana2->TabKata[5] = 'a';
+    Wahana2->TabKata[6] = 's';
+    Wahana2->TabKata[7] = 't';
+    Wahana2->TabKata[8] = 'e';
+    Wahana2->TabKata[9] = 'r';
+
+    Wahana3->TabKata[0] = 'H';
+    Wahana3->TabKata[1] = 'A';
+    Wahana3->TabKata[2] = 'L';
+    Wahana3->TabKata[3] = 'O';
+    Wahana3->TabKata[4] = 'l';
+    Wahana3->TabKata[5] = 'i';
+    Wahana3->TabKata[6] = 'n';
+    Wahana3->TabKata[7] = 't';
+    Wahana3->TabKata[8] = 'a';
+    Wahana3->TabKata[9] = 'r';
+}
+
+void CustomA(Antrian CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3){
+    Assign(&Wahana1, &Wahana2, &Wahana3);
+    (CustomerA.info).Main[0] = Wahana1;
+    (CustomerA.info).Main[1] = Wahana2;
+    (CustomerA.info).Main[2] = Wahana3;
+    (CustomerA.info).Kesabaran = 5;
+}
+
+void CustomB(Antrian CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3){
+    Assign(&Wahana1, &Wahana2, &Wahana3);
+    (CustomerB.info).Main[0] = Wahana1;
+    (CustomerB.info).Main[1] = Wahana2;
+    (CustomerB.info).Kesabaran = 5;
+}
+
+void CustomC(Antrian CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3){
+    Assign(&Wahana1, &Wahana2, &Wahana3);
+    (CustomerC.info).Main[0] = Wahana2;
+    (CustomerC.info).Main[1] = Wahana3;
+    (CustomerC.info).Kesabaran = 5;
+}
+
+void CustomD(Antrian CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3){
+    Assign(&Wahana1, &Wahana2, &Wahana3);
+    (CustomerD.info).Main[0] = Wahana2;
+    (CustomerD.info).Kesabaran = 5;
+}
+
+void CustomE(Antrian CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3){
+    Assign(&Wahana1, &Wahana2, &Wahana3);
+    (CustomerE.info).Main[0] = Wahana3;
+    (CustomerE.info).Kesabaran = 5;
+}
+
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer, JAM * CurrentTime)
 {
     Wahana W;
     int i, count, j;
-    Antrian Buang, Sementara;
+    Antrian Buang;
 
     /* Search Wahana */
     W = SearchWahana(&ArrayWahana[100], NamaWahana);
@@ -45,7 +120,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
     else if (Pemain(W) == Kapasitas(W))
     {
         printf("Maaf, wahana sudah penuh.\n");
-        /* Hapus antrian wahana dari customer */
+         /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
         {
             if (IsKataSama(W.Nama, Main(*Customer, i)))
@@ -71,8 +146,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
     else
     {
         *Uang += Harga(W);
-        Pemain(W) += 1;
-        /* Hapus antrian wahana dari customer */
+         /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
         {
             if (IsKataSama(W.Nama, Main(*Customer, i)))
@@ -94,17 +168,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             Dequeue(Customer, &Buang);
         }
-        else
-        {
-            Dequeue(Customer, &Sementara);
-        }
+        NextNMenit(*CurrentTime, Durasi(W));
     }
 }
 
-void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
+void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
 {
     Wahana W;
-
+    NextNMenit(*CurrentTime, 10);
     /* Search Wahana */
     W = SearchWahana(&ArrayWahana[100], NamaWahana);
     /* Repair wahana */
@@ -113,6 +184,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 
 void Office(Wahana ArrayWahana[100])
 {
+    printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
     int i;
     Kata NamaWahana, Pilihan, EXIT;
     Kata ListAksi[16];
@@ -198,7 +270,46 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean *isMain)
+void Prepare(boolean *isMain, PrioQueueChar * Customer)
 {
+    Antrian Buang;
+    while(!IsEmpty(*Customer)){
+        Dequeue(Customer, &Buang);
+    }
     *isMain = false;
+}
+
+void RandomAntrian(int Banyak, PrioQueueChar * Customer, Antrian CustomerA, Antrian CustomerB, Antrian CustomerC, Antrian CustomerD, Antrian CustomerE){
+    int i, j, Custom[5];
+
+    Banyak = (rand() % 5) + 1;
+    for (i = 0; i < Banyak; i++){
+        j = (rand() % 5) + 1;
+        while (Custom[j-1] == 1){
+            j = (rand() % 5) + 1;
+        }
+        Custom[j-1] = 1;
+        switch (j)
+        {
+        case 1:
+            Enqueue(Customer, CustomerA);
+            break;
+
+        case 2:
+            Enqueue(Customer, CustomerB);
+            break;
+        
+        case 3:
+            Enqueue(Customer, CustomerC);
+            break;
+
+        case 4:
+            Enqueue(Customer, CustomerD);
+            break;
+        
+        case 5:
+            Enqueue(Customer, CustomerE);
+            break;
+        }
+    }
 }
