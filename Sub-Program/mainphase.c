@@ -4,7 +4,7 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, Antrian *Customer)
 {
     int i;
 
@@ -39,7 +39,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer
     }
     else
     {
-        Uang += Harga(ArrayWahana[i]);
+        *Uang += Harga(ArrayWahana[i]);
         /* Hapus antrian wahana dari customer */
 
         /* Kasus antrian wahana dari customer sudah habis */
@@ -137,7 +137,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean isMain)
+void Prepare(boolean * isMain)
 {
-    isMain = false;
+    *isMain = false;
 }

@@ -155,7 +155,7 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(isMain);
+                Prepare(&isMain);
                 day++;
             }
         }
