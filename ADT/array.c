@@ -162,6 +162,18 @@ void MakeTabWahanaEmpty(Wahana ListWahana[100])
    }
 }
 
+void MakeTabMaterialEmpty(Material ListMaterial[3])
+{
+   int i;
+   for (i = 0; i < 3; i++)
+   {
+      Kata Empty;
+      MakeKataEmpty(&Empty);
+      ListMaterial[i].Nama = Empty; //Make MARK
+      ListMaterial[i].Harga = 0;
+   }
+}
+
 void InitTabAction(Kata ListAksi[16])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[16];

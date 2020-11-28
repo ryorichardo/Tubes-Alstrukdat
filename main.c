@@ -137,6 +137,7 @@ int main()
             //office
             else if (IsKataSama(Game, ListAksi[9]))
             {
+<<<<<<< HEAD
                 // if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
                 // {
                 Office(ListOwnedWahana);
@@ -145,6 +146,16 @@ int main()
                 // {
                 // printf("Kamu sedang tidak berada di office.\n");
                 // }
+                == == == =
+                             if (Absis(Posisi) == 9 && Ordinat(Posisi) == 9 && idxmap == 0)
+                {
+                    Office(ListOwnedWahana);
+                }
+                else
+                {
+                    printf("Kamu sedang tidak berada di office.\n");
+                }
+>>>>>>> be1ae056420b1fb94e09479026e22c6c3533ab94
             }
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
@@ -229,19 +240,19 @@ int main()
         //buat gerak
         if (IsKataSama(Game, ListAksi[12]))
         {
-            W(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            W(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
         }
         else if (IsKataSama(Game, ListAksi[13]))
         {
-            A(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            A(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
         }
         else if (IsKataSama(Game, ListAksi[14]))
         {
-            S(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            S(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
         }
         else if (IsKataSama(Game, ListAksi[15]))
         {
-            D(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            D(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
         }
     }
 
