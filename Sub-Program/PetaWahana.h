@@ -6,10 +6,10 @@
 #include "../ADT/point.h"
 #include "../ADT/graph.h"
 
-void MakeMap(Graph G[4], MATRIKS M[4]);
-void W(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap);
-void A(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap);
-void S(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap);
-void D(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap);
+void MakeMap(Graph *G, MATRIKS *M);
+void W(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap);
+void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap);
+void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap);
+void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap);
 
 #endif

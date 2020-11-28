@@ -5,7 +5,7 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, PrioQueueChar *Customer)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer)
 {
     Wahana W;
     int i, count, j;
@@ -64,7 +64,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, PrioQueueChar *Cu
     }
     else
     {
-        Uang += Harga(W);
+        *Uang += Harga(W);
         Pemain(W) += 1;
          /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
@@ -103,6 +103,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 
 void Office(Wahana ArrayWahana[100])
 {
+    printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
     int i;
     Kata NamaWahana;
     char pilihan[10];
@@ -172,7 +173,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean isMain)
+void Prepare(boolean * isMain)
 {
-    isMain = false;
+    *isMain = false;
 }

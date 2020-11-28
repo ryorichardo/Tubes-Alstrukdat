@@ -9,7 +9,7 @@
 #include <string.h>
 #include "ADT/boolean.h"
 
-void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
+void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int Money)
 {
     printf("%d\n", day);
 
@@ -22,6 +22,7 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
     printf("<, ^, >, v = Gerbang\n");
     printf("\nName: ");
     PrintKata(Player);
+    printf("\nMoney: %d", Money);
     printf("\nCurrent time: ");
     TulisJAM(CurrentTime);
     printf("\n");
@@ -46,11 +47,15 @@ int main()
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    MakeTabWahanaEmpty(ListOwnedWahana);
+    MakeTabWahanaEmpty(ListOwnedWahana, 100);
+    MakeTabWahanaEmpty(ListWahana, 10);
+    MakeTabWahanaEmpty(ListUpgrade, 10);
+    MakeTabMaterialEmpty(ListMat);
     char filename5[] = "File-Eksternal/Wahana.txt";
-    BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
-    BacaFileMaterial(filename6, &ListMat[3]);
+    BacaFileMaterial(filename6, ListMat);
+    
 
     int day = 1;
 
@@ -63,18 +68,25 @@ int main()
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game\n");
     STARTKATA(stdin);
-
+    Game = CopyKata(CKata);
     boolean gameOn;
+    // Exit = ListAksi[11];
+    int j;
 
-    if (!IsKataSama(CKata, ListAksi[11]))
+    if (!IsKataSama(Game, ListAksi[11]))
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
         Player = CopyKata(CKata);
+
+        // for (j = 0; j < Player.Length - 1; j++)
+        // {
+        //     Player.TabKata[j] = Player.TabKata[j + 1];
+        // }
+        // Player.Length -= 1;
         gameOn = true;
     }
 
-    Game = CopyKata(CKata);
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
@@ -83,7 +95,7 @@ int main()
             printf("Main phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // close
             printf("Closing time: ");
@@ -96,37 +108,55 @@ int main()
             // Next Perintah
             printf("\nMasukkan Perintah\n");
             STARTKATA(stdin);
+            Game = CopyKata(CKata);
+
+            // Game.Length -= 1;
+            // PrintKata(Game);
+            // PrintKata(ListAksi[11]);
+
+            // for (j = 0; j < Player.Length - 1; j++)
+            // {
+            //     Player.TabKata[j] = Player.TabKata[j + 1];
+            // }
+            // Player.Length -= 1;
+
+            if (IsKataSama(Game, ListAksi[11]))
+            {
+                gameOn = false;
+            }
 
             //serve
-            if (IsKataSama(CKata, ListAksi[6]))
+            if (IsKataSama(Game, ListAksi[6]))
             {
             }
             //repair
-            else if (IsKataSama(CKata, ListAksi[7]))
+            else if (IsKataSama(Game, ListAksi[7]))
             {
                 Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //detail
-            else if (IsKataSama(CKata, ListAksi[8]))
+            else if (IsKataSama(Game, ListAksi[8]))
             {
                 Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
             }
             //office
-            else if (IsKataSama(CKata, ListAksi[9]))
+            else if (IsKataSama(Game, ListAksi[9]))
             {
-                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
-                {
-                    Office(ListOwnedWahana);
-                }
-                else
-                {
-                    printf("Kamu sedang tidak berada di office.\n");
-                }
+
+                // if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
+                // {
+                Office(ListOwnedWahana);
+                // }
+                // else
+                // {
+                // printf("Kamu sedang tidak berada di office.\n");
+                // }
             }
             //prepare
-            else if (IsKataSama(CKata, ListAksi[10]))
+            else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(isMain);
+                Prepare(&isMain);
+                day++;
             }
         }
         else
@@ -134,7 +164,7 @@ int main()
             printf("Preparation phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // open
             printf("Opening time: ");
@@ -144,68 +174,80 @@ int main()
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
-            printf("\n");
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
             printf("Masukkan Perintah\n");
             STARTKATA(stdin);
-            printf("sini\n");
-            PrintKata(CKata);
-            printf("sana\n");
+            // printf("sini\n");
+            // PrintKata(CKata);
+            // printf("sana\n");
             //build
-            if (IsKataSama(CKata, ListAksi[0]))
+
+            // CKata.Length -= 1;
+            // printf("%c", CKata.TabKata[0]);
+            // printf("%c", CKata.TabKata[1]);
+
+            Game = CopyKata(CKata);
+            // for (j = 0; j < Game.Length - 1; j++)
+            // {
+            //     Game.TabKata[j] = Game.TabKata[j + 1];
+            // }
+            // Game.Length -= 1;
+            // PrintKata(Game);
+            // PrintKata(ListAksi[11]);
+            if (IsKataSama(Game, ListAksi[11]))
             {
-                Build(Perintah, ListWahana, Posisi, Money);
+                gameOn = false;
+            }
+
+            if (IsKataSama(Game, ListAksi[0]))
+            {
+                Build(&Perintah, ListWahana, Posisi, &Money);
             }
             //upgrade
-            else if (IsKataSama(CKata, ListAksi[1]))
+            else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, Money);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money);
             }
             //buy
-            else if (IsKataSama(CKata, ListAksi[2]))
+            else if (IsKataSama(Game, ListAksi[2]))
             {
-                Buy(Perintah, ListMat, Money);
+                Buy(&Perintah, ListMat, &Money);
             }
             //undo
-            else if (IsKataSama(CKata, ListAksi[3]))
+            else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(Perintah, Money);
+                Undo(&Perintah, &Money);
             }
             //execute
-            else if (IsKataSama(CKata, ListAksi[4]))
+            else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain, &CurrentMap);
+                Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap);
             }
             //main
-            else if (IsKataSama(CKata, ListAksi[5]))
+            else if (IsKataSama(Game, ListAksi[5]))
             {
-                Main(Perintah, isMain, ListWahana);
+                Main(&Perintah, &isMain, ListWahana, &Money);
             }
         }
 
         //buat gerak
-        if (IsKataSama(CKata, ListAksi[12]))
+        if (IsKataSama(Game, ListAksi[12]))
         {
-            W(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[13]))
+        else if (IsKataSama(Game, ListAksi[13]))
         {
-            A(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[14]))
+        else if (IsKataSama(Game, ListAksi[14]))
         {
-            S(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+            S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
-        else if (IsKataSama(CKata, ListAksi[15]))
+        else if (IsKataSama(Game, ListAksi[15]))
         {
-            D(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
-        }
-        Game = CopyKata(CKata);
-        if (!IsKataSama(Game, ListAksi[11]))
-        {
-            gameOn = false;
+            D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
     }
 

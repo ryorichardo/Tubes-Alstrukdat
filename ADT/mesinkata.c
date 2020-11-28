@@ -93,9 +93,9 @@ void SalinKata()
 
 boolean IsKataSama(Kata Kata1, Kata Kata2)
 {
+    int i;
     if (Kata1.Length == Kata2.Length)
     {
-        int i;
         for (i = 0; i < Kata1.Length; i++)
         {
             if (Kata1.TabKata[i] != Kata2.TabKata[i])
@@ -117,17 +117,13 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         printf("Error! opening file\n");
         exit(1);
     }
-
+    STARTKATA(ptr);
     int i = 0;
     while (CC != ';')
     {
-        if (i == 0)
+        if (i > 0)
         {
-            STARTKATA(ptr);
-        }
-        else
-        {
-            SalinKata();
+           SalinKata();
         }
         ADV();
 
@@ -164,7 +160,7 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         TabWahana[i].Rusak = false;
         i++;
     }
-    i=0;
+    i = 0;
     ADV();
     while (CC != ',')
     {
@@ -191,7 +187,6 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         TabUp[i].Mat[2] = CToken;
         i++;
     }
-
 }
 
 void BacaFileMaterial(char namafile[], Material TabMat[3])
@@ -204,18 +199,17 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
         exit(1);
     }
     int i = 0;
-    while (CC != '.')
+    STARTKATA(ptr);
+    while (CC != ',')
     {
-        if (i == 0)
-        {
-            STARTKATA(ptr);
-        }
-        else
+        if (i > 0)
         {
             SalinKata();
         }
+        ADV();
         TabMat[i].Nama = CopyKata(CKata);
         SalinToken();
+        ADV();
         TabMat[i].Harga = CToken;
         i++;
     }

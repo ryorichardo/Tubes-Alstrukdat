@@ -141,10 +141,10 @@ void MakeKataExit(Kata *Kata)
 }
 
 /**** KONSTRUKTOR ****/
-void MakeTabWahanaEmpty(Wahana ListWahana[100])
+void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 {
    int i;
-   for (i = IdxMin; i <= IdxMax; i++)
+   for (i = IdxMin; i <= max; i++)
    {
       Kata Empty;
       MakeKataEmpty(&Empty);
@@ -159,6 +159,18 @@ void MakeTabWahanaEmpty(Wahana ListWahana[100])
       ListWahana[i].Mat[2] = 0;
       ListWahana[i].Deskripsi = Empty;
       ListWahana[i].Rusak = true;
+   }
+}
+
+void MakeTabMaterialEmpty(Material ListMaterial[3])
+{
+   int i;
+   for (i = 0; i < 3; i++)
+   {
+      Kata Empty;
+      MakeKataEmpty(&Empty);
+      ListMaterial[i].Nama = Empty; //Make MARK
+      ListMaterial[i].Harga = 0;
    }
 }
 
@@ -350,11 +362,11 @@ int NbElmtTabMaterial(Material ListMaterial[3])
    return (i);
 }
 
-void AddWahana(Wahana *ListWahana[10], Wahana W)
+void AddWahana(Wahana ListWahana[10], Wahana W)
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 {
-   int panjang = NbElmtTabWahana(*ListWahana);
-   *ListWahana[panjang] = W;
+   int panjang = NbElmtTabWahana(ListWahana);
+   ListWahana[panjang] = W;
 }
 
 void RefreshLaporan(TabLaporan *TL)
@@ -391,6 +403,7 @@ Wahana SearchWahana(Wahana ListWahana[10], Kata Nama)
       {
          return ListWahana[i];
       }
+      i++;
    }
    return ListWahana[i];
 }
@@ -406,6 +419,7 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi)
       {
          return ListWahana[i];
       }
+      i++;
    }
    return ListWahana[i];
 }
@@ -417,28 +431,16 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
    /* Jika tidak ada, mengirimkan IdxUndef */
    /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
    /* Skema Searching yang digunakan bebas */
-   if (NbElmtTabMaterial(ListMaterial) == 0)
+   int i = 0;
+   while (!isMaterialEmpty(ListMaterial[i]))
    {
-      return (IdxUndef);
-   }
-   else
-   {
-      int i = IdxMin;
-      boolean found = false;
-      while ((found == false) && (i < NbElmtTabMaterial(ListMaterial)))
+      if (IsKataSama(ListMaterial[i].Nama, X))
       {
-         if (IsKataSama(ListMaterial[i].Nama, X))
-         {
-            found = true;
-            return (i);
-         }
-         i++;
+         return i;
       }
-      if (found == false)
-      {
-         return (IdxUndef);
-      }
+      i++;
    }
+   return IdxUndef;
 }
 
 void PrintListWahana(Wahana ListWahana[10])
@@ -449,8 +451,8 @@ void PrintListWahana(Wahana ListWahana[10])
    {
       printf("%d. ", i + 1); //ini nanti diganti sama print kata;
       PrintKata(ListWahana[i].Nama),printf("\n");
+      i++;
    }
-   i++;
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
