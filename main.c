@@ -49,11 +49,10 @@ int main()
     MakeTabWahanaEmpty(ListOwnedWahana, 100);
     MakeTabWahanaEmpty(ListWahana, 10);
     MakeTabWahanaEmpty(ListUpgrade, 10);
-    MakeTabMaterialEmpty(ListMat);
     char filename5[] = "File-Eksternal/Wahana.txt";
-    BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
-    BacaFileMaterial(filename6, &ListMat[3]);
+    BacaFileMaterial(filename6, ListMat);
     PrintListWahana(ListWahana);
     PrintListWahana(ListUpgrade);
     

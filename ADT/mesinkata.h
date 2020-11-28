@@ -49,7 +49,7 @@ boolean IsKataSama(Kata Kata1, Kata Kata2);
 
 void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10]);
 
-void BacaFileMaterial(char namafile[], Material TabMet[3]);
+void BacaFileMaterial(char namafile[], Material TabMat[3]);
 
 Kata CopyKata(Kata K);
 
