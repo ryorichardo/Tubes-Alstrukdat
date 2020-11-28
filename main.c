@@ -228,19 +228,19 @@ int main()
         //buat gerak
         if (IsKataSama(Game, ListAksi[12]))
         {
-            W(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[13]))
         {
-            A(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[14]))
         {
-            S(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[15]))
         {
-            D(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
     }
 
