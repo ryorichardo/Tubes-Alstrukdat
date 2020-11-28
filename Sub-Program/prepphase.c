@@ -134,7 +134,6 @@ void Undo(Stack * Perintah, int * Duit)
     Element X;
     Pop(Perintah, &X);
     *Duit += X.Biaya;
-    printf("AAA%dAAA\n", X.Biaya);
     durasi += X.Durasi;
     countaksi--;
     totalbiaya -= X.Biaya;
@@ -188,7 +187,7 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
     }
 }
 
-void Main(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit)
+void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit)
 {
     Element X;
     while (!IsEmptyStack(*Perintah))

@@ -25,5 +25,5 @@ void Undo(Stack * Perintah, int * Duit);
 
 void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int * Wood, int * Fire, int * Primogem, boolean * isMain, MATRIKS *Peta);
 
-void Main(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit);
+void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit);
 #endif

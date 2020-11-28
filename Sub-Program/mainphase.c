@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "mainphase.h"
-#include "prioqueuechar.h"
+#include "../ADT/prioqueuechar.h"
 #include "../ADT/listlinier.h"
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
@@ -22,14 +22,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         for (i = 0; i < 5; i++)
         {
             if (IsKataSama(W.Nama, Main(*Customer, i))){
-                Main(*Customer, i) = '\0';
+                Main(*Customer, i).TabKata[0] = '\0';
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j) != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0'){
                 count += 1;
             }
         }
@@ -46,14 +46,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         for (i = 0; i < 5; i++)
         {
             if (IsKataSama(W.Nama, Main(*Customer, i))){
-                Main(*Customer, i) = '\0';
+                Main(*Customer, i).TabKata[0] = '\0';
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j) != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0'){
                 count += 1;
             }
         }
@@ -70,14 +70,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         for (i = 0; i < 5; i++)
         {
             if (IsKataSama(W.Nama, Main(*Customer, i))){
-                Main(*Customer, i) = '\0';
+                Main(*Customer, i).TabKata[0] = '\0';
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j) != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0'){
                 count += 1;
             }
         }

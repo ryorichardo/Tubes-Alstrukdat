@@ -228,7 +228,7 @@ int main()
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
-                Main(&Perintah, &isMain, ListWahana, &Money);
+                Mainphase(&Perintah, &isMain, ListWahana, &Money);
             }
         }
 

@@ -4,13 +4,6 @@
 #include "jam.h"
 #include "point.h"
 #include "boolean.h"
-#include "prioqueuechar.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "boolean.h"
-#include "mesinkar.h"
-#include "mesintoken.h"
 
 #define NMax 50
 #define BLANK ' '

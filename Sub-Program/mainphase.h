@@ -5,6 +5,7 @@
 #include "../ADT/array.h"
 #include "../ADT/point.h"
 #include "../ADT/mesinkata.h"
+#include "../ADT/prioqueuechar.h"
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer);
 

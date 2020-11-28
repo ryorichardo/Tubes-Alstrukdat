@@ -11,9 +11,6 @@
 #include "mesintoken.h"
 #include "tipebentukan.h"
 
-#define NMax 50
-#define BLANK ' '
-
 /* State Mesin Kata */
 extern boolean EndKata;
 extern Kata CKata;
