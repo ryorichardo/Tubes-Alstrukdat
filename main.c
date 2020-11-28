@@ -43,6 +43,10 @@ int main()
     MATRIKS ListMap[4];
     Graph RelationMap[4];
     Stack Perintah;
+    PrioQueueChar Customer;
+    extern Antrian CustomerA, CustomerB, CustomerC, CustomerD, CustomerE;
+    extern Kata Wahana1, Wahana2, Wahana3;
+
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
@@ -90,6 +94,12 @@ int main()
     {
         if (isMain == true)
         {
+            Assign(&Wahana1, &Wahana2, &Wahana3);
+            CustomA(CustomerA, Wahana1, Wahana2, Wahana3);
+            CustomB(CustomerB, Wahana1, Wahana2, Wahana3);
+            CustomC(CustomerC, Wahana1, Wahana2, Wahana3);
+            CustomD(CustomerD, Wahana1, Wahana2, Wahana3);
+            CustomE(CustomerE, Wahana1, Wahana2, Wahana3);
             printf("Main phase day ");
 
             // print Map dan Perintah
@@ -126,11 +136,12 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
             {
-                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
+                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &CurrentTime);
             }
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
@@ -154,7 +165,7 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(&isMain);
+                Prepare(&isMain, &Customer);
                 day++;
             }
 
