@@ -35,7 +35,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    POINT Posisi = MakePOINT(1, 1);
+    POINT Posisi = MakePOINT(2, 2);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
     JAM Close = MakeJAM(21, 0);
@@ -151,13 +151,8 @@ int main()
             //office
             else if (IsKataSama(Game, ListAksi[9]))
             {
-<<<<<<< HEAD
-                printf("masuk di office.\n");
-                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
-=======
 
                 if (Absis(Posisi) == 9 && Ordinat(Posisi) == 9 && idxmap == 0)
->>>>>>> 46ea3f7b53b503e05a4f7b8fe13781f7d657f4f8
                 {
                     // PrintKata(ListOwnedWahana->Nama);
                     Office(ListOwnedWahana);
