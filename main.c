@@ -35,7 +35,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000, idxmap = 0;
+    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
     POINT Posisi = MakePOINT(1, 1);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -171,6 +171,10 @@ int main()
             TulisJAM(Open);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Open)));
+            printf("\nList Material yang dimiliki:\n");
+            printf("-Wood: %d", Wood);
+            printf("-Fire: %d", Fire);
+            printf("-Primogem: %d", Primogem);
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
