@@ -2,6 +2,7 @@
 #include "mainphase.h"
 #include "../ADT/listlinier.h"
 #include "../ADT/tipebentukan.h"
+#include "../ADT/array.h"
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
 {
@@ -70,6 +71,7 @@ void Office(Wahana ArrayWahana[100])
     Kata NamaWahana;
     char pilihan[10];
     i = 0;
+    TabLaporan TLap;
 
     // masukkan
     while (!isWahanaEmpty(ArrayWahana[i]))
@@ -98,6 +100,13 @@ void Office(Wahana ArrayWahana[100])
 
         else
         {
+            // buat tab laporan
+            TLap = MakeTabLaporan(&ArrayWahana[100]);
+
+            // buat laporan yang ping dilihat
+            printf("pingin melihat Laporan wahana dengan nama apa ? \n ");
+            STARTKATA(stdin);
+            PrintLaporanWahana(TLap, CKata);
         }
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
