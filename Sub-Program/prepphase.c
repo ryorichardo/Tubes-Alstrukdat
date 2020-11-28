@@ -140,7 +140,7 @@ void Buy(Stack *Perintah, Material ArrayMat[3], int *Duit)
             X.Fire = jumlah;
             X.Primogem = 0;
         }
-        else if (found == 3)
+        else if (found == 2)
         {
             X.Wood = 0;
             X.Fire = 0;
