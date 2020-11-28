@@ -8,7 +8,7 @@ long Sisa=720;
 
 void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit)
 {
-    printf("Mau bikin wahana apa?");
+    printf("Mau bikin wahana apa?\n");
     PrintListWahana(ArrayWahana);
     STARTKATA(stdin);
     Wahana New = SearchWahana(ArrayWahana, CKata);
@@ -35,25 +35,33 @@ void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit
 void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int Duit)
 {
     Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
-    printf("Ingin upgrade apa?\n");
-    printf("List:\n");
-    PrintListWahana(DaftarUpgrade);
-    STARTKATA(stdin);
-    Wahana Up = SearchWahana(DaftarUpgrade, CKata);
-    if (Duit >= Up.HargaBuild)
-    {
-        Duit -= Up.HargaBuild;
-        Element X;
-        X.perintah = 'U';
-        X.Point = Player;
-        X.Target = CKata;
-        X.Biaya = Up.HargaBuild;
-        X.Durasi = Up.DurasiBuild;
-        durasi += Up.DurasiBuild;
-        countaksi++;
-        totalbiaya += X.Biaya;
-        Push(&Perintah, X);
+    Kata empty;
+    MakeKataEmpty(&empty);
+    if (IsKataSama(New.Nama, empty)){
+        printf("Ingin upgrade apa?\n");
+        printf("List:\n");
+        PrintListWahana(DaftarUpgrade);
+        STARTKATA(stdin);
+        Wahana Up = SearchWahana(DaftarUpgrade, CKata);
+        if (Duit >= Up.HargaBuild)
+        {
+            Duit -= Up.HargaBuild;
+            Element X;
+            X.perintah = 'U';
+            X.Point = Player;
+            X.Target = CKata;
+            X.Biaya = Up.HargaBuild;
+            X.Durasi = Up.DurasiBuild;
+            durasi += Up.DurasiBuild;
+            countaksi++;
+            totalbiaya += X.Biaya;
+            Push(&Perintah, X);
+        }
     }
+    else{
+        printf("tidak ada wahana di sektiar kamu\n");
+    }
+    
 }
 
 void Buy(Stack Perintah, Material ArrayMat[3], int Duit)

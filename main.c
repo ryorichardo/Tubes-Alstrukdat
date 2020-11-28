@@ -47,6 +47,9 @@ int main()
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
     MakeTabWahanaEmpty(ListOwnedWahana);
+    MakeTabWahanaEmpty(ListWahana);
+    MakeTabWahanaEmpty(ListUpgrade);
+    MakeTabMaterialEmpty(ListMat);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
     char filename6[] = "File-Eksternal/Material.txt";
@@ -168,7 +171,6 @@ int main()
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
-            printf("\n");
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
