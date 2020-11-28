@@ -76,7 +76,7 @@ void MakeKataPrepare(Kata *Kata);
 
 void MakeKataExit(Kata *Kata);
 
-void MakeTabWahanaEmpty (Wahana ListWahana[10]);
+void MakeTabWahanaEmpty (Wahana ListWahana[100]);
 
 void InitTabAction(Kata ListAksi[16]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */

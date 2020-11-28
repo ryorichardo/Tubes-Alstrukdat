@@ -30,6 +30,7 @@ void W(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
   //map itu index map
 
   //Cek Jalan atau Gedung atau Tembok
+  Elmt(M, Absis(*P), Ordinat(*P)) = '-';
   if (Elmt(M, Absis(*P), Ordinat(*P) - 1) == '-')
   {
     Ordinat(*P) = Ordinat(*P) - 1;
@@ -47,13 +48,14 @@ void W(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
-    return;
   }
+  Elmt(M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
 void A(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
+  Elmt(M, Absis(*P), Ordinat(*P)) = '-';
   if (Elmt(M, Absis(*P) - 1, Ordinat(*P)) == '-')
   {
     Absis(*P) = Absis(*P) - 1;
@@ -71,13 +73,14 @@ void A(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
-    return;
   }
+  Elmt(M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
 void S(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
+  Elmt(M, Absis(*P), Ordinat(*P)) = '-';
   if (Elmt(M, Absis(*P), Ordinat(*P) + 1) == '-')
   {
     Ordinat(*P) = Ordinat(*P) + 1;
@@ -95,13 +98,17 @@ void S(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
-    return;
   }
+  Elmt(M, Absis(*P), Ordinat(*P)) = 'P';
 }
 void D(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Elmt(M, Absis(*P) + 1, Ordinat(*P)) == '-')
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+    
+  }
+  Elmt(M, Absis(*P), Ordinat(*P)) = '-';
+  if (Elmt(M, Absis(*P) + 1, Ordinat(*P)) == '-' || Elmt(M, Absis(*P) + 1, Ordinat(*P)) == 'O')
   {
     Absis(*P) = Absis(*P) + 1;
   }
@@ -118,6 +125,6 @@ void D(Graph G[4], POINT *P, MATRIKS M, MATRIKS MK[4], int idxmap)
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
-    return;
   }
+  Elmt(M, Absis(*P), Ordinat(*P)) = 'P';
 }

@@ -117,7 +117,6 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         printf("Error! opening file\n");
         exit(1);
     }
-    printf("1\n");
 
     int i = 0;
     while (CC != ';')
@@ -167,7 +166,7 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
     }
     i=0;
     ADV();
-    while (CC != '.')
+    while (CC != ',')
     {
         SalinKata();
         ADV();
