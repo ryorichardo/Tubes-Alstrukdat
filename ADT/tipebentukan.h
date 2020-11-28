@@ -4,13 +4,6 @@
 #include "jam.h"
 #include "point.h"
 #include "boolean.h"
-#include "prioqueuechar.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "boolean.h"
-#include "mesinkar.h"
-#include "mesintoken.h"
 
 #define NMax 50
 #define BLANK ' '
@@ -38,31 +31,6 @@ typedef struct
     POINT Point; // buat lokasi wahana
     boolean Rusak;
 } Wahana; //upgrade samain aja adtnya
-
-typedef struct tElmtDaftar *addressBentukan;
-typedef struct tElmtDaftar
-{
-    Kata info;
-    addressBentukan next;
-} ElmtDaftar;
-typedef struct
-{
-    addressBentukan First;
-} Daftar;
-
-typedef struct
-{
-    Daftar Main; //nama wahana yang ingin dikunjungi
-    int Kesabaran;
-} Pengunjung;
-
-typedef struct
-{
-    Pengunjung *Q;
-    addressBentukan HEAD;
-    addressBentukan TAIL;
-    int MaxAntrian;
-} Antrian;
 
 /*
 di file Wahana.txt ada:

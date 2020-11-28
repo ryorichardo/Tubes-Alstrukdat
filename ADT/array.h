@@ -76,7 +76,7 @@ void MakeKataPrepare(Kata *Kata);
 
 void MakeKataExit(Kata *Kata);
 
-void MakeTabWahanaEmpty (Wahana ListWahana[100]);
+void MakeTabWahanaEmpty (Wahana ListWahana[], int max);
 
 void MakeTabMaterialEmpty(Material ListMaterial[3]);
 
@@ -119,7 +119,7 @@ int NbElmtTabMaterial (Material ListMaterial[3]);
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
 
-void AddWahana(Wahana *ListWahana[10], Wahana W);
+void AddWahana(Wahana ListWahana[10], Wahana W);
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
 void RefreshLaporan(TabLaporan *TL);

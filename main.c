@@ -9,7 +9,7 @@
 #include <string.h>
 #include "ADT/boolean.h"
 
-void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
+void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int Money)
 {
     printf("%d\n", day);
 
@@ -22,6 +22,7 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
     printf("<, ^, >, v = Gerbang\n");
     printf("\nName: ");
     PrintKata(Player);
+    printf("\nMoney: %d", Money);
     printf("\nCurrent time: ");
     TulisJAM(CurrentTime);
     printf("\n");
@@ -34,7 +35,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000, idxmap = 0;
+    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
     POINT Posisi = MakePOINT(1, 1);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -46,11 +47,15 @@ int main()
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    MakeTabWahanaEmpty(ListOwnedWahana);
+    MakeTabWahanaEmpty(ListOwnedWahana, 100);
+    MakeTabWahanaEmpty(ListWahana, 10);
+    MakeTabWahanaEmpty(ListUpgrade, 10);
+    MakeTabMaterialEmpty(ListMat);
     char filename5[] = "File-Eksternal/Wahana.txt";
-    BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
+    BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
-    BacaFileMaterial(filename6, &ListMat[3]);
+    BacaFileMaterial(filename6, ListMat);
+    
 
     int day = 1;
 
@@ -90,7 +95,7 @@ int main()
             printf("Main phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // close
             printf("Closing time: ");
@@ -150,7 +155,8 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(isMain);
+                Prepare(&isMain);
+                day++;
             }
         }
         else
@@ -158,17 +164,20 @@ int main()
             printf("Preparation phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // open
             printf("Opening time: ");
             TulisJAM(Open);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Open)));
+            printf("\nList Material yang dimiliki:\n");
+            printf("-Wood: %d\n", Wood);
+            printf("-Fire: %d\n", Fire);
+            printf("-Primogem: %d", Primogem);
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
-            printf("\n");
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
@@ -198,51 +207,51 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(Perintah, ListWahana, Posisi, Money);
+                Build(&Perintah, ListWahana, Posisi, &Money);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, Money);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
             {
-                Buy(Perintah, ListMat, Money);
+                Buy(&Perintah, ListMat, &Money);
             }
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(Perintah, Money);
+                Undo(&Perintah, &Money);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(Perintah, ListOwnedWahana, ListWahana, ListUpgrade, Wood, Fire, Primogem, isMain, &CurrentMap);
+                Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
-                Main(Perintah, isMain, ListWahana);
+                Mainphase(&Perintah, &isMain, ListWahana, &Money);
             }
         }
 
         //buat gerak
         if (IsKataSama(Game, ListAksi[12]))
         {
-            W(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[13]))
         {
-            A(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[14]))
         {
-            S(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
         else if (IsKataSama(Game, ListAksi[15]))
         {
-            D(RelationMap, &Posisi, &CurrentMap, ListMap, idxmap);
+            D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
         }
     }
 

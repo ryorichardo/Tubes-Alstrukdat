@@ -5,8 +5,9 @@
 #include "../ADT/array.h"
 #include "../ADT/point.h"
 #include "../ADT/mesinkata.h"
+#include "../ADT/prioqueuechar.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian Pengunjung[5]);
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer);
 
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana);
 
@@ -14,6 +15,6 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana);
 // Program
 void Office(Wahana ArrayWahana[100]);
 
-void Prepare(boolean isMain);
+void Prepare(boolean * isMain);
 
 #endif

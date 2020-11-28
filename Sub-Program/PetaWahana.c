@@ -4,16 +4,20 @@
 #include "../ADT/graph.h"
 #include "PetaWahana.h"
 
-void MakeMap(Graph G[4], MATRIKS M[4])
+void MakeMap(Graph *G, MATRIKS *M)
 {
   char filename[] = "File-Eksternal/map1.txt";
-  BacaMATRIKS(&G[0], &M[0], 12, 12, filename);
+  BacaMATRIKS(G, M, 12, 12, filename);
+  G++;M++;
   char filename2[] = "File-Eksternal/map2.txt";
-  BacaMATRIKS(&G[1], &M[1], 12, 12, filename2);
+  BacaMATRIKS(G, M, 12, 12, filename2);
+  G++;M++;
   char filename3[] = "File-Eksternal/map3.txt";
-  BacaMATRIKS(&G[2], &M[2], 12, 12, filename3);
+  BacaMATRIKS(G, M, 12, 12, filename3);
+  G++;M++;
   char filename4[] = "File-Eksternal/map4.txt";
-  BacaMATRIKS(&G[3], &M[3], 12, 12, filename4);
+  BacaMATRIKS(G, M, 12, 12, filename4);
+  G++;M++;
   // posisi Map:
   // 0 1
   // 2 3
@@ -23,33 +27,36 @@ void MakeMap(Graph G[4], MATRIKS M[4])
   // Kalo 'v' +2
 }
 
-void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
+void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 {
   //MK itu arrray of matriks (isi map 1 sampe 4)
   //G itu list graph dri masing2 map
   //map itu index map
 
-  //Cek Jalan atau Gedung atau Tembok
-  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+  //Cek Posisi sebelum pindah
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && *idxmap == 0){
     Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
     Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
-
-  if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
+  // Cek posisi setelah pindah
+  if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '-'|| Elmt(*M, Absis(*P), Ordinat(*P) - 1) == 'O')
   {
     Ordinat(*P) = Ordinat(*P) - 1;
   }
 
-  else if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '^')
+  else if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '<')
   {
-    CopyMATRIKS(*M, &MK[idxmap]);
-    idxmap -= 2;
-    *M = MK[idxmap];
-    adrNode T = SearchOrdinat(G[idxmap], 11);
-    Ordinat(Id(T))--;
-    *P = Id(T);
+    printf("%d\n", MK);
+
+    CopyMATRIKS(*M, MK+*idxmap);
+    *idxmap -= 1;
+    CopyMATRIKS(*(MK+*idxmap), M);
+
+    adrNode T = SearchOrdinat(G[*idxmap], 11);
+    Absis(*P) = Absis(Id(T));
+    Ordinat(*P) = Ordinat(Id(T))-1;
   }
 
   else
@@ -59,28 +66,31 @@ void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
   Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
-void W(Graph G[4], POINT *P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
+void W(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 {
-  //Cek Jalan atau Gedung atau Tembok
-  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+  //Cek Posisi sebelum pindah
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && *idxmap == 0){
     Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
     Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
-  if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
+  //Cek Posisi setelah pindah
+  if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '-'|| Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == 'O')
   {
     Absis(*P) = Absis(*P) - 1;
   }
 
-  else if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '<')
+  else if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '^')
   {
-    CopyMATRIKS(*M, &MK[idxmap]);
-    idxmap -= 1;
-    *M = MK[idxmap];
-    adrNode T = SearchAbsis(G[idxmap], 11);
-    Absis(Id(T))--;
-    *P = Id(T);
+    printf("%d\n", MK);
+
+    CopyMATRIKS(*M, MK+*idxmap);
+    *idxmap -= 2;
+    CopyMATRIKS(*(MK+*idxmap), M);
+    adrNode T = SearchAbsis(G[*idxmap], 11);
+    Absis(*P) = Absis(Id(T))-1;
+    Ordinat(*P) = Ordinat(Id(T));
   }
 
   else
@@ -90,28 +100,31 @@ void W(Graph G[4], POINT *P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
   Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
-void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
+void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && *idxmap == 0){
     Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
     Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
-  if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
+
+  if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == '-'|| Elmt(*M, Absis(*P), Ordinat(*P)+1) == 'O')
   {
     Ordinat(*P) = Ordinat(*P) + 1;
   }
 
-  else if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == 'v')
+  else if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == '>')
   {
-    CopyMATRIKS(*M, &MK[idxmap]);
-    idxmap += 2;
-    *M = MK[idxmap];
-    adrNode T = SearchOrdinat(G[idxmap], 0);
-    Ordinat(Id(T))++;
-    *P = Id(T);
+    CopyMATRIKS(*M, MK+*idxmap);
+    *idxmap += 1;
+    CopyMATRIKS(*(MK+*idxmap), M);
+
+    adrNode T = SearchOrdinat(G[*idxmap], 0);
+
+    Absis(*P) = Absis(Id(T));
+    Ordinat(*P) = Ordinat(Id(T))+1;
   }
 
   else
@@ -120,7 +133,7 @@ void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
   }
   Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
-void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
+void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
   if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
@@ -134,14 +147,15 @@ void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
   {
     Absis(*P) = Absis(*P) + 1;
   }
-  else if (Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == '>')
+  else if (Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'v')
   {
-    CopyMATRIKS(*M, &MK[idxmap]);
-    idxmap += 1;
-    *M = MK[idxmap];
-    adrNode T = SearchAbsis(G[idxmap], 0);
-    Absis(Id(T))++;
-    *P = Id(T);
+    printf("%d\n", MK);
+    CopyMATRIKS(*M, MK+*idxmap);
+    *idxmap += 2;
+    CopyMATRIKS(*(MK+*idxmap), M);
+    adrNode T = SearchAbsis(G[*idxmap], 0);
+    Absis(*P) = Absis(Id(T))+1;
+    Ordinat(*P) = Ordinat(Id(T));
   }
 
   else

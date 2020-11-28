@@ -14,16 +14,16 @@ extern long countaksi;
 extern long totalbiaya;
 extern long Sisa;
 
-void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit);
+void Build(Stack * Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int * Duit);
 // Program
 
-void Upgrade(Stack Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int Duit);
+void Upgrade(Stack * Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int * Duit);
 
-void Buy(Stack Perintah, Material ArrayMat[3], int Duit);
+void Buy(Stack * Perintah, Material ArrayMat[3], int * Duit);
 
-void Undo(Stack Perintah, int Duit);
+void Undo(Stack * Perintah, int * Duit);
 
-void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[100], Wahana DaftarUpgrade[100], int Wood, int Fire, int Primogem, boolean isMain, MATRIKS *Peta);
+void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int * Wood, int * Fire, int * Primogem, boolean * isMain, MATRIKS *Peta, POINT * Posisi);
 
-void Main(Stack Perintah, boolean isMain, Wahana ArrayWahana[10]);
+void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit);
 #endif
