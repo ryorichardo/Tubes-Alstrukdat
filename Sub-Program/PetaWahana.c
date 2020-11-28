@@ -136,7 +136,7 @@ void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && *idxmap == 0){
     Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
