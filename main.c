@@ -141,7 +141,7 @@ int main()
             else if (IsKataSama(Game, ListAksi[9]))
             {
 
-                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
+                if (Absis(Posisi) == 9 && Ordinat(Posisi) == 9 && idxmap == 0)
                 {
                     // PrintKata(ListOwnedWahana->Nama);
                     Office(ListOwnedWahana);
