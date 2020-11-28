@@ -85,7 +85,7 @@ int main()
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
-        if (isMain == true)
+        if (isMain == false)
         {
             printf("Main phase day ");
 
@@ -144,7 +144,7 @@ int main()
                 // }
                 // else
                 // {
-                // printf("Kamu sedang tidak berada di office.\n");
+                //     printf("Kamu sedang tidak berada di office.\n");
                 // }
             }
             //prepare
