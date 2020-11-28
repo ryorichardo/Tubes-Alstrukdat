@@ -9,7 +9,7 @@
 #include <string.h>
 #include "ADT/boolean.h"
 
-void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
+void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int Money)
 {
     printf("%d\n", day);
 
@@ -22,6 +22,7 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
     printf("<, ^, >, v = Gerbang\n");
     printf("\nName: ");
     PrintKata(Player);
+    printf("\nMoney: %d", Money);
     printf("\nCurrent time: ");
     TulisJAM(CurrentTime);
     printf("\n");
@@ -96,7 +97,7 @@ int main()
             printf("Main phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // close
             printf("Closing time: ");
@@ -164,7 +165,7 @@ int main()
             printf("Preparation phase day ");
 
             // print Map dan Perintah
-            printLegend(CurrentMap, day, Player, CurrentTime);
+            printLegend(CurrentMap, day, Player, CurrentTime, Money);
 
             // open
             printf("Opening time: ");

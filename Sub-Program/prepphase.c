@@ -85,7 +85,8 @@ void Buy(Stack Perintah, Material ArrayMat[3], int Duit)
             {
                 found = i;
                 printf("Masukkan jumlahnya:\n");
-                scanf("%d", &jumlah);
+                STARTTOKEN(stdin);
+                jumlah = CToken;
             }
         }
         if (jumlah == 0)
