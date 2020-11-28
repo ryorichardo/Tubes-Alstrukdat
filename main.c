@@ -35,7 +35,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    POINT Posisi = MakePOINT(1, 1);
+    POINT Posisi = MakePOINT(2, 2);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
     JAM Close = MakeJAM(21, 0);
