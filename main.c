@@ -33,7 +33,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000, idxmap = 0, day = 1;
+    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000, idxmap = 0;
     POINT Posisi = MakePOINT(1, 1);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -41,7 +41,7 @@ int main()
     MATRIKS CurrentMap;
     MATRIKS ListMap[4];
     Graph RelationMap[4];
-    boolean isMain = false;
+
     Stack Perintah;
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
@@ -52,6 +52,8 @@ int main()
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
 
+    int day = 1;
+
     //bikin array action
     Kata ListAksi[16];
     InitTabAction(ListAksi);
@@ -61,15 +63,18 @@ int main()
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game\n");
     STARTKATA(stdin);
+
     if (!IsKataSama(CKata, ListAksi[11]))
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
         Player = CopyKata(CKata);
     }
+
+    boolean isMain = false;
     while (!IsKataSama(CKata, ListAksi[11]))
     {
-        if (isMain)
+        if (isMain == true)
         {
             printf("Main phase day ");
 
@@ -81,6 +86,7 @@ int main()
             TulisJAM(Close);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
+            printf("\n");
             printf("Antrian: ");
 
             // Next Perintah
@@ -134,12 +140,15 @@ int main()
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
             TulisJAM(MenitToJAM(durasi));
+            printf("\n");
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
             printf("Masukkan Perintah\n");
             STARTKATA(stdin);
-
+            printf("sini\n");
+            PrintKata(CKata);
+            printf("sana\n");
             //build
             if (IsKataSama(CKata, ListAksi[0]))
             {
