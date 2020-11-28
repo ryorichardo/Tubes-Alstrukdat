@@ -54,7 +54,6 @@ int main()
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    
 
     int day = 1;
     int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
@@ -148,7 +147,7 @@ int main()
                 // }
                 // else
                 // {
-                // printf("Kamu sedang tidak berada di office.\n");
+                //     printf("Kamu sedang tidak berada di office.\n");
                 // }
             }
             //prepare
