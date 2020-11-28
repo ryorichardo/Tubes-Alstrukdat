@@ -46,6 +46,7 @@ int main()
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
+    MakeTabWahanaEmpty(&ListWahana);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
     printf("Baca File Wahana lewat\n");

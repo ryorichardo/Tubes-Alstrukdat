@@ -444,17 +444,20 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-   for (int i = 0; i < 10; i++)
+   int i=0;
+   while(!isWahanaEmpty(ListWahana[i]))
    {
       printf("%d. ", i + 1); //ini nanti diganti sama print kata;
       PrintKata(ListWahana[i].Nama),printf("\n");
    }
+   i++;
 }
 
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-   for (int i = 0; i < 10; i++)
+   int i =0;
+   while(!isWahanaEmpty(ListWahana[i]))
    {
       if (IsKataSama(ListWahana[i].Nama, Nama))
       {

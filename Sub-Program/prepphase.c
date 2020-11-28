@@ -156,6 +156,14 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
                 Primogem += X.Primogem;
             }
         }
+        int i=0;
+        while(!isWahanaEmpty(Wahanaskrg[i])){
+            int r = rand()%5;
+            if(r==0){
+                Wahanaskrg[i].Rusak = true;
+            }
+            i++;
+        }
         countaksi = 0;
         totalbiaya = 0;
         durasi = 0;
@@ -167,12 +175,20 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
     }
 }
 
-void Main(Stack Perintah, boolean isMain)
+void Main(Stack Perintah, boolean isMain, Wahana ArrayWahana[10])
 {
     Element X;
     while (!IsEmptyStack(Perintah))
     {
         Pop(&Perintah, &X);
+    }
+    int i=0;
+    while(!isWahanaEmpty(ArrayWahana[i])){
+        int r = rand()%5;
+        if(r==0){
+            ArrayWahana[i].Rusak = true;
+        }
+        i++;
     }
     countaksi = 0;
     totalbiaya = 0;
