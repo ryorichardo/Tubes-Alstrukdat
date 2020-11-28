@@ -34,6 +34,8 @@ void ADV()
 
     /* Algoritma */
     retval = fscanf(pita, "%c", &CC);
+    if (CC == '\n')
+        fscanf(pita, "%c", &CC);
     EOP = (CC == ',');
     if (EOP)
     {
