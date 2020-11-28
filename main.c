@@ -143,6 +143,7 @@ int main()
 
                 // if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
                 // {
+                // PrintKata(ListOwnedWahana->Nama);
                 Office(ListOwnedWahana);
                 // }
                 // else
@@ -227,6 +228,7 @@ int main()
             {
                 Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
                 CurrentTime = MakeJAM(9, 0);
+                // PrintKata(ListOwnedWahana->Nama);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))

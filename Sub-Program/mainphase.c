@@ -5,7 +5,7 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer)
 {
     Wahana W;
     int i, count, j;
@@ -21,7 +21,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
         {
-            if (IsKataSama(W.Nama, Main(*Customer, i))){
+            if (IsKataSama(W.Nama, Main(*Customer, i)))
+            {
                 Main(*Customer, i).TabKata[0] = '\0';
             }
         }
@@ -29,12 +30,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0')
+            {
                 count += 1;
             }
         }
         /* Customer dihapus dari antrian (keluar dari antrian) */
-        if (count == 0){
+        if (count == 0)
+        {
             Dequeue(Customer, &Buang);
         }
     }
@@ -42,10 +45,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
     else if (Pemain(W) == Kapasitas(W))
     {
         printf("Maaf, wahana sudah penuh.\n");
-         /* Hapus antrian wahana dari customer */
+        /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
         {
-            if (IsKataSama(W.Nama, Main(*Customer, i))){
+            if (IsKataSama(W.Nama, Main(*Customer, i)))
+            {
                 Main(*Customer, i).TabKata[0] = '\0';
             }
         }
@@ -53,12 +57,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0')
+            {
                 count += 1;
             }
         }
         /* Customer dihapus dari antrian (keluar dari antrian) */
-        if (count == 0){
+        if (count == 0)
+        {
             Dequeue(Customer, &Buang);
         }
     }
@@ -66,10 +72,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
     {
         *Uang += Harga(W);
         Pemain(W) += 1;
-         /* Hapus antrian wahana dari customer */
+        /* Hapus antrian wahana dari customer */
         for (i = 0; i < 5; i++)
         {
-            if (IsKataSama(W.Nama, Main(*Customer, i))){
+            if (IsKataSama(W.Nama, Main(*Customer, i)))
+            {
                 Main(*Customer, i).TabKata[0] = '\0';
             }
         }
@@ -77,15 +84,18 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0'){
+            if (Main(*Customer, j).TabKata[0] != '\0')
+            {
                 count += 1;
             }
         }
         /* Customer dihapus dari antrian (keluar dari antrian) */
-        if (count == 0){
+        if (count == 0)
+        {
             Dequeue(Customer, &Buang);
         }
-        else {
+        else
+        {
             Dequeue(Customer, &Sementara);
         }
     }
@@ -113,7 +123,9 @@ void Office(Wahana ArrayWahana[100])
     while (!isWahanaEmpty(ArrayWahana[i]))
     {
         printf("Nama Wahana : \n ");
-        printf("%s\n ", Nama(ArrayWahana[i]));
+        // printf("%s\n ", Nama(ArrayWahana[i]));
+        PrintKata(ArrayWahana[i].Nama);
+        printf("\n");
         i++;
     }
 
@@ -173,7 +185,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean * isMain)
+void Prepare(boolean *isMain)
 {
     *isMain = false;
 }

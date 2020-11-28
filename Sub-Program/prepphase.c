@@ -1,12 +1,12 @@
 #include "prepphase.h"
 #include <stdio.h>
 
-long durasi=0;
-long countaksi=0;
-long totalbiaya=0;
-long Sisa=720;
+long durasi = 0;
+long countaksi = 0;
+long totalbiaya = 0;
+long Sisa = 720;
 
-void Build(Stack * Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int * Duit)
+void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int *Duit)
 {
     printf("Mau bikin wahana apa?\n");
     PrintListWahana(ArrayWahana);
@@ -32,12 +32,13 @@ void Build(Stack * Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int * 
     }
 }
 
-void Upgrade(Stack * Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int * Duit)
+void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit)
 {
     Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
     Kata empty;
     MakeKataEmpty(&empty);
-    if (IsKataSama(New.Nama, empty)){
+    if (IsKataSama(New.Nama, empty))
+    {
         printf("Ingin upgrade apa?\n");
         printf("List:\n");
         PrintListWahana(DaftarUpgrade);
@@ -57,17 +58,18 @@ void Upgrade(Stack * Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10]
             totalbiaya += X.Biaya;
             Push(Perintah, X);
         }
-        else{
+        else
+        {
             printf("Uang kamu ga cukup.\n");
         }
     }
-    else{
+    else
+    {
         printf("tidak ada wahana di sektiar kamu\n");
     }
-    
 }
 
-void Buy(Stack * Perintah, Material ArrayMat[3], int * Duit)
+void Buy(Stack *Perintah, Material ArrayMat[3], int *Duit)
 {
     printf("Ingin membeli apa?\n");
     printf("List:\n");
@@ -135,7 +137,7 @@ void Buy(Stack * Perintah, Material ArrayMat[3], int * Duit)
     }
 }
 
-void Undo(Stack * Perintah, int * Duit)
+void Undo(Stack *Perintah, int *Duit)
 {
     Element X;
     Pop(Perintah, &X);
@@ -145,7 +147,7 @@ void Undo(Stack * Perintah, int * Duit)
     totalbiaya -= X.Biaya;
 }
 
-void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int * Wood, int * Fire, int * Primogem, boolean * isMain, MATRIKS *Peta, POINT * Posisi)
+void Execute(Stack *Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi)
 {
     Element X;
     Wahana New, Up;
@@ -154,16 +156,20 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
         while (!IsEmptyStack(*Perintah))
         {
             Pop(Perintah, &X);
+            // build
             if (X.perintah == 'B')
             {
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(Wahanaskrg, New);
+                // PrintKata(Wahanaskrg->Nama);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
-                if (Panjang(X.Point, *Posisi) == 0){
+                if (Panjang(X.Point, *Posisi) == 0)
+                {
                     Absis(*Posisi)++;
                     Elmt(*Peta, Absis(*Posisi), Ordinat(*Posisi)) = 'P';
                 }
             }
+            // update
             else if (X.perintah == 'U')
             {
                 New = SearchWahanaFromPoint(Wahanaskrg, X.Point);
@@ -171,6 +177,7 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
             }
+            // buy
             else if (X.perintah == 'Y')
             {
                 *Wood += X.Wood;
@@ -178,10 +185,12 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
                 *Primogem += X.Primogem;
             }
         }
-        int i=0;
-        while(!isWahanaEmpty(Wahanaskrg[i])){
-            int r = rand()%5;
-            if(r==0){
+        int i = 0;
+        while (!isWahanaEmpty(Wahanaskrg[i]))
+        {
+            int r = rand() % 5;
+            if (r == 0)
+            {
                 Wahanaskrg[i].Rusak = true;
             }
             i++;
@@ -197,7 +206,7 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
     }
 }
 
-void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit)
+void Mainphase(Stack *Perintah, boolean *isMain, Wahana ArrayWahana[10], int *Duit)
 {
     Element X;
     while (!IsEmptyStack(*Perintah))
@@ -205,10 +214,12 @@ void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int *
         Pop(Perintah, &X);
         *Duit += X.Biaya;
     }
-    int i=0;
-    while(!isWahanaEmpty(ArrayWahana[i])){
-        int r = rand()%5;
-        if(r==0){
+    int i = 0;
+    while (!isWahanaEmpty(ArrayWahana[i]))
+    {
+        int r = rand() % 5;
+        if (r == 0)
+        {
             ArrayWahana[i].Rusak = true;
         }
         i++;
