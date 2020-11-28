@@ -74,11 +74,11 @@ int main()
         STARTKATA(stdin);
         Player = CopyKata(CKata);
 
-        for (j = 0; j < Player.Length - 1; j++)
-        {
-            Player.TabKata[j] = Player.TabKata[j + 1];
-        }
-        Player.Length -= 1;
+        // for (j = 0; j < Player.Length - 1; j++)
+        // {
+        //     Player.TabKata[j] = Player.TabKata[j + 1];
+        // }
+        // Player.Length -= 1;
         gameOn = true;
     }
 
@@ -104,9 +104,16 @@ int main()
             printf("\nMasukkan Perintah\n");
             STARTKATA(stdin);
 
-            Game.Length -= 1;
-            PrintKata(Game);
-            PrintKata(ListAksi[11]);
+            // Game.Length -= 1;
+            // PrintKata(Game);
+            // PrintKata(ListAksi[11]);
+
+            // for (j = 0; j < Player.Length - 1; j++)
+            // {
+            //     Player.TabKata[j] = Player.TabKata[j + 1];
+            // }
+            // Player.Length -= 1;
+
             if (IsKataSama(Game, ListAksi[11]))
             {
                 gameOn = false;
@@ -166,7 +173,7 @@ int main()
             printf("Masukkan Perintah\n");
             STARTKATA(stdin);
             // printf("sini\n");
-            PrintKata(CKata);
+            // PrintKata(CKata);
             // printf("sana\n");
             //build
 
@@ -175,13 +182,13 @@ int main()
             // printf("%c", CKata.TabKata[1]);
 
             Game = CopyKata(CKata);
-            for (j = 0; j < Game.Length - 1; j++)
-            {
-                Game.TabKata[j] = Game.TabKata[j + 1];
-            }
-            Game.Length -= 1;
-            PrintKata(Game);
-            PrintKata(ListAksi[11]);
+            // for (j = 0; j < Game.Length - 1; j++)
+            // {
+            //     Game.TabKata[j] = Game.TabKata[j + 1];
+            // }
+            // Game.Length -= 1;
+            // PrintKata(Game);
+            // PrintKata(ListAksi[11]);
             if (IsKataSama(Game, ListAksi[11]))
             {
                 gameOn = false;
