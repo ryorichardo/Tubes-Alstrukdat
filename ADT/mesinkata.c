@@ -141,7 +141,7 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         SalinToken();
         ADV();
         TabWahana[i].Pemain = CToken;
-        SalinToken;
+        SalinToken();
         TabWahana[i].Durasi = CToken;
         SalinToken();
         ADV();

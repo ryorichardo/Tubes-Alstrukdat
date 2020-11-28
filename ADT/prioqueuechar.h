@@ -7,21 +7,29 @@
 #define prioqueuechar_H
 
 #include "boolean.h"
+#include "mesinkata.h"
 
+extern Kata Main[5];
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
+
+typedef struct
+{
+    Kata Main[5]; /* Wahana-wahana yang mau dinaikin Customer */
+    int Kesabaran;
+} Pengunjung;
 
 /* Definisi elemen dan address */
 typedef struct
 {
     int prio;  /* [1..100], prioritas dengan -1ai 1..100 (1 adalah prioritas tertinggi) */
-    char info; /* elemen karakter */
-} infotypePQ;
+    Pengunjung info; /* elemen karakter */
+} Antrian;
 
 /* Contoh deklarasi variabel bertype PrioQueueChar : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
-    infotypePQ *T;  /* tabel penyimpan elemen */
+    Antrian *T;  /* tabel penyimpan elemen */
     int HEAD; /* alamat penghapusan */
     int TAIL; /* alamat penambahan */
     int MaxEl;    /* Max elemen queue */
@@ -38,6 +46,7 @@ typedef struct
 #define InfoTail(Q) (Q).T[(Q).TAIL]
 #define MaxEl(Q) (Q).MaxEl
 #define Elmtd(Q, i) (Q).T[(i)]
+#define Main(Q,i) (((Q).T[(Q).HEAD]).info).Main[i]
 
 /* ********* Prototype ********* */
 boolean IsEmpty(PrioQueueChar Q);
@@ -63,12 +72,12 @@ void DeAlokasi(PrioQueueChar *Q);
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
 
 /* *** Primitif Add/Delete *** */
-void Enqueue(PrioQueueChar *Q, infotypePQ X);
+void Enqueue(PrioQueueChar *Q, Antrian X);
 /* Proses: Menambahkan X pada Q dengan aturan priority queue, terurut mengecil berdasarkan prio */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
         TAIL "maju" dengan mekanisme circular buffer; */
-void Dequeue(PrioQueueChar *Q, infotypePQ *X);
+void Dequeue(PrioQueueChar *Q, Antrian *X);
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = -1ai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;

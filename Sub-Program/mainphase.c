@@ -1,68 +1,104 @@
 #include "stdio.h"
 #include "mainphase.h"
+#include "prioqueuechar.h"
 #include "../ADT/listlinier.h"
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, Antrian *Customer)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int Uang, PrioQueueChar *Customer)
 {
-    int i;
+    Wahana W;
+    int i, count, j;
+    Antrian Buang, Sementara;
 
     /* Search Wahana */
-    while (i < 100)
-    {
-        if (Nama(ArrayWahana[i]) == String(NamaWahana))
-        {
-            break;
-        }
-        i++;
-    }
+    W = SearchWahana(&ArrayWahana[100], NamaWahana);
 
     /* Kasus Wahana Rusak */
-    if (Rusak(ArrayWahana[i]))
+    if (Rusak(W))
     {
         printf("Maaf, wahana sedang maintenance, wahana tidak bisa digunakan.\n");
         /* Hapus antrian wahana dari customer */
+        for (i = 0; i < 5; i++)
+        {
+            if (IsKataSama(W.Nama, Main(*Customer, i))){
+                Main(*Customer, i) = '\0';
+            }
+        }
         /* Kasus ga ada antrian wahana dari customer */
-
+        count = 0;
+        for (j = 0; j < 5; j++)
+        {
+            if (Main(*Customer, j) != '\0'){
+                count += 1;
+            }
+        }
         /* Customer dihapus dari antrian (keluar dari antrian) */
+        if (count == 0){
+            Dequeue(Customer, &Buang);
+        }
     }
     /* Wahana aman */
-    else if (Pemain(ArrayWahana[i]) == Kapasitas(ArrayWahana[i]))
+    else if (Pemain(W) == Kapasitas(W))
     {
         printf("Maaf, wahana sudah penuh.\n");
-        /* Hapus antrian wahana dari customer */
-
-        /* Kasus antrian wahana dari customer sudah habis */
-
+         /* Hapus antrian wahana dari customer */
+        for (i = 0; i < 5; i++)
+        {
+            if (IsKataSama(W.Nama, Main(*Customer, i))){
+                Main(*Customer, i) = '\0';
+            }
+        }
+        /* Kasus ga ada antrian wahana dari customer */
+        count = 0;
+        for (j = 0; j < 5; j++)
+        {
+            if (Main(*Customer, j) != '\0'){
+                count += 1;
+            }
+        }
         /* Customer dihapus dari antrian (keluar dari antrian) */
+        if (count == 0){
+            Dequeue(Customer, &Buang);
+        }
     }
     else
     {
-        Uang += Harga(ArrayWahana[i]);
-        /* Hapus antrian wahana dari customer */
-
-        /* Kasus antrian wahana dari customer sudah habis */
-
+        Uang += Harga(W);
+        Pemain(W) += 1;
+         /* Hapus antrian wahana dari customer */
+        for (i = 0; i < 5; i++)
+        {
+            if (IsKataSama(W.Nama, Main(*Customer, i))){
+                Main(*Customer, i) = '\0';
+            }
+        }
+        /* Kasus ga ada antrian wahana dari customer */
+        count = 0;
+        for (j = 0; j < 5; j++)
+        {
+            if (Main(*Customer, j) != '\0'){
+                count += 1;
+            }
+        }
         /* Customer dihapus dari antrian (keluar dari antrian) */
+        if (count == 0){
+            Dequeue(Customer, &Buang);
+        }
+        else {
+            Dequeue(Customer, &Sementara);
+        }
     }
 }
 
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 {
-    int i;
+    Wahana W;
 
     /* Search Wahana */
-    while (i < 100)
-    {
-        if (Nama(ArrayWahana[i]) == String(NamaWahana))
-        {
-            /* Repair wahana */
-            Rusak(ArrayWahana[i]) = false;
-            break;
-        }
-        i++;
-    }
+    W = SearchWahana(&ArrayWahana[100], NamaWahana);
+    /* Repair wahana */
+    Rusak(W) = false;
 }
 
 void Office(Wahana ArrayWahana[100])

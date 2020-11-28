@@ -39,31 +39,6 @@ typedef struct
     boolean Rusak;
 } Wahana; //upgrade samain aja adtnya
 
-typedef struct tElmtDaftar *addressBentukan;
-typedef struct tElmtDaftar
-{
-    Kata info;
-    addressBentukan next;
-} ElmtDaftar;
-typedef struct
-{
-    addressBentukan First;
-} Daftar;
-
-typedef struct
-{
-    Daftar Main; //nama wahana yang ingin dikunjungi
-    int Kesabaran;
-} Pengunjung;
-
-typedef struct
-{
-    Pengunjung *Q;
-    addressBentukan HEAD;
-    addressBentukan TAIL;
-    int MaxAntrian;
-} Antrian;
-
 /*
 di file Wahana.txt ada:
 Wahana
