@@ -224,12 +224,12 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(&Perintah, ListWahana, Posisi, &Money);
+                Build(&Perintah, ListWahana, Posisi, &Money, &Wood, &Fire, &Primogem);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
@@ -239,7 +239,7 @@ int main()
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(&Perintah, &Money);
+                Undo(&Perintah, &Money, &Wood, &Fire, &Primogem);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
