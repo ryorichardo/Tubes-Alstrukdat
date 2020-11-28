@@ -140,6 +140,23 @@ void MakeKataExit(Kata *Kata)
    Kata->Length = 4;
 }
 
+void MakeKataNew(Kata *Kata)
+{
+   Kata->TabKata[0] = 'n';
+   Kata->TabKata[1] = 'e';
+   Kata->TabKata[2] = 'w';
+   Kata->Length = 3;
+}
+
+void MakeKataLoad(Kata *Kata)
+{
+   Kata->TabKata[0] = 'l';
+   Kata->TabKata[1] = 'o';
+   Kata->TabKata[2] = 'a';
+   Kata->TabKata[3] = 'd';
+   Kata->Length = 4;
+}
+
 /**** KONSTRUKTOR ****/
 void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 {
@@ -191,6 +208,8 @@ void InitTabAction(Kata ListAksi[16])
    Kata OFFICE;
    Kata PREPARE;
    Kata EXIT;
+   Kata NEW;
+   Kata LOAD;
 
    MakeKataBuild(&BUILD);
    MakeKataUpgrade(&UPGRADE);
@@ -204,6 +223,8 @@ void InitTabAction(Kata ListAksi[16])
    MakeKataOffice(&OFFICE);
    MakeKataPrepare(&PREPARE);
    MakeKataExit(&EXIT);
+   MakeKataNew(&NEW);
+   MakeKataLoad(&LOAD);
 
    Kata W, A, S, D;
    W.TabKata[0] = 'w';
@@ -231,6 +252,8 @@ void InitTabAction(Kata ListAksi[16])
    ListAksi[13] = A;
    ListAksi[14] = S;
    ListAksi[15] = D;
+   ListAksi[16] = NEW;
+   ListAksi[17] = LOAD;
 }
 
 // Wahana GetTabWahana (char namafile[])

@@ -62,7 +62,7 @@ int main()
     int day = 1;
     int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
     //bikin array action
-    Kata ListAksi[16];
+    Kata ListAksi[18];
     InitTabAction(ListAksi);
 
     //print halaman utama
@@ -74,6 +74,18 @@ int main()
     boolean gameOn;
     // Exit = ListAksi[11];
     int j;
+
+    if (!IsKataSama(Game, ListAksi[16]))
+    {
+        printf("\n#############################################\n");
+        printf("tidak ada pilihan tersebut buangg");
+        printf("\n#############################################\n\n");
+
+        // Next Perintah
+        printf("Type 'new' to start a new game\n");
+        STARTKATA(stdin);
+        Game = CopyKata(CKata);
+    }
 
     if (!IsKataSama(Game, ListAksi[11]))
     {
@@ -92,6 +104,7 @@ int main()
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
+
         if (isMain == true)
         {
             Assign(&Wahana1, &Wahana2, &Wahana3);
@@ -159,7 +172,9 @@ int main()
                 }
                 else
                 {
-                    printf("Kamu sedang tidak berada di office.\n");
+                    printf("\n#############################################\n");
+                    printf("Kamu sedang tidak berada di office.");
+                    printf("\n#############################################\n\n");
                 }
             }
             //prepare
