@@ -159,21 +159,25 @@ int main()
             }
 
             //buat gerak
-            if (IsKataSama(Game, ListAksi[12]))
+            else if (IsKataSama(Game, ListAksi[12]))
             {
                 W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
             }
             else if (IsKataSama(Game, ListAksi[13]))
             {
                 A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
             }
             else if (IsKataSama(Game, ListAksi[14]))
             {
                 S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
             }
             else if (IsKataSama(Game, ListAksi[15]))
             {
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
             }
         }
         else
@@ -256,7 +260,7 @@ int main()
             }
 
             //buat gerak
-            if (IsKataSama(Game, ListAksi[12]))
+            else if (IsKataSama(Game, ListAksi[12]))
             {
                 W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
             }
