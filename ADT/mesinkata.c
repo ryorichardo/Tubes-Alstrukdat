@@ -117,17 +117,13 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
         printf("Error! opening file\n");
         exit(1);
     }
-
+    STARTKATA(ptr);
     int i = 0;
     while (CC != ';')
     {
-        if (i == 0)
+        if (i > 0)
         {
-            STARTKATA(ptr);
-        }
-        else
-        {
-            SalinKata();
+           SalinKata();
         }
         ADV();
 
@@ -203,13 +199,10 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
         exit(1);
     }
     int i = 0;
+    STARTKATA(ptr);
     while (CC != ',')
     {
-        if (i == 0)
-        {
-            STARTKATA(ptr);
-        }
-        else
+        if (i > 0)
         {
             SalinKata();
         }
