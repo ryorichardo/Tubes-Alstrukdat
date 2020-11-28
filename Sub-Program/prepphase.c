@@ -110,13 +110,19 @@ void Buy(Stack * Perintah, Material ArrayMat[3], int * Duit)
         if (found == 0)
         {
             X.Wood = jumlah;
+            X.Fire = 0;
+            X.Primogem = 0;
         }
         else if (found == 1)
         {
+            X.Wood = 0;
             X.Fire = jumlah;
+            X.Primogem = 0;
         }
         else if (found == 3)
         {
+            X.Wood = 0;
+            X.Fire = 0;
             X.Primogem = jumlah;
         }
         countaksi++;
@@ -154,6 +160,7 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
                 AddWahana(Wahanaskrg, New);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
                 Absis(*Posisi)--;
+                Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'P';
             }
             else if (X.perintah == 'U')
             {

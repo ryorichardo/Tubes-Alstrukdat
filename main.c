@@ -35,7 +35,6 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
-    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
     POINT Posisi = MakePOINT(1, 1);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -58,7 +57,7 @@ int main()
     
 
     int day = 1;
-
+    int Wood = 0, Fire = 0, Primogem = 0, Money = 1000000, idxmap = 0;
     //bikin array action
     Kata ListAksi[16];
     InitTabAction(ListAksi);
