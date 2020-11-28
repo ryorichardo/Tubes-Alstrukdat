@@ -67,6 +67,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 
 void Office(Wahana ArrayWahana[100])
 {
+    printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
     int i;
     Kata NamaWahana;
     char pilihan[10];
