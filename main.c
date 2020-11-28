@@ -59,20 +59,24 @@ int main()
     InitTabAction(ListAksi);
 
     //print halaman utama
-    Kata Player;
+    Kata Player, Game;
     printf("Welcome to Willy Wangky's PLayground\n");
     printf("Type 'new' to start a new game\n");
     STARTKATA(stdin);
+
+    boolean gameOn;
 
     if (!IsKataSama(CKata, ListAksi[11]))
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
         Player = CopyKata(CKata);
+        gameOn = true;
     }
 
+    Game = CopyKata(CKata);
     boolean isMain = false;
-    while (!IsKataSama(CKata, ListAksi[11]))
+    while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
         if (isMain == true)
         {
@@ -197,6 +201,11 @@ int main()
         else if (IsKataSama(CKata, ListAksi[15]))
         {
             D(RelationMap, &Posisi, CurrentMap, ListMap, idxmap);
+        }
+        Game = CopyKata(CKata);
+        if (!IsKataSama(Game, ListAksi[11]))
+        {
+            gameOn = false;
         }
     }
 
