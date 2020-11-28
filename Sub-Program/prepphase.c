@@ -6,15 +6,15 @@ long countaksi=0;
 long totalbiaya=0;
 long Sisa=720;
 
-void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit)
+void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int * Duit)
 {
     printf("Mau bikin wahana apa?\n");
     PrintListWahana(ArrayWahana);
     STARTKATA(stdin);
     Wahana New = SearchWahana(ArrayWahana, CKata);
-    if (Duit >= New.HargaBuild)
+    if (*Duit >= New.HargaBuild)
     {
-        Duit -= New.HargaBuild;
+        *Duit -= New.HargaBuild;
         Element X;
         X.perintah = 'B';
         X.Point = Posisi_Player;
@@ -28,11 +28,11 @@ void Build(Stack Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int Duit
     }
     else
     {
-        printf("uang kamu ga cukup.");
+        printf("Uang kamu ga cukup.\n");
     }
 }
 
-void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int Duit)
+void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int * Duit)
 {
     Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
     Kata empty;
@@ -43,9 +43,9 @@ void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], 
         PrintListWahana(DaftarUpgrade);
         STARTKATA(stdin);
         Wahana Up = SearchWahana(DaftarUpgrade, CKata);
-        if (Duit >= Up.HargaBuild)
+        if (*Duit >= Up.HargaBuild)
         {
-            Duit -= Up.HargaBuild;
+            *Duit -= Up.HargaBuild;
             Element X;
             X.perintah = 'U';
             X.Point = Player;
@@ -57,6 +57,9 @@ void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], 
             totalbiaya += X.Biaya;
             Push(&Perintah, X);
         }
+        else{
+            printf("Uang kamu ga cukup.\n");
+        }
     }
     else{
         printf("tidak ada wahana di sektiar kamu\n");
@@ -64,7 +67,7 @@ void Upgrade(Stack Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], 
     
 }
 
-void Buy(Stack Perintah, Material ArrayMat[3], int Duit)
+void Buy(Stack Perintah, Material ArrayMat[3], int * Duit)
 {
     printf("Ingin membeli apa?\n");
     printf("List:\n");
@@ -95,9 +98,9 @@ void Buy(Stack Perintah, Material ArrayMat[3], int Duit)
         }
     }
 
-    if (Duit >= jumlah * Harga(ArrayMat[found]))
+    if (*Duit >= jumlah * Harga(ArrayMat[found]))
     {
-        Duit -= jumlah * Harga(ArrayMat[found]);
+        *Duit -= jumlah * Harga(ArrayMat[found]);
         Element X;
         X.perintah = 'Y';
         X.Point = MakePOINT(0, 0);
@@ -122,15 +125,16 @@ void Buy(Stack Perintah, Material ArrayMat[3], int Duit)
     }
     else
     {
-        printf("Uang kamu ga cukup.");
+        printf("Uang kamu ga cukup.\n");
     }
 }
 
-void Undo(Stack Perintah, int Duit)
+void Undo(Stack Perintah, int * Duit)
 {
     Element X;
     Pop(&Perintah, &X);
-    Duit += X.Biaya;
+    *Duit += X.Biaya;
+    printf("AAA%dAAA\n", X.Biaya);
     durasi += X.Durasi;
     countaksi--;
     totalbiaya -= X.Biaya;
@@ -184,12 +188,13 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
     }
 }
 
-void Main(Stack Perintah, boolean isMain, Wahana ArrayWahana[10])
+void Main(Stack Perintah, boolean isMain, Wahana ArrayWahana[10], int * Duit)
 {
     Element X;
     while (!IsEmptyStack(Perintah))
     {
         Pop(&Perintah, &X);
+        *Duit += X.Biaya;
     }
     int i=0;
     while(!isWahanaEmpty(ArrayWahana[i])){

@@ -55,8 +55,6 @@ int main()
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    PrintListWahana(ListWahana);
-    PrintListWahana(ListUpgrade);
     
 
     int day = 1;
@@ -158,6 +156,7 @@ int main()
             else if (IsKataSama(Game, ListAksi[10]))
             {
                 Prepare(isMain);
+                day++;
             }
         }
         else
@@ -204,22 +203,22 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(Perintah, ListWahana, Posisi, Money);
+                Build(Perintah, ListWahana, Posisi, &Money);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, Money);
+                Upgrade(Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
             {
-                Buy(Perintah, ListMat, Money);
+                Buy(Perintah, ListMat, &Money);
             }
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(Perintah, Money);
+                Undo(Perintah, &Money);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
@@ -229,7 +228,7 @@ int main()
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
-                Main(Perintah, isMain, ListWahana);
+                Main(Perintah, isMain, ListWahana, &Money);
             }
         }
 

@@ -9,7 +9,7 @@
 #include "mesinkata.h"
 #include "point.h"
 
-#define MaxEls 10
+#define MaxEls 20
 /* -1 adalah stack dengan elemen kosong . */
 
 // typedef char aksi;

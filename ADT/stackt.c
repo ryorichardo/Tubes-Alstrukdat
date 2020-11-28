@@ -36,7 +36,15 @@ void Push(Stack *S, Element X)
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 {
     Top(*S)++;
-    InfoTop(*S) = X;
+    InfoTop(*S).Biaya = X.Biaya;
+    InfoTop(*S).Durasi = X.Durasi;
+    InfoTop(*S).Fire= X.Fire;
+    InfoTop(*S).perintah = X.perintah;
+    InfoTop(*S).Point.X = X.Point.X;
+    InfoTop(*S).Point.Y = X.Point.Y;
+    InfoTop(*S).Primogem = X.Primogem;
+    InfoTop(*S).Target = CopyKata(X.Target);
+    InfoTop(*S).Wood = X.Wood;
 }
 /* ************ Menghapus sebuah elemen Stack ************ */
 void Pop(Stack *S, Element *X)
@@ -44,6 +52,14 @@ void Pop(Stack *S, Element *X)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah -1ai elemen TOP yang lama, TOP berkurang 1 */
 {
-    *X = InfoTop(*S);
+    (*X).Biaya = InfoTop(*S).Biaya;
+    (*X).Durasi = InfoTop(*S).Durasi;
+    (*X).Fire = InfoTop(*S).Fire;
+    (*X).perintah = InfoTop(*S).perintah;
+    (*X).Point.X = InfoTop(*S).Point.X;
+    (*X).Point.Y = InfoTop(*S).Point.Y;
+    (*X).Primogem = InfoTop(*S).Primogem;
+    (*X).Target = CopyKata(InfoTop(*S).Target);
+    (*X).Wood = InfoTop(*S).Wood;
     Top(*S)--;
 }
