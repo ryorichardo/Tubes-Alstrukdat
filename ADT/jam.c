@@ -24,7 +24,22 @@ void TulisJAM(JAM J)
 /* Proses : Menulis ke layar */
 { /* Kamus lokal */
 	/* Algoritma */
-	printf("%d:%d",Hour(J),Minute(J));
+	if (Hour(J) < 10){
+		if (Minute(J) < 10){
+			printf("0%d:0%d", Hour(J), Minute(J));
+		}
+		else{
+			printf("0%d:%d", Hour(J), Minute(J));
+		}
+	}
+	else{
+		if (Minute(J) < 10){
+			printf("%d:0%d", Hour(J), Minute(J));
+		}
+		else{
+			printf("%d:%d", Hour(J), Minute(J));
+		}
+	}
 }
 
 long JAMToMenit(JAM J)

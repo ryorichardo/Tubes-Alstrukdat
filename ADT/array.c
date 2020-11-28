@@ -141,7 +141,7 @@ void MakeKataExit(Kata *Kata)
 }
 
 /**** KONSTRUKTOR ****/
-void MakeTabWahanaEmpty(Wahana ListWahana[10])
+void MakeTabWahanaEmpty(Wahana ListWahana[100])
 {
    int i;
    for (i = IdxMin; i <= IdxMax; i++)

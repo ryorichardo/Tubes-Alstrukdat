@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ADT/boolean.h"
 
 void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime)
 {
@@ -41,15 +42,13 @@ int main()
     MATRIKS CurrentMap;
     MATRIKS ListMap[4];
     Graph RelationMap[4];
-
     Stack Perintah;
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    MakeTabWahanaEmpty(&ListWahana);
+    MakeTabWahanaEmpty(ListOwnedWahana);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
-    printf("Baca File Wahana lewat\n");
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
 
@@ -91,7 +90,7 @@ int main()
             printf("Antrian: ");
 
             // Next Perintah
-            printf("Masukkan Perintah\n");
+            printf("\nMasukkan Perintah\n");
             STARTKATA(stdin);
 
             //serve
@@ -178,7 +177,7 @@ int main()
             //main
             else if (IsKataSama(CKata, ListAksi[5]))
             {
-                Main(Perintah, isMain);
+                Main(Perintah, isMain, ListWahana);
             }
         }
 
