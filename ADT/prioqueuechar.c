@@ -1,11 +1,3 @@
-/*
-    Nama : Kadek Dwi Bagus Ananta Udayana
-    Nim : 13519057
-    Tanggal : 08 Oktober 2020
-    Topik : Queue
-    Deskripsi : Body prioqueue
-
-*/
 #include "stdio.h"
 #include "boolean.h"
 #include <stdlib.h>
