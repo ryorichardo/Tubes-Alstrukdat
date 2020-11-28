@@ -10,6 +10,8 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
+void Assign(Kata * Wahana1, Kata * Wahana2, Kata * Wahana3);
+
 void CustomA(Antrian CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3);
 
 void CustomB(Antrian CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3);
