@@ -172,8 +172,8 @@ int main()
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Open)));
             printf("\nList Material yang dimiliki:\n");
-            printf("-Wood: %d", Wood);
-            printf("-Fire: %d", Fire);
+            printf("-Wood: %d\n", Wood);
+            printf("-Fire: %d\n", Fire);
             printf("-Primogem: %d", Primogem);
             printf("\nTotal aksi yang akan dilakukan: %ld", countaksi);
             printf("\nTotal waktu yang dibutuhkan: ");
