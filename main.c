@@ -88,7 +88,7 @@ int main()
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
-        if (isMain == false)
+        if (isMain == true)
         {
             printf("Main phase day ");
 
@@ -156,6 +156,24 @@ int main()
             {
                 Prepare(&isMain);
                 day++;
+            }
+
+            //buat gerak
+            if (IsKataSama(Game, ListAksi[12]))
+            {
+                W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[13]))
+            {
+                A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[14]))
+            {
+                S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[15]))
+            {
+                D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
             }
         }
         else
@@ -236,24 +254,24 @@ int main()
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
                 CurrentTime = MakeJAM(9, 0);
             }
-        }
 
-        //buat gerak
-        if (IsKataSama(Game, ListAksi[12]))
-        {
-            W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[13]))
-        {
-            A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[14]))
-        {
-            S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[15]))
-        {
-            D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            //buat gerak
+            if (IsKataSama(Game, ListAksi[12]))
+            {
+                W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[13]))
+            {
+                A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[14]))
+            {
+                S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[15]))
+            {
+                D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
         }
     }
 

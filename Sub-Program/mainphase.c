@@ -122,9 +122,10 @@ void Office(Wahana ArrayWahana[100])
     TabLaporan TLap;
 
     // masukkan
+    printf("Nama Wahana : \n");
     while (!isWahanaEmpty(ArrayWahana[i]))
     {
-        printf("Nama Wahana : \n");
+        printf("- ");
         // printf("%s\n ", Nama(ArrayWahana[i]));
         PrintKata(ArrayWahana[i].Nama);
         printf("\n");
@@ -144,11 +145,11 @@ void Office(Wahana ArrayWahana[100])
     {
         // printf("ANJAY ");
         // jika detail
-        if (!IsKataSama(Pilihan, ListAksi[8]))
+        if (IsKataSama(Pilihan, ListAksi[8]))
         {
-            printf("pingin melihat detail wahana dengan nama apa ? \n ");
+            printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
-            Detail(&ArrayWahana[100], CKata);
+            Detail(ArrayWahana, CKata);
             printf("Ingin melihat detail wahana(y/n) ? \n ");
             printf(" `y` untuk yes dan `n` untuk no ? \n ");
         }
@@ -156,16 +157,16 @@ void Office(Wahana ArrayWahana[100])
         else
         {
             // buat tab laporan
-            TLap = MakeTabLaporan(&ArrayWahana[100]);
+            TLap = MakeTabLaporan(ArrayWahana);
 
             // buat laporan yang ping dilihat
-            printf("pingin melihat Laporan wahana dengan nama apa ? \n ");
+            printf("pingin melihat Laporan wahana dengan nama apa ? \n");
             STARTKATA(stdin);
             PrintLaporanWahana(TLap, CKata);
         }
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
-        printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
+        printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n");
         // STARTKATA(stdin);
         // Pilihan = CKata;
         STARTKATA(stdin);
@@ -178,7 +179,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     int i = 0;
     while (!isWahanaEmpty(ArrayWahana[i]))
     {
-        if (Nama(ArrayWahana[i]) == String(NamaWahana))
+        if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
         {
             printf("Nama Wahana : ");
             PrintKata(NamaWahana);
