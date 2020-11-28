@@ -150,10 +150,11 @@ void Office(Wahana ArrayWahana[100])
             printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
             Detail(ArrayWahana, CKata);
-            printf("Ingin melihat detail wahana(y/n) ? \n ");
-            printf(" `y` untuk yes dan `n` untuk no ? \n ");
+            // printf("Ingin melihat detail wahana(y/n) ? \n ");
+            // printf("y untuk yes dan n untuk no ? \n ");
         }
 
+        // jika report
         else
         {
             // buat tab laporan
@@ -166,7 +167,7 @@ void Office(Wahana ArrayWahana[100])
         }
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
-        printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n");
+        printf("Masukkan perintah (detail / report / exit)? \n");
         // STARTKATA(stdin);
         // Pilihan = CKata;
         STARTKATA(stdin);
@@ -181,13 +182,17 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     {
         if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
         {
+            printf("\n\n#############################################\n");
             printf("Nama Wahana : ");
             PrintKata(NamaWahana);
             printf("\n");
             printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
             printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
             printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
-            printf("Deskripsi Wahana : %s\n ", String(Deskripsi(ArrayWahana[i])));
+            printf("Deskripsi Wahana : ");
+            PrintKata(ArrayWahana[i].Deskripsi);
+            printf("\n");
+            printf("\n#############################################\n\n");
         }
         i++;
     }

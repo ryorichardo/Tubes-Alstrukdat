@@ -14,7 +14,8 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int *Du
     PrintListWahana(ArrayWahana);
     STARTKATA(stdin);
     Wahana New = SearchWahana(ArrayWahana, CKata);
-    if (!IsKataSama(New.Nama, empty)){
+    if (!IsKataSama(New.Nama, empty))
+    {
         if (*Duit >= New.HargaBuild && *Wood >= New.Mat[0] && *Fire >= New.Mat[1] && *Primogem >= New.Mat[2])
         {
             *Duit -= New.HargaBuild;
@@ -29,7 +30,7 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int *Du
             X.Durasi = New.DurasiBuild;
             X.Wood = New.Mat[0];
             X.Fire = New.Mat[1];
-            X.Primogem =  New.Mat[2];
+            X.Primogem = New.Mat[2];
             durasi += New.DurasiBuild;
             countaksi++;
             totalbiaya += X.Biaya;
@@ -40,7 +41,8 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int *Du
             printf("Uang atau material kamu ga cukup.\n");
         }
     }
-    else{
+    else
+    {
         printf("Wahana tidak ditemukan\n");
     }
 }
@@ -71,7 +73,7 @@ void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10],
             X.Durasi = Up.DurasiBuild;
             X.Wood = New.Mat[0];
             X.Fire = New.Mat[1];
-            X.Primogem =  New.Mat[2];
+            X.Primogem = New.Mat[2];
             durasi += Up.DurasiBuild;
             countaksi++;
             totalbiaya += X.Biaya;
@@ -140,7 +142,7 @@ void Buy(Stack *Perintah, Material ArrayMat[3], int *Duit)
             X.Fire = jumlah;
             X.Primogem = 0;
         }
-        else if (found == 3)
+        else if (found == 2)
         {
             X.Wood = 0;
             X.Fire = 0;
@@ -164,7 +166,8 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
     durasi += X.Durasi;
     countaksi--;
     totalbiaya -= X.Biaya;
-    if (X.perintah == 'B' || X.perintah == 'U'){
+    if (X.perintah == 'B' || X.perintah == 'U')
+    {
         *Wood += X.Wood;
         *Fire += X.Fire;
         *Primogem += X.Primogem;

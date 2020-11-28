@@ -141,15 +141,15 @@ int main()
             else if (IsKataSama(Game, ListAksi[9]))
             {
 
-                // if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
-                // {
-                // PrintKata(ListOwnedWahana->Nama);
-                Office(ListOwnedWahana);
-                // }
-                // else
-                // {
-                //     printf("Kamu sedang tidak berada di office.\n");
-                // }
+                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
+                {
+                    // PrintKata(ListOwnedWahana->Nama);
+                    Office(ListOwnedWahana);
+                }
+                else
+                {
+                    printf("Kamu sedang tidak berada di office.\n");
+                }
             }
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
