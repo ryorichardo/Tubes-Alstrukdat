@@ -1,12 +1,5 @@
 /* File : stackt.c */
-/* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
-/*
-    Nama = Kadek Dwi Bagus Ananta Udayana
-    Nim = 13519057
-    Kelas = K1
-    Tanggal = 20 Oktober 2020
-    Deskripsi = body dari stackt
-*/
+
 
 #include "stackt.h"
 
