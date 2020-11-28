@@ -30,8 +30,13 @@ void W(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
   //map itu index map
 
   //Cek Jalan atau Gedung atau Tembok
-  Elmt(*M, Absis(P), Ordinat(P)) = '-';
-  if (Elmt(*M, Absis(P), Ordinat(P) - 1) == '-')
+  if (Absis(P) == 9 && Ordinat(P) == 9 && idxmap == 0){
+    Elmt(*M, Absis(P), Ordinat(P)) = 'O';
+  }
+  else{
+    Elmt(*M, Absis(P), Ordinat(P)) = '-';
+  }
+  if (Elmt(*M, Absis(P), Ordinat(P) - 1) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
   {
     Ordinat(P) = Ordinat(P) - 1;
   }
@@ -62,7 +67,7 @@ void A(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
   else{
     Elmt(*M, Absis(P), Ordinat(P)) = '-';
   }
-  if (Elmt(*M, Absis(P) - 1, Ordinat(P)) == '-')
+  if (Elmt(*M, Absis(P) - 1, Ordinat(P)) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
   {
     Absis(P) = Absis(P) - 1;
   }
@@ -93,7 +98,7 @@ void S(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
   else{
     Elmt(*M, Absis(P), Ordinat(P)) = '-';
   }
-  if (Elmt(*M, Absis(P), Ordinat(P) + 1) == '-')
+  if (Elmt(*M, Absis(P), Ordinat(P) + 1) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
   {
     Ordinat(P) = Ordinat(P) + 1;
   }
@@ -128,7 +133,7 @@ void D(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
     Absis(P) = Absis(P) + 1;
   }
 
-  else if (Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'v')
+  else if (Elmt(*M, Absis(P) + 1, Ordinat(P)) == '>')
   {
     CopyMATRIKS(*M, &MK[idxmap]);
     idxmap += 1;
