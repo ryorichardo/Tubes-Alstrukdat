@@ -151,7 +151,7 @@ int main()
             //office
             else if (IsKataSama(Game, ListAksi[9]))
             {
-
+                // printf("masuk di office.\n");
                 if (Absis(Posisi) == 9 && Ordinat(Posisi) == 9 && idxmap == 0)
                 {
                     // PrintKata(ListOwnedWahana->Nama);
