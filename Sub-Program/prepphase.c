@@ -159,8 +159,10 @@ void Execute(Stack * Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], 
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(Wahanaskrg, New);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
-                Absis(*Posisi)--;
-                Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'P';
+                if (Panjang(X.Point, *Posisi) == 0){
+                    Absis(*Posisi)++;
+                    Elmt(*Peta, Absis(*Posisi), Ordinat(*Posisi)) = 'P';
+                }
             }
             else if (X.perintah == 'U')
             {

@@ -226,11 +226,13 @@ int main()
             else if (IsKataSama(Game, ListAksi[4]))
             {
                 Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
+                CurrentTime = MakeJAM(9, 0);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
+                CurrentTime = MakeJAM(9, 0);
             }
         }
 
