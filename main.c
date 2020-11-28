@@ -55,7 +55,6 @@ int main()
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    
 
     int day = 1;
 
@@ -90,7 +89,7 @@ int main()
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
-        if (isMain == false)
+        if (isMain == true)
         {
             printf("Main phase day ");
 
