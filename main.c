@@ -223,7 +223,7 @@ int main()
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap);
+                Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
