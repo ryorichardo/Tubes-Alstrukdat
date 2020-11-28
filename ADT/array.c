@@ -446,11 +446,11 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
 void PrintListWahana(Wahana ListWahana[10])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
-   int i=0;
-   while(!isWahanaEmpty(ListWahana[i]))
+   int i = 0;
+   while (!isWahanaEmpty(ListWahana[i]))
    {
       printf("%d. ", i + 1); //ini nanti diganti sama print kata;
-      PrintKata(ListWahana[i].Nama),printf("\n");
+      PrintKata(ListWahana[i].Nama), printf("\n");
       i++;
    }
 }
@@ -458,16 +458,18 @@ void PrintListWahana(Wahana ListWahana[10])
 void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
-   int i =0;
-   while(!isWahanaEmpty(ListWahana[i]))
+   int i = 0;
+   while (!isWahanaEmpty(ListWahana[i]))
    {
       if (IsKataSama(ListWahana[i].Nama, Nama))
       {
-         printf("Nama Wahana : "); PrintKata(Nama),printf("\n");//Ini nanti diganti sama printkata
+         printf("Nama Wahana : ");
+         PrintKata(Nama), printf("\n"); //Ini nanti diganti sama printkata
          printf("Harga Tiket : %d\n", ListWahana[i].Harga);
          printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);
          printf("Durasi Wahana : %d\n", ListWahana[i].Durasi);
-         printf("Deskripsi Wahana : ");PrintKata(ListWahana[i].Deskripsi); //Ini nanti diganti sama printkata
+         printf("Deskripsi Wahana : ");
+         PrintKata(ListWahana[i].Deskripsi); //Ini nanti diganti sama printkata
       }
       i++;
    }
@@ -481,11 +483,15 @@ void PrintLaporanWahana(TabLaporan TL, Kata Nama)
    {
       if (IsKataSama(TL.TL[i].Nama, Nama))
       {
-         printf("Nama Wahana : ");PrintKata(Nama);printf("\n");
+         printf("\n\n#############################################\n");
+         printf("Nama Wahana : ");
+         PrintKata(Nama);
+         printf("\n");
          printf("Penggunaan Total : %d\n", TL.TL[i].Penggunaan);
          printf("Penghasilan Total : %d\n", TL.TL[i].PenghasilanTotal);
          printf("Penggunaan Harian : %d\n", TL.TL[i].PenggunaanHari);
          printf("Penghasilan Harian : %d\n", TL.TL[i].PenghasilanHari);
+         printf("\n#############################################\n\n");
       }
       i++;
    }

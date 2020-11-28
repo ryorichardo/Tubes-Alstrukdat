@@ -141,21 +141,43 @@ int main()
             else if (IsKataSama(Game, ListAksi[9]))
             {
 
-                // if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
-                // {
-                // PrintKata(ListOwnedWahana->Nama);
-                Office(ListOwnedWahana);
-                // }
-                // else
-                // {
-                //     printf("Kamu sedang tidak berada di office.\n");
-                // }
+                if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
+                {
+                    // PrintKata(ListOwnedWahana->Nama);
+                    Office(ListOwnedWahana);
+                }
+                else
+                {
+                    printf("Kamu sedang tidak berada di office.\n");
+                }
             }
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
                 Prepare(&isMain);
                 day++;
+            }
+
+            //buat gerak
+            else if (IsKataSama(Game, ListAksi[12]))
+            {
+                W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
+            }
+            else if (IsKataSama(Game, ListAksi[13]))
+            {
+                A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
+            }
+            else if (IsKataSama(Game, ListAksi[14]))
+            {
+                S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
+            }
+            else if (IsKataSama(Game, ListAksi[15]))
+            {
+                D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+                CurrentTime = NextNMenit(CurrentTime, 1);
             }
         }
         else
@@ -206,12 +228,12 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(&Perintah, ListWahana, Posisi, &Money);
+                Build(&Perintah, ListWahana, Posisi, &Money, &Wood, &Fire, &Primogem);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
@@ -221,7 +243,7 @@ int main()
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(&Perintah, &Money);
+                Undo(&Perintah, &Money, &Wood, &Fire, &Primogem);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
@@ -236,24 +258,24 @@ int main()
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
                 CurrentTime = MakeJAM(9, 0);
             }
-        }
 
-        //buat gerak
-        if (IsKataSama(Game, ListAksi[12]))
-        {
-            W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[13]))
-        {
-            A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[14]))
-        {
-            S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
-        }
-        else if (IsKataSama(Game, ListAksi[15]))
-        {
-            D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            //buat gerak
+            else if (IsKataSama(Game, ListAksi[12]))
+            {
+                W(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[13]))
+            {
+                A(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[14]))
+            {
+                S(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
+            else if (IsKataSama(Game, ListAksi[15]))
+            {
+                D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
+            }
         }
     }
 
