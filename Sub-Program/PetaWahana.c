@@ -23,129 +23,130 @@ void MakeMap(Graph G[4], MATRIKS M[4])
   // Kalo 'v' +2
 }
 
-void W(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
+void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
 {
   //MK itu arrray of matriks (isi map 1 sampe 4)
   //G itu list graph dri masing2 map
   //map itu index map
 
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(P) == 9 && Ordinat(P) == 9 && idxmap == 0){
-    Elmt(*M, Absis(P), Ordinat(P)) = 'O';
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+    Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
-    Elmt(*M, Absis(P), Ordinat(P)) = '-';
-  }
-  if (Elmt(*M, Absis(P), Ordinat(P) - 1) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
-  {
-    Ordinat(P) = Ordinat(P) - 1;
+    Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
 
-  else if (Elmt(*M, Absis(P), Ordinat(P) - 1) == '^')
+  if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
+  {
+    Ordinat(*P) = Ordinat(*P) - 1;
+  }
+
+  else if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '^')
   {
     CopyMATRIKS(*M, &MK[idxmap]);
     idxmap -= 2;
     *M = MK[idxmap];
     adrNode T = SearchOrdinat(G[idxmap], 11);
     Ordinat(Id(T))--;
-    P = Id(T);
+    *P = Id(T);
   }
 
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
   }
-  Elmt(*M, Absis(P), Ordinat(P)) = 'P';
+  Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
-void A(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
+void W(Graph G[4], POINT *P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(P) == 9 && Ordinat(P) == 9 && idxmap == 0){
-    Elmt(*M, Absis(P), Ordinat(P)) = 'O';
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+    Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
-    Elmt(*M, Absis(P), Ordinat(P)) = '-';
+    Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
-  if (Elmt(*M, Absis(P) - 1, Ordinat(P)) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
+  if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
   {
-    Absis(P) = Absis(P) - 1;
+    Absis(*P) = Absis(*P) - 1;
   }
 
-  else if (Elmt(*M, Absis(P) - 1, Ordinat(P)) == '<')
+  else if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '<')
   {
     CopyMATRIKS(*M, &MK[idxmap]);
     idxmap -= 1;
     *M = MK[idxmap];
     adrNode T = SearchAbsis(G[idxmap], 11);
     Absis(Id(T))--;
-    P = Id(T);
+    *P = Id(T);
   }
 
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
   }
-  Elmt(*M, Absis(P), Ordinat(P)) = 'P';
+  Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
 
-void S(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
+void D(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(P) == 9 && Ordinat(P) == 9 && idxmap == 0){
-    Elmt(*M, Absis(P), Ordinat(P)) = 'O';
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+    Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
-    Elmt(*M, Absis(P), Ordinat(P)) = '-';
+    Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
-  if (Elmt(*M, Absis(P), Ordinat(P) + 1) == '-'|| Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
+  if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == '-'|| Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
   {
-    Ordinat(P) = Ordinat(P) + 1;
+    Ordinat(*P) = Ordinat(*P) + 1;
   }
 
-  else if (Elmt(*M, Absis(P), Ordinat(P) + 1) == 'v')
+  else if (Elmt(*M, Absis(*P), Ordinat(*P) + 1) == 'v')
   {
     CopyMATRIKS(*M, &MK[idxmap]);
     idxmap += 2;
     *M = MK[idxmap];
     adrNode T = SearchOrdinat(G[idxmap], 0);
     Ordinat(Id(T))++;
-    P = Id(T);
+    *P = Id(T);
   }
 
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
   }
-  Elmt(*M, Absis(P), Ordinat(P)) = 'P';
+  Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
-void D(Graph G[4], POINT P, MATRIKS * M, MATRIKS  MK[4], int idxmap)
+void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  MK[4], int idxmap)
 {
   //Cek Jalan atau Gedung atau Tembok
-  if (Absis(P) == 9 && Ordinat(P) == 9 && idxmap == 0){
-    Elmt(*M, Absis(P), Ordinat(P)) = 'O';
+  if (Absis(*P) == 9 && Ordinat(*P) == 9 && idxmap == 0){
+    Elmt(*M, Absis(*P), Ordinat(*P)) = 'O';
   }
   else{
-    Elmt(*M, Absis(P), Ordinat(P)) = '-';
-  }
-  if (Elmt(*M, Absis(P) + 1, Ordinat(P)) == '-' || Elmt(*M, Absis(P) + 1, Ordinat(P)) == 'O')
-  {
-    Absis(P) = Absis(P) + 1;
+    Elmt(*M, Absis(*P), Ordinat(*P)) = '-';
   }
 
-  else if (Elmt(*M, Absis(P) + 1, Ordinat(P)) == '>')
+  if (Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == '-' || Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'O')
+  {
+    Absis(*P) = Absis(*P) + 1;
+  }
+  else if (Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == '>')
   {
     CopyMATRIKS(*M, &MK[idxmap]);
     idxmap += 1;
     *M = MK[idxmap];
     adrNode T = SearchAbsis(G[idxmap], 0);
     Absis(Id(T))++;
-    P = Id(T);
+    *P = Id(T);
   }
 
   else
   {
     printf("Operasi tidak dapat dilakukan\n");
   }
-  Elmt(*M, Absis(P), Ordinat(P)) = 'P';
+  Elmt(*M, Absis(*P), Ordinat(*P)) = 'P';
 }
