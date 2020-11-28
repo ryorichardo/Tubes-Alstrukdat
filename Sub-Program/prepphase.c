@@ -147,7 +147,7 @@ void Execute(Stack Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wa
             if (X.perintah == 'B')
             {
                 New = SearchWahana(DaftarWahana, X.Target);
-                AddWahana(&Wahanaskrg, New);
+                AddWahana(Wahanaskrg, New);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
             }
             else if (X.perintah == 'U')

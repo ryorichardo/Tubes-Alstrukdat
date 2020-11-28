@@ -203,7 +203,7 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
         exit(1);
     }
     int i = 0;
-    while (CC != '.')
+    while (CC != ',')
     {
         if (i == 0)
         {
@@ -213,8 +213,10 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
         {
             SalinKata();
         }
+        ADV();
         TabMat[i].Nama = CopyKata(CKata);
         SalinToken();
+        ADV();
         TabMat[i].Harga = CToken;
         i++;
     }

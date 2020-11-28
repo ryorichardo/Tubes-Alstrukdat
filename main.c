@@ -46,14 +46,17 @@ int main()
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
-    MakeTabWahanaEmpty(ListOwnedWahana);
-    MakeTabWahanaEmpty(ListWahana);
-    MakeTabWahanaEmpty(ListUpgrade);
+    MakeTabWahanaEmpty(ListOwnedWahana, 100);
+    MakeTabWahanaEmpty(ListWahana, 10);
+    MakeTabWahanaEmpty(ListUpgrade, 10);
     MakeTabMaterialEmpty(ListMat);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, &ListWahana[10], &ListUpgrade[10]);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, &ListMat[3]);
+    PrintListWahana(ListWahana);
+    PrintListWahana(ListUpgrade);
+    
 
     int day = 1;
 
