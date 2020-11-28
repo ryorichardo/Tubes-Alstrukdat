@@ -140,7 +140,7 @@ int main()
             //office
             else if (IsKataSama(Game, ListAksi[9]))
             {
-
+                printf("masuk di office.\n");
                 if (Elmt(CurrentMap, Absis(Posisi), Ordinat(Posisi)) == 'O')
                 {
                     // PrintKata(ListOwnedWahana->Nama);
