@@ -114,15 +114,17 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana)
 void Office(Wahana ArrayWahana[100])
 {
     int i;
-    Kata NamaWahana;
-    char pilihan[10];
+    Kata NamaWahana, Pilihan, EXIT;
+    Kata ListAksi[16];
+    InitTabAction(ListAksi);
+    // char pilihan[10];
     i = 0;
     TabLaporan TLap;
 
     // masukkan
     while (!isWahanaEmpty(ArrayWahana[i]))
     {
-        printf("Nama Wahana : \n ");
+        printf("Nama Wahana : \n");
         // printf("%s\n ", Nama(ArrayWahana[i]));
         PrintKata(ArrayWahana[i].Nama);
         printf("\n");
@@ -130,15 +132,19 @@ void Office(Wahana ArrayWahana[100])
     }
 
     // Masukkan perintah (DETAILS / REPORT / EXIT)
-    printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
-    // STARTKATA(stdin);
-    // Pilihan = CKata;
-    scanf("%s", pilihan);
-
-    while (pilihan != "EXIT")
+    printf("Masukkan perintah (detail / report / exit)? \n");
+    STARTKATA(stdin);
+    Pilihan = CKata;
+    // scanf("%s", pilihan);
+    // while (pilihan != "EXIT")
+    // MakeKataExit(&EXIT);
+    // PrintKata(Pilihan);
+    // PrintKata(ListAksi[11]);
+    while (!IsKataSama(Pilihan, ListAksi[11]))
     {
+        // printf("ANJAY ");
         // jika detail
-        if (pilihan == "DETAIL")
+        if (!IsKataSama(Pilihan, ListAksi[8]))
         {
             printf("pingin melihat detail wahana dengan nama apa ? \n ");
             STARTKATA(stdin);
@@ -162,7 +168,8 @@ void Office(Wahana ArrayWahana[100])
         printf("Masukkan perintah (DETAILS / REPORT / EXIT)? \n ");
         // STARTKATA(stdin);
         // Pilihan = CKata;
-        scanf("%s", pilihan);
+        STARTKATA(stdin);
+        Pilihan = CKata;
     }
 }
 
