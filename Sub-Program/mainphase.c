@@ -284,7 +284,7 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
     }
 }
 
-void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
+void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahana[100])
 {
     int i = 0;
     while (!isWahanaEmpty(ArrayWahana[i]))
@@ -302,9 +302,10 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
             PrintKata(ArrayWahana[i].Deskripsi);
             printf("\n");
             printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
-            // PrintInfo();
             printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
             printf("Ukuran Wahana : %d x %d\n", PanjangWahana(ArrayWahana[i]), LebarWahana(ArrayWahana[i]));
+            printf("History upgrade: \n")
+            PrintInfo(ListUpgradeOwnedWahana[i]);
             printf("\n#############################################\n\n");
         }
         i++;

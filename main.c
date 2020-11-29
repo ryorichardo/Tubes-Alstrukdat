@@ -34,7 +34,6 @@ int main()
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
-
     List ListUpgradeOwnedWahana[100];
     Material ListMat[3];
     TabLaporan TL;
@@ -49,7 +48,6 @@ int main()
     PrioQueueChar Customer;
     int Banyak;
     Antrian Pelanggan[5];
-    Save ListSave[3];
 
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
@@ -58,59 +56,42 @@ int main()
     MakeTabWahanaEmpty(ListWahana, 10);
     MakeTabWahanaEmpty(ListUpgrade, 10);
     MakeTabMaterialEmpty(ListMat);
-    MakeTabSaveEmpty(ListSave);
-
     MakeTabLaporanEmpty(&TL);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    // char filename7[] = "File-Eksternal/save.txt";
-    // BacaLoadSave(filename7, ListSave);
 
     int day = 1;
     int Wood = 1000, Fire = 10000, Primogem = 1000, Money = 1000000, idxmap = 0;
     //bikin array action
-    Kata ListAksi[19];
-
+    Kata ListAksi[18];
     InitTabAction(ListAksi);
     InitCustomer(Pelanggan);
 
     //print halaman utama
     Kata Player, Game;
     printf("Welcome to Willy Wangky's PLayground\n");
-    printf("Type 'new' or 'load' to start a new game\n");
+    printf("Type 'new' to start a new game\n");
     STARTKATA(stdin);
     Game = CopyKata(CKata);
     boolean gameOn;
     // Exit = ListAksi[11];
     int j;
 
-    // SALAH INPUTAN
-    if (!IsKataSama(Game, ListAksi[16]) && !IsKataSama(Game, ListAksi[17]))
+    if (!IsKataSama(Game, ListAksi[16]))
     {
         printf("\n#############################################\n");
         printf("tidak ada pilihan tersebut buangg");
         printf("\n#############################################\n\n");
 
         // Next Perintah
-        printf("Type 'new' or 'load' to start a new game\n");
+        printf("Type 'new' to start a new game\n");
         STARTKATA(stdin);
         Game = CopyKata(CKata);
     }
 
-    // LOAD GAME
-
-    // if (IsKataSama(Game, ListAksi[17]))
-    // {
-    //     day = ListSave->Day;
-    //     Player = ListSave->Player;
-    //     Money = ListSave->Money;
-    //     gameOn = true;
-    // }
-
-    // NEW GAME
-    if (IsKataSama(Game, ListAksi[16]))
+    if (!IsKataSama(Game, ListAksi[11]))
     {
         printf("Masukkan nama: ");
         STARTKATA(stdin);
@@ -125,7 +106,7 @@ int main()
     }
 
     boolean isMain = false;
-    while (!IsKataSama(Game, ListAksi[11]) && gameOn && !IsKataSama(Game, ListAksi[17]))
+    while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
         if (isMain == true)
         {
@@ -138,7 +119,7 @@ int main()
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
-
+            
             // close
             printf("Closing time: ");
             TulisJAM(Close);
@@ -226,17 +207,10 @@ int main()
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
                 CurrentTime = NextNMenit(CurrentTime, 1);
             }
-
-            else if (IsKataSama(Game, ListAksi[18]))
-            {
-                // SimpanMATRIKS(CurrentMap, "save.txt");
-                save(Player, day, Money, Close, Banyak);
-            }
         }
         else
         {
-
-            printf("\nPreparation phase day ");
+            printf("Preparation phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
@@ -312,8 +286,9 @@ int main()
             {
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
                 CurrentTime = MakeJAM(9, 0);
-                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
+                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, Banyak);
             }
+
             //buat gerak
             else if (IsKataSama(Game, ListAksi[12]))
             {
