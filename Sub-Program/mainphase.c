@@ -139,7 +139,7 @@ void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
 {
     Wahana W;
-    int i, count, j, k;
+    int i, count, j, k, r;
     Antrian Buang;
 
     /* Search Wahana */
@@ -236,6 +236,12 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
                 TL->TL[k].PenggunaanHari += 1;
                 TL->TL[k].PenghasilanHari += W.Harga;
             }
+        }
+
+        /* Algoritma random kemungkinan rusak */
+        r = rand() % 5;
+        if (r == 0){
+            Rusak(W) = true;
         }
 
         /* Menambah 10 menit setelah selesai serve */
