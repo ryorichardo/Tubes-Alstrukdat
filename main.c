@@ -109,12 +109,12 @@ int main()
 
         if (isMain == true)
         {
-            Assign(&Wahana1, &Wahana2, &Wahana3);
-            CustomA(&CustomerA, Wahana1, Wahana2, Wahana3);
-            CustomB(&CustomerB, Wahana1, Wahana2, Wahana3);
-            CustomC(&CustomerC, Wahana1, Wahana2, Wahana3);
-            CustomD(&CustomerD, Wahana1, Wahana2, Wahana3);
-            CustomE(&CustomerE, Wahana1, Wahana2, Wahana3);
+            // Assign(&Wahana1, &Wahana2, &Wahana3);
+            // CustomA(&CustomerA, Wahana1, Wahana2, Wahana3);
+            // CustomB(&CustomerB, Wahana1, Wahana2, Wahana3);
+            // CustomC(&CustomerC, Wahana1, Wahana2, Wahana3);
+            // CustomD(&CustomerD, Wahana1, Wahana2, Wahana3);
+            // CustomE(&CustomerE, Wahana1, Wahana2, Wahana3);
             printf("Main phase day ");
 
             // print Map dan Perintah
@@ -126,8 +126,8 @@ int main()
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
             printf("\n");
-            RefreshLaporan(&TL);
-            PrintAntrian(Banyak, Customer);
+            // RefreshLaporan(&TL);
+            // PrintAntrian(Banyak, Customer);
 
             // Next Perintah
             printf("\nMasukkan Perintah\n");
@@ -183,8 +183,10 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
+                printf("1\n");
                 Prepare(&isMain, &Customer, Banyak);
                 day++;
+                printf("1\n");
             }
 
             //buat gerak
@@ -280,6 +282,7 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
+                printf("1\n");
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
@@ -305,7 +308,7 @@ int main()
             {
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
             }
-            RandomAntrian(Banyak, &Customer, CustomerA, CustomerB, CustomerC, CustomerD, CustomerE);
+            // RandomAntrian(Banyak, &Customer, CustomerA, CustomerB, CustomerC, CustomerD, CustomerE);
         }
     }
 
