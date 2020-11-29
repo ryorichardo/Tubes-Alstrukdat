@@ -559,6 +559,7 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT Player, int IdxMap)
      {
         selatan=i;
         count++;
+
         break;
      }
      i++;
@@ -574,6 +575,7 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT Player, int IdxMap)
      {
         barat=i;
         count++;
+
         break;
      }
      i++;
@@ -585,31 +587,31 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT Player, int IdxMap)
    else {
       printf("Pilih wahana yang mana?\n");
       if (utara!=-1) {
-        PrintKata(Nama(ListWahana[utara]));
+        PrintKata(Nama(ListWahana[utara]));printf("\n");
       }
-      else if (timur!=-1) {
-        PrintKata(Nama(ListWahana[timur]));
+      if (timur!=-1) {
+        PrintKata(Nama(ListWahana[timur]));printf("\n");
       }
-      else if (barat!=-1) {
-        PrintKata(Nama(ListWahana[barat]));
+      if (barat!=-1) {
+        PrintKata(Nama(ListWahana[barat]));printf("\n");
       }
-      else if (selatan!=-1) {
-        PrintKata(Nama(ListWahana[selatan]));
+      if (selatan!=-1) {
+        PrintKata(Nama(ListWahana[selatan]));printf("\n");
+      }
+      STARTKATA(stdin);
+      if (IsKataSama(CKata, Nama(ListWahana[utara]))) {
+        i=utara;
+      }
+      else if (IsKataSama(CKata, Nama(ListWahana[timur]))) {
+        i=timur;
+      }
+      else if (IsKataSama(CKata, Nama(ListWahana[selatan]))) {
+        i=selatan;
+      }
+      else if (IsKataSama(CKata, Nama(ListWahana[barat]))) {
+        i=barat;
       }
    }
-  STARTKATA(stdin);
-  if (IsKataSama(CKata, Nama(ListWahana[utara]))) {
-    i=utara;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[timur]))) {
-    i=timur;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[selatan]))) {
-    i=selatan;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[barat]))) {
-    i=barat;
-  }
    return ListWahana[i];
 }
 

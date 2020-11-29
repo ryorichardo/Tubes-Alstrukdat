@@ -310,10 +310,6 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahan
         }
         i++;
     }
-    if (isWahanaEmpty(ArrayWahana[i]))
-    {
-        printf("Wahana belum dibangun");
-    }
 }
 
 void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day)

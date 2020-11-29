@@ -61,7 +61,10 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], Wahana ListOwnedWahana[10], 
             *Primogem -= New.Mat[2];
             Element X;
             X.perintah = 'B';
-            X.Point = *Posisi_Player;
+            (X.Point).X = Absis(*Posisi_Player);
+            (X.Point).Y = Ordinat(*Posisi_Player);
+            (New.Point).X = Absis(*Posisi_Player);
+            (New.Point).Y = Ordinat(*Posisi_Player);
             X.Target = CKata;
             X.Biaya = New.HargaBuild;
             X.Durasi = New.DurasiBuild;

@@ -182,7 +182,8 @@ int main()
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
-                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, ListUpgradeOwnedWahana);
+                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Detail(ListOwnedWahana, Nama(New), ListUpgradeOwnedWahana);
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
