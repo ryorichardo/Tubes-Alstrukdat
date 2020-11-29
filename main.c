@@ -303,14 +303,14 @@ int main()
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
                 printf("1\n");
-                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, Banyak);
+                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
                 CurrentTime = MakeJAM(9, 0);
-                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, Banyak);
+                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
             }
             //buat gerak
             else if (IsKataSama(Game, ListAksi[12]))

@@ -187,7 +187,7 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 /* Membuat array MARK bertipe wahana */
 {
    int i;
-   for (i = IdxMin; i <= max; i++)
+   for (i = IdxMin; i < max; i++)
    {
       Kata Empty;
       MakeKataEmpty(&Empty);
@@ -539,6 +539,7 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
    int i = 0;
+<<<<<<< HEAD
    while (!isWahanaEmpty(ArrayWahana[i]))
    {
       if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
@@ -561,13 +562,39 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
    {
       printf("Wahana tersebut tidak ada");
    }
+=======
+   boolean found = false;
+    while (!isWahanaEmpty(ArrayWahana[i]) && !found)
+    {
+        if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
+        {
+            printf("\n\n#############################################\n");
+            printf("Nama Wahana : ");
+            PrintKata(NamaWahana);
+            printf("\n");
+            printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
+            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+            printf("Deskripsi Wahana : ");
+            PrintKata(ArrayWahana[i].Deskripsi);
+            printf("\n");
+            printf("\n#############################################\n\n");
+            found = true;
+        }
+        i++;
+    }
+    if(!found){
+       printf("Wahana tersebut tidak ada");
+    }
+>>>>>>> e4918ece8fcc9ec2c9cb9125ca2a911629274561
 }
 
 void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
 /* Prosedur untuk menampilkan laporan wahana */
 {
    int i = 0;
-   while (!isLaporanEmpty(TLap.TL[i]))
+   boolean found = false;
+   while (!isLaporanEmpty(TLap.TL[i]) && !found)
    {
       if (IsKataSama(TLap.TL[i].Nama, Nama))
       {
@@ -580,11 +607,18 @@ void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
          printf("Penggunaan Harian : %d\n", TLap.TL[i].PenggunaanHari);
          printf("Penghasilan Harian : %d\n", TLap.TL[i].PenghasilanHari);
          printf("\n#############################################\n\n");
+         found = true;
       }
       i++;
    }
+<<<<<<< HEAD
    if (isLaporanEmpty(TLap.TL[i]))
    {
       printf("Wahana tersebut tidak ada");
    }
+=======
+   if(!found){
+       printf("Wahana tersebut tidak ada");
+    }
+>>>>>>> e4918ece8fcc9ec2c9cb9125ca2a911629274561
 }

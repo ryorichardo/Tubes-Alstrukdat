@@ -23,13 +23,13 @@ void InitCustomer(Antrian Pelanggan[25])
         ((Pelanggan[j].info).Nama).TabKata[7] = 'r';
         ((Pelanggan[j].info).Nama).TabKata[8] = ' ';
         ((Pelanggan[j].info).Nama).TabKata[9] = c;
+        ((Pelanggan[j].info).Nama).Length = 10;
         a++;
         (Pelanggan[j].info).Kesabaran = 5;
     }
 }
 
-void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak)
-{
+void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
 
     /* Reset Array Customer */
@@ -40,11 +40,10 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
 
     BanyakWahana = NbElmtTabWahana(ArrayWahana);
     MakeEmpty(Customer, 5);
-    Banyak = (rand() % 5);
+    *Banyak = (rand() % 5);
 
     count = 1;
-    for (i = 0; i < Banyak; i++)
-    {
+    for (i = 0; i < *Banyak; i++){
         /* Reset Array Tempat[25] (Wahana) */
         for (k = 0; k < 25; k++)
         {
