@@ -28,6 +28,8 @@ typedef struct
     int DurasiBuild; //durasi build dlm menit
     int Mat[3];      //material buat build
     Kata Deskripsi;
+    POINT Ukuran;
+    int Peta;
     POINT Point; // buat lokasi wahana
     boolean Rusak;
 } Wahana; //upgrade samain aja adtnya
@@ -52,7 +54,7 @@ typedef struct
 } Material;
 
 // Selektor
-#define Nama(P) (P.Nama).TabKata
+#define Nama(P) (P.Nama)
 #define Harga(P) P.Harga
 #define Kapasitas(P) P.Kapasitas
 #define Pemain(P) P.Pemain
@@ -65,6 +67,11 @@ typedef struct
 #define Wood(P) P.Mat[0]
 #define Fire(P) P.Mat[1]
 #define Primogem(P) P.Mat[2]
+#define IndexPeta(P) P.Peta
+#define PanjangWahana(P) (P.Ukuran).X
+#define LebarWahana(P) (P.Ukuran).Y
 #define Daftar(P) (P.*Q).Main
+
+
 
 #endif

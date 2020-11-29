@@ -23,3 +23,7 @@ float Panjang (POINT P1, POINT P2){
 /* Tuliskan spec fungsi yang lebih tepat. */
     return sqrt(((Absis(P1) - Absis(P2)) * (Absis(P1) - Absis(P2))) + ((Ordinat(P1) - Ordinat(P2)) * (Ordinat(P1) - Ordinat(P2))));
 }
+
+boolean Intersection(int RectAL, int RectAR, int RectAT, int RectAB, int RectBL, int RectBR, int RectBT, int RectBB) {
+  return ((RectAL<=RectBR)&&(RectBL<RectAR)&&(RectAT<=RectBB)&&(RectBT<=RectAB));
+}

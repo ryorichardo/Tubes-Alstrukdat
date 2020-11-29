@@ -1,5 +1,5 @@
-Wangky Universe.5.10.10.10.0.5.5.5.ini deskripsi.
-uWucoaster.10.20.20.5.10.10.10.10.ini juga deskripsi.
-HALOlintar.20.50.50.10.30.10.10.10.ini juga deskripsi kok.;
+Wangky Universe.5.10.10.10.0.5.5.5.1.2.ini deskripsi.
+uWucoaster.10.20.20.5.10.10.10.10.1.1.ini juga deskripsi.
+HALOlintar.20.50.50.10.30.10.10.10.3.3.ini juga deskripsi kok.;
 Engi's Descent.5.5.5.5.10.5.
 Chocolate Rush.10.5.15.10.30.10.,

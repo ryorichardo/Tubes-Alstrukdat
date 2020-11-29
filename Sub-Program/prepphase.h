@@ -14,7 +14,7 @@ extern long countaksi;
 extern long totalbiaya;
 extern long Sisa;
 
-void Build(Stack * Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int * Duit, int *Wood, int *Fire, int *Primogem);
+void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem);
 // Program
 
 void Upgrade(Stack * Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int * Duit, int *Wood, int *Fire, int *Primogem);

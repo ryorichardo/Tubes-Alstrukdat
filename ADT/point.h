@@ -23,4 +23,5 @@ POINT MakePOINT (int X, int Y);
 
 float Panjang (POINT P1, POINT P2);
 
+boolean Intersection(int RectAL, int RectAR, int RectAT, int RectAB, int RectBL, int RectBR, int RectBT, int RectBB);
 #endif
