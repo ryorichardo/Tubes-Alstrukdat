@@ -83,9 +83,9 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
     }
 }
 
-void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem)
+void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem, int idxmap)
 {
-    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
+    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player, idxmap);
     Kata empty;
     MakeKataEmpty(&empty);
     if (!IsKataSama(New.Nama, empty))
@@ -210,7 +210,7 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
     }
 }
 
-void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi)
+void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi, List UpWahana[100])
 {
     Element X;
     int i,j;
@@ -234,16 +234,22 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
                 }
                 Absis(*Posisi)=i;
                 Ordinat(*Posisi)=j;
-
-
+                AddWahanaToListUpgrade(UpWahana, X.Target, X.Point, X.idxmap);
             }
             // update
             else if (X.perintah == 'U')
             {
-                New = SearchWahanaFromPoint(Wahanaskrg, X.Point);
+                New = SearchWahanaFromPoint(Wahanaskrg, X.Point, X.idxmap);
                 Up = SearchWahana(DaftarUpgrade, X.Target);
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
+                int i = 0;
+                Kata Empty;
+                MakeKataEmpty(&Empty);
+                while(X.Point.X != (FirstList(UpWahana[i]))->Lokasi.X && X.Point.Y != (FirstList(UpWahana[i]))->Lokasi.Y && X.idxmap != (FirstList(UpWahana[i]))->idxmap){
+                    i++;
+                }
+                InsVLast(&UpWahana[i], X.Target);
             }
             // buy
             else if (X.perintah == 'Y')

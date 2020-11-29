@@ -221,6 +221,10 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
     }
 }
 
+void BacaLoadMaterial(char namaFile[])
+{
+}
+
 Kata CopyKata(Kata K)
 {
     int i;

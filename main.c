@@ -34,6 +34,7 @@ int main()
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
+    List ListUpgradeOwnedWahana[100];
     Material ListMat[3];
     TabLaporan TL;
     POINT Posisi = MakePOINT(2, 2);
@@ -109,12 +110,12 @@ int main()
     {
         if (isMain == true)
         {
-            
-            printf("Main phase day ");
+
+            printf("\nMain phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
-            
+
             // close
             printf("Closing time: ");
             TulisJAM(Close);
@@ -147,17 +148,17 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
             {
-                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &CurrentTime);
+                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &CurrentTime);
             }
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
-                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
+                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama);
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
@@ -208,7 +209,7 @@ int main()
         }
         else
         {
-            printf("Preparation phase day ");
+            printf("\nPreparation phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
@@ -259,7 +260,7 @@ int main()
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem, idxmap);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
@@ -274,7 +275,7 @@ int main()
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
+                Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
                 printf("1\n");

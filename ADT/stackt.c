@@ -38,6 +38,7 @@ void Push(Stack *S, Element X)
     InfoTop(*S).Primogem = X.Primogem;
     InfoTop(*S).Target = CopyKata(X.Target);
     InfoTop(*S).Wood = X.Wood;
+    InfoTop(*S).idxmap = X.idxmap;
 }
 /* ************ Menghapus sebuah elemen Stack ************ */
 void Pop(Stack *S, Element *X)
@@ -54,5 +55,6 @@ void Pop(Stack *S, Element *X)
     (*X).Primogem = InfoTop(*S).Primogem;
     (*X).Target = CopyKata(InfoTop(*S).Target);
     (*X).Wood = InfoTop(*S).Wood;
+    (*X).idxmap = InfoTop(*S).idxmap;
     Top(*S)--;
 }

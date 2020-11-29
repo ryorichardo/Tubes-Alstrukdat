@@ -4,12 +4,14 @@
 
 // Antrian Pelanggan[5];
 
-void InitCustomer (Antrian Pelanggan[25]){
+void InitCustomer(Antrian Pelanggan[25])
+{
     int j;
     int a = 65;
     char c;
 
-    for (j = 0; j < 25; j++){
+    for (j = 0; j < 25; j++)
+    {
         c = a;
         ((Pelanggan[j].info).Nama).TabKata[0] = 'C';
         ((Pelanggan[j].info).Nama).TabKata[1] = 'u';
@@ -27,11 +29,17 @@ void InitCustomer (Antrian Pelanggan[25]){
     }
 }
 
+<<<<<<< HEAD
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
+=======
+void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak)
+{
+>>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
 
     /* Reset Array Customer */
-    for (i = 0; i < 25; i++){
+    for (i = 0; i < 25; i++)
+    {
         Custom[i] = 0;
     }
 
@@ -40,10 +48,16 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     *Banyak = (rand() % 5);
 
     count = 1;
+<<<<<<< HEAD
     for (i = 0; i < *Banyak; i++){
         printf("%d\n", i);
+=======
+    for (i = 0; i < Banyak; i++)
+    {
+>>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
         /* Reset Array Tempat[25] (Wahana) */
-        for (k = 0; k <25; k++){
+        for (k = 0; k < 25; k++)
+        {
             Tempat[k] = 0;
         }
 
@@ -57,8 +71,13 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
         Pelanggan[j].prio = count;
 
         Naik = (rand() % 10) + 1;
+<<<<<<< HEAD
         for (k = 0; k < Naik; k++){
             printf("%d\n", k);
+=======
+        for (k = 0; k < Naik; k++)
+        {
+>>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
             l = rand() % 25;
             while (Tempat[l] == 1)
             {
@@ -72,8 +91,6 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
 
         count++;
     }
-
-
 }
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
