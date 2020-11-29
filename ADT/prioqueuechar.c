@@ -168,7 +168,7 @@ void Dequeue(PrioQueueChar *Q, Antrian *X)
     }
 }
 /* Operasi Tambahan */
-void PrintPrioQueueChar(PrioQueueChar Q)
+void PrintQueue(PrioQueueChar Q)
 /* Mencetak isi queue Q ke layar */
 /* I.S. Q terdefinisi, mungkin kosong */
 /* F.S. Q tercetak ke layar dengan format:
@@ -178,24 +178,26 @@ void PrintPrioQueueChar(PrioQueueChar Q)
 #
 */
 {
+    int j;
     int i = Head(Q);
-    if (IsEmpty(Q))
-    {
-        printf("#\n");
-    }
-    else
-    {
-
-        while (i != Tail(Q))
-        {
-            printf("%d %c\n", Prio(Elmtd(Q, i)), Info(Elmtd(Q, i)));
-            i += 1;
-            if (i == MaxEl(Q))
-            {
-                i = 0;
+    while (i != Tail(Q)){
+        printf("(");
+        j = 0;
+        while (Main(Q,j).TabKata[0] == '\0'){
+            j++;
+        }
+        if (Main(Q,j).TabKata[0] != '\0'){
+            PrintKata(Main(Q, j));
+        }
+        for (j; j < 5; j++){
+            if (Main(Q,j).TabKata[0] != '\0'){
+                printf(", ");
+                PrintKata(Main(Q, j));
             }
         }
-        printf("%d %c\n", Prio(Elmtd(Q, i)), Info(Elmtd(Q, i)));
-        printf("#\n");
+        printf("), kesabaran: %d //", Info(Elmtd(Q, i)).Kesabaran);
+        PrintKata(Info(Elmtd(Q, i)).Nama);
+        printf("\n");
+        i++;
     }
 }

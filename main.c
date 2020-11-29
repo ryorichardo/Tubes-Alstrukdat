@@ -47,6 +47,8 @@ int main()
     extern Antrian CustomerA, CustomerB, CustomerC, CustomerD, CustomerE;
     extern Kata Wahana1, Wahana2, Wahana3;
 
+    extern int Banyak;
+
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
     CurrentMap = ListMap[0];
@@ -108,11 +110,11 @@ int main()
         if (isMain == true)
         {
             Assign(&Wahana1, &Wahana2, &Wahana3);
-            CustomA(CustomerA, Wahana1, Wahana2, Wahana3);
-            CustomB(CustomerB, Wahana1, Wahana2, Wahana3);
-            CustomC(CustomerC, Wahana1, Wahana2, Wahana3);
-            CustomD(CustomerD, Wahana1, Wahana2, Wahana3);
-            CustomE(CustomerE, Wahana1, Wahana2, Wahana3);
+            CustomA(&CustomerA, Wahana1, Wahana2, Wahana3);
+            CustomB(&CustomerB, Wahana1, Wahana2, Wahana3);
+            CustomC(&CustomerC, Wahana1, Wahana2, Wahana3);
+            CustomD(&CustomerD, Wahana1, Wahana2, Wahana3);
+            CustomE(&CustomerE, Wahana1, Wahana2, Wahana3);
             printf("Main phase day ");
 
             // print Map dan Perintah
@@ -124,7 +126,7 @@ int main()
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
             printf("\n");
-            printf("Antrian: ");
+            PrintAntrian(Banyak, Customer);
 
             // Next Perintah
             printf("\nMasukkan Perintah\n");
@@ -149,7 +151,7 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime);
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
@@ -180,7 +182,7 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(&isMain, &Customer);
+                Prepare(&isMain, &Customer, Banyak);
                 day++;
             }
 
@@ -302,6 +304,7 @@ int main()
             {
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
             }
+            RandomAntrian(Banyak, &Customer, CustomerA, CustomerB, CustomerC, CustomerD, CustomerE);
         }
     }
 

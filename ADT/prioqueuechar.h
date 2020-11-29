@@ -14,6 +14,7 @@ extern Kata Main[5];
 
 typedef struct
 {
+    Kata Nama;
     Kata Main[5]; /* Wahana-wahana yang mau dinaikin Customer */
     int Kesabaran;
 } Pengunjung;
@@ -84,7 +85,7 @@ void Dequeue(PrioQueueChar *Q, Antrian *X);
         Q mungkin kosong */
 
 /* Operasi Tambahan */
-void PrintPrioQueueChar(PrioQueueChar Q);
+void PrintQueue(PrioQueueChar Q);
 /* Mencetak isi queue Q ke layar */
 /* I.S. Q terdefinisi, mungkin kosong */
 /* F.S. Q tercetak ke layar dengan format:

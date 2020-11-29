@@ -47,46 +47,96 @@ void Assign(Kata *Wahana1, Kata *Wahana2, Kata *Wahana3)
     Wahana3->TabKata[9] = 'r';
 }
 
-void CustomA(Antrian CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
-    (CustomerA.info).Main[0] = Wahana1;
-    (CustomerA.info).Main[1] = Wahana2;
-    (CustomerA.info).Main[2] = Wahana3;
-    (CustomerA.info).Kesabaran = 5;
+    ((CustomerA->info).Nama).TabKata[0] = 'C';
+    ((CustomerA->info).Nama).TabKata[1] = 'u';
+    ((CustomerA->info).Nama).TabKata[2] = 's';
+    ((CustomerA->info).Nama).TabKata[3] = 't';
+    ((CustomerA->info).Nama).TabKata[4] = 'o';
+    ((CustomerA->info).Nama).TabKata[5] = 'm';
+    ((CustomerA->info).Nama).TabKata[6] = 'e';
+    ((CustomerA->info).Nama).TabKata[7] = 'r';
+    ((CustomerA->info).Nama).TabKata[8] = ' ';
+    ((CustomerA->info).Nama).TabKata[9] = 'A';
+    (CustomerA->info).Main[0] = Wahana1;
+    (CustomerA->info).Main[1] = Wahana2;
+    (CustomerA->info).Main[2] = Wahana3;
+    (CustomerA->info).Kesabaran = 5;
 }
 
-void CustomB(Antrian CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
-    (CustomerB.info).Main[0] = Wahana1;
-    (CustomerB.info).Main[1] = Wahana2;
-    (CustomerB.info).Kesabaran = 5;
+    ((CustomerB->info).Nama).TabKata[0] = 'C';
+    ((CustomerB->info).Nama).TabKata[1] = 'u';
+    ((CustomerB->info).Nama).TabKata[2] = 's';
+    ((CustomerB->info).Nama).TabKata[3] = 't';
+    ((CustomerB->info).Nama).TabKata[4] = 'o';
+    ((CustomerB->info).Nama).TabKata[5] = 'm';
+    ((CustomerB->info).Nama).TabKata[6] = 'e';
+    ((CustomerB->info).Nama).TabKata[7] = 'r';
+    ((CustomerB->info).Nama).TabKata[8] = ' ';
+    ((CustomerB->info).Nama).TabKata[9] = 'B';
+    (CustomerB->info).Main[0] = Wahana1;
+    (CustomerB->info).Main[1] = Wahana2;
+    (CustomerB->info).Kesabaran = 5;
 }
 
-void CustomC(Antrian CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
-    (CustomerC.info).Main[0] = Wahana2;
-    (CustomerC.info).Main[1] = Wahana3;
-    (CustomerC.info).Kesabaran = 5;
+    ((CustomerC->info).Nama).TabKata[0] = 'C';
+    ((CustomerC->info).Nama).TabKata[1] = 'u';
+    ((CustomerC->info).Nama).TabKata[2] = 's';
+    ((CustomerC->info).Nama).TabKata[3] = 't';
+    ((CustomerC->info).Nama).TabKata[4] = 'o';
+    ((CustomerC->info).Nama).TabKata[5] = 'm';
+    ((CustomerC->info).Nama).TabKata[6] = 'e';
+    ((CustomerC->info).Nama).TabKata[7] = 'r';
+    ((CustomerC->info).Nama).TabKata[8] = ' ';
+    ((CustomerC->info).Nama).TabKata[9] = 'C';
+    (CustomerC->info).Main[0] = Wahana2;
+    (CustomerC->info).Main[1] = Wahana3;
+    (CustomerC->info).Kesabaran = 5;
 }
 
-void CustomD(Antrian CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
-    (CustomerD.info).Main[0] = Wahana2;
-    (CustomerD.info).Kesabaran = 5;
+    ((CustomerD->info).Nama).TabKata[0] = 'C';
+    ((CustomerD->info).Nama).TabKata[1] = 'u';
+    ((CustomerD->info).Nama).TabKata[2] = 's';
+    ((CustomerD->info).Nama).TabKata[3] = 't';
+    ((CustomerD->info).Nama).TabKata[4] = 'o';
+    ((CustomerD->info).Nama).TabKata[5] = 'm';
+    ((CustomerD->info).Nama).TabKata[6] = 'e';
+    ((CustomerD->info).Nama).TabKata[7] = 'r';
+    ((CustomerD->info).Nama).TabKata[8] = ' ';
+    ((CustomerD->info).Nama).TabKata[9] = 'D';
+    (CustomerD->info).Main[0] = Wahana2;
+    (CustomerD->info).Kesabaran = 5;
 }
 
-void CustomE(Antrian CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
-    (CustomerE.info).Main[0] = Wahana3;
-    (CustomerE.info).Kesabaran = 5;
+    ((CustomerE->info).Nama).TabKata[0] = 'C';
+    ((CustomerE->info).Nama).TabKata[1] = 'u';
+    ((CustomerE->info).Nama).TabKata[2] = 's';
+    ((CustomerE->info).Nama).TabKata[3] = 't';
+    ((CustomerE->info).Nama).TabKata[4] = 'o';
+    ((CustomerE->info).Nama).TabKata[5] = 'm';
+    ((CustomerE->info).Nama).TabKata[6] = 'e';
+    ((CustomerE->info).Nama).TabKata[7] = 'r';
+    ((CustomerE->info).Nama).TabKata[8] = ' ';
+    ((CustomerE->info).Nama).TabKata[9] = 'E';
+    (CustomerE->info).Main[0] = Wahana3;
+    (CustomerE->info).Kesabaran = 5;
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak)
 {
     Wahana W;
     int i, count, j;
@@ -120,6 +170,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         if (count == 0)
         {
             Dequeue(Customer, &Buang);
+            Banyak -= 1;
         }
     }
     /* Wahana aman */
@@ -147,6 +198,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         if (count == 0)
         {
             Dequeue(Customer, &Buang);
+            Banyak -= 1;
         }
     }
     else
@@ -173,6 +225,7 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         if (count == 0)
         {
             Dequeue(Customer, &Buang);
+            Banyak -= 1;
         }
         NextNMenit(*CurrentTime, Durasi(W));
     }
@@ -283,12 +336,13 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer)
+void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
 {
     Antrian Buang;
     while (!IsEmpty(*Customer))
     {
         Dequeue(Customer, &Buang);
+        Banyak -= 1;
     }
     *isMain = false;
 }
@@ -329,4 +383,10 @@ void RandomAntrian(int Banyak, PrioQueueChar *Customer, Antrian CustomerA, Antri
             break;
         }
     }
+}
+
+void PrintAntrian(int Banyak, PrioQueueChar Customer)
+{
+    printf("Antrian [%d/5]:\n", Banyak);
+    PrintQueue(Customer);
 }
