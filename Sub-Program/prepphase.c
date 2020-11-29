@@ -85,7 +85,7 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
 
 void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem, int idxmap)
 {
-    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
+    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player, idxmap);
     Kata empty;
     MakeKataEmpty(&empty);
     if (!IsKataSama(New.Nama, empty))
@@ -239,7 +239,7 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
             // update
             else if (X.perintah == 'U')
             {
-                New = SearchWahanaFromPoint(Wahanaskrg, X.Point);
+                New = SearchWahanaFromPoint(Wahanaskrg, X.Point, X.idxmap);
                 Up = SearchWahana(DaftarUpgrade, X.Target);
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
