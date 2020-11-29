@@ -109,12 +109,12 @@ int main()
     {
         if (isMain == true)
         {
-            
-            printf("Main phase day ");
+
+            printf("\nMain phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
-            
+
             // close
             printf("Closing time: ");
             TulisJAM(Close);
@@ -208,7 +208,7 @@ int main()
         }
         else
         {
-            printf("Preparation phase day ");
+            printf("\nPreparation phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
