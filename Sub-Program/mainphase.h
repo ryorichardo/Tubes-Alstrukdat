@@ -10,7 +10,7 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void InitCustomer (Antrian *Pelanggan[25]);
+void InitCustomer (Antrian Pelanggan[25]);
 
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak);
 

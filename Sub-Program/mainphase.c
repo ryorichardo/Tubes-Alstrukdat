@@ -4,31 +4,31 @@
 
 // Antrian Pelanggan[5];
 
-void InitCustomer (Antrian *Pelanggan[25]){
+void InitCustomer (Antrian Pelanggan[25]){
     int j;
     int a = 65;
     char c;
 
     for (j = 0; j < 25; j++){
         c = a;
-        ((Pelanggan[j]->info).Nama).TabKata[0] = 'C';
-        ((Pelanggan[j]->info).Nama).TabKata[1] = 'u';
-        ((Pelanggan[j]->info).Nama).TabKata[2] = 's';
-        ((Pelanggan[j]->info).Nama).TabKata[3] = 't';
-        ((Pelanggan[j]->info).Nama).TabKata[4] = 'o';
-        ((Pelanggan[j]->info).Nama).TabKata[5] = 'm';
-        ((Pelanggan[j]->info).Nama).TabKata[6] = 'e';
-        ((Pelanggan[j]->info).Nama).TabKata[7] = 'r';
-        ((Pelanggan[j]->info).Nama).TabKata[8] = ' ';
-        ((Pelanggan[j]->info).Nama).TabKata[9] = c;
+        ((Pelanggan[j].info).Nama).TabKata[0] = 'C';
+        ((Pelanggan[j].info).Nama).TabKata[1] = 'u';
+        ((Pelanggan[j].info).Nama).TabKata[2] = 's';
+        ((Pelanggan[j].info).Nama).TabKata[3] = 't';
+        ((Pelanggan[j].info).Nama).TabKata[4] = 'o';
+        ((Pelanggan[j].info).Nama).TabKata[5] = 'm';
+        ((Pelanggan[j].info).Nama).TabKata[6] = 'e';
+        ((Pelanggan[j].info).Nama).TabKata[7] = 'r';
+        ((Pelanggan[j].info).Nama).TabKata[8] = ' ';
+        ((Pelanggan[j].info).Nama).TabKata[9] = c;
         a++;
-        (Pelanggan[j]->info).Kesabaran = 5;
+        (Pelanggan[j].info).Kesabaran = 5;
     }
 }
 
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak){
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
-    
+
     /* Reset Array Customer */
     for (i = 0; i < 25; i++){
         Custom[i] = 0;

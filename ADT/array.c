@@ -413,7 +413,7 @@ void RefreshLaporan(TabLaporan *TLap)
 {
    int length = NbElmtTabLaporan(*TLap);
    for (int i = 0; i < length; i++)
-   {  
+   {
       TLap->TL[i].PenggunaanHari = 0;
       TLap->TL[i].PenghasilanHari = 0;
    }
