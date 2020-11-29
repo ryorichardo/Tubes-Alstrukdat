@@ -27,7 +27,6 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int 
     TulisJAM(CurrentTime);
     printf("\n");
 }
-extern int Banyak;
 
 int main()
 {
