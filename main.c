@@ -145,6 +145,10 @@ int main()
     {
         if (isMain == true)
         {
+            if (JGT(CurrentTime,Close)){
+                isMain == false;
+                day++;
+            }
 
             printf("\nMain phase day ");
 
@@ -183,7 +187,8 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
+
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain, &day);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
@@ -193,7 +198,7 @@ int main()
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
-                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama);
+                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, ListUpgradeOwnedWahana);
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
@@ -214,10 +219,7 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                printf("1\n");
-                Prepare(&isMain, &Customer, Banyak);
-                day++;
-                printf("1\n");
+                Prepare(&isMain, &Customer, &day);
             }
 
             //buat gerak
@@ -299,7 +301,7 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(&Perintah, ListWahana, Posisi, idxmap, &Money, &Wood, &Fire, &Primogem);
+                Build(&Perintah, ListWahana, ListOwnedWahana, &Posisi, &CurrentMap, idxmap, &Money, &Wood, &Fire, &Primogem);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
@@ -314,7 +316,7 @@ int main()
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(&Perintah, &Money, &Wood, &Fire, &Primogem);
+                Undo(&Perintah, &CurrentMap, &Money, &Wood, &Fire, &Primogem, ListOwnedWahana);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
@@ -322,7 +324,10 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
+<<<<<<< HEAD
                 // printf("1\n");
+=======
+>>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
                 RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
                 // PrintListWahana(ListOwnedWahana);
             }

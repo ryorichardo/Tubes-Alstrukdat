@@ -1,5 +1,7 @@
 #include "prepphase.h"
 #include "../ADT/tipebentukan.h"
+#include "../ADT/point.h"
+#include "../ADT/matriks.h"
 #include <stdio.h>
 
 long durasi = 0;
@@ -7,7 +9,7 @@ long countaksi = 0;
 long totalbiaya = 0;
 long Sisa = 720;
 
-void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem)
+void Build(Stack *Perintah, Wahana ArrayWahana[10], Wahana ListOwnedWahana[10], POINT *Posisi_Player, MATRIKS *Peta, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem)
 {
     Kata empty;
     boolean nimpa,nimpaoffice;
@@ -20,10 +22,10 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
     nimpa=false;
     nimpaoffice=false;
     // batas kanan atas dan kiri bawah
-    RectAR=Ordinat(Posisi_Player)+PanjangWahana(New)-1;
-    RectAL=Ordinat(Posisi_Player);
-    RectAT=Absis(Posisi_Player);
-    RectAB=Absis(Posisi_Player)+LebarWahana(New)-1;
+    RectAR=Ordinat(*Posisi_Player)+PanjangWahana(New)-1;
+    RectAL=Ordinat(*Posisi_Player);
+    RectAT=Absis(*Posisi_Player);
+    RectAB=Absis(*Posisi_Player)+LebarWahana(New)-1;
     if (!IsKataSama(New.Nama, empty))
     {
         int i = 0;
@@ -44,7 +46,6 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
            }
            i++;
         }
-        printf("%d %d %d %d %d\n", RectAL, RectAR, RectAT, RectAB,idxpeta);
         if (Intersection(RectAL, RectAR, RectAT, RectAB, 9, 9, 9, 9) && idxpeta==0) {
           nimpaoffice=true;
         }
@@ -60,17 +61,29 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
             *Primogem -= New.Mat[2];
             Element X;
             X.perintah = 'B';
-            X.Point = Posisi_Player;
+            X.Point = *Posisi_Player;
             X.Target = CKata;
             X.Biaya = New.HargaBuild;
             X.Durasi = New.DurasiBuild;
             X.Wood = New.Mat[0];
             X.Fire = New.Mat[1];
             X.Primogem = New.Mat[2];
+            (X.Ukuran).X =  PanjangWahana(New);
+            (X.Ukuran).Y =  LebarWahana(New);
             durasi += New.DurasiBuild;
             countaksi++;
             totalbiaya += X.Biaya;
             Push(Perintah, X);
+            AddWahana(ListOwnedWahana, New);
+            int i,j;
+            for (i=Absis(X.Point);i<=Absis(X.Point)+LebarWahana(New)-1;i++) {
+              for(j=Ordinat(X.Point);j<=Ordinat(X.Point)+PanjangWahana(New)-1;j++) {
+                Elmt(*Peta, i, j) = 'W';
+              }
+            }
+            Absis(*Posisi_Player)=i;
+            Ordinat(*Posisi_Player)=j;
+            Elmt(*Peta, i, j) = 'P';
         }
         else
         {
@@ -85,7 +98,8 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
 
 void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem, int idxmap)
 {
-    Wahana New = SearchWahanaFromPoint(ArrayWahana, Player, idxmap);
+    Wahana New;
+    New = SearchWahanaFromPoint(ArrayWahana, Player, idxmap);
     Kata empty;
     MakeKataEmpty(&empty);
     if (!IsKataSama(New.Nama, empty))
@@ -194,7 +208,7 @@ void Buy(Stack *Perintah, Material ArrayMat[3], int *Duit)
     }
 }
 
-void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
+void Undo(Stack *Perintah,MATRIKS *Peta, int *Duit, int *Wood, int *Fire, int *Primogem, Wahana ListOwnedWahana[10])
 {
     Element X;
     Pop(Perintah, &X);
@@ -207,6 +221,16 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
         *Wood += X.Wood;
         *Fire += X.Fire;
         *Primogem += X.Primogem;
+    }
+    if (X.perintah == 'B')
+    {
+        int i,j;
+        DelWahana(ListOwnedWahana);
+        for (i=Absis(X.Point);i<=Absis(X.Point)+(X.Ukuran).Y-1;i++) {
+          for(j=Ordinat(X.Point);j<=Ordinat(X.Point)+(X.Ukuran).X-1;j++) {
+            Elmt(*Peta, i, j) = '-';
+          }
+        }
     }
 }
 
@@ -224,16 +248,15 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
             if (X.perintah == 'B')
             {
                 New = SearchWahana(DaftarWahana, X.Target);
-                AddWahana(Wahanaskrg, New);
                 AddLaporan(TL, New);
                 // PrintKata(Wahanaskrg->Nama);
-                for (i=Absis(X.Point);i<=Absis(X.Point)+LebarWahana(New)-1;i++) {
-                  for(j=Ordinat(X.Point);j<=Ordinat(X.Point)+PanjangWahana(New)-1;j++) {
-                    Elmt(*Peta, i, j) = 'W';
-                  }
-                }
-                Absis(*Posisi)=i;
-                Ordinat(*Posisi)=j;
+                // for (i=Absis(X.Point);i<=Absis(X.Point)+LebarWahana(New)-1;i++) {
+                //   for(j=Ordinat(X.Point);j<=Ordinat(X.Point)+PanjangWahana(New)-1;j++) {
+                //     Elmt(*Peta, i, j) = 'W';
+                //   }
+                // }
+                // Absis(*Posisi)=i;
+                // Ordinat(*Posisi)=j;
                 AddWahanaToListUpgrade(UpWahana, X.Target, X.Point, X.idxmap);
             }
             // update

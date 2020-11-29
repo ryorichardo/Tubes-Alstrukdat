@@ -39,6 +39,8 @@ void Push(Stack *S, Element X)
     InfoTop(*S).Target = CopyKata(X.Target);
     InfoTop(*S).Wood = X.Wood;
     InfoTop(*S).idxmap = X.idxmap;
+    InfoTop(*S).Ukuran.X = X.Ukuran.X;
+    InfoTop(*S).Ukuran.Y = X.Ukuran.Y;
 }
 /* ************ Menghapus sebuah elemen Stack ************ */
 void Pop(Stack *S, Element *X)
@@ -56,5 +58,7 @@ void Pop(Stack *S, Element *X)
     (*X).Target = CopyKata(InfoTop(*S).Target);
     (*X).Wood = InfoTop(*S).Wood;
     (*X).idxmap = InfoTop(*S).idxmap;
+    (*X).Ukuran.X = InfoTop(*S).Ukuran.X;
+    (*X).Ukuran.Y = InfoTop(*S).Ukuran.Y;
     Top(*S)--;
 }

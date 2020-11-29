@@ -29,9 +29,16 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
+<<<<<<< HEAD
 void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak)
 {
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
+=======
+void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
+    int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
+    Kata Empty;
+    MakeKataEmpty( &Empty);
+>>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
 
     /* Reset Array Customer */
     for (i = 0; i < 25; i++)
@@ -64,10 +71,10 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
         Naik = (rand() % 10) + 1;
         for (k = 0; k < Naik; k++)
         {
-            l = rand() % 25;
+            l = rand() % 100;
             while (Tempat[l] == 1)
             {
-                l = (rand() % 25);
+                l = (rand() % 100);
             }
             Tempat[l] = 1;
             (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
@@ -79,7 +86,7 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
     }
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain, int *day)
 {
     Wahana W;
     int i, count, j, k, r;
@@ -115,6 +122,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     /* Wahana aman */
     else if (Pemain(W) == Kapasitas(W))
@@ -143,6 +155,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     else
     {
@@ -169,6 +186,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             Dequeue(Customer, &Buang);
             Banyak -= 1;
+        }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
         }
 
         /* Menambah keterangan di Laporan */
@@ -251,8 +273,6 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
             printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
             PrintDetailWahana(ArrayWahana, CKata);
-            // printf("Ingin melihat detail wahana(y/n) ? \n ");
-            // printf("y untuk yes dan n untuk no ? \n ");
         }
 
         // jika report
@@ -266,14 +286,12 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
         printf("Masukkan perintah (detail / report / exit)? \n");
-        // STARTKATA(stdin);
-        // Pilihan = CKata;
         STARTKATA(stdin);
         Pilihan = CKata;
     }
 }
 
-void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
+void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahana[100])
 {
     int i = 0;
     while (!isWahanaEmpty(ArrayWahana[i]))
@@ -291,9 +309,10 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
             PrintKata(ArrayWahana[i].Deskripsi);
             printf("\n");
             printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
-            // PrintInfo();
             printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
             printf("Ukuran Wahana : %d x %d\n", PanjangWahana(ArrayWahana[i]), LebarWahana(ArrayWahana[i]));
+            printf("History upgrade: \n");
+            PrintInfo(ListUpgradeOwnedWahana[i]);
             printf("\n#############################################\n\n");
         }
         i++;
@@ -304,18 +323,11 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
+void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day)
 {
-    Antrian Buang;
-    printf("12\n");
-    // while (!IsEmpty(*Customer))
-    // {
-    //     printf("13\n");
-    //     Dequeue(Customer, &Buang);
-    //     Banyak -= 1;
-    // }
-    printf("11\n");
+    MakeEmpty(Customer, 5);
     *isMain = false;
+    *day++;
 }
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer)

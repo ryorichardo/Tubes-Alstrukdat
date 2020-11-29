@@ -18,6 +18,7 @@ typedef struct
   char perintah;
   Kata Target;
   POINT Point;
+  POINT Ukuran;
   int Biaya;
   int Wood;
   int Fire;
