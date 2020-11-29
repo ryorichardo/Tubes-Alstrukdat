@@ -210,7 +210,7 @@ int main()
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
                 CurrentTime = NextNMenit(CurrentTime, 1);
             }
-        }
+                }
         else
         {
             printf("Preparation phase day ");
