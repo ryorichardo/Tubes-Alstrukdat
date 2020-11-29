@@ -373,9 +373,11 @@ void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
 
 void RandomAntrian(int Banyak, PrioQueueChar *Customer, Antrian CustomerA, Antrian CustomerB, Antrian CustomerC, Antrian CustomerD, Antrian CustomerE)
 {
-    int i, j, Custom[5];
+    MakeEmpty(Customer, 5);
+    int i, j, Custom[5], count;
     printf("1\n ");
     Banyak = (rand() % 5) + 1;
+    count = 1;
     for (i = 0; i < Banyak; i++)
     {
         j = (rand() % 5) + 1;
@@ -386,59 +388,36 @@ void RandomAntrian(int Banyak, PrioQueueChar *Customer, Antrian CustomerA, Antri
         Custom[j - 1] = 1;
         printf("2\n ");
         printf("%d", j);
-        if (j == 1)
+        
+        switch (j)
         {
-            printf("3\n ");
+        case 1:
+            CustomerA.prio = count;
             Enqueue(Customer, CustomerA);
-        }
-        else if (j == 2)
-        {
-            printf("4\n ");
+            printf("3\n ");
+            break;
+        case 2:
+            CustomerB.prio = count;
             Enqueue(Customer, CustomerB);
-        }
-        else if (j == 3)
-        {
-            printf("5\n ");
+            printf("4\n ");
+            break;
+        case 3:
+            CustomerC.prio = count;
             Enqueue(Customer, CustomerC);
-        }
-        else if (j == 4)
-        {
-            printf("6\n ");
+            printf("5\n ");
+            break;
+        case 4:
+            CustomerD.prio = count;
             Enqueue(Customer, CustomerD);
-        }
-        else
-        {
-            printf("7\n ");
+            printf("6\n ");
+            break;
+        case 5:
+            CustomerE.prio = count;
             Enqueue(Customer, CustomerE);
+            printf("7\n ");
+            break;
         }
-
-        // switch (j)
-        // {
-        // case 1:
-        //     Enqueue(Customer, CustomerA);
-        //     printf("3\n ");
-        //     break;
-
-        // case 2:
-        //     Enqueue(Customer, CustomerB);
-        //     printf("4\n ");
-        //     break;
-
-        // case 3:
-        //     Enqueue(Customer, CustomerC);
-        //     printf("5\n ");
-        //     break;
-
-        // case 4:
-        //     Enqueue(Customer, CustomerD);
-        //     printf("6\n ");
-        //     break;
-
-        // case 5:
-        //     Enqueue(Customer, CustomerE);
-        //     printf("7\n ");
-        //     break;
-        // }
+        count ++;
     }
 }
 
