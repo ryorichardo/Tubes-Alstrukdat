@@ -14,7 +14,7 @@ void InitCustomer(Antrian Pelanggan[25]);
 
 void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak);
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL);
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain, int *day);
 
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime);
 
@@ -22,7 +22,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana);
 // Program
 void Office(Wahana ArrayWahana[100], TabLaporan TL);
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak);
+void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day);
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer);
 

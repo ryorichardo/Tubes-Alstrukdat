@@ -77,7 +77,7 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     }
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain, int *day)
 {
     Wahana W;
     int i, count, j, k, r;
@@ -113,6 +113,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     /* Wahana aman */
     else if (Pemain(W) == Kapasitas(W))
@@ -141,6 +146,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     else
     {
@@ -167,6 +177,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             Dequeue(Customer, &Buang);
             Banyak -= 1;
+        }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
         }
 
         /* Menambah keterangan di Laporan */
@@ -249,8 +264,6 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
             printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
             PrintDetailWahana(ArrayWahana, CKata);
-            // printf("Ingin melihat detail wahana(y/n) ? \n ");
-            // printf("y untuk yes dan n untuk no ? \n ");
         }
 
         // jika report
@@ -264,8 +277,6 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
         printf("Masukkan perintah (detail / report / exit)? \n");
-        // STARTKATA(stdin);
-        // Pilihan = CKata;
         STARTKATA(stdin);
         Pilihan = CKata;
     }
@@ -302,18 +313,11 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
+void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day)
 {
-    Antrian Buang;
-    printf("12\n");
-    // while (!IsEmpty(*Customer))
-    // {
-    //     printf("13\n");
-    //     Dequeue(Customer, &Buang);
-    //     Banyak -= 1;
-    // }
-    printf("11\n");
+    MakeEmpty(Customer, 5);
     *isMain = false;
+    *day++;
 }
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer)
