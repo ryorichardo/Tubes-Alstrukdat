@@ -156,6 +156,7 @@ int main()
             {
                 isMain == false;
                 day++;
+                CurrentTime = MakeJAM(21, 0);
             }
 
             printf("\nMain phase day ");
@@ -230,6 +231,7 @@ int main()
             else if (IsKataSama(Game, ListAksi[10]))
             {
                 Prepare(&isMain, &Customer, &day);
+                CurrentTime = MakeJAM(21, 0);
             }
 
             //buat gerak
