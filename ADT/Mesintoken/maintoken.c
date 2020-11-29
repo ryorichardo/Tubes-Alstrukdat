@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkata.h"
-#include "tipebentukan.h"
-#include "boolean.h"
+#include "../Mesinkata/mesinkata.h"
+#include "../tipebentukan.h"
+#include "../boolean.h"
 #include "mesintoken.h"
 
 /* State Mesin Kata */

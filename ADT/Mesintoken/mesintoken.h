@@ -1,11 +1,8 @@
-/* File: mesintoken.h */
-/* Definisi Mesin Token: Model Akuisisi Versi I */
-
 #ifndef __MESINTOKEN_H__
 #define __MESINTOKEN_H__
 
 #include "boolean.h"
-#include "mesinkar.h"
+#include "../Mesinkar/mesinkar.h"
 
 #define NMax 50
 #define BLANK ' '

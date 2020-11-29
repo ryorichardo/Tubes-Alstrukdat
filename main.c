@@ -1,6 +1,6 @@
 #include "ADT/tipebentukan.h"
-#include "ADT/mesinkata.h"
-#include "ADT/mesintoken.h"
+#include "ADT/Mesinkata/mesinkata.h"
+#include "ADT/Mesintoken/mesintoken.h"
 #include "Sub-Program/mainphase.h"
 #include "Sub-Program/prepphase.h"
 #include "Sub-Program/PetaWahana.h"

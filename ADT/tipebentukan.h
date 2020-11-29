@@ -1,10 +1,10 @@
 #ifndef tipe_bentukan_H
 #define tipe_bentukan_H
 
-#include "jam.h"
-#include "point.h"
+#include "Jam/jam.h"
+#include "Point/point.h"
 #include "boolean.h"
-#include "matriks.h"
+#include "Matriks/matriks.h"
 
 #define NMax 50
 #define BLANK ' '

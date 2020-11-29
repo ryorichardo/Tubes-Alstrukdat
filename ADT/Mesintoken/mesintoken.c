@@ -1,6 +1,3 @@
-/* File: mesintoken.h */
-/* Definisi Mesin Token: Model Akuisisi Versi I */
-
 #include <stdio.h>
 #include "boolean.h"
 #include "mesintoken.h"

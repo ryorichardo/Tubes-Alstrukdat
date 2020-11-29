@@ -1,7 +1,7 @@
 #include "prepphase.h"
 #include "../ADT/tipebentukan.h"
-#include "../ADT/point.h"
-#include "../ADT/matriks.h"
+#include "../ADT/Point/point.h"
+#include "../ADT/Matriks/matriks.h"
 #include <stdio.h>
 
 long durasi = 0;

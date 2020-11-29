@@ -1,8 +1,6 @@
-/* File: mesinkata.c */
-/* Definisi Mesin Kata: Model Akuisisi Versi I */
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "../tipebentukan.h"
 #include "mesinkata.h"
 
 boolean EndKata;

@@ -1,14 +1,14 @@
 #ifndef prepphase_H
 #define prepphase_H
 
-#include "../ADT/stackt.h"
+#include "../ADT/Stack/stackt.h"
 #include "../ADT/tipebentukan.h"
-#include "../ADT/point.h"
-#include "../ADT/array.h"
-#include "../ADT/mesinkata.h"
-#include "../ADT/jam.h"
-#include "../ADT/matriks.h"
-#include "../ADT/listlinier.h"
+#include "../ADT/Point/point.h"
+#include "../ADT/Array/array.h"
+#include "../ADT/Mesinkata/mesinkata.h"
+#include "../ADT/Jam/jam.h"
+#include "../ADT/Matriks/matriks.h"
+#include "../ADT/ListLinier/listlinier.h"
 
 extern long durasi;
 extern long countaksi;

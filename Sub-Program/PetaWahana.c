@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "../ADT/matriks.h"
-#include "../ADT/point.h"
-#include "../ADT/graph.h"
+#include "../ADT/Matriks/matriks.h"
+#include "../ADT/Point/point.h"
+#include "../ADT/Graph/graph.h"
 #include "PetaWahana.h"
 
 void MakeMap(Graph *G, MATRIKS *M)

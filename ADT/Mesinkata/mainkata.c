@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mesinkata.h"
-#include "tipebentukan.h"
+#include "../tipebentukan.h"
 
 Kata CKata;
 FILE *input;

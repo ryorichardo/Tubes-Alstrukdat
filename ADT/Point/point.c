@@ -1,11 +1,7 @@
-/* Ryo Richardo */
-/* 13519193 */
-/* Realisasi Program Point */
-
 #include <stdio.h>
 #include <math.h>
 #include "point.h"
-#include "boolean.h"
+#include "../boolean.h"
 
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */

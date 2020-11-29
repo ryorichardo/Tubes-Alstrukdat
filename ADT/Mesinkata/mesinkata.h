@@ -1,15 +1,12 @@
-/* File: mesinkata.h */
-/* Definisi Mesin Kata: Model Akuisisi Versi I */
-
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
-#include "mesinkar.h"
-#include "mesintoken.h"
-#include "tipebentukan.h"
+#include "../boolean.h"
+#include "../Mesinkar/mesinkar.h"
+#include "../Mesintoken/mesintoken.h"
+#include "../tipebentukan.h"
 
 /* State Mesin Kata */
 extern boolean EndKata;

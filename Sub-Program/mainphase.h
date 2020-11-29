@@ -1,14 +1,13 @@
 #ifndef mainphase_H
 #define mainphase_H
 
-#include "../ADT/stackt.h"
-#include "../ADT/array.h"
-#include "../ADT/point.h"
-#include "../ADT/mesinkata.h"
-#include "../ADT/prioqueuechar.h"
-#include "../ADT/listlinier.h"
+#include "../ADT/Stack/stackt.h"
+#include "../ADT/Array/array.h"
+#include "../ADT/Point/point.h"
+#include "../ADT/Mesinkata/mesinkata.h"
+#include "../ADT/Queue/prioqueuechar.h"
+#include "../ADT/ListLinier/listlinier.h"
 #include "../ADT/tipebentukan.h"
-#include "../ADT/array.h"
 
 void InitCustomer(Antrian Pelanggan[25]);
 
