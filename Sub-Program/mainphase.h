@@ -28,4 +28,6 @@ void PrintAntrian(int Banyak, PrioQueueChar Customer);
 
 void save(Kata Player, int day, int Money, JAM Close, int Banyak);
 
+void saveWahana(Wahana ListOwnedWahana[]);
+
 #endif

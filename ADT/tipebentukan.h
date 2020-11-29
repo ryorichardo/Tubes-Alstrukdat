@@ -61,8 +61,8 @@ typedef struct
     int Money;
     int Close;
     int Banyak;
-    MATRIKS CurrentMap;
-    JAM CurrentTime;
+    // MATRIKS CurrentMap;
+    // JAM CurrentTime;
 } Save;
 
 // Selektor

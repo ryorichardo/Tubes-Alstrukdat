@@ -144,7 +144,7 @@ void PrintQueue(PrioQueueChar Q)
     {
         printf("(");
         PrintKata(Main(Q, Head(Q)));
-        for (int j = 0; j < 10; j++)
+        for (int j = 1; j < 10; j++)
         {
             if (Main(Q, j).TabKata[0] != '\0')
             {
