@@ -5,9 +5,9 @@
 #ifndef stackt_H
 #define stackt_H
 
-#include "boolean.h"
-#include "mesinkata.h"
-#include "point.h"
+#include "../boolean.h"
+#include "../Mesinkata/mesinkata.h"
+#include "../Point/point.h"
 
 #define MaxEls 20
 /* -1 adalah stack dengan elemen kosong . */

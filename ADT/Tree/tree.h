@@ -1,6 +1,6 @@
 /* ADT Pohon Biner */
 /* Implementasi dengan menggunakan pointer */
-/* Penamaan type Wahana, type addrNode, dan beberapa fungsi disesuikan 
+/* Penamaan type Wahana, type addrNode, dan beberapa fungsi disesuikan
    karena melibatkan modul list rekursif. */
 
 #ifndef _BINTREE_H_
@@ -8,7 +8,7 @@
 
 /* Modul lain yang digunakan : */
 #include "boolean.h"
-#include "tipebentukan.h"
+#include "../tipebentukan.h"
 
 /* #define Nil NULL */ /* konstanta Nil sesuai pada modul listrek */
 

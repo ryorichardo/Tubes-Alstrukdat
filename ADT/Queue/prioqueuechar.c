@@ -1,5 +1,5 @@
 #include "stdio.h"
-#include "boolean.h"
+#include "../boolean.h"
 #include <stdlib.h>
 #include "prioqueuechar.h"
 
