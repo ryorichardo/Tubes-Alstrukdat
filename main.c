@@ -195,19 +195,25 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain, &day);
+                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Serve(ListOwnedWahana, Nama(New), &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain, &day);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
             {
-                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &CurrentTime);
+                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Repair(ListOwnedWahana, Nama(New), &CurrentTime);
             }
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
+<<<<<<< HEAD
                 Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, ListUpgradeOwnedWahana);
                 // Detail(ListOwnedWahana, Game, ListUpgradeOwnedWahana);
+=======
+                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Detail(ListOwnedWahana, Nama(New), ListUpgradeOwnedWahana);
+>>>>>>> f6ed8c10ca9f371eb65a587ddd8d1689122082dc
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
@@ -285,7 +291,7 @@ int main()
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
-            printf("Masukkan Perintah\n");
+            printf("\nMasukkan Perintah\n");
             STARTKATA(stdin);
             // printf("sini\n");
             // PrintKata(CKata);
