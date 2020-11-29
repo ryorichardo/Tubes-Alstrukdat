@@ -184,6 +184,7 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
       ListWahana[i].Nama = Empty; //Make MARK
       ListWahana[i].Harga = 0;
       ListWahana[i].Kapasitas = 0;
+      ListWahana[i].Pemain = 0;
       ListWahana[i].Durasi = 0;
       ListWahana[i].HargaBuild = 0;
       ListWahana[i].DurasiBuild = 0;
@@ -191,6 +192,9 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
       ListWahana[i].Mat[1] = 0;
       ListWahana[i].Mat[2] = 0;
       ListWahana[i].Deskripsi = Empty;
+      ListWahana[i].Ukuran = MakePOINT(0,0);
+      ListWahana[i].Peta = 0;
+      ListWahana[i].Point = MakePOINT(0,0);
       ListWahana[i].Rusak = true;
    }
 }
@@ -320,13 +324,14 @@ void MakeTabLaporanEmpty(TabLaporan *TLap)
    }
 }
 
-Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
+Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Pemain, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Ukuran, int Peta, POINT Point, boolean Rusak)
 /* Fungsi untuk membentuk suatu tipe wahana */
 {
    Wahana W;
    W.Nama = Nama;
    W.Harga = Harga;
    W.Kapasitas = Kapasitas;
+   W.Pemain = Pemain;
    W.Durasi = Durasi;
    W.HargaBuild = HargaBuild;
    W.DurasiBuild = DurasiBuild;
@@ -334,6 +339,8 @@ Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuil
    W.Mat[1] = Mat[1];
    W.Mat[2] = Mat[2];
    W.Deskripsi = Deskripsi;
+   W.Ukuran = Ukuran;
+   W.Peta = 0;
    W.Point = Point;
    W.Rusak = Rusak;
    return W;
@@ -446,14 +453,14 @@ Wahana SearchWahana(Wahana ListWahana[10], Kata Nama)
    return ListWahana[i];
 }
 
-Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi)
+Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi, int IdxMap)
 /* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 {
    int i = 0;
    while (!isWahanaEmpty(ListWahana[i]))
    {
-      if (Panjang(ListWahana[i].Point, posisi) <= 1)
+      if (Panjang(ListWahana[i].Point, posisi) <= 1 && ListWahana[i].Peta == IdxMap)
       {
          return ListWahana[i];
       }

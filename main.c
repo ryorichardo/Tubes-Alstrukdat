@@ -148,17 +148,17 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
             {
-                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &CurrentTime);
+                Repair(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, &CurrentTime);
             }
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
-                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama);
+                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama);
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
