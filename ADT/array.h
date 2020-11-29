@@ -95,8 +95,10 @@ void MakeKataNew(Kata *Kata);
 void MakeKataLoad(Kata *Kata);
 /* Membuat Tipe Kata dengan isi 'load' */
 
-void MakeTabWahanaEmpty (Wahana ListWahana[], int max);
+void MakeTabWahanaEmpty(Wahana ListWahana[], int max);
 /* Membuat array MARK bertipe wahana */
+
+void MakeTabSaveEmpty(Save ListSave[3]);
 
 void MakeTabMaterialEmpty(Material ListMaterial[3]);
 /* Membuat array MARK bertipe Material */
@@ -104,10 +106,8 @@ void MakeTabMaterialEmpty(Material ListMaterial[3]);
 void InitTabAction(Kata ListAksi[16]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 
-
-Wahana GetTabWahana (char namafile[]);
+Wahana GetTabWahana(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar wahana dan spesifikasinya dari file eksternal */
-
 
 Material GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
@@ -135,7 +135,7 @@ int NbElmtTabWahana(Wahana ListWahana[10]);
 int NbElmtTabLaporan(TabLaporan TLap);
 /* Mengirimkan banyaknya elemen efektif TabLaporan */
 
-int NbElmtTabMaterial (Material ListMaterial[3]);
+int NbElmtTabMaterial(Material ListMaterial[3]);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
@@ -159,13 +159,12 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi, int IdxMap);
 /* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 
-int SearchMaterial (Material ListMaterial[3], Kata X);
+int SearchMaterial(Material ListMaterial[3], Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */
 /* Jika ada, menghasilkan indeks i terkecil, dengan elemen ke-i = X */
 /* Jika tidak ada, mengirimkan IdxUndef */
 /* Menghasilkan indeks tak terdefinisi (IdxUndef) jika tabel T kosong */
 /* Skema Searching yang digunakan bebas */
-
 
 void PrintListWahana(Wahana ListWahana[100]);
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */

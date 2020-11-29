@@ -30,7 +30,9 @@ void InitCustomer(Antrian Pelanggan[25])
 }
 
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
-    int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
+    int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
+    Kata Empty;
+    MakeKataEmpty( &Empty);
 
     /* Reset Array Customer */
     for (i = 0; i < 25; i++)
@@ -44,7 +46,6 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
 
     count = 1;
     for (i = 0; i < *Banyak; i++){
-        printf("%d\n", i);
         /* Reset Array Tempat[25] (Wahana) */
         for (k = 0; k < 25; k++)
         {
@@ -63,10 +64,10 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
         Naik = (rand() % 10) + 1;
         for (k = 0; k < Naik; k++)
         {
-            l = rand() % 25;
+            l = rand() % 100;
             while (Tempat[l] == 1)
             {
-                l = (rand() % 25);
+                l = (rand() % 100);
             }
             Tempat[l] = 1;
             (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
@@ -78,7 +79,7 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     }
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain, int *day)
 {
     Wahana W;
     int i, count, j, k, r;
@@ -114,6 +115,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     /* Wahana aman */
     else if (Pemain(W) == Kapasitas(W))
@@ -142,6 +148,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
     else
     {
@@ -168,6 +179,11 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             Dequeue(Customer, &Buang);
             Banyak -= 1;
+        }
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
         }
 
         /* Menambah keterangan di Laporan */
@@ -250,8 +266,6 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
             printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
             PrintDetailWahana(ArrayWahana, CKata);
-            // printf("Ingin melihat detail wahana(y/n) ? \n ");
-            // printf("y untuk yes dan n untuk no ? \n ");
         }
 
         // jika report
@@ -265,14 +279,12 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
         printf("Masukkan perintah (detail / report / exit)? \n");
-        // STARTKATA(stdin);
-        // Pilihan = CKata;
         STARTKATA(stdin);
         Pilihan = CKata;
     }
 }
 
-void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
+void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahana[100])
 {
     int i = 0;
     while (!isWahanaEmpty(ArrayWahana[i]))
@@ -289,6 +301,11 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
             printf("Deskripsi Wahana : ");
             PrintKata(ArrayWahana[i].Deskripsi);
             printf("\n");
+            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+            printf("Ukuran Wahana : %d x %d\n", PanjangWahana(ArrayWahana[i]), LebarWahana(ArrayWahana[i]));
+            printf("History upgrade: \n");
+            PrintInfo(ListUpgradeOwnedWahana[i]);
             printf("\n#############################################\n\n");
         }
         i++;
@@ -299,22 +316,62 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
+void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day)
 {
-    Antrian Buang;
-    printf("12\n");
-    // while (!IsEmpty(*Customer))
-    // {
-    //     printf("13\n");
-    //     Dequeue(Customer, &Buang);
-    //     Banyak -= 1;
-    // }
-    printf("11\n");
+    MakeEmpty(Customer, 5);
     *isMain = false;
+    *day++;
 }
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer)
 {
     printf("Antrian [%d/5]:\n", Banyak);
     PrintQueue(Customer);
+}
+
+void save(Kata Player, int day, int Money, JAM Close, int Banyak)
+{
+    /* I.S. M terdefinisi */
+    /* F.S. Nilai M(i,j) ditulis ke file per baris per kolom*/
+    /* Proses: Menulis nilai setiap elemen M ke file dengan traversal per baris dan per kolom */
+    /* KAMUS LOKAL */
+    indeks i;
+    FILE *ptr;
+    /* ALGORITMA */
+    // ptr = fopen(namafile, "r");
+    char namafile[] = "File-Eksternal/save.txt";
+    if ((ptr = fopen(namafile, "w")) == NULL)
+    {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    for (i = 0; i < Player.Length; i++)
+    {
+        fprintf(ptr, "%c", Player.TabKata[i]);
+    }
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", day);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Money);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Close);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Banyak);
+    fprintf(ptr, ".");
+    fprintf(ptr, ",");
+
+    printf("%d", day);
+    printf("%d", Money);
+    printf("%d", Close);
+    printf("%d", Banyak);
+
+    // for (i = 0; i < NBrsEff(M); i++)
+    // {
+    //     for (j = 0; j < NKolEff(M); j++)
+    //     {
+    //         fprintf(ptr, "%c", Elmt(M, i, j));
+    //     }
+    //     fprintf(ptr, "\n");
+    // }
+    fclose(ptr);
 }

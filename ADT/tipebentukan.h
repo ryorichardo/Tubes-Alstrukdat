@@ -4,6 +4,7 @@
 #include "jam.h"
 #include "point.h"
 #include "boolean.h"
+#include "matriks.h"
 
 #define NMax 50
 #define BLANK ' '
@@ -53,6 +54,17 @@ typedef struct
     int Harga;
 } Material;
 
+typedef struct
+{
+    Kata Player;
+    int Day;
+    int Money;
+    int Close;
+    int Banyak;
+    MATRIKS CurrentMap;
+    JAM CurrentTime;
+} Save;
+
 // Selektor
 #define Nama(P) (P.Nama)
 #define Harga(P) P.Harga
@@ -71,7 +83,5 @@ typedef struct
 #define PanjangWahana(P) (P.Ukuran).X
 #define LebarWahana(P) (P.Ukuran).Y
 #define Daftar(P) (P.*Q).Main
-
-
 
 #endif

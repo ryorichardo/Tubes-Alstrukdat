@@ -48,6 +48,8 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10]);
 
 void BacaFileMaterial(char namafile[], Material TabMat[3]);
 
+void BacaLoadSave(char namafile[], Save TabSave[3]);
+
 Kata CopyKata(Kata K);
 
 void PrintKata(Kata X);

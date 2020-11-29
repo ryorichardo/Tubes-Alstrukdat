@@ -157,7 +157,7 @@ void SimpanMATRIKS(MATRIKS M, char namafile[])
   indeks i, j;
   FILE *ptr;
   /* ALGORITMA */
-  ptr = fopen(namafile, "r");
+  // ptr = fopen(namafile, "r");
   if ((ptr = fopen(namafile, "w")) == NULL)
   {
     printf("Error! opening file\n");

@@ -172,6 +172,16 @@ void MakeKataLoad(Kata *Kata)
    Kata->Length = 4;
 }
 
+void MakeKataSave(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'load' */
+{
+   Kata->TabKata[0] = 's';
+   Kata->TabKata[1] = 'a';
+   Kata->TabKata[2] = 'v';
+   Kata->TabKata[3] = 'e';
+   Kata->Length = 4;
+}
+
 /**** KONSTRUKTOR ****/
 void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 /* Membuat array MARK bertipe wahana */
@@ -192,13 +202,35 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
       ListWahana[i].Mat[1] = 0;
       ListWahana[i].Mat[2] = 0;
       ListWahana[i].Deskripsi = Empty;
-      ListWahana[i].Ukuran = MakePOINT(0,0);
+      ListWahana[i].Ukuran = MakePOINT(0, 0);
       ListWahana[i].Peta = 0;
-      ListWahana[i].Point = MakePOINT(0,0);
+      ListWahana[i].Point = MakePOINT(0, 0);
       ListWahana[i].Rusak = true;
    }
 }
 
+void MakeTabSaveEmpty(Save ListSave[3])
+/* Membuat array MARK bertipe wahana */
+{
+   int i = 0;
+   // for (i = 0; i < 3; i++)
+   // {
+   //    Kata Empty;
+   //    MakeKataEmpty(&Empty);
+   //    ListSave[i].Player = Empty; //Make MARK
+   //    ListSave[i].Day = 0;
+   //    ListSave[i].Money = 0;
+   //    ListSave[i].Close = 0;
+   //    ListSave[i].Banyak = 0;
+   // }
+   Kata Empty;
+   MakeKataEmpty(&Empty);
+   ListSave[i].Player = Empty; //Make MARK
+   ListSave[i].Day = 0;
+   ListSave[i].Money = 0;
+   ListSave[i].Close = 0;
+   ListSave[i].Banyak = 0;
+}
 void MakeTabMaterialEmpty(Material ListMaterial[3])
 /* Membuat array MARK bertipe Material */
 {
@@ -212,7 +244,7 @@ void MakeTabMaterialEmpty(Material ListMaterial[3])
    }
 }
 
-void InitTabAction(Kata ListAksi[16])
+void InitTabAction(Kata ListAksi[19])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[16];
                               panggil prosedur InitTabAction(&ListAksi); */
@@ -231,6 +263,7 @@ void InitTabAction(Kata ListAksi[16])
    Kata EXIT;
    Kata NEW;
    Kata LOAD;
+   Kata SAVE;
 
    MakeKataBuild(&BUILD);
    MakeKataUpgrade(&UPGRADE);
@@ -246,6 +279,7 @@ void InitTabAction(Kata ListAksi[16])
    MakeKataExit(&EXIT);
    MakeKataNew(&NEW);
    MakeKataLoad(&LOAD);
+   MakeKataSave(&SAVE);
 
    Kata W, A, S, D;
    W.TabKata[0] = 'w';
@@ -275,6 +309,7 @@ void InitTabAction(Kata ListAksi[16])
    ListAksi[15] = D;
    ListAksi[16] = NEW;
    ListAksi[17] = LOAD;
+   ListAksi[18] = SAVE;
 }
 
 // Wahana GetTabWahana (char namafile[])
@@ -389,7 +424,7 @@ int NbElmtTabLaporan(TabLaporan TLap)
 /* Mengirimkan nol jika tabel kosong */
 {
    int i = 0;
-   while (!isLaporanEmpty(TLap.TL[i]) && i<100)
+   while (!isLaporanEmpty(TLap.TL[i]) && i < 100)
    {
       i++;
    }
@@ -614,28 +649,29 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
 {
    int i = 0;
    boolean found = false;
-    while (!isWahanaEmpty(ArrayWahana[i]) && !found)
-    {
-        if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
-        {
-            printf("\n\n#############################################\n");
-            printf("Nama Wahana : ");
-            PrintKata(NamaWahana);
-            printf("\n");
-            printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
-            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
-            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
-            printf("Deskripsi Wahana : ");
-            PrintKata(ArrayWahana[i].Deskripsi);
-            printf("\n");
-            printf("\n#############################################\n\n");
-            found = true;
-        }
-        i++;
-    }
-    if(!found){
-       printf("Wahana tersebut tidak ada");
-    }
+   while (!isWahanaEmpty(ArrayWahana[i]) && !found)
+   {
+      if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
+      {
+         printf("\n\n#############################################\n");
+         printf("Nama Wahana : ");
+         PrintKata(NamaWahana);
+         printf("\n");
+         printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
+         printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+         printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+         printf("Deskripsi Wahana : ");
+         PrintKata(ArrayWahana[i].Deskripsi);
+         printf("\n");
+         printf("\n#############################################\n\n");
+         found = true;
+      }
+      i++;
+   }
+   if (!found)
+   {
+      printf("Wahana tersebut tidak ada");
+   }
 }
 
 void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
@@ -660,7 +696,9 @@ void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
       }
       i++;
    }
-   if(!found){
-       printf("Wahana tersebut tidak ada");
-    }
+
+   if (!found)
+   {
+      printf("Wahana tersebut tidak ada");
+   }
 }
