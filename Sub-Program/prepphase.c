@@ -120,7 +120,8 @@ void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10],
             *Primogem -= New.Mat[2];
             Element X;
             X.perintah = 'U';
-            X.Point = Player;
+            X.Point.X = New.Point.X;
+            X.Point.Y = New.Point.Y;
             X.Target = CKata;
             X.Biaya = Up.HargaBuild;
             X.Durasi = Up.DurasiBuild;
@@ -265,7 +266,11 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
             // update
             else if (X.perintah == 'U')
             {
-                New = SearchWahanaFromPoint(Wahanaskrg, X.Point, X.idxmap);
+                int j = 0;
+                while(Wahanaskrg[j].Point.X != X.Point.X && Wahanaskrg[j].Point.Y != X.Point.Y){
+                    j++;
+                }
+                New = Wahanaskrg[j];
                 Up = SearchWahana(DaftarUpgrade, X.Target);
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
