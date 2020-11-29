@@ -177,7 +177,7 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 /* Membuat array MARK bertipe wahana */
 {
    int i;
-   for (i = IdxMin; i <= max; i++)
+   for (i = IdxMin; i < max; i++)
    {
       Kata Empty;
       MakeKataEmpty(&Empty);
@@ -504,7 +504,8 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
    int i = 0;
-    while (!isWahanaEmpty(ArrayWahana[i]))
+   boolean found = false;
+    while (!isWahanaEmpty(ArrayWahana[i]) && !found)
     {
         if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
         {
@@ -519,10 +520,11 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
             PrintKata(ArrayWahana[i].Deskripsi);
             printf("\n");
             printf("\n#############################################\n\n");
+            found = true;
         }
         i++;
     }
-    if(isWahanaEmpty(ArrayWahana[i])){
+    if(!found){
        printf("Wahana tersebut tidak ada");
     }
 }
@@ -531,7 +533,8 @@ void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
 /* Prosedur untuk menampilkan laporan wahana */
 {
    int i = 0;
-   while (!isLaporanEmpty(TLap.TL[i]))
+   boolean found = false;
+   while (!isLaporanEmpty(TLap.TL[i]) && !found)
    {
       if (IsKataSama(TLap.TL[i].Nama, Nama))
       {
@@ -544,10 +547,11 @@ void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
          printf("Penggunaan Harian : %d\n", TLap.TL[i].PenggunaanHari);
          printf("Penghasilan Harian : %d\n", TLap.TL[i].PenghasilanHari);
          printf("\n#############################################\n\n");
+         found = true;
       }
       i++;
    }
-   if(isLaporanEmpty(TLap.TL[i])){
+   if(!found){
        printf("Wahana tersebut tidak ada");
     }
 }
