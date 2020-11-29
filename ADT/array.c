@@ -244,7 +244,7 @@ void MakeTabMaterialEmpty(Material ListMaterial[3])
    }
 }
 
-void InitTabAction(Kata ListAksi[16])
+void InitTabAction(Kata ListAksi[19])
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
 /* Cara inisialisasi di main : declare Kata ListAksi[16];
                               panggil prosedur InitTabAction(&ListAksi); */

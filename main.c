@@ -65,13 +65,14 @@ int main()
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    char filename7[] = "File-Eksternal/save.txt";
-    BacaLoadSave(filename7, ListSave);
+    // char filename7[] = "File-Eksternal/save.txt";
+    // BacaLoadSave(filename7, ListSave);
 
     int day = 1;
     int Wood = 1000, Fire = 10000, Primogem = 1000, Money = 1000000, idxmap = 0;
     //bikin array action
-    Kata ListAksi[18];
+    Kata ListAksi[19];
+
     InitTabAction(ListAksi);
     InitCustomer(Pelanggan);
 
@@ -100,13 +101,13 @@ int main()
 
     // LOAD GAME
 
-    if (IsKataSama(Game, ListAksi[17]))
-    {
-        day = ListSave->Day;
-        Player = ListSave->Player;
-        Money = ListSave->Money;
-        gameOn = true;
-    }
+    // if (IsKataSama(Game, ListAksi[17]))
+    // {
+    //     day = ListSave->Day;
+    //     Player = ListSave->Player;
+    //     Money = ListSave->Money;
+    //     gameOn = true;
+    // }
 
     // NEW GAME
     if (IsKataSama(Game, ListAksi[16]))
@@ -233,6 +234,7 @@ int main()
         }
         else
         {
+
             printf("\nPreparation phase day ");
 
             // print Map dan Perintah
