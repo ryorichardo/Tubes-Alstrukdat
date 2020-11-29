@@ -48,8 +48,6 @@ void A(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 
   else if (Elmt(*M, Absis(*P), Ordinat(*P) - 1) == '<')
   {
-    printf("%d\n", MK);
-
     CopyMATRIKS(*M, MK+*idxmap);
     *idxmap -= 1;
     CopyMATRIKS(*(MK+*idxmap), M);
@@ -83,8 +81,6 @@ void W(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
 
   else if (Elmt(*M, Absis(*P) - 1, Ordinat(*P)) == '^')
   {
-    printf("%d\n", MK);
-
     CopyMATRIKS(*M, MK+*idxmap);
     *idxmap -= 2;
     CopyMATRIKS(*(MK+*idxmap), M);
@@ -149,7 +145,6 @@ void S(Graph G[4], POINT *P, MATRIKS *M, MATRIKS  *MK, int *idxmap)
   }
   else if (Elmt(*M, Absis(*P) + 1, Ordinat(*P)) == 'v')
   {
-    printf("%d\n", MK);
     CopyMATRIKS(*M, MK+*idxmap);
     *idxmap += 2;
     CopyMATRIKS(*(MK+*idxmap), M);

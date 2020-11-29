@@ -79,6 +79,7 @@ void Enqueue(PrioQueueChar *Q, Antrian X)
 {
     int i, a;
     boolean found;
+    printf("1\n ");
     if (IsEmpty(*Q))
     {
         Head(*Q) = 0;
@@ -180,17 +181,22 @@ void PrintQueue(PrioQueueChar Q)
 {
     int j;
     int i = Head(Q);
-    while (i != Tail(Q)){
+    while (i != Tail(Q))
+    {
         printf("(");
         j = 0;
-        while (Main(Q,j).TabKata[0] == '\0'){
+        while (Main(Q, j).TabKata[0] == '\0')
+        {
             j++;
         }
-        if (Main(Q,j).TabKata[0] != '\0'){
+        if (Main(Q, j).TabKata[0] != '\0')
+        {
             PrintKata(Main(Q, j));
         }
-        for (j; j < 5; j++){
-            if (Main(Q,j).TabKata[0] != '\0'){
+        for (j; j < 5; j++)
+        {
+            if (Main(Q, j).TabKata[0] != '\0')
+            {
                 printf(", ");
                 PrintKata(Main(Q, j));
             }

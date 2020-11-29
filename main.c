@@ -27,7 +27,6 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int 
     TulisJAM(CurrentTime);
     printf("\n");
 }
-extern int Banyak;
 
 int main()
 {
@@ -153,7 +152,7 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak);
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
@@ -184,8 +183,10 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
+                printf("1\n");
                 Prepare(&isMain, &Customer, Banyak);
                 day++;
+                printf("1\n");
             }
 
             //buat gerak
@@ -281,6 +282,7 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
+                printf("1\n");
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))

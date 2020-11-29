@@ -47,7 +47,7 @@ void Assign(Kata *Wahana1, Kata *Wahana2, Kata *Wahana3)
     Wahana3->TabKata[9] = 'r';
 }
 
-void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomA(Antrian *CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerA->info).Nama).TabKata[0] = 'C';
@@ -66,7 +66,7 @@ void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerA->info).Kesabaran = 5;
 }
 
-void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomB(Antrian *CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerB->info).Nama).TabKata[0] = 'C';
@@ -84,7 +84,7 @@ void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerB->info).Kesabaran = 5;
 }
 
-void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomC(Antrian *CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerC->info).Nama).TabKata[0] = 'C';
@@ -102,7 +102,7 @@ void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerC->info).Kesabaran = 5;
 }
 
-void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomD(Antrian *CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerD->info).Nama).TabKata[0] = 'C';
@@ -119,7 +119,7 @@ void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerD->info).Kesabaran = 5;
 }
 
-void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomE(Antrian *CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerE->info).Nama).TabKata[0] = 'C';
@@ -136,14 +136,14 @@ void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerE->info).Kesabaran = 5;
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
 {
     Wahana W;
-    int i, count, j;
+    int i, count, j, k, r;
     Antrian Buang;
 
     /* Search Wahana */
-    W = SearchWahana(&ArrayWahana[100], NamaWahana);
+    W = SearchWahana(ArrayWahana, NamaWahana);
 
     /* Kasus Wahana Rusak */
     if (Rusak(W))
@@ -227,6 +227,27 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+
+        /* Menambah keterangan di Laporan */
+        for (k = 0; k < NbElmtTabLaporan(*TL); k++)
+        {
+            if (IsKataSama(TL->TL[k].Nama, W.Nama))
+            {
+                TL->TL[k].Penggunaan += 1;
+                TL->TL[k].PenghasilanTotal += W.Harga;
+                TL->TL[k].PenggunaanHari += 1;
+                TL->TL[k].PenghasilanHari += W.Harga;
+            }
+        }
+
+        /* Algoritma random kemungkinan rusak */
+        r = rand() % 5;
+        if (r == 0)
+        {
+            Rusak(W) = true;
+        }
+
+        /* Menambah 10 menit setelah selesai serve */
         NextNMenit(*CurrentTime, Durasi(W));
     }
 }
@@ -236,7 +257,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
     Wahana W;
     NextNMenit(*CurrentTime, 10);
     /* Search Wahana */
-    W = SearchWahana(&ArrayWahana[100], NamaWahana);
+    W = SearchWahana(ArrayWahana, NamaWahana);
     /* Repair wahana */
     Rusak(W) = false;
 }
@@ -330,26 +351,30 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
         }
         i++;
     }
-    if(isWahanaEmpty(ArrayWahana[i])){
-       printf("Wahana belum dibangun");
+    if (isWahanaEmpty(ArrayWahana[i]))
+    {
+        printf("Wahana belum dibangun");
     }
 }
 
 void Prepare(boolean *isMain, PrioQueueChar *Customer, int Banyak)
 {
     Antrian Buang;
-    while (!IsEmpty(*Customer))
-    {
-        Dequeue(Customer, &Buang);
-        Banyak -= 1;
-    }
+    printf("12\n");
+    // while (!IsEmpty(*Customer))
+    // {
+    //     printf("13\n");
+    //     Dequeue(Customer, &Buang);
+    //     Banyak -= 1;
+    // }
+    printf("11\n");
     *isMain = false;
 }
 
 void RandomAntrian(int Banyak, PrioQueueChar *Customer, Antrian CustomerA, Antrian CustomerB, Antrian CustomerC, Antrian CustomerD, Antrian CustomerE)
 {
     int i, j, Custom[5];
-
+    printf("1\n ");
     Banyak = (rand() % 5) + 1;
     for (i = 0; i < Banyak; i++)
     {
@@ -359,28 +384,61 @@ void RandomAntrian(int Banyak, PrioQueueChar *Customer, Antrian CustomerA, Antri
             j = (rand() % 5) + 1;
         }
         Custom[j - 1] = 1;
-        switch (j)
+        printf("2\n ");
+        printf("%d", j);
+        if (j == 1)
         {
-        case 1:
+            printf("3\n ");
             Enqueue(Customer, CustomerA);
-            break;
-
-        case 2:
-            Enqueue(Customer, CustomerB);
-            break;
-
-        case 3:
-            Enqueue(Customer, CustomerC);
-            break;
-
-        case 4:
-            Enqueue(Customer, CustomerD);
-            break;
-
-        case 5:
-            Enqueue(Customer, CustomerE);
-            break;
         }
+        else if (j == 2)
+        {
+            printf("4\n ");
+            Enqueue(Customer, CustomerB);
+        }
+        else if (j == 3)
+        {
+            printf("5\n ");
+            Enqueue(Customer, CustomerC);
+        }
+        else if (j == 4)
+        {
+            printf("6\n ");
+            Enqueue(Customer, CustomerD);
+        }
+        else
+        {
+            printf("7\n ");
+            Enqueue(Customer, CustomerE);
+        }
+
+        // switch (j)
+        // {
+        // case 1:
+        //     Enqueue(Customer, CustomerA);
+        //     printf("3\n ");
+        //     break;
+
+        // case 2:
+        //     Enqueue(Customer, CustomerB);
+        //     printf("4\n ");
+        //     break;
+
+        // case 3:
+        //     Enqueue(Customer, CustomerC);
+        //     printf("5\n ");
+        //     break;
+
+        // case 4:
+        //     Enqueue(Customer, CustomerD);
+        //     printf("6\n ");
+        //     break;
+
+        // case 5:
+        //     Enqueue(Customer, CustomerE);
+        //     printf("7\n ");
+        //     break;
+        // }
     }
 }
 

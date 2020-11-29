@@ -22,7 +22,7 @@ void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3);
 
 void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3);
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak);
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL);
 
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime);
 

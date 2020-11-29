@@ -278,16 +278,6 @@ void Mainphase(Stack *Perintah, boolean *isMain, Wahana ArrayWahana[10], int *Du
         Pop(Perintah, &X);
         *Duit += X.Biaya;
     }
-    int i = 0;
-    while (!isWahanaEmpty(ArrayWahana[i]))
-    {
-        int r = rand() % 5;
-        if (r == 0)
-        {
-            ArrayWahana[i].Rusak = true;
-        }
-        i++;
-    }
     countaksi = 0;
     totalbiaya = 0;
     durasi = 0;
