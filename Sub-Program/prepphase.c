@@ -120,7 +120,8 @@ void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10],
             *Primogem -= New.Mat[2];
             Element X;
             X.perintah = 'U';
-            X.Point = Player;
+            X.Point.X = Player.X;
+            X.Point.Y = Player.Y;
             X.Target = CKata;
             X.Biaya = Up.HargaBuild;
             X.Durasi = Up.DurasiBuild;
