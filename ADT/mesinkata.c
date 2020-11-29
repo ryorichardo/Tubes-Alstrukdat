@@ -123,7 +123,7 @@ void BacaFileWahana(char namafile[], Wahana TabWahana[10], Wahana TabUp[10])
     {
         if (i > 0)
         {
-           SalinKata();
+            SalinKata();
         }
         ADV();
 

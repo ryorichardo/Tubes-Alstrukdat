@@ -47,7 +47,7 @@ void Assign(Kata *Wahana1, Kata *Wahana2, Kata *Wahana3)
     Wahana3->TabKata[9] = 'r';
 }
 
-void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomA(Antrian *CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerA->info).Nama).TabKata[0] = 'C';
@@ -66,7 +66,7 @@ void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerA->info).Kesabaran = 5;
 }
 
-void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomB(Antrian *CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerB->info).Nama).TabKata[0] = 'C';
@@ -84,7 +84,7 @@ void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerB->info).Kesabaran = 5;
 }
 
-void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomC(Antrian *CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerC->info).Nama).TabKata[0] = 'C';
@@ -102,7 +102,7 @@ void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerC->info).Kesabaran = 5;
 }
 
-void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomD(Antrian *CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerD->info).Nama).TabKata[0] = 'C';
@@ -119,7 +119,7 @@ void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerD->info).Kesabaran = 5;
 }
 
-void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
+void CustomE(Antrian *CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
 {
     Assign(&Wahana1, &Wahana2, &Wahana3);
     ((CustomerE->info).Nama).TabKata[0] = 'C';
@@ -229,8 +229,10 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         }
 
         /* Menambah keterangan di Laporan */
-        for (k = 0; k < NbElmtTabLaporan(*TL); k++){
-            if (IsKataSama(TL->TL[k].Nama, W.Nama)){
+        for (k = 0; k < NbElmtTabLaporan(*TL); k++)
+        {
+            if (IsKataSama(TL->TL[k].Nama, W.Nama))
+            {
                 TL->TL[k].Penggunaan += 1;
                 TL->TL[k].PenghasilanTotal += W.Harga;
                 TL->TL[k].PenggunaanHari += 1;
@@ -240,7 +242,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
 
         /* Algoritma random kemungkinan rusak */
         r = rand() % 5;
-        if (r == 0){
+        if (r == 0)
+        {
             Rusak(W) = true;
         }
 
@@ -348,8 +351,9 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
         }
         i++;
     }
-    if(isWahanaEmpty(ArrayWahana[i])){
-       printf("Wahana belum dibangun");
+    if (isWahanaEmpty(ArrayWahana[i]))
+    {
+        printf("Wahana belum dibangun");
     }
 }
 
