@@ -2,9 +2,9 @@
 
 #include <stdio.h>
 #include "array.h"
-#include "jam.h"
-#include "mesinkata.h"
-#include "point.h"
+#include "../Jam/jam.h"
+#include "../Mesinkata/mesinkata.h"
+#include "../Point/point.h"
 
 void MakeKataEmpty(Kata *Kata)
 /* Membuat Tipe Kata dengan isi 'empty' */

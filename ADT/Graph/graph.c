@@ -1,5 +1,5 @@
-#include "graph.h"
-#include "point.h"
+#include "../Graph/graph.h"
+#include "../Point/point.h"
 #include <stdlib.h>
 #include <stdio.h>
 
