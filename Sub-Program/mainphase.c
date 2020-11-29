@@ -29,7 +29,8 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
-void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
+void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak)
+{
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
 
     /* Reset Array Customer */
@@ -43,7 +44,8 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     *Banyak = (rand() % 5);
 
     count = 1;
-    for (i = 0; i < *Banyak; i++){
+    for (i = 0; i < *Banyak; i++)
+    {
         /* Reset Array Tempat[25] (Wahana) */
         for (k = 0; k < 25; k++)
         {
@@ -353,10 +355,46 @@ void save(Kata Player, int day, int Money, JAM Close, int Banyak)
     fprintf(ptr, ".");
     fprintf(ptr, ",");
 
-    printf("%d", day);
-    printf("%d", Money);
-    printf("%d", Close);
-    printf("%d", Banyak);
+    // for (i = 0; i < NBrsEff(M); i++)
+    // {
+    //     for (j = 0; j < NKolEff(M); j++)
+    //     {
+    //         fprintf(ptr, "%c", Elmt(M, i, j));
+    //     }
+    //     fprintf(ptr, "\n");
+    // }
+    fclose(ptr);
+}
+
+void saveWahana(Wahana ListOwnedWahana[])
+{
+    /* I.S. M terdefinisi */
+    /* F.S. Nilai M(i,j) ditulis ke file per baris per kolom*/
+    /* Proses: Menulis nilai setiap elemen M ke file dengan traversal per baris dan per kolom */
+    /* KAMUS LOKAL */
+    indeks i, j;
+    FILE *ptr;
+    /* ALGORITMA */
+    // ptr = fopen(namafile, "r");
+    char namafile[] = "File-Eksternal/saveWahana.txt";
+    if ((ptr = fopen(namafile, "w")) == NULL)
+    {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    for (i = 0; i < NbElmtTabWahana(ListOwnedWahana); i++)
+    {
+        for (j = 0; j < ListOwnedWahana[0].Nama.Length; j++)
+        {
+            fprintf(ptr, "%c", ListOwnedWahana[i].Nama.TabKata[j]);
+        }
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", PanjangWahana(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", LebarWahana(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, ",");
+    }
 
     // for (i = 0; i < NBrsEff(M); i++)
     // {

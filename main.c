@@ -34,6 +34,7 @@ int main()
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
+    // Wahana ListSaveWahana[100];
 
     List ListUpgradeOwnedWahana[100];
     Material ListMat[3];
@@ -43,8 +44,8 @@ int main()
     JAM Open = MakeJAM(9, 0);
     JAM Close = MakeJAM(21, 0);
     MATRIKS CurrentMap;
-    MATRIKS ListMap[4];
-    Graph RelationMap[4];
+    MATRIKS ListMap[5];
+    Graph RelationMap[5];
     Stack Perintah;
     PrioQueueChar Customer;
     int Banyak;
@@ -58,15 +59,24 @@ int main()
     MakeTabWahanaEmpty(ListWahana, 10);
     MakeTabWahanaEmpty(ListUpgrade, 10);
     MakeTabMaterialEmpty(ListMat);
+
+    // untuk save
     MakeTabSaveEmpty(ListSave);
+    // MakeTabWahanaEmpty(ListSaveWahana, 100);
+    //
 
     MakeTabLaporanEmpty(&TL);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
     BacaFileMaterial(filename6, ListMat);
-    // char filename7[] = "File-Eksternal/save.txt";
-    // BacaLoadSave(filename7, ListSave);
+
+    // untuk save
+    char filename7[] = "File-Eksternal/save.txt";
+    BacaLoadSave(filename7, ListSave);
+    // char filename8[] = "File-Eksternal/saveWahana.txt";
+    // BacaFileWahana(filename8, ListSaveWahana, ListUpgrade);
+    //
 
     int day = 1;
     int Wood = 1000, Fire = 10000, Primogem = 1000, Money = 1000000, idxmap = 0;
@@ -101,13 +111,19 @@ int main()
 
     // LOAD GAME
 
-    // if (IsKataSama(Game, ListAksi[17]))
-    // {
-    //     day = ListSave->Day;
-    //     Player = ListSave->Player;
-    //     Money = ListSave->Money;
-    //     gameOn = true;
-    // }
+    if (IsKataSama(Game, ListAksi[17]))
+    {
+        day = ListSave->Day;
+        Player = ListSave->Player;
+        Money = ListSave->Money;
+        gameOn = true;
+        // char filename8[] = "File-Eksternal/saveWahana.txt";
+        // BacaFileWahana(filename8, ListOwnedWahana, ListUpgrade);
+        CurrentMap = ListMap[4];
+        printf("\n1\n");
+        //
+    }
+    //
 
     // NEW GAME
     if (IsKataSama(Game, ListAksi[16]))
@@ -125,7 +141,7 @@ int main()
     }
 
     boolean isMain = false;
-    while (!IsKataSama(Game, ListAksi[11]) && gameOn && !IsKataSama(Game, ListAksi[17]))
+    while (!IsKataSama(Game, ListAksi[11]) && gameOn && !IsKataSama(Game, ListAksi[18]))
     {
         if (isMain == true)
         {
@@ -229,7 +245,9 @@ int main()
             else if (IsKataSama(Game, ListAksi[18]))
             {
                 // SimpanMATRIKS(CurrentMap, "save.txt");
+                // PrintListWahana(ListOwnedWahana);
                 save(Player, day, Money, Close, Banyak);
+                saveWahana(ListOwnedWahana);
             }
         }
         else
@@ -304,8 +322,9 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
-                printf("1\n");
+                // printf("1\n");
                 RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
+                // PrintListWahana(ListOwnedWahana);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
