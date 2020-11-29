@@ -156,6 +156,7 @@ int main()
             {
                 isMain == false;
                 day++;
+                CurrentTime = MakeJAM(21, 0);
             }
 
             printf("\nMain phase day ");
@@ -196,7 +197,7 @@ int main()
             if (IsKataSama(Game, ListAksi[6]))
             {
                 Wahana New = SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
-                Serve(ListOwnedWahana, Nama(New), &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain, &day);
+                Serve(ListOwnedWahana, Nama(New), &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
@@ -229,7 +230,9 @@ int main()
             //prepare
             else if (IsKataSama(Game, ListAksi[10]))
             {
-                Prepare(&isMain, &Customer, &day);
+                Prepare(&isMain, &Customer);
+                CurrentTime = MakeJAM(21, 0);
+                day++;
             }
 
             //buat gerak

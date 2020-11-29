@@ -81,7 +81,7 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
     }
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain, int *day)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL, boolean *isMain)
 {
     Wahana W;
     int i, count, j, k, r;
@@ -130,7 +130,6 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             MakeEmpty(Customer, 5);
             *isMain = false;
-            *day++;
         }
     }
     /* Wahana aman */
@@ -165,7 +164,6 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             MakeEmpty(Customer, 5);
             *isMain = false;
-            *day++;
         }
     }
     else
@@ -229,7 +227,6 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             MakeEmpty(Customer, 5);
             *isMain = false;
-            *day++;
         }
     }
 }
@@ -344,11 +341,10 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahan
     }
 }
 
-void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day)
+void Prepare(boolean *isMain, PrioQueueChar *Customer)
 {
     MakeEmpty(Customer, 5);
     *isMain = false;
-    *day++;
 }
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer)
