@@ -7,7 +7,7 @@ long countaksi = 0;
 long totalbiaya = 0;
 long Sisa = 720;
 
-void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem)
+void Build(Stack *Perintah, Wahana ArrayWahana[100], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem)
 {
     Kata empty;
     boolean nimpa,nimpaoffice;

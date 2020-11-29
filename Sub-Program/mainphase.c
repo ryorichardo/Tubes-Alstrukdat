@@ -30,7 +30,7 @@ void InitCustomer(Antrian Pelanggan[25])
 }
 
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
-    int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
+    int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
     Kata Empty;
     MakeKataEmpty( &Empty);
 
@@ -64,10 +64,10 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
         Naik = (rand() % 10) + 1;
         for (k = 0; k < Naik; k++)
         {
-            l = rand() % 25;
+            l = rand() % 100;
             while (Tempat[l] == 1)
             {
-                l = (rand() % 25);
+                l = (rand() % 100);
             }
             Tempat[l] = 1;
             (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
