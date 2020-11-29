@@ -210,7 +210,7 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
     }
 }
 
-void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi, ElmtList UpWahana[100])
+void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi, List UpWahana[100])
 {
     Element X;
     int i,j;
@@ -246,10 +246,10 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
                 int i = 0;
                 Kata Empty;
                 MakeKataEmpty(&Empty);
-                while(X.Point.X != UpWahana[i].Lokasi.X && X.Point.X != UpWahana[i].Lokasi.X && X.idxmap != UpWahana[i].idxmap && !IsKataSama(UpWahana[i].Nama, Empty)){
+                while(X.Point.X != (FirstList(UpWahana[i]))->Lokasi.X && X.Point.Y != (FirstList(UpWahana[i]))->Lokasi.Y && X.idxmap != (FirstList(UpWahana[i]))->idxmap){
                     i++;
                 }
-                InsertVLast(UpWahana[i], X.Target);
+                InsVLast(&UpWahana[i], X.Target);
             }
             // buy
             else if (X.perintah == 'Y')

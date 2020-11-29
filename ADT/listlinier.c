@@ -111,26 +111,22 @@ void InsertLast (List *L, addressList P){
     }
 }
 
-void AddWahanaToListUpgrade(ElmtList L[100], Kata Whn, POINT Lokasi, int idxmap){
+void AddWahanaToListUpgrade(List L[100], Kata Whn, POINT Lokasi, int idxmap){
     int i = 0;
-    Kata Empty;
-    MakeKataEmpty(&Empty);
-    while(!IsKataSama(L[i].Nama, Empty)){
+    while(!IsEmptyList(L[i])){
         i++;
     }
-    L[i].Nama = Whn;
-    L[i].Lokasi = Lokasi;
-    L[i].idxmap = idxmap;
+    addressList P;
+    P = (addressList) malloc(sizeof(ElmtList));
+    if (P != Nil){
+        InfoList(P) = CopyKata(Whn);
+        P->Lokasi = Lokasi;
+        P->idxmap = idxmap;
+        NextList(P) = Nil;
+    }
+    FirstList(L[i]) = P;
 }
 
-void MakeListUpgradeEmpty(ElmtList L[100]){
-    int i;
-    Kata Empty;
-    MakeKataEmpty(&Empty);
-    for(i = 0; i < 100; i++){
-        L[i].Nama = Empty;
-    }
-}
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
 void PrintInfo (List L){

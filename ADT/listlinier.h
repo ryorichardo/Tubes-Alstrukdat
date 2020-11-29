@@ -78,10 +78,7 @@ void InsertLast (List *L, addressList P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 
-void AddWahanaToListUpgrade(ElmtList L[100], Kata Upgrade, POINT Lokasi, int idxmap);
-
-void MakeListUpgradeEmpty(ElmtList L[100]);
-
+void AddWahanaToListUpgrade(List L[100], Kata Upgrade, POINT Lokasi, int idxmap);
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
 void PrintInfo (List L);
