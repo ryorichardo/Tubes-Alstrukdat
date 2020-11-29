@@ -56,6 +56,7 @@ int main()
     MakeTabWahanaEmpty(ListWahana, 10);
     MakeTabWahanaEmpty(ListUpgrade, 10);
     MakeTabMaterialEmpty(ListMat);
+    MakeTabLaporanEmpty(&TL);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
@@ -282,7 +283,6 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
-                printf("1\n");
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))

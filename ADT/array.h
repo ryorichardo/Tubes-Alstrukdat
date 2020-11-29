@@ -51,34 +51,55 @@ typedef struct
 
 /**** KONSTRUKTOR ****/
 void MakeKataEmpty(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'empty' */
 
 void MakeKataBuild(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'build' */
 
 void MakeKataUpgrade(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'upgrade' */
 
 void MakeKataBuy(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'buy' */
 
 void MakeKataUndo(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'undo' */
 
 void MakeKataExecute(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'execute' */
 
 void MakeKataMain(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'main' */
 
 void MakeKataServe(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'serve' */
 
 void MakeKataRepair(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'repair' */
 
 void MakeKataDetail(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'detail' */
 
 void MakeKataOffice(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'office' */
 
 void MakeKataPrepare(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'prepare' */
 
 void MakeKataExit(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'exit' */
+
+void MakeKataNew(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'new' */
+
+void MakeKataLoad(Kata *Kata);
+/* Membuat Tipe Kata dengan isi 'load' */
 
 void MakeTabWahanaEmpty (Wahana ListWahana[], int max);
+/* Membuat array MARK bertipe wahana */
 
 void MakeTabMaterialEmpty(Material ListMaterial[3]);
+/* Membuat array MARK bertipe Material */
 
 void InitTabAction(Kata ListAksi[16]);
 /* Prosedur menginisialasi suatu array berisi daftar aksi dan durasi yang dibutuhkan dari file eksternal */
@@ -91,7 +112,7 @@ Wahana GetTabWahana (char namafile[]);
 Material GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
 
-void MakeTabLaporanEmpty(TabLaporan *TL);
+void MakeTabLaporanEmpty(TabLaporan *TLap);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
 Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
@@ -111,7 +132,7 @@ boolean isMaterialEmpty(Material M);
 int NbElmtTabWahana(Wahana ListWahana[10]);
 /* Mengirimkan banyaknya elemen efektif TabWahana */
 
-int NbElmtTabLaporan(TabLaporan TL);
+int NbElmtTabLaporan(TabLaporan TLap);
 /* Mengirimkan banyaknya elemen efektif TabLaporan */
 
 int NbElmtTabMaterial (Material ListMaterial[3]);
@@ -122,17 +143,20 @@ int NbElmtTabMaterial (Material ListMaterial[3]);
 void AddWahana(Wahana ListWahana[10], Wahana W);
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 
-void RefreshLaporan(TabLaporan *TL);
-/* I.S. TL tidak kosong */
+void RefreshLaporan(TabLaporan *TLap);
+/* I.S. TLap tidak kosong */
 /* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 
-void AddLaporan(TabLaporan *TL, Wahana W);
+void AddLaporan(TabLaporan *TLap, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 
 Wahana SearchWahana(Wahana ListWahana[10], Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
+/* Mengembalikan Wahana kosong jika tidak ada */
 
 Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi);
+/* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
+/* Mengembalikan Wahana kosong jika tidak ada */
 
 int SearchMaterial (Material ListMaterial[3], Kata X);
 /* Search apakah ada elemen tabel T yang bernilai X */
@@ -148,7 +172,7 @@ void PrintListWahana(Wahana ListWahana[100]);
 void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana);
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 
-void PrintLaporanWahana(TabLaporan TL, Kata Nama);
+void PrintLaporanWahana(TabLaporan TLap, Kata Nama);
 /* Prosedur untuk menampilkan laporan wahana */
 
 #endif

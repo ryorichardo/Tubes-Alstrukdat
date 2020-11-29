@@ -7,6 +7,7 @@
 #include "point.h"
 
 void MakeKataEmpty(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'empty' */
 {
    Kata->TabKata[0] = 'e';
    Kata->TabKata[1] = 'm';
@@ -17,6 +18,7 @@ void MakeKataEmpty(Kata *Kata)
 }
 
 void MakeKataBuild(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'build' */
 {
    Kata->TabKata[0] = 'b';
    Kata->TabKata[1] = 'u';
@@ -27,6 +29,7 @@ void MakeKataBuild(Kata *Kata)
 }
 
 void MakeKataUpgrade(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'upgrade' */
 {
    Kata->TabKata[0] = 'u';
    Kata->TabKata[1] = 'p';
@@ -39,6 +42,7 @@ void MakeKataUpgrade(Kata *Kata)
 }
 
 void MakeKataBuy(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'buy' */
 {
    Kata->TabKata[0] = 'b';
    Kata->TabKata[1] = 'u';
@@ -47,6 +51,7 @@ void MakeKataBuy(Kata *Kata)
 }
 
 void MakeKataUndo(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'undo' */
 {
    Kata->TabKata[0] = 'u';
    Kata->TabKata[1] = 'n';
@@ -56,6 +61,7 @@ void MakeKataUndo(Kata *Kata)
 }
 
 void MakeKataExecute(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'execute' */
 {
    Kata->TabKata[0] = 'e';
    Kata->TabKata[1] = 'x';
@@ -68,6 +74,7 @@ void MakeKataExecute(Kata *Kata)
 }
 
 void MakeKataMain(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'main' */
 {
    Kata->TabKata[0] = 'm';
    Kata->TabKata[1] = 'a';
@@ -77,6 +84,7 @@ void MakeKataMain(Kata *Kata)
 }
 
 void MakeKataServe(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'serve' */
 {
    Kata->TabKata[0] = 's';
    Kata->TabKata[1] = 'e';
@@ -87,6 +95,7 @@ void MakeKataServe(Kata *Kata)
 }
 
 void MakeKataRepair(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'repair' */
 {
    Kata->TabKata[0] = 'r';
    Kata->TabKata[1] = 'e';
@@ -98,6 +107,7 @@ void MakeKataRepair(Kata *Kata)
 }
 
 void MakeKataDetail(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'detail' */
 {
    Kata->TabKata[0] = 'd';
    Kata->TabKata[1] = 'e';
@@ -109,6 +119,7 @@ void MakeKataDetail(Kata *Kata)
 }
 
 void MakeKataOffice(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'office' */
 {
    Kata->TabKata[0] = 'o';
    Kata->TabKata[1] = 'f';
@@ -120,6 +131,7 @@ void MakeKataOffice(Kata *Kata)
 }
 
 void MakeKataPrepare(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'prepare' */
 {
    Kata->TabKata[0] = 'p';
    Kata->TabKata[1] = 'r';
@@ -132,6 +144,7 @@ void MakeKataPrepare(Kata *Kata)
 }
 
 void MakeKataExit(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'exit' */
 {
    Kata->TabKata[0] = 'e';
    Kata->TabKata[1] = 'x';
@@ -141,6 +154,7 @@ void MakeKataExit(Kata *Kata)
 }
 
 void MakeKataNew(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'new' */
 {
    Kata->TabKata[0] = 'n';
    Kata->TabKata[1] = 'e';
@@ -149,6 +163,7 @@ void MakeKataNew(Kata *Kata)
 }
 
 void MakeKataLoad(Kata *Kata)
+/* Membuat Tipe Kata dengan isi 'load' */
 {
    Kata->TabKata[0] = 'l';
    Kata->TabKata[1] = 'o';
@@ -159,6 +174,7 @@ void MakeKataLoad(Kata *Kata)
 
 /**** KONSTRUKTOR ****/
 void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
+/* Membuat array MARK bertipe wahana */
 {
    int i;
    for (i = IdxMin; i <= max; i++)
@@ -180,6 +196,7 @@ void MakeTabWahanaEmpty(Wahana ListWahana[], int max)
 }
 
 void MakeTabMaterialEmpty(Material ListMaterial[3])
+/* Membuat array MARK bertipe Material */
 {
    int i;
    for (i = 0; i < 3; i++)
@@ -287,23 +304,24 @@ void InitTabAction(Kata ListAksi[16])
    return TM;
 } */
 
-void MakeTabLaporanEmpty(TabLaporan *TL)
-/* Fungsi untuk inisialisasi array laporan wahana */
+void MakeTabLaporanEmpty(TabLaporan *TLap)
+/* Fungsi untuk inisialisasi array laporan wahana yang berisi MARK untuk laporan */
 {
    for (int i = 0; i < 100; i++)
    {
       Kata Empty;
       MakeKataEmpty(&Empty);
-      TL->TL[i].Nama = Empty;
-      TL->TL[i].Penggunaan = 0;
-      TL->TL[i].PenghasilanTotal = 0;
-      TL->TL[i].PenggunaanHari = 0;
-      TL->TL[i].PenghasilanHari = 0;
+      TLap->TL[i].Nama = Empty;
+      TLap->TL[i].Penggunaan = 0;
+      TLap->TL[i].PenghasilanTotal = 0;
+      TLap->TL[i].PenggunaanHari = 0;
+      TLap->TL[i].PenghasilanHari = 0;
       i++;
    }
 }
 
 Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
+/* Fungsi untuk membentuk suatu tipe wahana */
 {
    Wahana W;
    W.Nama = Nama;
@@ -323,6 +341,7 @@ Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuil
 
 /**** EOP ****/
 boolean isWahanaEmpty(Wahana W)
+/* Mengirimkan true jika W = MARK untuk wahana */
 {
    Kata Empty;
    MakeKataEmpty(&Empty);
@@ -330,6 +349,7 @@ boolean isWahanaEmpty(Wahana W)
 }
 
 boolean isLaporanEmpty(Laporan L)
+/* Mengirimkan true jika L = MARK untuk laporan */
 {
    Kata Empty;
    MakeKataEmpty(&Empty);
@@ -337,6 +357,7 @@ boolean isLaporanEmpty(Laporan L)
 }
 
 boolean isMaterialEmpty(Material M)
+/* Mengirimkan true jika M = MARK untuk material */
 {
    Kata Empty;
    MakeKataEmpty(&Empty);
@@ -345,6 +366,8 @@ boolean isMaterialEmpty(Material M)
 
 /**** OPERASI ****/
 int NbElmtTabWahana(Wahana ListWahana[10])
+/* Mengirimkan banyaknya isi array Wahana */
+/* Mengirimkan nol jika tabel kosong */
 {
    int i = 0;
    while (!isWahanaEmpty(ListWahana[i]))
@@ -354,10 +377,12 @@ int NbElmtTabWahana(Wahana ListWahana[10])
    return i;
 }
 
-int NbElmtTabLaporan(TabLaporan TL)
+int NbElmtTabLaporan(TabLaporan TLap)
+/* Mengirimkan banyaknya isi array laporan */
+/* Mengirimkan nol jika tabel kosong */
 {
    int i = 0;
-   while (!isLaporanEmpty(TL.TL[i]))
+   while (!isLaporanEmpty(TLap.TL[i]) && i<100)
    {
       i++;
    }
@@ -368,7 +393,6 @@ int NbElmtTabMaterial(Material ListMaterial[3])
 {
    /* Mengirimkan banyaknya elemen efektif tabel */
    /* Mengirimkan nol jika tabel kosong */
-   /* *** Daya tampung container *** */
    int i = IdxMin;
    while (!isMaterialEmpty(ListMaterial[i]))
    {
@@ -384,27 +408,26 @@ void AddWahana(Wahana ListWahana[10], Wahana W)
    ListWahana[panjang] = W;
 }
 
-void RefreshLaporan(TabLaporan *TL)
-/* I.S. TL tidak kosong */
+void RefreshLaporan(TabLaporan *TLap)
 /* Prosedur untuk "refresh" laporan ketika memulai hari baru */
 {
-   int length = NbElmtTabLaporan(*TL);
+   int length = NbElmtTabLaporan(*TLap);
    for (int i = 0; i < length; i++)
-   {
-      TL->TL[i].PenggunaanHari = 0;
-      TL->TL[i].PenghasilanHari = 0;
+   {  
+      TLap->TL[i].PenggunaanHari = 0;
+      TLap->TL[i].PenghasilanHari = 0;
    }
 }
 
-void AddLaporan(TabLaporan *TL, Wahana W)
+void AddLaporan(TabLaporan *TLap, Wahana W)
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
 {
-   int panjang = NbElmtTabLaporan(*TL);
-   TL->TL[panjang].Nama = W.Nama;
-   TL->TL[panjang].Penggunaan = 0;
-   TL->TL[panjang].PenghasilanTotal = 0;
-   TL->TL[panjang].PenggunaanHari = 0;
-   TL->TL[panjang].PenghasilanHari = 0;
+   int panjang = NbElmtTabLaporan(*TLap);
+   TLap->TL[panjang].Nama = W.Nama;
+   TLap->TL[panjang].Penggunaan = 0;
+   TLap->TL[panjang].PenghasilanTotal = 0;
+   TLap->TL[panjang].PenggunaanHari = 0;
+   TLap->TL[panjang].PenghasilanHari = 0;
 }
 
 Wahana SearchWahana(Wahana ListWahana[10], Kata Nama)
@@ -497,27 +520,27 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
     }
 }
 
-void PrintLaporanWahana(TabLaporan TL, Kata Nama)
+void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
 /* Prosedur untuk menampilkan laporan wahana */
 {
    int i = 0;
-   while (!isLaporanEmpty(TL.TL[i]))
+   while (!isLaporanEmpty(TLap.TL[i]))
    {
-      if (IsKataSama(TL.TL[i].Nama, Nama))
+      if (IsKataSama(TLap.TL[i].Nama, Nama))
       {
          printf("\n\n#############################################\n");
          printf("Nama Wahana : ");
          PrintKata(Nama);
          printf("\n");
-         printf("Penggunaan Total : %d\n", TL.TL[i].Penggunaan);
-         printf("Penghasilan Total : %d\n", TL.TL[i].PenghasilanTotal);
-         printf("Penggunaan Harian : %d\n", TL.TL[i].PenggunaanHari);
-         printf("Penghasilan Harian : %d\n", TL.TL[i].PenghasilanHari);
+         printf("Penggunaan Total : %d\n", TLap.TL[i].Penggunaan);
+         printf("Penghasilan Total : %d\n", TLap.TL[i].PenghasilanTotal);
+         printf("Penggunaan Harian : %d\n", TLap.TL[i].PenggunaanHari);
+         printf("Penghasilan Harian : %d\n", TLap.TL[i].PenghasilanHari);
          printf("\n#############################################\n\n");
       }
       i++;
    }
-   if(isLaporanEmpty(TL.TL[i])){
+   if(isLaporanEmpty(TLap.TL[i])){
        printf("Wahana tersebut tidak ada");
     }
 }

@@ -225,7 +225,7 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
             {
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(Wahanaskrg, New);
-                // AddLaporan(TL, New);
+                AddLaporan(TL, New);
                 // PrintKata(Wahanaskrg->Nama);
                 for (i=Absis(X.Point);i<=Absis(X.Point)+LebarWahana(New)-1;i++) {
                   for(j=Ordinat(X.Point);j<=Ordinat(X.Point)+PanjangWahana(New)-1;j++) {
@@ -255,15 +255,6 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
         }
         Elmt(*Peta, Absis(*Posisi), Ordinat(*Posisi)) = 'P';
         int i = 0;
-        while (!isWahanaEmpty(Wahanaskrg[i]))
-        {
-            int r = rand() % 5;
-            if (r == 0)
-            {
-                Wahanaskrg[i].Rusak = true;
-            }
-            i++;
-        }
         countaksi = 0;
         totalbiaya = 0;
         durasi = 0;
