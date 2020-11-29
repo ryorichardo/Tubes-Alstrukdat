@@ -174,7 +174,7 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
     }
 }
 
-void Execute(Stack *Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi)
+void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi)
 {
     Element X;
     Wahana New, Up;
@@ -188,6 +188,7 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], Wahana DaftarWahana[10], W
             {
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(Wahanaskrg, New);
+                AddLaporan(&TL, New);
                 // PrintKata(Wahanaskrg->Nama);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
                 if (Panjang(X.Point, *Posisi) == 0)

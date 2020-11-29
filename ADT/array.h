@@ -91,7 +91,7 @@ Wahana GetTabWahana (char namafile[]);
 Material GetTabMaterial(char namafile[]);
 /* Fungsi menginisialasi suatu array berisi daftar material beserta harganya dari file eksternal */
 
-TabLaporan MakeTabLaporan(Wahana ListWahana[10]);
+void MakeTabLaporanEmpty(TabLaporan *TL);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
 Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
@@ -142,10 +142,10 @@ int SearchMaterial (Material ListMaterial[3], Kata X);
 /* Skema Searching yang digunakan bebas */
 
 
-void PrintListWahana(Wahana ListWahana[10]);
+void PrintListWahana(Wahana ListWahana[100]);
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 
-void PrintDetailWahana(Wahana ListWahana[10], Kata Nama);
+void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana);
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 
 void PrintLaporanWahana(TabLaporan TL, Kata Nama);

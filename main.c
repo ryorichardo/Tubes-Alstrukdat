@@ -35,6 +35,7 @@ int main()
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
     Material ListMat[3];
+    TabLaporan TL;
     POINT Posisi = MakePOINT(2, 2);
     JAM CurrentTime = MakeJAM(21, 0);
     JAM Open = MakeJAM(9, 0);
@@ -126,6 +127,7 @@ int main()
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
             printf("\n");
+            RefreshLaporan(&TL);
             PrintAntrian(Banyak, Customer);
 
             // Next Perintah
@@ -170,7 +172,7 @@ int main()
                 if (Absis(Posisi) == 9 && Ordinat(Posisi) == 9 && idxmap == 0)
                 {
                     // PrintKata(ListOwnedWahana->Nama);
-                    Office(ListOwnedWahana);
+                    Office(ListOwnedWahana, TL);
                 }
                 else
                 {
@@ -276,7 +278,7 @@ int main()
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(&Perintah, ListOwnedWahana, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
+                Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
             }

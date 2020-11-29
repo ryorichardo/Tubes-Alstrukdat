@@ -241,7 +241,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
     Rusak(W) = false;
 }
 
-void Office(Wahana ArrayWahana[100])
+void Office(Wahana ArrayWahana[100], TabLaporan TL)
 {
     printf("Masukkan perintah (detail / report / exit)? \n");
     int i;
@@ -250,7 +250,6 @@ void Office(Wahana ArrayWahana[100])
     InitTabAction(ListAksi);
     // char pilihan[10];
     i = 0;
-    TabLaporan TLap;
 
     // masukkan
     if (isWahanaEmpty(ArrayWahana[i]))
@@ -287,7 +286,7 @@ void Office(Wahana ArrayWahana[100])
         {
             printf("pingin melihat detail wahana dengan nama apa ? \n");
             STARTKATA(stdin);
-            Detail(ArrayWahana, CKata);
+            PrintDetailWahana(ArrayWahana, CKata);
             // printf("Ingin melihat detail wahana(y/n) ? \n ");
             // printf("y untuk yes dan n untuk no ? \n ");
         }
@@ -295,13 +294,10 @@ void Office(Wahana ArrayWahana[100])
         // jika report
         else
         {
-            // buat tab laporan
-            TLap = MakeTabLaporan(ArrayWahana);
-
             // buat laporan yang ping dilihat
             printf("pingin melihat Laporan wahana dengan nama apa ? \n");
             STARTKATA(stdin);
-            PrintLaporanWahana(TLap, CKata);
+            PrintLaporanWahana(TL, CKata);
         }
 
         // Masukkan perintah (DETAILS / REPORT / EXIT)
@@ -333,6 +329,9 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
             printf("\n#############################################\n\n");
         }
         i++;
+    }
+    if(isWahanaEmpty(ArrayWahana[i])){
+       printf("Wahana belum dibangun");
     }
 }
 

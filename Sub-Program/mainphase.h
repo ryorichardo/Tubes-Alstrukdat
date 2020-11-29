@@ -28,7 +28,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime);
 
 void Detail(Wahana ArrayWahana[100], Kata NamaWahana);
 // Program
-void Office(Wahana ArrayWahana[100]);
+void Office(Wahana ArrayWahana[100], TabLaporan TL);
 
 void Prepare(boolean * isMain, PrioQueueChar * Customer, int Banyak);
 

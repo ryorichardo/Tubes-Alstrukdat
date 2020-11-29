@@ -287,28 +287,20 @@ void InitTabAction(Kata ListAksi[16])
    return TM;
 } */
 
-TabLaporan MakeTabLaporan(Wahana ListWahana[10])
+void MakeTabLaporanEmpty(TabLaporan *TL)
 /* Fungsi untuk inisialisasi array laporan wahana */
 {
-   TabLaporan TL;
-   int i = 0;
-   while (!isWahanaEmpty(ListWahana[i]))
+   for (int i = 0; i < 100; i++)
    {
-      TL.TL[i].Nama = ListWahana[i].Nama;
-      TL.TL[i].Penggunaan = 0;
-      TL.TL[i].PenghasilanTotal = 0;
-      TL.TL[i].PenggunaanHari = 0;
-      TL.TL[i].PenghasilanHari = 0;
+      Kata Empty;
+      MakeKataEmpty(&Empty);
+      TL->TL[i].Nama = Empty;
+      TL->TL[i].Penggunaan = 0;
+      TL->TL[i].PenghasilanTotal = 0;
+      TL->TL[i].PenggunaanHari = 0;
+      TL->TL[i].PenghasilanHari = 0;
       i++;
    }
-   Kata Empty;
-   MakeKataEmpty(&Empty);
-   TL.TL[i].Nama = Empty;
-   TL.TL[i].Penggunaan = 0;
-   TL.TL[i].PenghasilanTotal = 0;
-   TL.TL[i].PenggunaanHari = 0;
-   TL.TL[i].PenghasilanHari = 0;
-   return TL;
 }
 
 Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak)
@@ -466,7 +458,7 @@ int SearchMaterial(Material ListMaterial[3], Kata X)
    return IdxUndef;
 }
 
-void PrintListWahana(Wahana ListWahana[10])
+void PrintListWahana(Wahana ListWahana[100])
 /* Prosedur untuk menampilkan daftar wahana yang tersedia */
 {
    int i = 0;
@@ -478,24 +470,31 @@ void PrintListWahana(Wahana ListWahana[10])
    }
 }
 
-void PrintDetailWahana(Wahana ListWahana[10], Kata Nama)
+void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
    int i = 0;
-   while (!isWahanaEmpty(ListWahana[i]))
-   {
-      if (IsKataSama(ListWahana[i].Nama, Nama))
-      {
-         printf("Nama Wahana : ");
-         PrintKata(Nama), printf("\n"); //Ini nanti diganti sama printkata
-         printf("Harga Tiket : %d\n", ListWahana[i].Harga);
-         printf("Kapasitas Wahana : %d\n", ListWahana[i].Kapasitas);
-         printf("Durasi Wahana : %d\n", ListWahana[i].Durasi);
-         printf("Deskripsi Wahana : ");
-         PrintKata(ListWahana[i].Deskripsi); //Ini nanti diganti sama printkata
-      }
-      i++;
-   }
+    while (!isWahanaEmpty(ArrayWahana[i]))
+    {
+        if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
+        {
+            printf("\n\n#############################################\n");
+            printf("Nama Wahana : ");
+            PrintKata(NamaWahana);
+            printf("\n");
+            printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
+            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+            printf("Deskripsi Wahana : ");
+            PrintKata(ArrayWahana[i].Deskripsi);
+            printf("\n");
+            printf("\n#############################################\n\n");
+        }
+        i++;
+    }
+    if(isWahanaEmpty(ArrayWahana[i])){
+       printf("Wahana tersebut tidak ada");
+    }
 }
 
 void PrintLaporanWahana(TabLaporan TL, Kata Nama)
@@ -518,4 +517,7 @@ void PrintLaporanWahana(TabLaporan TL, Kata Nama)
       }
       i++;
    }
+   if(isLaporanEmpty(TL.TL[i])){
+       printf("Wahana tersebut tidak ada");
+    }
 }
