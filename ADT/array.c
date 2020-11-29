@@ -230,6 +230,8 @@ void MakeTabSaveEmpty(Save ListSave[3])
    ListSave[i].Money = 0;
    ListSave[i].Close = 0;
    ListSave[i].Banyak = 0;
+   ListSave[i].Absis = 0;
+   ListSave[i].Ordinat = 0;
 }
 void MakeTabMaterialEmpty(Material ListMaterial[3])
 /* Membuat array MARK bertipe Material */
@@ -454,7 +456,7 @@ void DelWahana(Wahana ListWahana[10])
 /* Prosedur menambahkan suatu wahana beserta spesifikasinya ke daftar wahana */
 {
    int panjang = NbElmtTabWahana(ListWahana);
-   int i=panjang-1;
+   int i = panjang - 1;
    Kata Empty;
    MakeKataEmpty(&Empty);
    ListWahana[i].Nama = Empty; //Make MARK
@@ -468,9 +470,9 @@ void DelWahana(Wahana ListWahana[10])
    ListWahana[i].Mat[1] = 0;
    ListWahana[i].Mat[2] = 0;
    ListWahana[i].Deskripsi = Empty;
-   ListWahana[i].Ukuran = MakePOINT(0,0);
+   ListWahana[i].Ukuran = MakePOINT(0, 0);
    ListWahana[i].Peta = 0;
-   ListWahana[i].Point = MakePOINT(0,0);
+   ListWahana[i].Point = MakePOINT(0, 0);
    ListWahana[i].Rusak = true;
 }
 void RefreshLaporan(TabLaporan *TLap)
@@ -515,101 +517,111 @@ Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT Player, int IdxMap)
 /* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 {
-  int i,count, Rect,utara,timur,selatan,barat;
-  int RectAR,RectAL,RectAT,RectAB,RectBR,RectBL,RectBT,RectBB;
-  count=0;
-  // atas
-  i=0;
-  utara=-1;
-  Rect =Absis(Player)-1;
-  while (!isWahanaEmpty(ListWahana[i]))
-  {
-     RectAB=Absis(Point(ListWahana[i]))+LebarWahana(ListWahana[i])-1;
-     if (RectAB==Rect && IndexPeta(ListWahana[i]) == IdxMap)
-     {
-        utara=i;
-        count++;
-        break;
-     }
-     i++;
-  }
-  //kanan
-  i=0;
-  timur=-1;
-  Rect=Ordinat(Player)+1;
-  while (!isWahanaEmpty(ListWahana[i]))
-  {
-     RectAL=Ordinat(Point(ListWahana[i]));
-     if (RectAL==Rect && IndexPeta(ListWahana[i]) == IdxMap)
-     {
-        timur=i;
-        count++;
-        break;
-     }
-     i++;
-  }
-  //bawah
-  i=0;
-  selatan=-1;
-  Rect = Absis(Player)+1;
-  while (!isWahanaEmpty(ListWahana[i]))
-  {
-     RectAT=Absis(Point(ListWahana[i]));
-     if (RectAT==Rect && IndexPeta(ListWahana[i]) == IdxMap)
-     {
-        selatan=i;
-        count++;
-        break;
-     }
-     i++;
-  }
-  //kiri
-  i=0;
-  barat=-1;
-  Rect=Ordinat(Player)-1;
-  while (!isWahanaEmpty(ListWahana[i]))
-  {
-     RectAR=Ordinat(Point(ListWahana[i]))+PanjangWahana(ListWahana[i])-1;
-     if (RectAR==Rect && IndexPeta(ListWahana[i]) == IdxMap)
-     {
-        barat=i;
-        count++;
-        break;
-     }
-     i++;
-  }
+   int i, count, Rect, utara, timur, selatan, barat;
+   int RectAR, RectAL, RectAT, RectAB, RectBR, RectBL, RectBT, RectBB;
+   count = 0;
+   // atas
+   i = 0;
+   utara = -1;
+   Rect = Absis(Player) - 1;
+   while (!isWahanaEmpty(ListWahana[i]))
+   {
+      RectAB = Absis(Point(ListWahana[i])) + LebarWahana(ListWahana[i]) - 1;
+      if (RectAB == Rect && IndexPeta(ListWahana[i]) == IdxMap)
+      {
+         utara = i;
+         count++;
+         break;
+      }
+      i++;
+   }
+   //kanan
+   i = 0;
+   timur = -1;
+   Rect = Ordinat(Player) + 1;
+   while (!isWahanaEmpty(ListWahana[i]))
+   {
+      RectAL = Ordinat(Point(ListWahana[i]));
+      if (RectAL == Rect && IndexPeta(ListWahana[i]) == IdxMap)
+      {
+         timur = i;
+         count++;
+         break;
+      }
+      i++;
+   }
+   //bawah
+   i = 0;
+   selatan = -1;
+   Rect = Absis(Player) + 1;
+   while (!isWahanaEmpty(ListWahana[i]))
+   {
+      RectAT = Absis(Point(ListWahana[i]));
+      if (RectAT == Rect && IndexPeta(ListWahana[i]) == IdxMap)
+      {
+         selatan = i;
+         count++;
+         break;
+      }
+      i++;
+   }
+   //kiri
+   i = 0;
+   barat = -1;
+   Rect = Ordinat(Player) - 1;
+   while (!isWahanaEmpty(ListWahana[i]))
+   {
+      RectAR = Ordinat(Point(ListWahana[i])) + PanjangWahana(ListWahana[i]) - 1;
+      if (RectAR == Rect && IndexPeta(ListWahana[i]) == IdxMap)
+      {
+         barat = i;
+         count++;
+         break;
+      }
+      i++;
+   }
 
-   if (count==0) {
-     printf("Tidak ada wahana\n");
+   if (count == 0)
+   {
+      printf("Tidak ada wahana\n");
    }
-   else {
+   else
+   {
       printf("Pilih wahana yang mana?\n");
-      if (utara!=-1) {
-        PrintKata(Nama(ListWahana[utara]));
+      if (utara != -1)
+      {
+         PrintKata(Nama(ListWahana[utara]));
       }
-      else if (timur!=-1) {
-        PrintKata(Nama(ListWahana[timur]));
+      else if (timur != -1)
+      {
+         PrintKata(Nama(ListWahana[timur]));
       }
-      else if (barat!=-1) {
-        PrintKata(Nama(ListWahana[barat]));
+      else if (barat != -1)
+      {
+         PrintKata(Nama(ListWahana[barat]));
       }
-      else if (selatan!=-1) {
-        PrintKata(Nama(ListWahana[selatan]));
+      else if (selatan != -1)
+      {
+         PrintKata(Nama(ListWahana[selatan]));
       }
    }
-  STARTKATA(stdin);
-  if (IsKataSama(CKata, Nama(ListWahana[utara]))) {
-    i=utara;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[timur]))) {
-    i=timur;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[selatan]))) {
-    i=selatan;
-  }
-  else if (IsKataSama(CKata, Nama(ListWahana[barat]))) {
-    i=barat;
-  }
+   STARTKATA(stdin);
+   if (IsKataSama(CKata, Nama(ListWahana[utara])))
+   {
+      i = utara;
+   }
+   else if (IsKataSama(CKata, Nama(ListWahana[timur])))
+   {
+      i = timur;
+   }
+   else if (IsKataSama(CKata, Nama(ListWahana[selatan])))
+   {
+      i = selatan;
+   }
+   else if (IsKataSama(CKata, Nama(ListWahana[barat])))
+   {
+      i = barat;
+   }
    return ListWahana[i];
 }
 

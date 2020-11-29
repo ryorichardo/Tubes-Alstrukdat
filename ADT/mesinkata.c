@@ -253,6 +253,12 @@ void BacaLoadSave(char namafile[], Save TabSave[3])
         SalinToken();
         ADV();
         TabSave[i].Banyak = CToken;
+        SalinToken();
+        ADV();
+        TabSave[i].Absis = CToken;
+        SalinToken();
+        ADV();
+        TabSave[i].Ordinat = CToken;
         i++;
     }
 }

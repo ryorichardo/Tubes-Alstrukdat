@@ -26,7 +26,7 @@ void Prepare(boolean *isMain, PrioQueueChar *Customer, int *day);
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer);
 
-void save(Kata Player, int day, int Money, JAM Close, int Banyak);
+void save(Kata Player, int day, int Money, JAM Close, int Banyak, int X, int Y);
 
 void saveWahana(Wahana ListOwnedWahana[]);
 

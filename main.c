@@ -96,6 +96,9 @@ int main()
     // Exit = ListAksi[11];
     int j;
 
+    // printf("%d", Absis(Posisi));
+    // printf("%d", Ordinat(Posisi));
+
     // SALAH INPUTAN
     if (!IsKataSama(Game, ListAksi[16]) && !IsKataSama(Game, ListAksi[17]))
     {
@@ -113,13 +116,16 @@ int main()
 
     if (IsKataSama(Game, ListAksi[17]))
     {
+        // POINT Posisi = MakePOINT(ListSave->Absis, ListSave->Ordinat);
         day = ListSave->Day;
         Player = ListSave->Player;
         Money = ListSave->Money;
         gameOn = true;
+        Absis(Posisi) = ListSave->Absis;
+        Ordinat(Posisi) = ListSave->Ordinat;
         // char filename8[] = "File-Eksternal/saveWahana.txt";
         // BacaFileWahana(filename8, ListOwnedWahana, ListUpgrade);
-        CurrentMap = ListMap[4];
+        // CurrentMap = ListMap[4];
         printf("\n1\n");
         //
     }
@@ -128,6 +134,7 @@ int main()
     // NEW GAME
     if (IsKataSama(Game, ListAksi[16]))
     {
+        // POINT Posisi = MakePOINT(2, 2);
         printf("Masukkan nama: ");
         STARTKATA(stdin);
         Player = CopyKata(CKata);
@@ -145,7 +152,8 @@ int main()
     {
         if (isMain == true)
         {
-            if (JGT(CurrentTime,Close)){
+            if (JGT(CurrentTime, Close))
+            {
                 isMain == false;
                 day++;
             }
@@ -199,6 +207,7 @@ int main()
             else if (IsKataSama(Game, ListAksi[8]))
             {
                 Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, ListUpgradeOwnedWahana);
+                // Detail(ListOwnedWahana, Game, ListUpgradeOwnedWahana);
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
@@ -248,7 +257,8 @@ int main()
             {
                 // SimpanMATRIKS(CurrentMap, "save.txt");
                 // PrintListWahana(ListOwnedWahana);
-                save(Player, day, Money, Close, Banyak);
+
+                save(Player, day, Money, Close, Banyak, Absis(Posisi), Ordinat(Posisi));
                 saveWahana(ListOwnedWahana);
             }
         }
@@ -324,10 +334,6 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
-<<<<<<< HEAD
-                // printf("1\n");
-=======
->>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
                 RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
                 // PrintListWahana(ListOwnedWahana);
             }

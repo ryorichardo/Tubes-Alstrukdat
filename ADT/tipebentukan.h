@@ -61,6 +61,8 @@ typedef struct
     int Money;
     int Close;
     int Banyak;
+    int Absis;
+    int Ordinat;
     // MATRIKS CurrentMap;
     // JAM CurrentTime;
 } Save;

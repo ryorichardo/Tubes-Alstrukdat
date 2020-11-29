@@ -29,16 +29,11 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
-<<<<<<< HEAD
 void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak)
 {
-    int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
-=======
-void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
     int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
     Kata Empty;
-    MakeKataEmpty( &Empty);
->>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
+    MakeKataEmpty(&Empty);
 
     /* Reset Array Customer */
     for (i = 0; i < 25; i++)
@@ -122,7 +117,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
-        if (IsEmpty(*Customer)){
+        if (IsEmpty(*Customer))
+        {
             MakeEmpty(Customer, 5);
             *isMain = false;
             *day++;
@@ -155,7 +151,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
-        if (IsEmpty(*Customer)){
+        if (IsEmpty(*Customer))
+        {
             MakeEmpty(Customer, 5);
             *isMain = false;
             *day++;
@@ -187,7 +184,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
-        if (IsEmpty(*Customer)){
+        if (IsEmpty(*Customer))
+        {
             MakeEmpty(Customer, 5);
             *isMain = false;
             *day++;
@@ -293,6 +291,7 @@ void Office(Wahana ArrayWahana[100], TabLaporan TL)
 
 void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahana[100])
 {
+    NamaWahana = ArrayWahana[0].Nama;
     int i = 0;
     while (!isWahanaEmpty(ArrayWahana[i]))
     {
@@ -336,7 +335,7 @@ void PrintAntrian(int Banyak, PrioQueueChar Customer)
     PrintQueue(Customer);
 }
 
-void save(Kata Player, int day, int Money, JAM Close, int Banyak)
+void save(Kata Player, int day, int Money, JAM Close, int Banyak, int X, int Y)
 {
     /* I.S. M terdefinisi */
     /* F.S. Nilai M(i,j) ditulis ke file per baris per kolom*/
@@ -364,6 +363,10 @@ void save(Kata Player, int day, int Money, JAM Close, int Banyak)
     fprintf(ptr, "%d", Close);
     fprintf(ptr, ".");
     fprintf(ptr, "%d", Banyak);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", X);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Y);
     fprintf(ptr, ".");
     fprintf(ptr, ",");
 
