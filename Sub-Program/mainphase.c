@@ -431,7 +431,29 @@ void saveWahana(Wahana ListOwnedWahana[])
         fprintf(ptr, ".");
         fprintf(ptr, "%d", LebarWahana(ListOwnedWahana[i]));
         fprintf(ptr, ".");
-        fprintf(ptr, ",");
+        fprintf(ptr, "%d", Durasi(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", DurasiBuild(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", Harga(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", HargaBuild(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", Pemain(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", Wood(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", Fire(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        fprintf(ptr, "%d", Primogem(ListOwnedWahana[i]));
+        fprintf(ptr, ".");
+        for (j = 0; j < ListOwnedWahana[0].Deskripsi.Length; j++)
+        {
+            fprintf(ptr, "%c", ListOwnedWahana[i].Deskripsi.TabKata[j]);
+        }
+        fprintf(ptr, ".;");
+        fprintf(ptr, "\n");
+        fprintf(ptr, "Engi's Descent.5.5.5.5.10.5.,");
     }
 
     // for (i = 0; i < NBrsEff(M); i++)

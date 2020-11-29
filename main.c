@@ -126,7 +126,7 @@ int main()
         // char filename8[] = "File-Eksternal/saveWahana.txt";
         // BacaFileWahana(filename8, ListOwnedWahana, ListUpgrade);
         // CurrentMap = ListMap[4];
-        printf("\n1\n");
+        // printf("\n1\n");
         //
     }
     //
