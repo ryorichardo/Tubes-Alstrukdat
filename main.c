@@ -255,7 +255,7 @@ int main()
 
             if (IsKataSama(Game, ListAksi[0]))
             {
-                Build(&Perintah, ListWahana, Posisi, idxmap, &Money, &Wood, &Fire, &Primogem);
+                Build(&Perintah, ListWahana, ListOwnedWahana, &Posisi, &CurrentMap, idxmap, &Money, &Wood, &Fire, &Primogem);
             }
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
@@ -270,7 +270,7 @@ int main()
             //undo
             else if (IsKataSama(Game, ListAksi[3]))
             {
-                Undo(&Perintah, &Money, &Wood, &Fire, &Primogem);
+                Undo(&Perintah, &CurrentMap, &Money, &Wood, &Fire, &Primogem, ListOwnedWahana);
             }
             //execute
             else if (IsKataSama(Game, ListAksi[4]))

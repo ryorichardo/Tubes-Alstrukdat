@@ -149,6 +149,7 @@ void RefreshLaporan(TabLaporan *TLap);
 
 void AddLaporan(TabLaporan *TLap, Wahana W);
 /* Prosedur menambahkan laporan ke array laporan ketika wahana baru dibangun */
+void DelWahana(Wahana ListWahana[10]);
 
 Wahana SearchWahana(Wahana ListWahana[10], Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
