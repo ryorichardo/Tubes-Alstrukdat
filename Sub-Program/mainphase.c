@@ -29,12 +29,9 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
-<<<<<<< HEAD
 void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak)
 {
-=======
-void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
->>>>>>> f6ed8c10ca9f371eb65a587ddd8d1689122082dc
+
     int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
     Kata Empty;
     MakeKataEmpty(&Empty);
@@ -52,7 +49,8 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     *Banyak = (rand() % 5);
 
     count = 1;
-    for (i = 0; i < *Banyak; i++){
+    for (i = 0; i < *Banyak; i++)
+    {
         /* Reset Array Tempat[100] (Wahana) */
         for (k = 0; k < 100; k++)
         {
@@ -82,7 +80,6 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
         }
         Enqueue(Customer, Pelanggan[j]);
         count++;
-        
     }
 }
 
@@ -97,8 +94,10 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
 
     /* Kasus Wahana Rusak */
     i = 0;
-    while (i < 100){
-        if (!IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+    while (i < 100)
+    {
+        if (!IsKataSama(Nama(W), Nama(ArrayWahana[i])))
+        {
             i++;
         }
     }
@@ -198,15 +197,6 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
-<<<<<<< HEAD
-        if (IsEmpty(*Customer))
-        {
-            MakeEmpty(Customer, 5);
-            *isMain = false;
-            *day++;
-        }
-=======
->>>>>>> f6ed8c10ca9f371eb65a587ddd8d1689122082dc
 
         /* Menambah keterangan di Laporan */
         for (k = 0; k < NbElmtTabLaporan(*TL); k++)
@@ -224,8 +214,10 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         r = rand() % 5;
         if (r == 0)
         {
-            for (i = 0; i < 100; i++){
-                if (IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+            for (i = 0; i < 100; i++)
+            {
+                if (IsKataSama(Nama(W), Nama(ArrayWahana[i])))
+                {
                     Rusak(ArrayWahana[i]) = true;
                 }
             }
@@ -235,7 +227,8 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         NextNMenit(*CurrentTime, Durasi(W));
 
         /* Antrian habis, pindah ke preparation */
-        if (IsEmpty(*Customer)){
+        if (IsEmpty(*Customer))
+        {
             MakeEmpty(Customer, 5);
             *isMain = false;
             *day++;
@@ -251,8 +244,10 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
     /* Search Wahana */
     W = SearchWahana(ArrayWahana, NamaWahana);
     /* Repair wahana */
-    for (i = 0; i < 100; i++){
-        if (IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+    for (i = 0; i < 100; i++)
+    {
+        if (IsKataSama(Nama(W), Nama(ArrayWahana[i])))
+        {
             Rusak(ArrayWahana[i]) = false;
         }
     }

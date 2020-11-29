@@ -195,25 +195,20 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Wahana New = SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
                 Serve(ListOwnedWahana, Nama(New), &Money, &Customer, &CurrentTime, Banyak, &TL, &isMain, &day);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))
             {
-                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Wahana New = SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
                 Repair(ListOwnedWahana, Nama(New), &CurrentTime);
             }
             //detail
             else if (IsKataSama(Game, ListAksi[8]))
             {
-<<<<<<< HEAD
-                Detail(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap).Nama, ListUpgradeOwnedWahana);
-                // Detail(ListOwnedWahana, Game, ListUpgradeOwnedWahana);
-=======
-                Wahana New=SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
+                Wahana New = SearchWahanaFromPoint(ListOwnedWahana, Posisi, idxmap);
                 Detail(ListOwnedWahana, Nama(New), ListUpgradeOwnedWahana);
->>>>>>> f6ed8c10ca9f371eb65a587ddd8d1689122082dc
             }
             //office
             else if (IsKataSama(Game, ListAksi[9]))
