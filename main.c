@@ -34,6 +34,7 @@ int main()
     Wahana ListWahana[10];
     Wahana ListUpgrade[10];
     Wahana ListOwnedWahana[100];
+    ElmtList ListUpgradeOwnedWahana[100];
     Material ListMat[3];
     TabLaporan TL;
     POINT Posisi = MakePOINT(2, 2);
@@ -56,6 +57,7 @@ int main()
     MakeTabWahanaEmpty(ListUpgrade, 10);
     MakeTabMaterialEmpty(ListMat);
     MakeTabLaporanEmpty(&TL);
+    MakeListUpgradeEmpty(ListUpgradeOwnedWahana);
     char filename5[] = "File-Eksternal/Wahana.txt";
     BacaFileWahana(filename5, ListWahana, ListUpgrade);
     char filename6[] = "File-Eksternal/Material.txt";
@@ -259,7 +261,7 @@ int main()
             //upgrade
             else if (IsKataSama(Game, ListAksi[1]))
             {
-                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem);
+                Upgrade(&Perintah, ListOwnedWahana, ListUpgrade, Posisi, &Money, &Wood, &Fire, &Primogem, idxmap);
             }
             //buy
             else if (IsKataSama(Game, ListAksi[2]))
@@ -274,7 +276,7 @@ int main()
             //execute
             else if (IsKataSama(Game, ListAksi[4]))
             {
-                Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi);
+                Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
                 printf("1\n");

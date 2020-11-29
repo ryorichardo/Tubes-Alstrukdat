@@ -23,6 +23,7 @@ typedef struct
   int Fire;
   int Primogem;
   long Durasi;
+  int idxmap;
 }Element;
  /* indeks tabel */
 

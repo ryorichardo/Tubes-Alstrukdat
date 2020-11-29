@@ -83,7 +83,7 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
     }
 }
 
-void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem)
+void Upgrade(Stack *Perintah, Wahana ArrayWahana[100], Wahana DaftarUpgrade[10], POINT Player, int *Duit, int *Wood, int *Fire, int *Primogem, int idxmap)
 {
     Wahana New = SearchWahanaFromPoint(ArrayWahana, Player);
     Kata empty;
@@ -210,7 +210,7 @@ void Undo(Stack *Perintah, int *Duit, int *Wood, int *Fire, int *Primogem)
     }
 }
 
-void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi)
+void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int *Wood, int *Fire, int *Primogem, boolean *isMain, MATRIKS *Peta, POINT *Posisi, ElmtList UpWahana[100])
 {
     Element X;
     int i,j;
@@ -234,8 +234,7 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
                 }
                 Absis(*Posisi)=i;
                 Ordinat(*Posisi)=j;
-
-
+                AddWahanaToListUpgrade(UpWahana, X.Target, X.Point, X.idxmap);
             }
             // update
             else if (X.perintah == 'U')
@@ -244,6 +243,13 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
                 Up = SearchWahana(DaftarUpgrade, X.Target);
                 New.Harga += Up.Harga;
                 New.Kapasitas += Up.Kapasitas;
+                int i = 0;
+                Kata Empty;
+                MakeKataEmpty(&Empty);
+                while(X.Point.X != UpWahana[i].Lokasi.X && X.Point.X != UpWahana[i].Lokasi.X && X.idxmap != UpWahana[i].idxmap && !IsKataSama(UpWahana[i].Nama, Empty)){
+                    i++;
+                }
+                InsertVLast(UpWahana[i], X.Target);
             }
             // buy
             else if (X.perintah == 'Y')
