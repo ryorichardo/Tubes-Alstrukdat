@@ -3,7 +3,7 @@
 #ifndef MATRIKS_H
 #define MATRIKS_H
 
-#include "boolean.h"
+#include "../boolean.h"
 #include "../Graph/graph.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
@@ -14,10 +14,11 @@
 
 typedef int indeks; /* indeks baris, kolom */
 typedef char ElType;
-typedef struct {
-	ElType Mem[BrsMax+1][KolMax+1];
-    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
-		int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
+typedef struct
+{
+   ElType Mem[BrsMax + 1][KolMax + 1];
+   int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
+   int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } MATRIKS;
 /* NBrsEff >= 1 dan NKolEff >= 1 */
 /* Indeks matriks yang digunakan: [BrsMin..BrsMax][KolMin..KolMax] */
@@ -25,7 +26,7 @@ typedef struct {
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk MATRIKS *** */
-void MakeMATRIKS (int NB, int NK, MATRIKS * M);
+void MakeMATRIKS(int NB, int NK, MATRIKS *M);
 /* Membentuk sebuah MATRIKS "kosong" yang siap diisi berukuran NB x NK di "ujung kiri" memori */
 /* I.S. NB dan NK adalah valid untuk memori matriks yang dibuat */
 /* F.S. Matriks M sesuai dengan definisi di atas terbentuk */
@@ -33,32 +34,32 @@ void MakeMATRIKS (int NB, int NK, MATRIKS * M);
 /* *** Selektor *** */
 #define NBrsEff(M) (M).NBrsEff
 #define NKolEff(M) (M).NKolEff
-#define Elmt(M,i,j) (M).Mem[(i)][(j)]
+#define Elmt(M, i, j) (M).Mem[(i)][(j)]
 
 /* *** Selektor "DUNIA MATRIKS" *** */
-boolean IsIdxValid (int i, int j);
+boolean IsIdxValid(int i, int j);
 /* Mengirimkan true jika i, j adalah indeks yang valid untuk matriks apa pun */
 
 /* *** Selektor: Untuk sebuah matriks M yang terdefinisi: *** */
-indeks GetFirstIdxBrs (MATRIKS M);
+indeks GetFirstIdxBrs(MATRIKS M);
 /* Mengirimkan indeks baris terkecil M */
-indeks GetFirstIdxKol (MATRIKS M);
+indeks GetFirstIdxKol(MATRIKS M);
 /* Mengirimkan indeks kolom terkecil M */
-indeks GetLastIdxBrs (MATRIKS M);
+indeks GetLastIdxBrs(MATRIKS M);
 /* Mengirimkan indeks baris terbesar M */
-indeks GetLastIdxKol (MATRIKS M);
+indeks GetLastIdxKol(MATRIKS M);
 /* Mengirimkan indeks kolom terbesar M */
-boolean IsIdxEff (MATRIKS M, indeks i, indeks j);
+boolean IsIdxEff(MATRIKS M, indeks i, indeks j);
 /* Mengirimkan true jika i, j adalah indeks efektif bagi M */
-ElType GetElmtDiagonal (MATRIKS M, indeks i);
+ElType GetElmtDiagonal(MATRIKS M, indeks i);
 /* Mengirimkan elemen M(i,i) */
 
 /* ********** Assignment  MATRIKS ********** */
-void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl);
+void CopyMATRIKS(MATRIKS MIn, MATRIKS *MHsl);
 /* Melakukan assignment MHsl  MIn */
 
 /* ********** KELOMPOK BACA/TULIS ********** */
-void BacaMATRIKS (Graph * G, MATRIKS * M, int NB, int NK, char namafile[]);
+void BacaMATRIKS(Graph *G, MATRIKS *M, int NB, int NK, char namafile[]);
 /* I.S. IsIdxValid(NB,NK) */
 /* F.S. M terdefinisi nilai elemen efektifnya, berukuran NB x NK */
 /* Proses: Melakukan MakeMATRIKS(M,NB,NK) dan mengisi nilai efektifnya */
@@ -68,7 +69,7 @@ void BacaMATRIKS (Graph * G, MATRIKS * M, int NB, int NK, char namafile[]);
 4 5 6
 8 9 10
 */
-void TulisMATRIKS (MATRIKS M);
+void TulisMATRIKS(MATRIKS M);
 /* I.S. M terdefinisi */
 /* F.S. Nilai M(i,j) ditulis ke layar per baris per kolom, masing-masing elemen per baris
    dipisahkan sebuah spasi */
@@ -95,7 +96,7 @@ void TulisMATRIKS (MATRIKS M);
 *--------------------------------------*
 ********************v*******************
 */
-void SimpanMATRIKS (MATRIKS M, char namafile[]);
+void SimpanMATRIKS(MATRIKS M, char namafile[]);
 /* I.S. M terdefinisi */
 /* F.S. Nilai M(i,j) ditulis ke file per baris per kolom*/
 /* Proses: Menulis nilai setiap elemen M ke file dengan traversal per baris dan per kolom */

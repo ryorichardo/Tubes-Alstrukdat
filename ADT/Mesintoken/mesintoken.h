@@ -1,7 +1,7 @@
 #ifndef __MESINTOKEN_H__
 #define __MESINTOKEN_H__
 
-#include "boolean.h"
+#include "../boolean.h"
 #include "../Mesinkar/mesinkar.h"
 
 #define NMax 50
@@ -16,7 +16,7 @@ void IgnoreBlank();
    I.S. : CC sembarang 
    F.S. : CC ≠ BLANK atau CC = MARK */
 
-void STARTTOKEN(FILE * input);
+void STARTTOKEN(FILE *input);
 /* I.S. : CC sembarang 
    F.S. : EndToken = true, dan CC = MARK; 
           atau EndToken = false, CToken adalah Token yang sudah diakuisisi,

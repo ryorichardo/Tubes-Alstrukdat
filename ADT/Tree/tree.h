@@ -7,7 +7,7 @@
 #define _BINTREE_H_
 
 /* Modul lain yang digunakan : */
-#include "boolean.h"
+#include "../boolean.h"
 #include "../tipebentukan.h"
 
 /* #define Nil NULL */ /* konstanta Nil sesuai pada modul listrek */

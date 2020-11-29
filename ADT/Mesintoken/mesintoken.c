@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "boolean.h"
+#include "../boolean.h"
 #include "mesintoken.h"
 
 /* State Mesin Kata */
