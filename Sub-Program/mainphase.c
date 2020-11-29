@@ -29,12 +29,7 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
-<<<<<<< HEAD
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
-=======
-void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak)
-{
->>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
     int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
 
     /* Reset Array Customer */
@@ -48,13 +43,7 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
     *Banyak = (rand() % 5);
 
     count = 1;
-<<<<<<< HEAD
     for (i = 0; i < *Banyak; i++){
-        printf("%d\n", i);
-=======
-    for (i = 0; i < Banyak; i++)
-    {
->>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
         /* Reset Array Tempat[25] (Wahana) */
         for (k = 0; k < 25; k++)
         {
@@ -71,13 +60,8 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
         Pelanggan[j].prio = count;
 
         Naik = (rand() % 10) + 1;
-<<<<<<< HEAD
-        for (k = 0; k < Naik; k++){
-            printf("%d\n", k);
-=======
         for (k = 0; k < Naik; k++)
         {
->>>>>>> c42e24f979b82d4a4bc0822a6ef62c0958e70dd5
             l = rand() % 25;
             while (Tempat[l] == 1)
             {
