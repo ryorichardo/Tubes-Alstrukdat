@@ -153,7 +153,7 @@ int main()
             //serve
             if (IsKataSama(Game, ListAksi[6]))
             {
-                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak);
+                Serve(ListOwnedWahana, SearchWahanaFromPoint(ListOwnedWahana, Posisi).Nama, &Money, &Customer, &CurrentTime, Banyak, &TL);
             }
             //repair
             else if (IsKataSama(Game, ListAksi[7]))

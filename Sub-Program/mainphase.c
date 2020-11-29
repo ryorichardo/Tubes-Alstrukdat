@@ -136,14 +136,14 @@ void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3)
     (CustomerE->info).Kesabaran = 5;
 }
 
-void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak)
+void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL)
 {
     Wahana W;
-    int i, count, j;
+    int i, count, j, k;
     Antrian Buang;
 
     /* Search Wahana */
-    W = SearchWahana(&ArrayWahana[100], NamaWahana);
+    W = SearchWahana(ArrayWahana, NamaWahana);
 
     /* Kasus Wahana Rusak */
     if (Rusak(W))
@@ -227,6 +227,18 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             Dequeue(Customer, &Buang);
             Banyak -= 1;
         }
+
+        /* Menambah keterangan di Laporan */
+        for (k = 0; k < NbElmtTabLaporan(*TL); k++){
+            if (IsKataSama(TL->TL[k].Nama, W.Nama)){
+                TL->TL[k].Penggunaan += 1;
+                TL->TL[k].PenghasilanTotal += W.Harga;
+                TL->TL[k].PenggunaanHari += 1;
+                TL->TL[k].PenghasilanHari += W.Harga;
+            }
+        }
+
+        /* Menambah 10 menit setelah selesai serve */
         NextNMenit(*CurrentTime, Durasi(W));
     }
 }
@@ -236,7 +248,7 @@ void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
     Wahana W;
     NextNMenit(*CurrentTime, 10);
     /* Search Wahana */
-    W = SearchWahana(&ArrayWahana[100], NamaWahana);
+    W = SearchWahana(ArrayWahana, NamaWahana);
     /* Repair wahana */
     Rusak(W) = false;
 }
