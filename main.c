@@ -27,6 +27,7 @@ void printLegend(MATRIKS CurrentMap, int day, Kata Player, JAM CurrentTime, int 
     TulisJAM(CurrentTime);
     printf("\n");
 }
+extern int Banyak;
 
 int main()
 {
@@ -47,8 +48,7 @@ int main()
     PrioQueueChar Customer;
     extern Antrian CustomerA, CustomerB, CustomerC, CustomerD, CustomerE;
     extern Kata Wahana1, Wahana2, Wahana3;
-
-    extern int Banyak;
+    int Banyak;
 
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
