@@ -12,7 +12,7 @@
 
 void InitCustomer (Antrian Pelanggan[25]);
 
-void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak);
+void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak);
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL);
 

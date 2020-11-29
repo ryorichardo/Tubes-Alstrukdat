@@ -77,74 +77,32 @@ void Enqueue(PrioQueueChar *Q, Antrian X)
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
         TAIL "maju" dengan mekanisme circular buffer; */
 {
-    int i, a;
-    boolean found;
-    printf("1\n ");
     if (IsEmpty(*Q))
     {
-        Head(*Q) = 0;
-        Tail(*Q) = 0;
-        InfoHead(*Q) = X;
+        Head(*Q) = 1;
+        Tail(*Q) = 1;
         InfoTail(*Q) = X;
     }
     else
     {
-        if (Tail(*Q) == MaxEl(*Q) - 1)
+        int repeat = NBElmt(*Q);
+        int idx = Tail(*Q);
+
+        while ((Prio(X) < Prio(Elmtd(*Q, idx))) && (repeat > 0))
         {
-            Tail(*Q) = 0;
-        }
-        else
-        {
-            Tail(*Q) += 1;
-        }
-        i = Head(*Q);
-        // Cek elmen pertama
-        if (Prio(X) < Prio(Elmtd(*Q, i)))
-        {
-            while (i != Tail(*Q))
+            (*Q).T[(idx % MaxEl(*Q)) + 1] = (*Q).T[idx];
+
+            idx--;
+            repeat--;
+
+            if (idx == 0)
             {
-                Elmtd(*Q, i + 1) = Elmtd(*Q, i);
-                i += 1;
-                if (i == MaxEl(*Q))
-                {
-                    i = 0;
-                }
-            }
-            InfoHead(*Q) = X;
-        }
-        else
-        {
-            found = true;
-            while (found && i != Tail(*Q))
-            {
-                if (Prio(X) < Prio(Elmtd(*Q, i)))
-                {
-                    found = false;
-                }
-                else
-                {
-                    i += 1;
-                }
-            }
-            if (!found)
-            {
-                a = i;
-                while (i != Tail(*Q))
-                {
-                    Elmtd(*Q, i + 1) = Elmtd(*Q, i);
-                    i += 1;
-                    if (i == MaxEl(*Q))
-                    {
-                        i = 0;
-                    }
-                }
-                Elmtd(*Q, a) = X;
-            }
-            else
-            {
-                InfoTail(*Q) = X;
+                idx = MaxEl(*Q);
             }
         }
+
+        (*Q).T[(idx % MaxEl(*Q)) + 1] = X;
+        Tail(*Q) = (Tail(*Q) % MaxEl(*Q)) + 1;
     }
 }
 void Dequeue(PrioQueueChar *Q, Antrian *X)
@@ -179,21 +137,14 @@ void PrintQueue(PrioQueueChar Q)
 #
 */
 {
-    int j;
-    int i = Head(Q);
-    while (i != Tail(Q))
+    Antrian A;
+    int temp;
+    temp = Head(Q);
+    while (Head(Q) <= Tail(Q))
     {
         printf("(");
-        j = 0;
-        while (Main(Q, j).TabKata[0] == '\0')
-        {
-            j++;
-        }
-        if (Main(Q, j).TabKata[0] != '\0')
-        {
-            PrintKata(Main(Q, j));
-        }
-        for (j; j < 5; j++)
+        PrintKata(Main(Q, Head(Q)));
+        for (int j = 0; j < 10; j++)
         {
             if (Main(Q, j).TabKata[0] != '\0')
             {
@@ -201,9 +152,10 @@ void PrintQueue(PrioQueueChar Q)
                 PrintKata(Main(Q, j));
             }
         }
-        printf("), kesabaran: %d //", Info(Elmtd(Q, i)).Kesabaran);
-        PrintKata(Info(Elmtd(Q, i)).Nama);
+        printf("), kesabaran: %d //", Info(Elmtd(Q, Head(Q))).Kesabaran);
+        PrintKata(Info(Elmtd(Q, Head(Q))).Nama);
         printf("\n");
-        i++;
+        Head(Q) += 1;
     }
+    Head(Q) = temp;
 }
