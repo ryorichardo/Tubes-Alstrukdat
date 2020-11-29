@@ -539,8 +539,8 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
 /* Prosedur untuk menampilkan detail dari suatu wahana */
 {
    int i = 0;
-<<<<<<< HEAD
-   while (!isWahanaEmpty(ArrayWahana[i]))
+   boolean found = false;
+   while (!isWahanaEmpty(ArrayWahana[i]) && !found)
    {
       if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
       {
@@ -555,38 +555,14 @@ void PrintDetailWahana(Wahana ArrayWahana[100], Kata NamaWahana)
          PrintKata(ArrayWahana[i].Deskripsi);
          printf("\n");
          printf("\n#############################################\n\n");
+         found = true;
       }
       i++;
    }
-   if (isWahanaEmpty(ArrayWahana[i]))
+   if (!found)
    {
       printf("Wahana tersebut tidak ada");
    }
-=======
-   boolean found = false;
-    while (!isWahanaEmpty(ArrayWahana[i]) && !found)
-    {
-        if (IsKataSama(NamaWahana, ArrayWahana[i].Nama))
-        {
-            printf("\n\n#############################################\n");
-            printf("Nama Wahana : ");
-            PrintKata(NamaWahana);
-            printf("\n");
-            printf("Harga Tiket : %d\n", Harga(ArrayWahana[i]));
-            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
-            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
-            printf("Deskripsi Wahana : ");
-            PrintKata(ArrayWahana[i].Deskripsi);
-            printf("\n");
-            printf("\n#############################################\n\n");
-            found = true;
-        }
-        i++;
-    }
-    if(!found){
-       printf("Wahana tersebut tidak ada");
-    }
->>>>>>> e4918ece8fcc9ec2c9cb9125ca2a911629274561
 }
 
 void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
@@ -611,14 +587,9 @@ void PrintLaporanWahana(TabLaporan TLap, Kata Nama)
       }
       i++;
    }
-<<<<<<< HEAD
-   if (isLaporanEmpty(TLap.TL[i]))
+
+   if (!found)
    {
       printf("Wahana tersebut tidak ada");
    }
-=======
-   if(!found){
-       printf("Wahana tersebut tidak ada");
-    }
->>>>>>> e4918ece8fcc9ec2c9cb9125ca2a911629274561
 }
