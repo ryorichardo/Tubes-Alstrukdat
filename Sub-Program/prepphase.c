@@ -188,7 +188,7 @@ void Execute(Stack *Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana Daf
             {
                 New = SearchWahana(DaftarWahana, X.Target);
                 AddWahana(Wahanaskrg, New);
-                AddLaporan(&TL, New);
+                AddLaporan(TL, New);
                 // PrintKata(Wahanaskrg->Nama);
                 Elmt(*Peta, Absis(X.Point), Ordinat(X.Point)) = 'W';
                 if (Panjang(X.Point, *Posisi) == 0)
