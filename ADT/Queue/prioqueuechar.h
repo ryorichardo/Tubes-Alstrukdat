@@ -6,8 +6,8 @@
 #ifndef prioqueuechar_H
 #define prioqueuechar_H
 
-#include "boolean.h"
-#include "mesinkata.h"
+#include "../boolean.h"
+#include "../Mesinkata/mesinkata.h"
 
 extern Kata Main[5];
 /* Konstanta untuk mendefinisikan address tak terdefinisi */

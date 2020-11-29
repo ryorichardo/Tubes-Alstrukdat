@@ -1,6 +1,6 @@
 #include "tree.h"
-#include "array.h"
-#include "mesinkata.h"
+#include "../Array/array.h"
+#include "../Mesinkata/mesinkata.h"
 #include <stdio.h>
 
 int main(){
@@ -22,7 +22,7 @@ int main(){
     C = MakeWahana(Empty, 200, 10, 0, 30, 100, 60, Mat, Empty, Ukuran, 1, Point, false);
     printf("Nama wahana A : ");
     PrintKata(A.Nama); printf("\n");
-    
+
     BinTree P, L = AlokNode(A), R = AlokNode(B);
     MakeTree(A, L, R, &P);
     printf("Harga wahana pada akar pohon (wahana A) : %d\n", Akar(P).Harga);

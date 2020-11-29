@@ -6,11 +6,11 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "boolean.h"
-#include "jam.h"
-#include "tipebentukan.h"
-#include "point.h"
-#include "mesinkata.h"
+#include "../boolean.h"
+#include "../Jam/jam.h"
+#include "../tipebentukan.h"
+#include "../Point/point.h"
+#include "../Mesinkata/mesinkata.h"
 
 /*  Kamus Umum */
 #define IdxMax 99
