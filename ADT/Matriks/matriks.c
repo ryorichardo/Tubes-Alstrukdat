@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matriks.h"
-#include "boolean.h"
+#include "../boolean.h"
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk MATRIKS *** */

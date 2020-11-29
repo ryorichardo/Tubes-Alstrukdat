@@ -4,7 +4,7 @@
 #define MATRIKS_H
 
 #include "boolean.h"
-#include"graph.h"
+#include "../Graph/graph.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define BrsMin 0

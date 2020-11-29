@@ -6,10 +6,10 @@
 #ifndef listlinier_H
 #define listlinier_H
 
-#include "boolean.h"
-#include "tipebentukan.h"
-#include "mesinkata.h"
-#include "array.h"
+#include "../boolean.h"
+#include "../tipebentukan.h"
+#include "../Mesinkata/mesinkata.h"
+#include "../Array/array.h"
 
 #define Nil NULL
 
