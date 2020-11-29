@@ -115,7 +115,7 @@ Material GetTabMaterial(char namafile[]);
 void MakeTabLaporanEmpty(TabLaporan *TLap);
 /* Fungsi untuk inisialisasi array laporan wahana */
 
-Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Point, boolean Rusak);
+Wahana MakeWahana(Kata Nama, int Harga, int Kapasitas, int Pemain, int Durasi, int HargaBuild, int DurasiBuild, int Mat[3], Kata Deskripsi, POINT Ukuran, int Peta, POINT Point, boolean Rusak);
 /* Fungsi untuk membuat tipe bentukan Wahana */
 
 /**** EOP ****/
@@ -154,7 +154,7 @@ Wahana SearchWahana(Wahana ListWahana[10], Kata Nama);
 /* Fungsi untuk mencari apakah suatu wahana ada di daftar wahana */
 /* Mengembalikan Wahana kosong jika tidak ada */
 
-Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi);
+Wahana SearchWahanaFromPoint(Wahana ListWahana[10], POINT posisi, int IdxMap);
 /* Fungsi untuk mencari apakah suatu wahana ada di sekitar pemain */
 /* Mengembalikan Wahana kosong jika tidak ada */
 

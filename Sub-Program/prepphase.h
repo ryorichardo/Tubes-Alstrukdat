@@ -8,6 +8,7 @@
 #include "../ADT/mesinkata.h"
 #include "../ADT/jam.h"
 #include "../ADT/matriks.h"
+#include "../ADT/listlinier.h"
 
 extern long durasi;
 extern long countaksi;
@@ -17,13 +18,13 @@ extern long Sisa;
 void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem);
 // Program
 
-void Upgrade(Stack * Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int * Duit, int *Wood, int *Fire, int *Primogem);
+void Upgrade(Stack * Perintah, Wahana ArrayUpgrade[100], Wahana DaftarUpgrade[10], POINT Posisi_Player, int * Duit, int *Wood, int *Fire, int *Primogem, int idxmap);
 
 void Buy(Stack * Perintah, Material ArrayMat[3], int * Duit);
 
 void Undo(Stack * Perintah, int * Duit, int *Wood, int *Fire, int *Primogem);
 
-void Execute(Stack * Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int * Wood, int * Fire, int * Primogem, boolean * isMain, MATRIKS *Peta, POINT * Posisi);
+void Execute(Stack * Perintah, Wahana Wahanaskrg[100], TabLaporan *TL, Wahana DaftarWahana[10], Wahana DaftarUpgrade[10], int * Wood, int * Fire, int * Primogem, boolean * isMain, MATRIKS *Peta, POINT * Posisi, List UpWahana[100]);
 
 void Mainphase(Stack * Perintah, boolean * isMain, Wahana ArrayWahana[10], int * Duit);
 #endif
