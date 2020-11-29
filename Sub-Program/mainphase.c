@@ -289,6 +289,10 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana)
             printf("Deskripsi Wahana : ");
             PrintKata(ArrayWahana[i].Deskripsi);
             printf("\n");
+            printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
+            // PrintInfo();
+            printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
+            printf("Ukuran Wahana : %d x %d\n", PanjangWahana(ArrayWahana[i]), LebarWahana(ArrayWahana[i]));
             printf("\n#############################################\n\n");
         }
         i++;
@@ -317,4 +321,51 @@ void PrintAntrian(int Banyak, PrioQueueChar Customer)
 {
     printf("Antrian [%d/5]:\n", Banyak);
     PrintQueue(Customer);
+}
+
+void save(Kata Player, int day, int Money, JAM Close, int Banyak)
+{
+    /* I.S. M terdefinisi */
+    /* F.S. Nilai M(i,j) ditulis ke file per baris per kolom*/
+    /* Proses: Menulis nilai setiap elemen M ke file dengan traversal per baris dan per kolom */
+    /* KAMUS LOKAL */
+    indeks i;
+    FILE *ptr;
+    /* ALGORITMA */
+    // ptr = fopen(namafile, "r");
+    char namafile[] = "File-Eksternal/save.txt";
+    if ((ptr = fopen(namafile, "w")) == NULL)
+    {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    for (i = 0; i < Player.Length; i++)
+    {
+        fprintf(ptr, "%c", Player.TabKata[i]);
+    }
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", day);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Money);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Close);
+    fprintf(ptr, ".");
+    fprintf(ptr, "%d", Banyak);
+    fprintf(ptr, ".");
+    fprintf(ptr, ",");
+
+    printf("%d", day);
+    printf("%d", Money);
+    printf("%d", Close);
+    printf("%d", Banyak);
+
+    // for (i = 0; i < NBrsEff(M); i++)
+    // {
+    //     for (j = 0; j < NKolEff(M); j++)
+    //     {
+    //         fprintf(ptr, "%c", Elmt(M, i, j));
+    //     }
+    //     fprintf(ptr, "\n");
+    // }
+    fclose(ptr);
 }

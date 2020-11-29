@@ -221,10 +221,41 @@ void BacaFileMaterial(char namafile[], Material TabMat[3])
     }
 }
 
-void BacaLoadMaterial(char namaFile[])
+void BacaLoadSave(char namafile[], Save TabSave[3])
 {
+    FILE *ptr;
+    ptr = fopen(namafile, "r");
+    if (ptr == NULL)
+    {
+        printf("Error! opening file\n");
+        exit(1);
+    }
+    int i = 0;
+    STARTKATA(ptr);
+    while (CC != ',')
+    {
+        if (i > 0)
+        {
+            SalinKata();
+        }
+        // SalinKata();
+        ADV();
+        TabSave[i].Player = CopyKata(CKata);
+        SalinToken();
+        ADV();
+        TabSave[i].Day = CToken;
+        SalinToken();
+        ADV();
+        TabSave[i].Money = CToken;
+        SalinToken();
+        ADV();
+        TabSave[i].Close = CToken;
+        SalinToken();
+        ADV();
+        TabSave[i].Banyak = CToken;
+        i++;
+    }
 }
-
 Kata CopyKata(Kata K)
 {
     int i;
