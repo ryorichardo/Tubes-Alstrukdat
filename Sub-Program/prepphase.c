@@ -10,7 +10,7 @@ long Sisa = 720;
 void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idxpeta, int *Duit, int *Wood, int *Fire, int *Primogem)
 {
     Kata empty;
-    boolean nimpa;
+    boolean nimpa,nimpaoffice;
     int RectAR,RectAL,RectAT,RectAB,RectBR,RectBL,RectBT,RectBB;
     MakeKataEmpty(&empty);
     printf("Mau bikin wahana apa?\n");
@@ -18,6 +18,7 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
     STARTKATA(stdin);
     Wahana New = SearchWahana(ArrayWahana, CKata);
     nimpa=false;
+    nimpaoffice=false;
     // batas kanan atas dan kiri bawah
     RectAR=Ordinat(Posisi_Player)+PanjangWahana(New)-1;
     RectAL=Ordinat(Posisi_Player);
@@ -43,8 +44,12 @@ void Build(Stack *Perintah, Wahana ArrayWahana[10], POINT Posisi_Player, int idx
            }
            i++;
         }
+        printf("%d %d %d %d %d\n", RectAL, RectAR, RectAT, RectAB,idxpeta);
+        if (Intersection(RectAL, RectAR, RectAT, RectAB, 9, 9, 9, 9) && idxpeta==0) {
+          nimpaoffice=true;
+        }
 
-        if (nimpa||RectAL<1 || RectAT<1 || RectAR>10|| RectAB>10) {
+        if (nimpaoffice || nimpa||RectAL<1 || RectAT<1 || RectAR>10|| RectAB>10) {
           printf("Bangunan yang akan buat menimpa salah satu objek.\n");
         }
         else if (*Duit >= New.HargaBuild && *Wood >= New.Mat[0] && *Fire >= New.Mat[1] && *Primogem >= New.Mat[2])
