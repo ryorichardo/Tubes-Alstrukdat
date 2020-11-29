@@ -43,8 +43,6 @@ void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayW
     }
 
     BanyakWahana = NbElmtTabWahana(ArrayWahana);
-    PrintListWahana(ArrayWahana);
-    printf("%d\n", BanyakWahana);
     MakeEmpty(Customer, 5);
     *Banyak = (rand() % 5);
 
