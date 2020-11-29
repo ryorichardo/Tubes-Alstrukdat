@@ -304,7 +304,7 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana, List ListUpgradeOwnedWahan
             printf("Kapasitas Wahana : %d\n", Kapasitas(ArrayWahana[i]));
             printf("Durasi Wahana : %d\n", Durasi(ArrayWahana[i]));
             printf("Ukuran Wahana : %d x %d\n", PanjangWahana(ArrayWahana[i]), LebarWahana(ArrayWahana[i]));
-            printf("History upgrade: \n")
+            printf("History upgrade: \n");
             PrintInfo(ListUpgradeOwnedWahana[i]);
             printf("\n#############################################\n\n");
         }
