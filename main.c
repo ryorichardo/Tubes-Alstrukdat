@@ -305,7 +305,6 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
-                printf("1\n");
                 RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
             }
             //main

@@ -70,12 +70,7 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
                 l = (rand() % 25);
             }
             Tempat[l] = 1;
-            if (IsKataSama(Nama(ArrayWahana[i]), Empty)){
-
-            }
-            else {
-                (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
-            }
+            (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
         }
 
         Enqueue(Customer, Pelanggan[j]);
