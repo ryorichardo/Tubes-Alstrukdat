@@ -29,16 +29,10 @@ void InitCustomer(Antrian Pelanggan[25])
     }
 }
 
-<<<<<<< HEAD
-void RandomAntrian(PrioQueueChar *Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak)
-{
-    int i, j, Custom[25], count, k, Naik, Tempat[25], BanyakWahana, l;
-=======
 void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int *Banyak){
     int i, j, Custom[25], count, k, Naik, Tempat[100], BanyakWahana, l;
     Kata Empty;
-    MakeKataEmpty( &Empty);
->>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
+    MakeKataEmpty(&Empty);
 
     /* Reset Array Customer */
     for (i = 0; i < 25; i++)
@@ -47,14 +41,15 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
     }
 
     BanyakWahana = NbElmtTabWahana(ArrayWahana);
+    PrintListWahana(ArrayWahana);
+    printf("%d\n", BanyakWahana);
     MakeEmpty(Customer, 5);
     *Banyak = (rand() % 5);
 
     count = 1;
-    for (i = 0; i < *Banyak; i++)
-    {
-        /* Reset Array Tempat[25] (Wahana) */
-        for (k = 0; k < 25; k++)
+    for (i = 0; i < *Banyak; i++){
+        /* Reset Array Tempat[100] (Wahana) */
+        for (k = 0; k < 100; k++)
         {
             Tempat[k] = 0;
         }
@@ -77,12 +72,12 @@ void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana Arra
                 l = (rand() % 100);
             }
             Tempat[l] = 1;
+
             (Pelanggan[j].info).Main[k] = Nama(ArrayWahana[l]);
         }
-
         Enqueue(Customer, Pelanggan[j]);
-
         count++;
+        
     }
 }
 
@@ -96,7 +91,13 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
     W = SearchWahana(ArrayWahana, NamaWahana);
 
     /* Kasus Wahana Rusak */
-    if (Rusak(W))
+    i = 0;
+    while (i < 100){
+        if (!IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+            i++;
+        }
+    }
+    if (Rusak(ArrayWahana[i]))
     {
         printf("Maaf, wahana sedang maintenance, wahana tidak bisa digunakan.\n");
         /* Hapus antrian wahana dari customer */
@@ -105,13 +106,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             if (IsKataSama(W.Nama, Main(*Customer, i)))
             {
                 Main(*Customer, i).TabKata[0] = '\0';
+                Main(*Customer, i).Length = 0;
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0')
+            if ((Main(*Customer, j).TabKata[0] != '\0') && (Main(*Customer, i).Length == 0))
             {
                 count += 1;
             }
@@ -138,13 +140,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             if (IsKataSama(W.Nama, Main(*Customer, i)))
             {
                 Main(*Customer, i).TabKata[0] = '\0';
+                Main(*Customer, i).Length = 0;
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0')
+            if ((Main(*Customer, j).TabKata[0] != '\0') && (Main(*Customer, i).Length == 0))
             {
                 count += 1;
             }
@@ -170,13 +173,14 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
             if (IsKataSama(W.Nama, Main(*Customer, i)))
             {
                 Main(*Customer, i).TabKata[0] = '\0';
+                Main(*Customer, i).Length = 0;
             }
         }
         /* Kasus ga ada antrian wahana dari customer */
         count = 0;
         for (j = 0; j < 5; j++)
         {
-            if (Main(*Customer, j).TabKata[0] != '\0')
+            if ((Main(*Customer, j).TabKata[0] != '\0') && (Main(*Customer, i).Length == 0))
             {
                 count += 1;
             }
@@ -186,11 +190,6 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         {
             Dequeue(Customer, &Buang);
             Banyak -= 1;
-        }
-        if (IsEmpty(*Customer)){
-            MakeEmpty(Customer, 5);
-            *isMain = false;
-            *day++;
         }
 
         /* Menambah keterangan di Laporan */
@@ -209,22 +208,38 @@ void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int *Uang, PrioQueueChar *C
         r = rand() % 5;
         if (r == 0)
         {
-            Rusak(W) = true;
+            for (i = 0; i < 100; i++){
+                if (IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+                    Rusak(ArrayWahana[i]) = true;
+                }
+            }
         }
 
         /* Menambah 10 menit setelah selesai serve */
         NextNMenit(*CurrentTime, Durasi(W));
+
+        /* Antrian habis, pindah ke preparation */
+        if (IsEmpty(*Customer)){
+            MakeEmpty(Customer, 5);
+            *isMain = false;
+            *day++;
+        }
     }
 }
 
 void Repair(Wahana ArrayWahana[100], Kata NamaWahana, JAM *CurrentTime)
 {
+    int i;
     Wahana W;
     NextNMenit(*CurrentTime, 10);
     /* Search Wahana */
     W = SearchWahana(ArrayWahana, NamaWahana);
     /* Repair wahana */
-    Rusak(W) = false;
+    for (i = 0; i < 100; i++){
+        if (IsKataSama(Nama(W), Nama(ArrayWahana[i]))){
+            Rusak(ArrayWahana[i]) = false;
+        }
+    }
 }
 
 void Office(Wahana ArrayWahana[100], TabLaporan TL)
@@ -366,6 +381,11 @@ void save(Kata Player, int day, int Money, JAM Close, int Banyak)
     fprintf(ptr, "%d", Banyak);
     fprintf(ptr, ".");
     fprintf(ptr, ",");
+
+    printf("%d", day);
+    printf("%d", Money);
+    printf("%d", Close);
+    printf("%d", Banyak);
 
     // for (i = 0; i < NBrsEff(M); i++)
     // {

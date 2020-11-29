@@ -275,7 +275,7 @@ int main()
             printf("\nTotal uang yang dibutuhkan: %ld\n", totalbiaya);
 
             // Next Perintah
-            printf("Masukkan Perintah\n");
+            printf("\nMasukkan Perintah\n");
             STARTKATA(stdin);
             // printf("sini\n");
             // PrintKata(CKata);
@@ -324,10 +324,6 @@ int main()
                 Execute(&Perintah, ListOwnedWahana, &TL, ListWahana, ListUpgrade, &Wood, &Fire, &Primogem, &isMain, &CurrentMap, &Posisi, ListUpgradeOwnedWahana);
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
-<<<<<<< HEAD
-                // printf("1\n");
-=======
->>>>>>> d31e321394198dffe92d65fc5549f13666e3e43c
                 RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, &Banyak);
                 // PrintListWahana(ListOwnedWahana);
             }
