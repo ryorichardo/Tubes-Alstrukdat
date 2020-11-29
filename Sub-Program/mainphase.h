@@ -10,17 +10,9 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/array.h"
 
-void Assign(Kata * Wahana1, Kata * Wahana2, Kata * Wahana3);
+void InitCustomer (Antrian *Pelanggan[25]);
 
-void CustomA(Antrian * CustomerA, Kata Wahana1, Kata Wahana2, Kata Wahana3);
-
-void CustomB(Antrian * CustomerB, Kata Wahana1, Kata Wahana2, Kata Wahana3);
-
-void CustomC(Antrian * CustomerC, Kata Wahana1, Kata Wahana2, Kata Wahana3);
-
-void CustomD(Antrian * CustomerD, Kata Wahana1, Kata Wahana2, Kata Wahana3);
-
-void CustomE(Antrian * CustomerE, Kata Wahana1, Kata Wahana2, Kata Wahana3);
+void RandomAntrian (PrioQueueChar * Customer, Antrian Pelanggan[25], Wahana ArrayWahana[100], int Banyak);
 
 void Serve(Wahana ArrayWahana[100], Kata NamaWahana, int * Uang, PrioQueueChar *Customer, JAM *CurrentTime, int Banyak, TabLaporan *TL);
 
@@ -31,8 +23,6 @@ void Detail(Wahana ArrayWahana[100], Kata NamaWahana);
 void Office(Wahana ArrayWahana[100], TabLaporan TL);
 
 void Prepare(boolean * isMain, PrioQueueChar * Customer, int Banyak);
-
-void RandomAntrian(int Banyak, PrioQueueChar * Customer, Antrian CustomerA, Antrian CustomerB, Antrian CustomerC, Antrian CustomerD, Antrian CustomerE);
 
 void PrintAntrian(int Banyak, PrioQueueChar Customer);
 

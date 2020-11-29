@@ -45,9 +45,8 @@ int main()
     Graph RelationMap[4];
     Stack Perintah;
     PrioQueueChar Customer;
-    extern Antrian CustomerA, CustomerB, CustomerC, CustomerD, CustomerE;
-    extern Kata Wahana1, Wahana2, Wahana3;
     int Banyak;
+    Antrian Pelanggan[5];
 
     //baca file wahana, material, map
     MakeMap(RelationMap, ListMap);
@@ -67,6 +66,7 @@ int main()
     //bikin array action
     Kata ListAksi[18];
     InitTabAction(ListAksi);
+    InitCustomer(Pelanggan);
 
     //print halaman utama
     Kata Player, Game;
@@ -107,27 +107,21 @@ int main()
     boolean isMain = false;
     while (!IsKataSama(Game, ListAksi[11]) && gameOn)
     {
-
         if (isMain == true)
         {
-            Assign(&Wahana1, &Wahana2, &Wahana3);
-            CustomA(&CustomerA, Wahana1, Wahana2, Wahana3);
-            CustomB(&CustomerB, Wahana1, Wahana2, Wahana3);
-            CustomC(&CustomerC, Wahana1, Wahana2, Wahana3);
-            CustomD(&CustomerD, Wahana1, Wahana2, Wahana3);
-            CustomE(&CustomerE, Wahana1, Wahana2, Wahana3);
+            
             printf("Main phase day ");
 
             // print Map dan Perintah
             printLegend(CurrentMap, day, Player, CurrentTime, Money);
-
+            
             // close
             printf("Closing time: ");
             TulisJAM(Close);
             printf("\nTime remaining: ");
             TulisJAM(MenitToJAM(SelisihJam(CurrentTime, Close)));
             printf("\n");
-            //RefreshLaporan(&TL);
+            RefreshLaporan(&TL);
             PrintAntrian(Banyak, Customer);
 
             // Next Perintah
@@ -284,12 +278,14 @@ int main()
                 CurrentTime = MakeJAM(9, 0);
                 // PrintKata(ListOwnedWahana->Nama);
                 printf("1\n");
+                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, Banyak);
             }
             //main
             else if (IsKataSama(Game, ListAksi[5]))
             {
                 Mainphase(&Perintah, &isMain, ListWahana, &Money);
                 CurrentTime = MakeJAM(9, 0);
+                RandomAntrian(&Customer, Pelanggan, ListOwnedWahana, Banyak);
             }
 
             //buat gerak
@@ -309,7 +305,6 @@ int main()
             {
                 D(RelationMap, &Posisi, &CurrentMap, ListMap, &idxmap);
             }
-            RandomAntrian(Banyak, &Customer, CustomerA, CustomerB, CustomerC, CustomerD, CustomerE);
         }
     }
 

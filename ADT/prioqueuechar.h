@@ -15,7 +15,7 @@ extern Kata Main[5];
 typedef struct
 {
     Kata Nama;
-    Kata Main[5]; /* Wahana-wahana yang mau dinaikin Customer */
+    Kata Main[10]; /* Wahana-wahana yang mau dinaikin Customer */
     int Kesabaran;
 } Pengunjung;
 
