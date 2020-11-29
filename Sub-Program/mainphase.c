@@ -388,10 +388,10 @@ void save(Kata Player, int day, int Money, JAM Close, int Banyak, int X, int Y)
     fprintf(ptr, ".");
     fprintf(ptr, ",");
 
-    printf("%d", day);
-    printf("%d", Money);
-    printf("%d", Close);
-    printf("%d", Banyak);
+    // printf("%d", day);
+    // printf("%d", Money);
+    // printf("%d", Close);
+    // printf("%d", Banyak);
 
     // for (i = 0; i < NBrsEff(M); i++)
     // {
